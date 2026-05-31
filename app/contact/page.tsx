@@ -7,12 +7,16 @@ export default function ContactUs() {
       {/* Header */}
       <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
         <div className="max-w-[1200px] mx-auto px-4 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-[#EB5324]" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z" fill="currentColor" />
-            </svg>
-            <span className="font-bold text-lg tracking-tight uppercase">HB Furniture</span>
-          </div>
+       <Link href="/" className="flex items-center">
+  <Image
+    src="/hb-logo.png.png"
+    alt="HB Furniture Logo"
+    width={60}
+    height={60}
+    className="h-auto w-auto object-contain"
+    priority
+  />
+</Link>
 
           <nav className="hidden md:flex items-center space-x-8 h-full">
             <Link href="/" className="h-full flex items-center text-[11px] font-bold text-gray-400 hover:text-gray-900 uppercase tracking-wider transition-colors">
@@ -171,9 +175,7 @@ export default function ContactUs() {
             <div className="mt-16 pt-8 border-t border-gray-800">
               <h4 className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4">Connect With Us</h4>
               <div className="flex gap-4">
-                <div className="w-8 h-8 rounded-full border border-gray-600 flex items-center justify-center hover:bg-white hover:text-[#1A1A1A] transition-colors cursor-pointer">
-                  <span className="text-[10px] font-bold">in</span>
-                </div>
+              
                 <div className="w-8 h-8 rounded-full border border-gray-600 flex items-center justify-center hover:bg-white hover:text-[#1A1A1A] transition-colors cursor-pointer">
                   <span className="text-[10px] font-bold">ig</span>
                 </div>
@@ -194,16 +196,28 @@ export default function ContactUs() {
             <h2 className="text-3xl font-bold text-gray-900 mb-3 font-serif">Our Headquarters & Factory</h2>
             <p className="text-[#EB5324] text-[11px] font-bold uppercase tracking-widest">Islamabad</p>
           </div>
-          <div className="w-full h-[450px] relative flex items-center justify-center border border-gray-200 rounded-sm overflow-hidden bg-gray-100 shadow-sm">
-            {/* Map Placeholder */}
-            <div className="absolute inset-0 z-0">
-               <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=2000" className="w-full h-full object-cover opacity-20 grayscale" alt="Map background" />
-               <div className="absolute inset-0 bg-[#FAFAFA]/70"></div>
-            </div>
-            <div className="relative z-10 w-14 h-14 bg-white rounded-full shadow-lg flex items-center justify-center animate-bounce">
-              <svg className="w-7 h-7 text-[#EB5324]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-            </div>
-          </div>
+         <div className="rounded-lg overflow-hidden shadow-lg">
+  <iframe
+    src="https://www.google.com/maps?q=HB%20Furniture%20Hassan%20Brother%20(PVT)%20LIMITED&output=embed"
+    width="100%"
+    height="500"
+    style={{ border: 0 }}
+    allowFullScreen
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+  />
+</div>
+
+<div className="mt-6 text-center">
+  <a
+    href="https://www.google.com/maps/place/HB+Furniture+Hassan+Brother+(PVT)+LIMITED/@33.657515,73.0357053,17z/data=!3m1!4b1!4m6!3m5!1s0x38df95384559b40d:0x11098f728e61baed!8m2!3d33.6575106!4d73.0382802!16s%2Fg%2F11xh6rfbd2"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-block bg-[#EB5324] text-white px-6 py-3 font-semibold hover:opacity-90 transition"
+  >
+    Open in Google Maps
+  </a>
+</div>
         </div>
       </section>
 

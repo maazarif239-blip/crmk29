@@ -7,12 +7,16 @@ export default function SofasLoungeSeating() {
       {/* Header */}
       <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
         <div className="max-w-[1200px] mx-auto px-4 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-[#EB5324]" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z" fill="currentColor" />
-            </svg>
-            <span className="font-bold text-lg tracking-tight uppercase">HB Furniture</span>
-          </div>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/hb-logo.png"
+              alt="HB Furniture Logo"
+              width={150}
+              height={50}
+              className="h-10 w-auto object-contain"
+              priority
+            />
+          </Link>
 
           <nav className="hidden md:flex items-center space-x-8 h-full">
             <Link href="/" className="h-full flex items-center text-[11px] font-bold text-gray-400 hover:text-gray-900 uppercase tracking-wider transition-colors">
@@ -45,7 +49,7 @@ export default function SofasLoungeSeating() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=2000" 
+            src="i.jpg" 
             alt="Sofas & Lounge Seating" 
             className="w-full h-full object-cover opacity-60"
           />
@@ -96,34 +100,10 @@ export default function SofasLoungeSeating() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             
             {[
-              { 
-                name: '3-Seater Reception Sofa', 
-                desc: 'Premium Fabric • Modular',
-                image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=600',
-                isPlaceholder: false
-              },
-              { 
-                name: 'L-Shaped Lounge Sofa', 
-                desc: 'Italian Leather • Configurable',
-                image: '',
-                isPlaceholder: true
-              },
-              { 
-                name: 'Single Executive Lounge Chair', 
-                desc: 'Walnut Veneer • Aniline Leather',
-                image: '',
-                isPlaceholder: true
-              },
-              { 
-                name: '2-Seater Visitor Sofa', 
-                desc: 'Performance Fabric • Steel Base',
-                image: 'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&q=80&w=600',
-                isPlaceholder: false
-              },
-              { 
-                name: 'Ottoman & Coffee Table Set', 
-                desc: 'Lounge System Add-on',
-                image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=600',
+              {
+                name: 'Arc Sofa Koto 1 Seater',
+                desc: 'Elegant single-seater sofa designed for executive offices, reception lounges, and premium corporate environments. Combines comfort, durability, and modern aesthetics.',
+                image: '/35.jpg',
                 isPlaceholder: false
               },
             ].map((product, i) => (

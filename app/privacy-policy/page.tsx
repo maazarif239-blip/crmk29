@@ -42,26 +42,10 @@ export default function PrivacyPolicy() {
       </section>
 
       {/* Main Content Area */}
-      <section className="max-w-[1200px] mx-auto px-4 py-20 flex flex-col md:flex-row gap-16 relative">
+      <section className="max-w-[1200px] mx-auto px-4 py-20 relative">
         
-        {/* Table of Contents (Sidebar) */}
-        <aside className="w-full md:w-[250px] shrink-0">
-          <div className="sticky top-32">
-            <h3 className="text-[13px] font-bold text-gray-900 mb-6 font-serif">Table of Contents</h3>
-            <ul className="space-y-4 text-[12px] text-gray-500">
-              <li><a href="#section-1" className="hover:text-[#EB5324] transition-colors block">1. Information We Collect</a></li>
-              <li><a href="#section-2" className="hover:text-[#EB5324] transition-colors block leading-relaxed">2. How We Use Your<br/>Information</a></li>
-              <li><a href="#section-3" className="hover:text-[#EB5324] transition-colors block">3. Data Storage & Security</a></li>
-              <li><a href="#section-4" className="hover:text-[#EB5324] transition-colors block">4. Cookies</a></li>
-              <li><a href="#section-5" className="text-[#EB5324] font-bold block">5. Third Party Links</a></li>
-              <li><a href="#section-6" className="hover:text-[#EB5324] transition-colors block">6. Your Rights</a></li>
-              <li><a href="#section-7" className="hover:text-[#EB5324] transition-colors block">7. Contact Us</a></li>
-            </ul>
-          </div>
-        </aside>
-
         {/* Content */}
-        <div className="flex-1 max-w-3xl space-y-16">
+        <div className="max-w-4xl mx-auto space-y-16">
           
           <div id="section-1" className="scroll-mt-32">
             <div className="flex items-center gap-4 mb-4">

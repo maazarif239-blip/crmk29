@@ -7,12 +7,16 @@ export default function ConferenceMeetingTables() {
       {/* Header */}
       <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
         <div className="max-w-[1200px] mx-auto px-4 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-[#EB5324]" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z" fill="currentColor" />
-            </svg>
-            <span className="font-bold text-lg tracking-tight">HB Furniture</span>
-          </div>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/hb-logo.png"
+              alt="HB Furniture Logo"
+              width={150}
+              height={50}
+              className="h-10 w-auto object-contain"
+              priority
+            />
+          </Link>
 
           <nav className="hidden md:flex items-center space-x-8 h-full">
             <Link href="/" className="h-full flex items-center text-[11px] font-bold text-gray-400 hover:text-gray-900 uppercase tracking-wider transition-colors">
@@ -46,7 +50,7 @@ export default function ConferenceMeetingTables() {
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <img 
-              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000" 
+              src="g.png" 
               alt="Conference & Meeting Tables" 
               className="w-full h-full object-cover opacity-60"
             />
@@ -101,34 +105,58 @@ export default function ConferenceMeetingTables() {
             
             {[
               { 
-                name: '8-Seater Oval Table', 
-                desc: 'Elegant curved design fostering collaboration.',
-                badge: 'WOOD FINISH',
-                image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=600'
-              },
-              { 
-                name: '12-Seater Rectangular Boardroom Table', 
-                desc: 'Commanding presence with seamless connectivity.',
-                badge: 'POWER INTEGRATION',
-                image: 'https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&q=80&w=600'
-              },
-              { 
-                name: 'Boat-shaped Executive Table', 
-                desc: 'Optimal sightlines for executive discussions.',
-                badge: 'GLASS TOP',
-                image: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&q=80&w=600'
-              },
-              { 
-                name: 'Small Meeting Room Table', 
-                desc: 'Perfect for huddle rooms and quick syncs.',
+                name: 'Brisk Conference Table', 
+                desc: 'A sleek boardroom table designed to support fast-paced meetings with a clean executive presence.',
                 badge: null,
-                image: 'https://images.unsplash.com/photo-1600508774634-4e11d34730e2?auto=format&fit=crop&q=80&w=600'
+                image: '/21.jpg'
               },
               { 
-                name: 'Modular Foldable Table', 
-                desc: 'Flexible solutions for dynamic spaces.',
-                badge: 'MODULAR',
-                image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=600'
+                name: 'Dazzle Conference Table', 
+                desc: 'Refined contemporary styling brings a polished focal point to conference rooms and client-facing spaces.',
+                badge: null,
+                image: '/22.jpg'
+              },
+              { 
+                name: 'Gates Conference Table', 
+                desc: 'Strong architectural lines create a professional centerpiece for collaborative discussions and formal presentations.',
+                badge: null,
+                image: '/23.jpg'
+              },
+              { 
+                name: 'Hardwood Conference Table', 
+                desc: 'Rich wood character and durable construction make it ideal for premium meeting and executive environments.',
+                badge: null,
+                image: '/24.jpg'
+              },
+              { 
+                name: 'Odyssey Conference Table', 
+                desc: 'A sophisticated conference solution tailored for modern boardrooms, strategy sessions, and team collaboration.',
+                badge: null,
+                image: '/25.jpg'
+              },
+              { 
+                name: 'Pluto Conference Table', 
+                desc: 'Contemporary detailing and generous proportions deliver function and style for high-performance meeting spaces.',
+                badge: null,
+                image: '/26.jpg'
+              },
+              { 
+                name: 'Poliform Conference Table', 
+                desc: 'Minimalist elegance with a premium finish, suited to executive meeting rooms and design-led workspaces.',
+                badge: null,
+                image: '/27.jpg'
+              },
+              { 
+                name: 'Prestige Conference Table', 
+                desc: 'An executive statement piece crafted to elevate formal boardrooms with timeless professionalism.',
+                badge: null,
+                image: '/28.jpg'
+              },
+              { 
+                name: 'Water House Conference Table', 
+                desc: 'A versatile meeting table that blends modern character with practical comfort for collaborative teams.',
+                badge: null,
+                image: '/29.jpg'
               },
             ].map((product, i) => (
               <div key={i} className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">

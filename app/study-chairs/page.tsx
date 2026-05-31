@@ -7,12 +7,16 @@ export default function StudyChairs() {
       {/* Header */}
       <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
         <div className="max-w-[1200px] mx-auto px-4 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-[#EB5324]" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z" fill="currentColor" />
-            </svg>
-            <span className="font-bold text-lg tracking-tight">HB Furniture</span>
-          </div>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/hb-logo.png"
+              alt="HB Furniture Logo"
+              width={150}
+              height={50}
+              className="h-10 w-auto object-contain"
+              priority
+            />
+          </Link>
 
           <nav className="hidden md:flex items-center space-x-8 h-full">
             <Link href="/" className="h-full flex items-center text-[11px] font-bold text-gray-400 hover:text-gray-900 uppercase tracking-wider transition-colors">
@@ -103,15 +107,15 @@ export default function StudyChairs() {
             <div className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">
               <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1505843490538-5133c6c7d0e1?auto=format&fit=crop&q=80&w=600" 
-                  alt="Aero Study Chair" 
+                  src="/1.jpg" 
+                  alt="Cateteria Chair" 
                   className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Aero Study Chair</h3>
+                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Cateteria Chair</h3>
                 <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
-                  Advanced mesh breathability with dynamic lumbar support.
+                  Comfortable and durable seating solution designed for collaborative learning and cafeteria environments.
                 </p>
                 <div className="mt-4 pt-4 border-t border-gray-50">
                   <span className="text-[#EB5324] text-[9px] font-bold uppercase tracking-widest cursor-pointer hover:underline underline-offset-4">
@@ -125,15 +129,15 @@ export default function StudyChairs() {
             <div className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">
               <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&q=80&w=600" 
-                  alt="Vantage Mesh Task" 
+                  src="/2.jpg" 
+                  alt="Circa Task Chair" 
                   className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Vantage Mesh Task</h3>
+                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Circa Task Chair</h3>
                 <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
-                  Intelligent weight-activated recline mechanism.
+                  Ergonomic task chair engineered for daily office productivity and comfort.
                 </p>
                 <div className="mt-4 pt-4 border-t border-gray-50">
                   <span className="text-[#EB5324] text-[9px] font-bold uppercase tracking-widest cursor-pointer hover:underline underline-offset-4">
@@ -147,15 +151,15 @@ export default function StudyChairs() {
             <div className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">
               <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1580480055273-228ff5388ef8?auto=format&fit=crop&q=80&w=600" 
-                  alt="Zenith Executive Study" 
+                  src="/3.jpg" 
+                  alt="Generation Task Chair" 
                   className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Zenith Executive Study</h3>
+                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Generation Task Chair</h3>
                 <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
-                  Premium leather upholstery with commanding aesthetics.
+                  Modern, responsive task chair offering dynamic back support and sleek aesthetics.
                 </p>
                 <div className="mt-4 pt-4 border-t border-gray-50">
                   <span className="text-[#EB5324] text-[9px] font-bold uppercase tracking-widest cursor-pointer hover:underline underline-offset-4">
@@ -169,15 +173,81 @@ export default function StudyChairs() {
             <div className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">
               <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&q=80&w=600" 
-                  alt="Forma Compact Chair" 
+                  src="/4.jpg" 
+                  alt="Puma Task Chair" 
                   className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Forma Compact Chair</h3>
+                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Puma Task Chair</h3>
                 <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
-                  Space-efficient design without compromising on ergonomics.
+                  Agile and breathable seating solution perfect for intensive work or study sessions.
+                </p>
+                <div className="mt-4 pt-4 border-t border-gray-50">
+                  <span className="text-[#EB5324] text-[9px] font-bold uppercase tracking-widest cursor-pointer hover:underline underline-offset-4">
+                    Contact for Pricing
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Product 5 */}
+            <div className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">
+              <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden">
+                <img 
+                  src="/5.jpg" 
+                  alt="Ring Chair" 
+                  className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6 flex-1 flex flex-col">
+                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Ring Chair</h3>
+                <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
+                  Versatile, minimalist chair ideal for quick meetings and dynamic workspaces.
+                </p>
+                <div className="mt-4 pt-4 border-t border-gray-50">
+                  <span className="text-[#EB5324] text-[9px] font-bold uppercase tracking-widest cursor-pointer hover:underline underline-offset-4">
+                    Contact for Pricing
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Product 6 */}
+            <div className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">
+              <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden">
+                <img 
+                  src="/6.jpg" 
+                  alt="Syntex Task Chair" 
+                  className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6 flex-1 flex flex-col">
+                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Syntex Task Chair</h3>
+                <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
+                  High-performance task chair featuring breathable mesh and intuitive ergonomic controls.
+                </p>
+                <div className="mt-4 pt-4 border-t border-gray-50">
+                  <span className="text-[#EB5324] text-[9px] font-bold uppercase tracking-widest cursor-pointer hover:underline underline-offset-4">
+                    Contact for Pricing
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Product 7 */}
+            <div className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">
+              <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden">
+                <img 
+                  src="/7.jpg" 
+                  alt="Trend Task Chair" 
+                  className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6 flex-1 flex flex-col">
+                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Trend Task Chair</h3>
+                <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
+                  Contemporary seating combining aesthetic appeal with all-day ergonomic support.
                 </p>
                 <div className="mt-4 pt-4 border-t border-gray-50">
                   <span className="text-[#EB5324] text-[9px] font-bold uppercase tracking-widest cursor-pointer hover:underline underline-offset-4">

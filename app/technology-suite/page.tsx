@@ -99,30 +99,30 @@ export default function TechnologySuite() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             
             {[
-              { 
-                name: 'Embedded Power Module', 
-                desc: 'Seamless desk-top power integration with high-speed charging.',
-                image: 'https://images.unsplash.com/photo-1544725121-be3bf52e2dc8?auto=format&fit=crop&q=80&w=600',
+              {
+                name: 'Interactive Display Solution',
+                desc: 'A professional display system tailored for smart offices, boardrooms, and engaging team presentations.',
+                image: '/36.jpg',
               },
-              { 
-                name: 'Integrated Connectivity Hub', 
-                desc: 'Flush-mount data and power access for collaborative workstations.',
-                image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=600',
+              {
+                name: 'Smart Collaboration Screen',
+                desc: 'Designed to support seamless communication and content sharing across modern meeting environments.',
+                image: '/37.jpg',
               },
-              { 
-                name: 'Advanced Cable Management Tray', 
-                desc: 'Precision-engineered organizers to keep workspaces clutter-free.',
-                image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=600',
+              {
+                name: 'Video Conferencing System',
+                desc: 'An integrated conferencing solution built for executive meetings, hybrid teams, and connected workspaces.',
+                image: '/38.jpg',
               },
-              { 
-                name: 'Smart Power Distribution', 
-                desc: 'High-capacity under-desk power solutions for executive suites.',
-                image: 'https://images.unsplash.com/photo-1626219460281-a9668d298c4d?auto=format&fit=crop&q=80&w=600',
+              {
+                name: 'Digital Meeting Hub',
+                desc: 'A streamlined technology centerpiece that enhances coordination, presentations, and collaborative workflows.',
+                image: '/39.jpg',
               },
-              { 
-                name: 'Desktop Accessory Suite', 
-                desc: 'Ergonomic organization for phones, tablets, and workspace tools.',
-                image: 'https://images.unsplash.com/photo-1542435503-956c469947f6?auto=format&fit=crop&q=80&w=600',
+              {
+                name: 'Integrated Workspace Technology',
+                desc: 'A refined corporate technology solution that brings efficiency and connectivity to premium office settings.',
+                image: '/40.jpg',
               },
             ].map((product, i) => (
               <div key={i} className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">

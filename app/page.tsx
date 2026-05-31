@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import TestimonialsSection from '../components/TestimonialsSection';
 
 export default function Home() {
   return (
@@ -8,16 +9,19 @@ export default function Home() {
       <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
         <div className="max-w-[1200px] mx-auto px-4 h-20 flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center gap-2">
-            <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-[#EB5324]" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z" fill="currentColor" />
-            </svg>
-            <span className="font-bold text-lg tracking-tight">HB Furniture</span>
-          </div>
+          <Link href="/" className="flex items-center">
+      <Image
+ src="/hb-logo.png.png"
+  alt="HB Furniture Logo"
+ width={80}
+height={80}
+className="object-contain"
+/>
+          </Link>
 
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-8 h-full">
-            <Link href="#" className="h-full flex items-center text-[11px] font-bold text-[#EB5324] uppercase tracking-wider border-b-2 border-[#EB5324]">
+            <Link href="/" className="h-full flex items-center text-[11px] font-bold text-[#EB5324] uppercase tracking-wider border-b-2 border-[#EB5324]">
               Home
             </Link>
             <Link href="/projects" className="h-full flex items-center text-[11px] font-bold text-gray-400 hover:text-gray-900 uppercase tracking-wider transition-colors">
@@ -46,12 +50,11 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative min-h-[600px] flex items-center justify-center flex-col text-center px-4 py-24">
         {/* Background Image Overlay */}
-        <div className="absolute inset-0 bg-black/70 z-0"></div>
-        <img 
-          src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000" 
-          alt="Workspace" 
-          className="absolute inset-0 w-full h-full object-cover -z-10"
-        />
+       <img
+ src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2000&q=80"
+  alt="Workspace"
+  className="absolute inset-0 w-full h-full object-cover"
+/>
 
         <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">
@@ -64,15 +67,17 @@ export default function Home() {
           <p className="text-gray-200 text-sm md:text-base max-w-2xl mx-auto font-medium leading-relaxed mb-8">
             Precision engineering meets architectural elegance. We deliver premium <br className="hidden md:block" /> turnkey solutions for the modern corporate environment.
           </p>
+          
+         <Link
+  href="/products"
+  className="inline-flex items-center gap-3 bg-[#EB5324] hover:bg-[#d4481f] text-white px-6 py-3 text-[11px] font-bold uppercase tracking-wider transition-all duration-300"
+>
+  Explore Products
 
-          <button className="bg-[#EB5324] hover:bg-[#d4481f] text-white px-6 py-3 text-[11px] font-bold uppercase tracking-wider flex items-center gap-3 transition-colors">
-            Explore Projects
-            <span className="w-5 h-5 border border-white/50 flex items-center justify-center">
-              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </span>
-          </button>
+  <span className="w-5 h-5 border border-white/50 flex items-center justify-center">
+    →
+  </span>
+</Link>
         </div>
       </section>
 
@@ -145,89 +150,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="bg-[#f9f9f9] py-24 border-t border-gray-100">
-        <div className="max-w-[1200px] mx-auto px-4 text-center">
-          <span className="text-[#EB5324] text-[10px] font-bold uppercase tracking-widest block mb-3">Google Reviews</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">What Our Clients Say</h2>
-          <p className="text-gray-500 text-[13px]">Real experiences from real customers — verified on Google.</p>
-
-          <div className="flex justify-center items-center gap-1 mt-6 text-[#EB5324]">
-            {[1, 2, 3, 4, 5].map((star) => (
-              <svg key={star} className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-              </svg>
-            ))}
-          </div>
-          <p className="text-gray-400 text-[10px] font-bold uppercase tracking-widest mt-4">
-            4.9 Rating | 150+ Satisfied Clients
-          </p>
-
-          <div className="mt-12 relative flex items-center justify-center">
-            {/* Left Arrow */}
-            <button className="absolute left-0 lg:-left-6 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-400 hover:text-gray-900 z-10 transition-colors">
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-
-            {/* Cards Container */}
-            <div className="flex gap-6 w-full max-w-4xl px-12 overflow-hidden">
-              {/* Card 1 */}
-              <div className="bg-white p-8 border border-gray-100 shadow-sm flex-1 text-left relative">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-sm">
-                    A
-                  </div>
-                  <div>
-                    <h4 className="text-[13px] font-bold text-gray-900">Ahmad Rehan</h4>
-                    <span className="text-[10px] text-gray-400 uppercase tracking-widest">Manager</span>
-                  </div>
-                  <div className="ml-auto">
-                    <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" className="h-4 object-contain grayscale opacity-50" />
-                  </div>
-                </div>
-                <p className="text-gray-600 text-[13px] leading-relaxed italic">
-                  "...after-sales support. HB Furniture truly cares about long-term client relationships."
-                </p>
-              </div>
-
-              {/* Card 2 */}
-              <div className="bg-white p-8 border border-[#EB5324] shadow-md flex-1 text-left relative">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-bold text-sm">
-                    D
-                  </div>
-                  <div>
-                    <h4 className="text-[13px] font-bold text-gray-900">Dua Awan</h4>
-                    <span className="text-[10px] text-gray-400 uppercase tracking-widest">Manager (Admin)</span>
-                  </div>
-                  <div className="ml-auto">
-                    <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" className="h-4 object-contain grayscale opacity-50" />
-                  </div>
-                </div>
-                <p className="text-gray-600 text-[13px] leading-relaxed italic">
-                  "Beautiful, functional, and sturdy. Our office looks completely transformed."
-                </p>
-              </div>
-            </div>
-
-            {/* Right Arrow */}
-            <button className="absolute right-0 lg:-right-6 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-400 hover:text-gray-900 z-10 transition-colors">
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
-
-          <div className="mt-12 flex items-center justify-center gap-2 text-[11px] text-gray-500 font-medium">
-            <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
-              <path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/>
-            </svg>
-            Based on reviews on Google
-          </div>
-        </div>
-      </section>
-
+      <TestimonialsSection />
 
     </div>
   );

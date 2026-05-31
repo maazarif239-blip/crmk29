@@ -7,12 +7,16 @@ export default function ReceptionCounters() {
       {/* Header */}
       <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
         <div className="max-w-[1200px] mx-auto px-4 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-[#EB5324]" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z" fill="currentColor" />
-            </svg>
-            <span className="font-bold text-lg tracking-tight">HB Furniture</span>
-          </div>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/hb-logo.png"
+              alt="HB Furniture Logo"
+              width={150}
+              height={50}
+              className="h-10 w-auto object-contain"
+              priority
+            />
+          </Link>
 
           <nav className="hidden md:flex items-center space-x-8 h-full">
             <Link href="/" className="h-full flex items-center text-[11px] font-bold text-gray-400 hover:text-gray-900 uppercase tracking-wider transition-colors">
@@ -45,7 +49,7 @@ export default function ReceptionCounters() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000" 
+            src="h.jpg" 
             alt="Reception Counters" 
             className="w-full h-full object-cover opacity-40"
           />
@@ -97,38 +101,38 @@ export default function ReceptionCounters() {
             
             {[
               { 
-                name: 'The Arc Executive', 
-                desc: 'A sweeping curved design that commands attention while providing ergonomic workflow for two receptionists.',
-                badge: 'CURVED',
-                image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=600',
+                name: 'Corby Reception', 
+                desc: 'A sleek modern reception counter designed for corporate offices, featuring clean lines and professional aesthetics.',
+                badge: null,
+                image: '/a.jpg',
                 isPlaceholder: false
               },
               { 
-                name: 'Cornerstone Vertex', 
-                desc: 'Maximize corner spaces with this geometric L-shaped counter featuring integrated secure storage.',
-                badge: 'L-SHAPED',
-                image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=600',
+                name: 'Halton Reception', 
+                desc: 'Elegant reception desk solution perfect for executive environments and premium commercial workspaces.',
+                badge: null,
+                image: '/b.jpg',
                 isPlaceholder: false
               },
               { 
-                name: 'Lumina Front', 
-                desc: 'Create a striking first impression with customizable LED backlighting behind a frosted architectural glass fascia.',
-                badge: 'BACKLIT',
-                image: '',
-                isPlaceholder: true
-              },
-              { 
-                name: 'Minimalist Pod', 
-                desc: 'Ideal for boutique lobbies or secondary floor receptions, offering full functionality in a reduced footprint.',
-                badge: 'COMPACT',
-                image: 'https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&q=80&w=600',
+                name: 'Lufton Reception', 
+                desc: 'Contemporary front desk design offering both style and functionality for high-traffic reception areas.',
+                badge: null,
+                image: '/c.jpg',
                 isPlaceholder: false
               },
               { 
-                name: 'Heritage HQ', 
-                desc: 'Our flagship double-sided counter built for high-traffic corporate headquarters, featuring premium walnut finishes.',
-                badge: 'PREMIUM',
-                image: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&q=80&w=600',
+                name: 'Princeton Reception', 
+                desc: 'Sophisticated reception counter crafted for corporate headquarters and professional office settings.',
+                badge: null,
+                image: '/d.jpg',
+                isPlaceholder: false
+              },
+              { 
+                name: 'Zara Reception', 
+                desc: 'Modern minimalist reception desk ideal for creating a welcoming first impression in commercial spaces.',
+                badge: null,
+                image: '/e.jpg',
                 isPlaceholder: false
               },
             ].map((product, i) => (
@@ -154,8 +158,8 @@ export default function ReceptionCounters() {
                 <div className="p-6 flex-1 flex flex-col">
                   <h3 className="text-[14px] font-bold text-gray-900 mb-2">{product.name}</h3>
                   <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
-                    {product.desc}
-                  </p>
+                     {product.desc}
+                   </p>
                   <div className="mt-4 pt-4 border-t border-gray-50">
                     <span className="text-[#EB5324] text-[9px] font-bold uppercase tracking-widest cursor-pointer hover:underline underline-offset-4">
                       Contact for Pricing

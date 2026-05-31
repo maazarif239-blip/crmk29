@@ -7,12 +7,16 @@ export default function VisitorChairs() {
       {/* Header */}
       <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
         <div className="max-w-[1200px] mx-auto px-4 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-[#EB5324]" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z" fill="currentColor" />
-            </svg>
-            <span className="font-bold text-lg tracking-tight">HB Furniture</span>
-          </div>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/hb-logo.png"
+              alt="HB Furniture Logo"
+              width={150}
+              height={50}
+              className="h-10 w-auto object-contain"
+              priority
+            />
+          </Link>
 
           <nav className="hidden md:flex items-center space-x-8 h-full">
             <Link href="/" className="h-full flex items-center text-[11px] font-bold text-gray-400 hover:text-gray-900 uppercase tracking-wider transition-colors">
@@ -46,7 +50,7 @@ export default function VisitorChairs() {
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <img 
-              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000" 
+              src="f.jpg" 
               alt="Visitor Chairs" 
               className="w-full h-full object-cover opacity-80"
             />
@@ -102,27 +106,77 @@ export default function VisitorChairs() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
             
             {[
-              { name: 'Aero Sled Base', image: 'https://images.unsplash.com/photo-1505843490538-5133c6c7d0e1?auto=format&fit=crop&q=80&w=600' },
-              { name: 'Forma Conference', image: 'https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&q=80&w=600' },
-              { name: 'Linea Guest', image: 'https://images.unsplash.com/photo-1580480055273-228ff5388ef8?auto=format&fit=crop&q=80&w=600' },
-              { name: 'Modus Reception', image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=600' },
-              { name: 'Vanguard Stack', image: 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&q=80&w=600' },
-              { name: 'Axiom Side Chair', image: 'https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&q=80&w=600' },
-              { name: 'Nova Lounge', image: 'https://images.unsplash.com/photo-1506898667547-42e22a46e125?auto=format&fit=crop&q=80&w=600' },
-              { name: 'Datum Armchair', image: 'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&q=80&w=600' },
-              { name: 'Apex Classic', image: 'https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&q=80&w=600' },
-              { name: 'Heritage Tufted', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=600' },
+              {
+                name: 'Austin',
+                image: '/11.jpg',
+                description: 'A refined visitor chair with clean lines and supportive comfort for reception areas and executive waiting spaces.',
+              },
+              {
+                name: 'Cambri',
+                image: '/12.jpg',
+                description: 'Contemporary guest seating designed to bring a polished look and dependable comfort to modern office interiors.',
+              },
+              {
+                name: 'Classic Chair',
+                image: '/13.jpg',
+                description: 'Timeless office seating solution offering an elegant silhouette ideal for meeting rooms and visitor zones.',
+              },
+              {
+                name: 'Classic Visitor Chair',
+                image: '/14.jpg',
+                description: 'Professional visitor chair crafted for welcoming clients with balanced comfort and enduring everyday performance.',
+              },
+              {
+                name: 'Conte Visitor Chair',
+                image: '/15.jpg',
+                description: 'Sleek guest chair that complements collaborative spaces, reception counters, and corporate meeting environments.',
+              },
+              {
+                name: 'Dallas Red',
+                image: '/16.jpg',
+                description: 'Bold visitor seating option that adds a vibrant accent while maintaining comfort for office guests and clients.',
+              },
+              {
+                name: 'Dallas',
+                image: '/17.jpg',
+                description: 'Versatile seating piece with a modern profile, suitable for lobbies, breakout spaces, and conference waiting areas.',
+              },
+              {
+                name: 'Ring Chair',
+                image: '/18.jpg',
+                description: 'Stylish contemporary chair designed for informal meeting spaces and high-traffic visitor seating applications.',
+              },
+              {
+                name: 'Swiss',
+                image: '/19.jpg',
+                description: 'Minimalist visitor chair that delivers a sophisticated presence and reliable comfort in premium office settings.',
+              },
+              {
+                name: 'Visitor Chair',
+                image: '/20.jpg',
+                description: 'Practical and professional guest chair built to support daily use across receptions, offices, and meeting rooms.',
+              },
             ].map((product, i) => (
-              <div key={i} className="group flex flex-col cursor-pointer">
+              <div key={i} className="group flex flex-col cursor-pointer h-full">
                 <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden transition-colors group-hover:bg-[#f0f0f0]">
-                  <img 
-                    src={product.image} 
-                    alt={product.name} 
+                  <img
+                    src={product.image}
+                    alt={product.name}
                     className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <div className="pt-5 text-center bg-white">
-                  <h3 className="text-[13px] font-bold text-gray-900 group-hover:text-[#EB5324] transition-colors">{product.name}</h3>
+                <div className="pt-5 text-center bg-white flex flex-col flex-1">
+                  <h3 className="text-[13px] font-bold text-gray-900 group-hover:text-[#EB5324] transition-colors">
+                    {product.name}
+                  </h3>
+                  <p className="mt-3 text-gray-500 text-[11px] leading-relaxed flex-1 px-2">
+                    {product.description}
+                  </p>
+                  <div className="mt-4 pt-4 border-t border-gray-50">
+                    <span className="text-[#EB5324] text-[9px] font-bold uppercase tracking-widest cursor-pointer hover:underline underline-offset-4">
+                      Contact for Pricing
+                    </span>
+                  </div>
                 </div>
               </div>
             ))}

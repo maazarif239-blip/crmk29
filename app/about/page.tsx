@@ -7,12 +7,16 @@ export default function AboutUs() {
       {/* Header */}
       <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
         <div className="max-w-[1200px] mx-auto px-4 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-[#EB5324]" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z" fill="currentColor" />
-            </svg>
-            <span className="font-bold text-lg tracking-tight uppercase">HB Furniture</span>
-          </div>
+       <Link href="/" className="flex items-center">
+  <Image
+    src="/hb-logo.png.png"
+    alt="HB Furniture Logo"
+    width={60}
+    height={60}
+    className="h-auto w-auto object-contain"
+    priority
+  />
+</Link>
 
           <nav className="hidden md:flex items-center space-x-8 h-full">
             <Link href="/" className="h-full flex items-center text-[11px] font-bold text-gray-400 hover:text-gray-900 uppercase tracking-wider transition-colors">
@@ -66,9 +70,10 @@ export default function AboutUs() {
         <div className="flex flex-col md:flex-row gap-16 items-center">
           <div className="w-full md:w-1/2">
             <img 
-              src="https://images.unsplash.com/photo-1542013936693-884638332954?auto=format&fit=crop&q=80&w=1000" 
+              src="90.png
+" 
               alt="Workshop" 
-              className="w-full h-auto object-cover grayscale opacity-90 shadow-lg"
+             className="w-full h-auto object-cover shadow-lg"
             />
           </div>
           <div className="w-full md:w-1/2">

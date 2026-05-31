@@ -42,32 +42,10 @@ export default function TermsOfService() {
       </section>
 
       {/* Main Content Area */}
-      <section className="max-w-[1200px] mx-auto px-4 py-20 flex flex-col md:flex-row gap-16 relative">
+      <section className="max-w-[1200px] mx-auto px-4 py-20 relative">
         
-        {/* Sidebar Navigation */}
-        <aside className="w-full md:w-[250px] shrink-0">
-          <div className="sticky top-32">
-            <h3 className="text-[#EB5324] text-[13px] font-bold mb-1">Navigation</h3>
-            <p className="text-[9px] font-medium text-gray-400 uppercase tracking-widest mb-8">Table of Contents</p>
-            
-            <ul className="space-y-6 text-[11px] font-medium text-gray-500">
-              <li><a href="#section-1" className="hover:text-gray-900 transition-colors block">1. Acceptance of Terms</a></li>
-              <li><a href="#section-2" className="hover:text-gray-900 transition-colors block">2. Use of Website</a></li>
-              <li><a href="#section-3" className="hover:text-gray-900 transition-colors block leading-relaxed">3. Product & Pricing<br/>Information</a></li>
-              <li><a href="#section-4" className="hover:text-gray-900 transition-colors block">4. Orders & Agreements</a></li>
-              <li><a href="#section-5" className="hover:text-gray-900 transition-colors block">5. Intellectual Property</a></li>
-              <li><a href="#section-6" className="hover:text-gray-900 transition-colors block">6. Limitation of Liability</a></li>
-              <li><a href="#section-7" className="hover:text-gray-900 transition-colors block">7. Changes to Terms</a></li>
-              <li className="relative">
-                <div className="absolute -left-4 top-0 bottom-0 w-[3px] bg-[#EB5324] rounded-full"></div>
-                <a href="#section-8" className="text-[#EB5324] font-bold block">8. Contact Us</a>
-              </li>
-            </ul>
-          </div>
-        </aside>
-
         {/* Content Box */}
-        <div className="flex-1 max-w-3xl space-y-16">
+        <div className="max-w-4xl mx-auto space-y-16">
             
           <div id="section-1" className="scroll-mt-32">
             <div className="flex items-center gap-3 mb-4">

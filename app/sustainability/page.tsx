@@ -58,30 +58,10 @@ export default function Sustainability() {
       </section>
 
       {/* Main Content Area */}
-      <section className="max-w-[1200px] mx-auto px-4 pb-24 flex flex-col md:flex-row gap-12 relative mt-4">
+      <section className="max-w-[1200px] mx-auto px-4 pb-24 relative mt-4">
         
-        {/* Sidebar Navigation */}
-        <aside className="w-full md:w-[250px] shrink-0">
-          <div className="sticky top-32">
-            <h3 className="text-[#EB5324] text-[13px] font-bold mb-1">Navigation</h3>
-            <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-8">Table of Contents</p>
-            
-            <ul className="space-y-6 text-[11px] font-medium text-gray-500">
-              <li><a href="#section-1" className="hover:text-gray-900 transition-colors block">1. Our Commitment</a></li>
-              <li><a href="#section-2" className="hover:text-gray-900 transition-colors block leading-relaxed">2. Responsible Material<br/>Sourcing</a></li>
-              <li><a href="#section-3" className="hover:text-gray-900 transition-colors block leading-relaxed">3. Waste Reduction in<br/>Manufacturing</a></li>
-              <li><a href="#section-4" className="hover:text-gray-900 transition-colors block leading-relaxed">4. Durable Products = Less<br/>Waste</a></li>
-              <li><a href="#section-5" className="hover:text-gray-900 transition-colors block">5. Our Future Goals</a></li>
-              <li className="relative">
-                <div className="absolute -left-4 top-0 bottom-0 w-[3px] bg-[#EB5324] rounded-full"></div>
-                <a href="#section-6" className="text-[#EB5324] font-bold block">6. Get In Touch</a>
-              </li>
-            </ul>
-          </div>
-        </aside>
-
         {/* Content Box */}
-        <div className="flex-1 bg-white shadow-sm border border-gray-100 p-10 md:p-16 rounded-sm">
+        <div className="max-w-4xl mx-auto bg-white shadow-sm border border-gray-100 p-10 md:p-16 rounded-sm">
           <div className="space-y-16">
             
             <div id="section-1" className="scroll-mt-32">

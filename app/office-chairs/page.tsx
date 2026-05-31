@@ -7,12 +7,16 @@ export default function OfficeChairs() {
       {/* Header */}
       <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
         <div className="max-w-[1200px] mx-auto px-4 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-[#EB5324]" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z" fill="currentColor" />
-            </svg>
-            <span className="font-bold text-lg tracking-tight">HB Furniture</span>
-          </div>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/hb-logo.png"
+              alt="HB Furniture Logo"
+              width={150}
+              height={50}
+              className="h-10 w-auto object-contain"
+              priority
+            />
+          </Link>
 
           <nav className="hidden md:flex items-center space-x-8 h-full">
             <Link href="/" className="h-full flex items-center text-[11px] font-bold text-gray-400 hover:text-gray-900 uppercase tracking-wider transition-colors">
@@ -102,16 +106,17 @@ export default function OfficeChairs() {
             {/* Product 1 */}
             <div className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">
               <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=600" 
-                  alt="Aero Executive Task Chair" 
-                  className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
+                <Image 
+                  src="/8.jpg" 
+                  alt="Chesterfield Tufted Accent Chair" 
+                  fill
+                  className="object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500 p-8"
                 />
               </div>
               <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Aero Executive Task Chair</h3>
+                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Chesterfield Tufted Accent Chair</h3>
                 <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
-                  Advanced synchronized mechanism with superior overall finish.
+                  Elegant tufted accent chair designed for executive spaces, lounges, and premium office interiors.
                 </p>
                 <div className="mt-4 pt-4 border-t border-gray-50">
                   <span className="text-[#EB5324] text-[9px] font-bold uppercase tracking-widest cursor-pointer hover:underline underline-offset-4">
@@ -124,16 +129,17 @@ export default function OfficeChairs() {
             {/* Product 2 */}
             <div className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">
               <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&q=80&w=600" 
-                  alt="Vantage Mesh Manager Chair" 
-                  className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
+                <Image 
+                  src="/9.jpg" 
+                  alt="Light Hounslow Flushmount" 
+                  fill
+                  className="object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500 p-8"
                 />
               </div>
               <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Vantage Mesh Manager Chair</h3>
+                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Light Hounslow Flushmount</h3>
                 <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
-                  Streamlined profile optimized for continuous daily support.
+                  Contemporary lighting fixture that enhances workspace ambiance with clean and modern aesthetics.
                 </p>
                 <div className="mt-4 pt-4 border-t border-gray-50">
                   <span className="text-[#EB5324] text-[9px] font-bold uppercase tracking-widest cursor-pointer hover:underline underline-offset-4">
@@ -146,38 +152,17 @@ export default function OfficeChairs() {
             {/* Product 3 */}
             <div className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">
               <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1580480055273-228ff5388ef8?auto=format&fit=crop&q=80&w=600" 
-                  alt="Zenith Ergonomic Seating" 
-                  className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
+                <Image 
+                  src="/10.jpg" 
+                  alt="Tilton Copper and Wood Table Lamp" 
+                  fill
+                  className="object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500 p-8"
                 />
               </div>
               <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Zenith Ergonomic Seating</h3>
+                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Tilton Copper and Wood Table Lamp</h3>
                 <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
-                  Premium upholstery meets dynamic posture-responsive technology.
-                </p>
-                <div className="mt-4 pt-4 border-t border-gray-50">
-                  <span className="text-[#EB5324] text-[9px] font-bold uppercase tracking-widest cursor-pointer hover:underline underline-offset-4">
-                    Contact for Pricing
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Product 4 (No padding, full bleed image) */}
-            <div className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">
-              <div className="aspect-square bg-[#F5F5F5] overflow-hidden relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=600" 
-                  alt="Radius Conference Chair" 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Radius Conference Chair</h3>
-                <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
-                  Elegant simplicity, designed for high-impact meeting spaces.
+                  Stylish copper and wood table lamp offering warm illumination for offices, reception areas, and meeting spaces.
                 </p>
                 <div className="mt-4 pt-4 border-t border-gray-50">
                   <span className="text-[#EB5324] text-[9px] font-bold uppercase tracking-widest cursor-pointer hover:underline underline-offset-4">

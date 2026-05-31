@@ -27,14 +27,13 @@ export default function SignIn() {
           
           <div className="bg-white w-48 h-48 flex flex-col items-center justify-center mb-10 shadow-2xl rounded-sm">
             {/* Custom Logo SVG mimicking the screenshot */}
-            <svg width="80" height="60" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="mb-2">
-              <rect x="10" y="10" width="12" height="50" fill="#EB5324"/>
-              <rect x="22" y="32" width="20" height="12" fill="#EB5324"/>
-              <rect x="42" y="10" width="12" height="50" fill="#EB5324"/>
-              <path d="M54 32H70C76.6274 32 82 37.3726 82 44C82 50.6274 76.6274 56 70 56H42V32H54Z" fill="#EB5324"/>
-              <text x="60" y="75" fill="#EB5324" fontSize="14" fontWeight="bold">1964</text>
-            </svg>
-            <span className="text-gray-600 font-medium tracking-widest text-[12px]">Furniture</span>
+           <Image
+  src="/hb-logo.png.png"
+  alt="HB Furniture Logo"
+  width={180}
+  height={180}
+  className="object-contain"
+/>
           </div>
           
           <h2 className="text-white text-3xl md:text-4xl font-bold leading-tight drop-shadow-md">
@@ -130,7 +129,21 @@ export default function SignIn() {
               </svg>
               Continue with Google
             </button>
+<button
+  type="button"
+  className="w-full bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 py-3.5 rounded-sm font-bold text-[12px] transition-all duration-300 flex items-center justify-center gap-3 mt-3"
+>
+  <span className="text-blue-600 text-lg">f</span>
+  Continue with Facebook
+</button>
 
+<button
+  type="button"
+  className="w-full bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 py-3.5 rounded-sm font-bold text-[12px] transition-all duration-300 flex items-center justify-center gap-3 mt-3"
+>
+  <span className="text-black text-lg">𝕏</span>
+  Continue with X (Twitter)
+</button>
             {/* Optional Sign Up Link */}
             <div className="pt-4 text-center">
               <p className="text-[12px] text-gray-500">

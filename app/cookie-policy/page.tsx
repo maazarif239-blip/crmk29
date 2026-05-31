@@ -30,27 +30,10 @@ export default function CookiePolicy() {
       </header>
 
       {/* Main Layout Area */}
-      <section className="max-w-[1200px] mx-auto px-4 py-20 flex flex-col md:flex-row gap-12 relative">
+      <section className="max-w-[1200px] mx-auto px-4 py-20 relative">
         
-        {/* Sidebar Navigation */}
-        <aside className="w-full md:w-[250px] shrink-0 md:pt-[130px]">
-          <div className="sticky top-32">
-            <h3 className="text-gray-900 text-[10px] font-bold uppercase tracking-widest mb-1">Navigation</h3>
-            <p className="text-[11px] text-gray-500 mb-8">Table of Contents</p>
-            
-            <ul className="space-y-6 text-[11px] font-medium text-gray-500">
-              <li><a href="#section-1" className="hover:text-gray-900 transition-colors block">1. What Are Cookies</a></li>
-              <li><a href="#section-2" className="hover:text-gray-900 transition-colors block">2. Cookies We Use</a></li>
-              <li><a href="#section-3" className="hover:text-gray-900 transition-colors block">3. How to Control Cookies</a></li>
-              <li><a href="#section-4" className="hover:text-gray-900 transition-colors block">4. Third Party Cookies</a></li>
-              <li><a href="#section-5" className="hover:text-gray-900 transition-colors block">5. Updates to This Policy</a></li>
-              <li><a href="#section-6" className="hover:text-gray-900 transition-colors block">6. Contact Us</a></li>
-            </ul>
-          </div>
-        </aside>
-
         {/* Content Column */}
-        <div className="flex-1">
+        <div className="max-w-4xl mx-auto">
           {/* Header Title Centered Above Box */}
           <div className="text-center mb-12">
             <span className="text-[#EB5324] text-[10px] font-bold uppercase tracking-widest mb-4 block">

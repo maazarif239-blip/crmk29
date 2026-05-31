@@ -7,12 +7,15 @@ export default function Projects() {
       {/* Header */}
       <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
         <div className="max-w-[1200px] mx-auto px-4 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-[#EB5324]" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z" fill="currentColor" />
-            </svg>
-            <span className="font-bold text-lg tracking-tight">HB Furniture</span>
-          </div>
+        <Link href="/" className="flex items-center">
+  <Image
+    src="/hb-logo.png.png"
+    alt="HB Furniture Logo"
+    width={80}
+    height={80}
+    className="object-contain"
+  />
+</Link>
 
           <nav className="hidden md:flex items-center space-x-8 h-full">
             <Link href="/" className="h-full flex items-center text-[11px] font-bold text-gray-400 hover:text-gray-900 uppercase tracking-wider transition-colors">
@@ -50,65 +53,67 @@ export default function Projects() {
         </p>
       </section>
 
-      {/* Projects Grid (Staggered) */}
+      {/* Projects Grid */}
       <section className="pb-32 max-w-[1200px] mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           
           {/* Card 1 */}
-          <div className="bg-white border border-gray-100 shadow-sm flex flex-col">
-            <div className="relative aspect-[4/3] w-full bg-gray-100">
-              <span className="absolute top-4 left-4 z-10 bg-[#EB5324] text-white text-[9px] font-bold uppercase tracking-widest px-3 py-1.5 shadow-sm">
+          <div className="bg-white border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex flex-col h-full rounded-sm overflow-hidden">
+            <div className="relative h-[280px] w-full bg-gray-100 shrink-0">
+              <span className="absolute top-4 left-4 z-10 bg-[#EB5324] text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 shadow-sm rounded-full">
                 Corporate HQ
               </span>
-              <img 
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" 
-                alt="IBL Headquarters" 
-                className="w-full h-full object-cover"
-              />
+            <img
+  src="/a.jpg"
+  alt="HBL Headquarters"
+  className="w-full h-full object-cover"
+/>
             </div>
-            <div className="p-8">
-              <h3 className="text-[17px] font-serif text-gray-900 mb-3">IBL Headquarters</h3>
-              <p className="text-gray-500 text-[12px] leading-relaxed">
+            <div className="p-8 flex-1 flex flex-col">
+          <h3 className="text-[17px] font-serif text-gray-900 mb-3">
+  HBL Headquarters
+</h3>
+              <p className="text-gray-500 text-[13px] leading-relaxed">
                 Complete executive floor furnishing and ergonomic workstation deployment for 500+ employees.
               </p>
             </div>
           </div>
 
-          {/* Card 2 (Pushed Down) */}
-          <div className="bg-white border border-gray-100 shadow-sm flex flex-col md:mt-16">
-            <div className="relative aspect-[4/3] w-full bg-gray-100">
-              <span className="absolute top-4 left-4 z-10 bg-[#EB5324] text-white text-[9px] font-bold uppercase tracking-widest px-3 py-1.5 shadow-sm">
+          {/* Card 2 */}
+          <div className="bg-white border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex flex-col h-full rounded-sm overflow-hidden">
+            <div className="relative h-[280px] w-full bg-gray-100 shrink-0">
+              <span className="absolute top-4 left-4 z-10 bg-[#EB5324] text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 shadow-sm rounded-full">
                 Government Sector
               </span>
-              <img 
-                src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=800" 
-                alt="Ministry of Planning" 
-                className="w-full h-full object-cover"
-              />
+              <img
+  src="/b.jpg"
+  alt="Ministry of Planning"
+  className="w-full h-full object-cover"
+/>
             </div>
-            <div className="p-8">
-              <h3 className="text-[17px] font-serif text-gray-900 mb-3">Ministry of Planning</h3>
-              <p className="text-gray-500 text-[12px] leading-relaxed">
+            <div className="p-8 flex-1 flex flex-col">
+              <h3 className="text-[18px] font-serif text-gray-900 mb-3">Ministry of Planning</h3>
+              <p className="text-gray-500 text-[13px] leading-relaxed">
                 Bespoke conference tables and acoustic solutions for high-security briefing rooms.
               </p>
             </div>
           </div>
 
           {/* Card 3 */}
-          <div className="bg-white border border-gray-100 shadow-sm flex flex-col">
-            <div className="relative aspect-[4/3] w-full bg-gray-100">
-              <span className="absolute top-4 left-4 z-10 bg-[#EB5324] text-white text-[9px] font-bold uppercase tracking-widest px-3 py-1.5 shadow-sm">
+          <div className="bg-white border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex flex-col h-full rounded-sm overflow-hidden">
+            <div className="relative h-[280px] w-full bg-gray-100 shrink-0">
+              <span className="absolute top-4 left-4 z-10 bg-[#EB5324] text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 shadow-sm rounded-full">
                 NGO & INGO
               </span>
-              <img 
-                src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=800" 
-                alt="UNDP Country Office" 
-                className="w-full h-full object-cover"
-              />
+            <img
+  src="/c.jpg"
+  alt="UNDP Country Office"
+  className="w-full h-full object-cover"
+/>
             </div>
-            <div className="p-8">
-              <h3 className="text-[17px] font-serif text-gray-900 mb-3">UNDP Country Office</h3>
-              <p className="text-gray-500 text-[12px] leading-relaxed">
+            <div className="p-8 flex-1 flex flex-col">
+              <h3 className="text-[18px] font-serif text-gray-900 mb-3">UNDP Country Office</h3>
+              <p className="text-gray-500 text-[13px] leading-relaxed">
                 Sustainable modular workspace systems designed for team collaboration and agility.
               </p>
             </div>
@@ -145,22 +150,48 @@ export default function Projects() {
             A legacy built on enduring partnerships.
           </p>
 
-          <div className="flex flex-col gap-6">
-            {/* Row 1 */}
-            <div className="flex flex-wrap justify-center gap-4">
-              {['ICI', 'MOU/TAS', 'HUAWEI', 'ENGRO', 'HABIB', 'PTCL', 'U BANK'].map((logo, i) => (
-                <div key={i} className="bg-white border border-gray-100 shadow-[0_2px_10px_rgba(0,0,0,0.02)] px-8 py-5 flex items-center justify-center min-w-[120px]">
-                  <span className="text-gray-400 font-bold uppercase tracking-[0.2em] text-[10px]">{logo}</span>
-                </div>
-              ))}
-            </div>
-            {/* Row 2 */}
-            <div className="flex flex-wrap justify-center gap-4">
-              {['DEVELOPMENT BANK', 'WORLD HEALTH ORGANIZATION', 'UNDP', 'UNICEF'].map((logo, i) => (
-                <div key={i} className="bg-white border border-gray-100 shadow-[0_2px_10px_rgba(0,0,0,0.02)] px-8 py-5 flex items-center justify-center min-w-[160px]">
-                  <span className="text-gray-400 font-bold uppercase tracking-[0.2em] text-[10px]">{logo}</span>
-                </div>
-              ))}
+          <div className="flex overflow-hidden w-full relative group">
+            <div className="flex animate-marquee min-w-max hover:[animation-play-state:paused]">
+              {/* First Set */}
+              <div className="flex gap-4 pr-4">
+                {[
+                  { name: 'ICI', width: 'min-w-[120px]' },
+                  { name: 'MOU/TAS', width: 'min-w-[120px]' },
+                  { name: 'HUAWEI', width: 'min-w-[120px]' },
+                  { name: 'ENGRO', width: 'min-w-[120px]' },
+                  { name: 'HABIB', width: 'min-w-[120px]' },
+                  { name: 'PTCL', width: 'min-w-[120px]' },
+                  { name: 'U BANK', width: 'min-w-[120px]' },
+                  { name: 'DEVELOPMENT BANK', width: 'min-w-[160px]' },
+                  { name: 'WORLD HEALTH ORGANIZATION', width: 'min-w-[160px]' },
+                  { name: 'UNDP', width: 'min-w-[160px]' },
+                  { name: 'UNICEF', width: 'min-w-[160px]' }
+                ].map((logo, i) => (
+                  <div key={i} className={`bg-white border border-gray-100 shadow-[0_2px_10px_rgba(0,0,0,0.02)] px-8 py-5 flex items-center justify-center flex-shrink-0 ${logo.width}`}>
+                    <span className="text-gray-400 font-bold uppercase tracking-[0.2em] text-[10px]">{logo.name}</span>
+                  </div>
+                ))}
+              </div>
+              {/* Second Set */}
+              <div className="flex gap-4 pr-4">
+                {[
+                  { name: 'ICI', width: 'min-w-[120px]' },
+                  { name: 'MOU/TAS', width: 'min-w-[120px]' },
+                  { name: 'HUAWEI', width: 'min-w-[120px]' },
+                  { name: 'ENGRO', width: 'min-w-[120px]' },
+                  { name: 'HABIB', width: 'min-w-[120px]' },
+                  { name: 'PTCL', width: 'min-w-[120px]' },
+                  { name: 'U BANK', width: 'min-w-[120px]' },
+                  { name: 'DEVELOPMENT BANK', width: 'min-w-[160px]' },
+                  { name: 'WORLD HEALTH ORGANIZATION', width: 'min-w-[160px]' },
+                  { name: 'UNDP', width: 'min-w-[160px]' },
+                  { name: 'UNICEF', width: 'min-w-[160px]' }
+                ].map((logo, i) => (
+                  <div key={i} className={`bg-white border border-gray-100 shadow-[0_2px_10px_rgba(0,0,0,0.02)] px-8 py-5 flex items-center justify-center flex-shrink-0 ${logo.width}`}>
+                    <span className="text-gray-400 font-bold uppercase tracking-[0.2em] text-[10px]">{logo.name}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

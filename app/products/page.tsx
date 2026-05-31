@@ -7,12 +7,16 @@ export default function Products() {
       {/* Header */}
       <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
         <div className="max-w-[1200px] mx-auto px-4 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-[#EB5324]" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z" fill="currentColor" />
-            </svg>
-            <span className="font-bold text-lg tracking-tight">HB Furniture</span>
-          </div>
+       <Link href="/" className="flex items-center">
+  <Image
+    src="/hb-logo.png.png"
+    alt="HB Furniture Logo"
+    width={80}
+    height={80}
+    className="object-contain"
+    priority
+  />
+</Link>
 
           <nav className="hidden md:flex items-center space-x-8 h-full">
             <Link href="/" className="h-full flex items-center text-[11px] font-bold text-gray-400 hover:text-gray-900 uppercase tracking-wider transition-colors">
@@ -60,15 +64,49 @@ export default function Products() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {[
-            { name: 'Study Chairs', href: '/study-chairs', image: 'https://images.unsplash.com/photo-1505843490538-5133c6c7d0e1?auto=format&fit=crop&q=80&w=800' },
-            { name: 'Office Chairs', href: '/office-chairs', image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=800' },
-            { name: 'Visitor Chairs', href: '/visitor-chairs', image: 'https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&q=80&w=800' },
-            { name: 'Conference & Meeting Tables', href: '/conference-meeting-tables', image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=800' },
-            { name: 'Reception Counters', href: '/reception-counters', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800' },
-            { name: 'Sofas & Lounge Seating', href: '/sofas-lounge-seating', image: 'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&q=80&w=800' },
-            { name: 'Technology', href: '/technology-suite', image: 'https://images.unsplash.com/photo-1517430816045-df4b7efd1897?auto=format&fit=crop&q=80&w=800' },
-          ].map((cat, i) => (
+       {[
+  {
+    name: 'Study Chairs',
+    href: '/study-chairs',
+    image: '/d.jpg'
+  },
+
+  {
+    name: 'Office Chairs',
+    href: '/office-chairs',
+    image: '/e.jpg'
+  },
+
+  {
+    name: 'Visitor Chairs',
+    href: '/visitor-chairs',
+    image: '/f.jpg'
+  },
+
+  {
+    name: 'Conference & Meeting Tables',
+    href: '/conference-meeting-tables',
+    image: '/g.png'
+  },
+
+  {
+    name: 'Reception Counters',
+    href: '/reception-counters',
+    image: '/h.jpg'
+  },
+
+  {
+    name: 'Sofas & Lounge Seating',
+    href: '/sofas-lounge-seating',
+    image: '/i.jpg'
+  },
+
+  {
+    name: 'Technology',
+    href: '/technology-suite',
+    image: '/j.jpg'
+  }
+].map((cat, i) => (
             <Link href={cat.href} key={i} className="group cursor-pointer relative aspect-square overflow-hidden bg-gray-100 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300">
               <img 
                 src={cat.image} 
