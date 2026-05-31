@@ -144,6 +144,21 @@ export default function SignIn() {
   <span className="text-black text-lg">𝕏</span>
   Continue with X (Twitter)
 </button>
+<button
+  type="button"
+  className="w-full bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 py-3.5 rounded-sm font-bold text-[12px] transition-all duration-300 flex items-center justify-center gap-3 mt-3"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+  >
+    <path d="M16.365 1.43c0 1.14-.42 2.19-1.12 2.96-.76.84-2 1.48-3.06 1.39-.13-1.09.39-2.26 1.09-3.03.77-.84 2.08-1.44 3.09-1.32zM20.54 17.09c-.58 1.3-.86 1.88-1.61 3.03-1.05 1.61-2.53 3.62-4.37 3.64-1.63.02-2.05-1.06-4.26-1.05-2.21.01-2.67 1.07-4.3 1.05-1.84-.02-3.24-1.83-4.29-3.44C-1.24 15.7-.5 8.86 3.1 6.7c1.78-1.07 4.58-.86 6.11.52 1.46-1.38 4.68-1.5 6.5-.46.74.43 2.66 1.73 2.54 4.6-3.02 1.83-2.53 6.16.29 7.73z"/>
+  </svg>
+  Continue with Apple
+</button>
             {/* Optional Sign Up Link */}
             <div className="pt-4 text-center">
               <p className="text-[12px] text-gray-500">
