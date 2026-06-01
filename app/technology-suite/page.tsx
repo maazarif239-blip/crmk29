@@ -27,9 +27,7 @@ export default function TechnologySuite() {
           </nav>
 
           <div className="flex items-center gap-4">
-            <Link href="/sign-in" className="border border-gray-300 text-gray-700 px-5 py-2 text-[12px] font-medium hover:bg-gray-50 transition-colors flex items-center justify-center">
-              Login
-            </Link>
+            
             <Link href="/contact" className="bg-[#EB5324] text-white px-5 py-2 text-[12px] font-medium hover:bg-[#d4481f] transition-colors flex items-center justify-center">
               Contact Us
             </Link>

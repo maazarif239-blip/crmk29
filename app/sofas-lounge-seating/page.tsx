@@ -34,9 +34,7 @@ export default function SofasLoungeSeating() {
           </nav>
 
           <div className="flex items-center gap-4">
-            <Link href="/sign-in" className="border border-gray-300 text-gray-700 px-5 py-2 text-[11px] font-bold hover:bg-gray-50 transition-colors uppercase tracking-wider">
-              Login
-            </Link>
+            
             <Link href="/contact" className="bg-[#EB5324] text-white px-5 py-2 text-[11px] font-bold hover:bg-[#d4481f] transition-colors uppercase tracking-wider flex items-center justify-center">
               Contact Us
             </Link>
