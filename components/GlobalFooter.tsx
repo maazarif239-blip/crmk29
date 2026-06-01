@@ -107,16 +107,18 @@ export default function GlobalFooter() {
         {/* Col 4 */}
         <div>
           <h4 className="text-white font-bold uppercase tracking-wider mb-6 text-[11px]">
-            Headquarters
+            Contact Us
           </h4>
           <address className="not-italic space-y-3">
             <p>
-              Industrial Estate, Corporate Sector
+              Plot 56 Service Rd N, I-10/3,
               <br />
-              Islamabad, Pakistan
+              Islamabad, 44000, Pakistan
             </p>
-            <p>Phone: <a href="tel:+92513124567" className="hover:text-white transition-colors">+92 (51) 312-4567</a></p>
-            <p>Email: <a href="mailto:info@hbfurniture.com" className="hover:text-white transition-colors">info@hbfurniture.com</a></p>
+            <p>WhatsApp: <a href="https://wa.me/971524331920" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">+971 52 433 1920</a></p>
+            <p>WhatsApp: <a href="https://wa.me/923215112240" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">0321 5112240</a></p>
+            <p>WhatsApp: <a href="https://wa.me/923192004722" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">0319 2004722</a></p>
+            <p>Email: <a href="mailto:hbfurniture64@gmail.com" className="hover:text-white transition-colors">hbfurniture64@gmail.com</a></p>
           </address>
         </div>
       </div>

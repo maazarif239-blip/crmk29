@@ -18,6 +18,7 @@ export const metadata: Metadata = {
 };
 
 import GlobalFooter from "@/components/GlobalFooter";
+import GlobalNavbar from "@/components/GlobalNavbar";
 
 export default function RootLayout({
   children,
@@ -30,6 +31,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <GlobalNavbar />
         {children}
         <GlobalFooter />
         <a

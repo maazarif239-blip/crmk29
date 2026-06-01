@@ -5,45 +5,7 @@ import TestimonialsSection from '../components/TestimonialsSection';
 export default function Home() {
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
-        <div className="max-w-[1200px] mx-auto px-4 h-20 flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center">
-      <Image
- src="/hb-logo.png.png"
-  alt="HB Furniture Logo"
- width={80}
-height={80}
-className="object-contain"
-/>
-          </Link>
-
-          {/* Navigation */}
-          <nav className="hidden md:flex items-center space-x-8 h-full">
-            <Link href="/" className="h-full flex items-center text-[11px] font-bold text-[#EB5324] uppercase tracking-wider border-b-2 border-[#EB5324]">
-              Home
-            </Link>
-            <Link href="/projects" className="h-full flex items-center text-[11px] font-bold text-gray-400 hover:text-gray-900 uppercase tracking-wider transition-colors">
-              Projects
-            </Link>
-            <Link href="/products" className="h-full flex items-center text-[11px] font-bold text-gray-400 hover:text-gray-900 uppercase tracking-wider transition-colors">
-              Products
-            </Link>
-            <Link href="/about" className="h-full flex items-center text-[11px] font-bold text-gray-400 hover:text-gray-900 uppercase tracking-wider transition-colors">
-              About Us
-            </Link>
-          </nav>
-
-          {/* Actions */}
-          <div className="flex items-center gap-4">
-            
-            <Link href="/contact" className="bg-[#EB5324] text-white px-5 py-2 text-[11px] font-bold hover:bg-[#d4481f] transition-colors uppercase tracking-wider flex items-center justify-center">
-              Contact Us
-            </Link>
-          </div>
-        </div>
-      </header>
+      
 
       {/* Hero Section */}
       <section className="relative min-h-[600px] flex items-center justify-center flex-col text-center px-4 py-24">
@@ -99,9 +61,9 @@ className="object-contain"
 
       {/* About Section */}
       <section className="py-24 max-w-[1200px] mx-auto px-4 mt-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-16 items-center">
           {/* Left Text */}
-          <div>
+          <div className="text-center md:text-left">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight leading-tight mb-2">
               A Legacy of <br />
               <span className="text-[#EB5324]">Craftsmanship</span>
@@ -137,7 +99,7 @@ className="object-contain"
           </div>
 
           {/* Right Image */}
-          <div className="relative h-[600px] rounded-xl overflow-hidden shadow-2xl">
+          <div className="relative h-[400px] md:h-[600px] w-full rounded-xl overflow-hidden shadow-2xl">
             <img 
               src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&q=80&w=1000" 
               alt="Craftsmanship" 

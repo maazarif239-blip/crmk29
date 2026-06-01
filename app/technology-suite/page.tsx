@@ -1,39 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import ProductSidebar from '@/components/ProductSidebar';
 
 export default function TechnologySuite() {
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
       {/* Header (Alternative Style) */}
-      <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
-        <div className="max-w-[1200px] mx-auto px-4 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="font-bold text-xl tracking-tight text-gray-900">HB Furniture</span>
-          </div>
-
-          <nav className="hidden md:flex items-center space-x-8 h-full">
-            <Link href="/" className="h-full flex items-center text-[13px] text-gray-500 hover:text-gray-900 transition-colors">
-              Home
-            </Link>
-            <Link href="/projects" className="h-full flex items-center text-[13px] text-gray-500 hover:text-gray-900 transition-colors">
-              Projects
-            </Link>
-            <Link href="/products" className="h-full flex items-center text-[13px] font-semibold text-[#EB5324] border-b-2 border-[#EB5324]">
-              Products
-            </Link>
-            <Link href="/about" className="h-full flex items-center text-[13px] text-gray-500 hover:text-gray-900 transition-colors">
-              About Us
-            </Link>
-          </nav>
-
-          <div className="flex items-center gap-4">
-            
-            <Link href="/contact" className="bg-[#EB5324] text-white px-5 py-2 text-[12px] font-medium hover:bg-[#d4481f] transition-colors flex items-center justify-center">
-              Contact Us
-            </Link>
-          </div>
-        </div>
-      </header>
+      
 
       {/* Hero Section (Light & Contained) */}
       <div className="max-w-[1200px] mx-auto px-4 pt-8 pb-12">
@@ -64,33 +37,7 @@ export default function TechnologySuite() {
       <section className="max-w-[1200px] mx-auto px-4 py-8 flex flex-col md:flex-row gap-16">
         
         {/* Sidebar */}
-        <aside className="w-full md:w-56 shrink-0">
-          <h3 className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-8">Categories</h3>
-          <ul className="space-y-5">
-            <li><Link href="/study-chairs" className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-gray-500 hover:text-gray-900 transition-colors">Study Chairs</Link></li>
-            <li><Link href="/office-chairs" className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-gray-500 hover:text-gray-900 transition-colors">Office Chairs</Link></li>
-            <li><Link href="/visitor-chairs" className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-gray-500 hover:text-gray-900 transition-colors">Visitors Chairs</Link></li>
-            <li><Link href="/conference-meeting-tables" className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-gray-500 hover:text-gray-900 transition-colors leading-tight">Conference & Meeting Tables</Link></li>
-            <li><Link href="/reception-counters" className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-gray-500 hover:text-gray-900 transition-colors">Reception Counters</Link></li>
-            <li><Link href="/sofas-lounge-seating" className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-gray-500 hover:text-gray-900 transition-colors">Sofas</Link></li>
-            <li>
-              <Link href="/technology-suite" className="flex items-start gap-2 text-[11px] font-bold uppercase tracking-wider text-[#EB5324] leading-tight">
-                <span className="w-1.5 h-1.5 bg-[#EB5324] rounded-full mt-1 shrink-0"></span>
-                Technology
-              </Link>
-            </li>
-          </ul>
-
-          <div className="mt-12 bg-[#F9F9F9] p-6 border border-gray-100 shadow-sm">
-            <h4 className="text-[13px] font-bold text-gray-900 mb-2">Need Assistance?</h4>
-            <p className="text-gray-500 text-[11px] leading-relaxed mb-6">
-              Our design team is ready to help you plan your workspace.
-            </p>
-            <Link href="/contact" className="block text-center w-full border border-gray-300 bg-white text-gray-700 py-2.5 text-[10px] font-bold uppercase tracking-widest hover:bg-gray-50 transition-colors">
-              Contact Experts
-            </Link>
-          </div>
-        </aside>
+        <ProductSidebar activeCategory="/technology-suite" />
 
         {/* Product Grid (2 Columns) */}
         <div className="flex-1">
@@ -137,9 +84,7 @@ export default function TechnologySuite() {
                     {product.desc}
                   </p>
                   <div className="mt-5 pt-4 border-t border-gray-50">
-                    <span className="text-[#EB5324] text-[9px] font-bold uppercase tracking-widest cursor-pointer hover:underline underline-offset-4">
-                      Contact for Pricing
-                    </span>
+                    <Link href="/contact" className="text-[#EB5324] text-[9px] font-bold uppercase tracking-widest cursor-pointer hover:underline underline-offset-4">Contact for Pricing</Link>
                   </div>
                 </div>
               </div>

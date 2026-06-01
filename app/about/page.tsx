@@ -4,43 +4,7 @@ import Link from 'next/link';
 export default function AboutUs() {
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
-        <div className="max-w-[1200px] mx-auto px-4 h-20 flex items-center justify-between">
-       <Link href="/" className="flex items-center">
-  <Image
-    src="/hb-logo.png.png"
-    alt="HB Furniture Logo"
-    width={60}
-    height={60}
-    className="h-auto w-auto object-contain"
-    priority
-  />
-</Link>
-
-          <nav className="hidden md:flex items-center space-x-8 h-full">
-            <Link href="/" className="h-full flex items-center text-[11px] font-bold text-gray-400 hover:text-gray-900 uppercase tracking-wider transition-colors">
-              Home
-            </Link>
-            <Link href="/projects" className="h-full flex items-center text-[11px] font-bold text-gray-400 hover:text-gray-900 uppercase tracking-wider transition-colors">
-              Projects
-            </Link>
-            <Link href="/products" className="h-full flex items-center text-[11px] font-bold text-gray-400 hover:text-gray-900 uppercase tracking-wider transition-colors">
-              Products
-            </Link>
-            <Link href="/about" className="h-full flex items-center text-[11px] font-bold text-[#EB5324] uppercase tracking-wider border-b-2 border-[#EB5324]">
-              About Us
-            </Link>
-          </nav>
-
-          <div className="flex items-center gap-4">
-            
-            <Link href="/contact" className="bg-[#EB5324] text-white px-5 py-2 text-[11px] font-bold hover:bg-[#d4481f] transition-colors uppercase tracking-wider flex items-center justify-center">
-              Contact Us
-            </Link>
-          </div>
-        </div>
-      </header>
+      
 
       {/* Hero Section */}
       <section className="relative h-[450px] md:h-[550px] flex items-center justify-center text-center bg-[#111111] overflow-hidden">
