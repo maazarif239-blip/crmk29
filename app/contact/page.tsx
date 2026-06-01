@@ -1,7 +1,56 @@
+"use client";
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function ContactUs() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    inquiry: '',
+    message: ''
+  });
+  const [status, setStatus] = useState<{ type: 'success' | 'error' | null; text: string }>({ type: null, text: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setStatus({ type: null, text: '' });
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: `${formData.firstName} ${formData.lastName}`.trim(),
+          email: formData.email,
+          subject: formData.inquiry,
+          message: formData.phone ? `Phone: ${formData.phone}\n\n${formData.message}` : formData.message
+        })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus({ type: 'success', text: data.message || 'Message sent successfully!' });
+        setFormData({ firstName: '', lastName: '', email: '', phone: '', inquiry: '', message: '' });
+      } else {
+        setStatus({ type: 'error', text: data.message || 'Failed to send message.' });
+      }
+    } catch (error) {
+      setStatus({ type: 'error', text: 'An unexpected error occurred. Please try again.' });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <div className="min-h-screen bg-[#FAFAFA] text-gray-900 font-sans selection:bg-[#E5E0D8]">
       {/* Header */}
@@ -73,38 +122,38 @@ export default function ContactUs() {
           <div className="w-full md:w-[60%] p-10 md:p-16">
             <h2 className="text-2xl font-bold text-gray-900 mb-8 font-serif">Start a Conversation</h2>
             
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="flex flex-col md:flex-row gap-6">
                 <div className="w-full">
                   <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">First Name</label>
-                  <input type="text" placeholder="John" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-[#EB5324] focus:ring-1 focus:ring-[#EB5324] transition-all bg-gray-50/50" />
+                  <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required placeholder="John" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-[#EB5324] focus:ring-1 focus:ring-[#EB5324] transition-all bg-gray-50/50" />
                 </div>
                 <div className="w-full">
                   <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Last Name</label>
-                  <input type="text" placeholder="Doe" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-[#EB5324] focus:ring-1 focus:ring-[#EB5324] transition-all bg-gray-50/50" />
+                  <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required placeholder="Doe" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-[#EB5324] focus:ring-1 focus:ring-[#EB5324] transition-all bg-gray-50/50" />
                 </div>
               </div>
 
               <div className="flex flex-col md:flex-row gap-6">
                 <div className="w-full">
                   <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Email Address</label>
-                  <input type="email" placeholder="john@company.com" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-[#EB5324] focus:ring-1 focus:ring-[#EB5324] transition-all bg-gray-50/50" />
+                  <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="john@company.com" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-[#EB5324] focus:ring-1 focus:ring-[#EB5324] transition-all bg-gray-50/50" />
                 </div>
                 <div className="w-full">
                   <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Phone Number</label>
-                  <input type="tel" placeholder="+92 (300) 000-0000" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-[#EB5324] focus:ring-1 focus:ring-[#EB5324] transition-all bg-gray-50/50" />
+                  <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="+92 (300) 000-0000" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-[#EB5324] focus:ring-1 focus:ring-[#EB5324] transition-all bg-gray-50/50" />
                 </div>
               </div>
 
               <div>
                 <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Inquiry Type</label>
                 <div className="relative">
-                  <select className="w-full border border-gray-200 p-3 text-sm text-gray-500 focus:outline-none focus:border-[#EB5324] focus:ring-1 focus:ring-[#EB5324] transition-all bg-gray-50/50 appearance-none rounded-none">
-                    <option>Select an option</option>
-                    <option>Corporate Workspace Project</option>
-                    <option>Bulk Order Inquiry</option>
-                    <option>Dealership/Partner Program</option>
-                    <option>General Support</option>
+                  <select name="inquiry" value={formData.inquiry} onChange={handleChange} className="w-full border border-gray-200 p-3 text-sm text-gray-500 focus:outline-none focus:border-[#EB5324] focus:ring-1 focus:ring-[#EB5324] transition-all bg-gray-50/50 appearance-none rounded-none">
+                    <option value="">Select an option</option>
+                    <option value="Corporate Workspace Project">Corporate Workspace Project</option>
+                    <option value="Bulk Order Inquiry">Bulk Order Inquiry</option>
+                    <option value="Dealership/Partner Program">Dealership/Partner Program</option>
+                    <option value="General Support">General Support</option>
                   </select>
                   <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none text-gray-400">
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
@@ -114,12 +163,18 @@ export default function ContactUs() {
 
               <div>
                 <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Message</label>
-                <textarea rows={4} placeholder="Tell us about your project requirements..." className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-[#EB5324] focus:ring-1 focus:ring-[#EB5324] transition-all bg-gray-50/50 resize-none"></textarea>
+                <textarea name="message" value={formData.message} onChange={handleChange} required rows={4} placeholder="Tell us about your project requirements..." className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-[#EB5324] focus:ring-1 focus:ring-[#EB5324] transition-all bg-gray-50/50 resize-none"></textarea>
               </div>
 
-              <button type="button" className="bg-[#EB5324] text-white px-8 py-4 text-[11px] font-bold hover:bg-[#d4481f] transition-colors uppercase tracking-widest inline-flex items-center gap-3 mt-4">
-                Send Message
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+              {status.text && (
+                <div className={`p-4 text-sm font-semibold border ${status.type === 'success' ? 'bg-green-50 text-green-700 border-green-200' : 'bg-red-50 text-red-700 border-red-200'}`}>
+                  {status.text}
+                </div>
+              )}
+
+              <button type="submit" disabled={isSubmitting} className="bg-[#EB5324] text-white px-8 py-4 text-[11px] font-bold hover:bg-[#d4481f] transition-colors uppercase tracking-widest inline-flex items-center gap-3 mt-4 disabled:opacity-50 disabled:cursor-not-allowed">
+                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {!isSubmitting && <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>}
               </button>
             </form>
           </div>
