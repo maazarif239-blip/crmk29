@@ -60,7 +60,7 @@ export default function Home() {
       </div>
 
       {/* About Section */}
-      <section className="py-24 max-w-[1200px] mx-auto px-4 mt-8">
+      <section className="py-24 max-w-[1200px] mx-auto px-4 mt-12">
         <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-16 items-center">
           {/* Left Text */}
           <div className="text-center md:text-left">
@@ -77,7 +77,7 @@ export default function Home() {
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="bg-white border border-gray-100 shadow-sm p-6">
+              <div className="bg-white border border-gray-100 shadow-sm p-6 relative z-10">
                 <svg className="w-6 h-6 text-[#EB5324] mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
@@ -86,7 +86,7 @@ export default function Home() {
                   Complete control over quality from raw material to finished product.
                 </p>
               </div>
-              <div className="bg-white border border-gray-100 shadow-sm p-6">
+              <div className="bg-white border border-gray-100 shadow-sm p-6 relative z-10">
                 <svg className="w-6 h-6 text-[#EB5324] mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
                 </svg>
