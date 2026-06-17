@@ -12,10 +12,27 @@ type NavItem = {
 };
 
 const productDropdownItems: NavItem[] = [
+  { name: "Study Chairs", href: "/study-chairs" },
   { name: "Office Chairs", href: "/office-chairs" },
-  { name: "Office Tables", href: "/products/conference-and-meeting-tables" },
-  { name: "Storage Solutions", href: "/library-shelves" },
-  { name: "Sofas", href: "/sofas-lounge-seating" },
+  { name: "Visitors Chairs", href: "/visitor-chairs" },
+  { name: "Conference and Meeting Tables", href: "/products/conference-and-meeting-tables" },
+  { name: "Reception Counters", href: "/reception-counters" },
+  { name: "Sofas and Lounge Setting", href: "/sofas-lounge-seating" },
+  { name: "Technology", href: "/technology-suite" },
+  { name: "Workspace Solutions", href: "/workspace-solutions" },
+  { name: "Guest Chairs", href: "/guest-chairs" },
+  { name: "Gravity Workstations", href: "/gravity-workstations" },
+  { name: "Hardwood Executive Tables", href: "/hardwood-executive-tables" },
+  { name: "Ant Chair", href: "/ant-chairs" },
+  { name: "Library Shelves", href: "/library-shelves" },
+  { name: "Modern Workstation System", href: "/products/modern-workstation-systems" },
+  { name: "Lotus 30 Office Workstation", href: "/products/lotus-30-office-workstations" },
+  { name: "Executive Chairs", href: "/products/executive-chairs" },
+  { name: "Paris Chairs", href: "/products/paris-chairs" },
+  { name: "Director Chair", href: "/products/director-chair" },
+  { name: "Executive Furniture", href: "/products/executive-furniture" },
+  { name: "Manager Chair Collection", href: "/products/manager-chair-collection" },
+  { name: "Laboratory Solution", href: "/products/laboratory-solutions" },
 ];
 
 const workstationDropdownItems: NavItem[] = [
