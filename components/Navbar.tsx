@@ -51,6 +51,7 @@ const premiumExecutiveDropdownItems: NavItem[] = [
 const navItems: NavItem[] = [
   { name: "Home", href: "/" },
   { name: "Projects", href: "/projects" },
+  { name: "Certificates", href: "/certificates" },
   { name: "Products", href: "/products", dropdown: productDropdownItems },
   { name: "Workstations", dropdown: workstationDropdownItems },
   { name: "Premium Executive Range", dropdown: premiumExecutiveDropdownItems },
@@ -219,7 +220,7 @@ export default function Navbar() {
 
                       {/* Dropdown Menu */}
                       {activeDropdown === item.name && (
-                        <div className="absolute top-full left-0 mt-0 w-64 bg-white rounded-lg shadow-xl border border-gray-100 py-2 z-50 animate-in fade-in zoom-in-95 duration-200 max-h-[70vh] overflow-y-auto">
+                        <div className="absolute top-full left-0 mt-0 w-56 bg-white rounded-lg shadow-xl border border-gray-100 py-2 z-50 animate-in fade-in zoom-in-95 duration-200 max-h-[70vh] overflow-y-auto flex flex-col">
                           {item.dropdown.map((subItem) => (
                             <Link
                               key={subItem.href!}
