@@ -7,7 +7,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 
 type NavItem = {
   name: string;
-  href: string;
+  href?: string;
   dropdown?: NavItem[];
 };
 
@@ -52,11 +52,11 @@ const navItems: NavItem[] = [
   { name: "Home", href: "/" },
   { name: "Projects", href: "/projects" },
   { name: "Products", href: "/products", dropdown: productDropdownItems },
-  { name: "Workstations", href: "/our-workstations", dropdown: workstationDropdownItems },
-  { name: "Premium Executive Range", href: "/premium-executive-range", dropdown: premiumExecutiveDropdownItems },
+  { name: "Workstations", dropdown: workstationDropdownItems },
+  { name: "Premium Executive Range", dropdown: premiumExecutiveDropdownItems },
   { name: "Field of Expertise", href: "/field-of-expertise" },
-  { name: "HB Clientage", href: "/hb-clientage" },
-  { name: "Management & Employees", href: "/management-and-employees" },
+  { name: "HB Clientage", href: "/clientage" },
+  { name: "Management & Employees", href: "/management-employees" },
 ];
 
 export default function Navbar() {
@@ -163,44 +163,69 @@ export default function Navbar() {
                 if (item.dropdown) {
                   return (
                     <div 
-                      key={item.href}
+                      key={item.name}
                       className="relative group"
                       onMouseEnter={() => handleMouseEnter(item.name)}
                       onMouseLeave={handleMouseLeave}
                     >
-                      <Link
-                        href={item.href}
-                        className={`text-xs font-medium transition-colors duration-200 relative flex items-center gap-1 py-4 ${
-                          isActive(item.href) || activeDropdown === item.name
-                            ? "text-[#E8500A]"
-                            : "text-gray-600 hover:text-[#E8500A]"
-                        }`}
-                      >
-                        {item.name}
-                        <svg
-                          className={`w-3 h-3 transition-transform duration-200 ${activeDropdown === item.name ? "rotate-180" : ""}`}
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                        <span
-                          className={`absolute bottom-0 left-0 right-0 h-0.5 bg-[#E8500A] transition-transform duration-200 ease-out origin-left ${
-                            isActive(item.href) || activeDropdown === item.name ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                      {item.href ? (
+                        <Link
+                          href={item.href}
+                          className={`text-xs font-medium transition-colors duration-200 relative flex items-center gap-1 py-4 ${
+                            isActive(item.href) || activeDropdown === item.name
+                              ? "text-[#E8500A]"
+                              : "text-gray-600 hover:text-[#E8500A]"
                           }`}
-                        />
-                      </Link>
+                        >
+                          {item.name}
+                          <svg
+                            className={`w-3 h-3 transition-transform duration-200 ${activeDropdown === item.name ? "rotate-180" : ""}`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                          <span
+                            className={`absolute bottom-0 left-0 right-0 h-0.5 bg-[#E8500A] transition-transform duration-200 ease-out origin-left ${
+                              isActive(item.href) || activeDropdown === item.name ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                            }`}
+                          />
+                        </Link>
+                      ) : (
+                        <div
+                          className={`text-xs font-medium transition-colors duration-200 relative flex items-center gap-1 py-4 cursor-pointer ${
+                            activeDropdown === item.name
+                              ? "text-[#E8500A]"
+                              : "text-gray-600 hover:text-[#E8500A]"
+                          }`}
+                        >
+                          {item.name}
+                          <svg
+                            className={`w-3 h-3 transition-transform duration-200 ${activeDropdown === item.name ? "rotate-180" : ""}`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                          <span
+                            className={`absolute bottom-0 left-0 right-0 h-0.5 bg-[#E8500A] transition-transform duration-200 ease-out origin-left ${
+                              activeDropdown === item.name ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                            }`}
+                          />
+                        </div>
+                      )}
 
                       {/* Dropdown Menu */}
                       {activeDropdown === item.name && (
                         <div className="absolute top-full left-0 mt-0 w-64 bg-white rounded-lg shadow-xl border border-gray-100 py-2 z-50 animate-in fade-in zoom-in-95 duration-200 max-h-[70vh] overflow-y-auto">
                           {item.dropdown.map((subItem) => (
                             <Link
-                              key={subItem.href}
-                              href={subItem.href}
+                              key={subItem.href!}
+                              href={subItem.href!}
                               className={`block px-4 py-2 text-xs transition-colors duration-200 ${
-                                isActive(subItem.href)
+                                isActive(subItem.href!)
                                   ? "bg-orange-50 text-[#E8500A]"
                                   : "text-gray-600 hover:bg-gray-50 hover:text-[#E8500A]"
                               }`}
@@ -217,10 +242,10 @@ export default function Navbar() {
 
                 return (
                   <Link
-                    key={item.href}
-                    href={item.href}
+                    key={item.name}
+                    href={item.href!}
                     className={`text-xs font-medium transition-colors duration-200 relative group whitespace-nowrap py-4 ${
-                      isActive(item.href)
+                      isActive(item.href!)
                         ? "text-[#E8500A]"
                         : "text-gray-600 hover:text-[#E8500A]"
                     }`}
@@ -228,7 +253,7 @@ export default function Navbar() {
                     {item.name}
                     <span
                       className={`absolute bottom-0 left-0 right-0 h-0.5 bg-[#E8500A] transition-transform duration-200 ease-out origin-left ${
-                        isActive(item.href) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                        isActive(item.href!) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                       }`}
                     />
                   </Link>
@@ -275,25 +300,31 @@ export default function Navbar() {
             {navItems.map((item) => {
               if (item.dropdown) {
                 return (
-                  <div key={item.href} className="flex flex-col">
+                  <div key={item.name} className="flex flex-col">
                     <div 
                       className={`w-full text-left px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors duration-200 ${
-                        isActive(item.href) || activeDropdown === item.name
+                        (item.href && isActive(item.href)) || activeDropdown === item.name
                           ? "bg-orange-50 text-[#E8500A]"
                           : "text-gray-600 hover:bg-gray-50"
                       }`}
                     >
                       <div className="flex items-center justify-between">
-                        <Link 
-                          href={item.href}
-                          onClick={() => setIsMobileMenuOpen(false)}
-                          className="flex-1 py-1"
-                        >
-                          {item.name}
-                        </Link>
+                        {item.href ? (
+                          <Link 
+                            href={item.href}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="flex-1 py-1"
+                          >
+                            {item.name}
+                          </Link>
+                        ) : (
+                          <span className="flex-1 py-1">
+                            {item.name}
+                          </span>
+                        )}
                         <button
                           onClick={(e) => {
-                            e.preventDefault();
+                            e.stopPropagation();
                             setActiveDropdown((prev) => (prev === item.name ? null : item.name));
                           }}
                           className="p-1 -mr-1 rounded hover:bg-orange-100 transition-colors"
@@ -315,14 +346,14 @@ export default function Navbar() {
                       <div className="pl-4 mt-1 flex flex-col gap-1">
                         {item.dropdown.map((subItem) => (
                           <Link
-                            key={subItem.href}
-                            href={subItem.href}
+                            key={subItem.href!}
+                            href={subItem.href!}
                             onClick={() => {
                               setIsMobileMenuOpen(false);
                               setActiveDropdown(null);
                             }}
                             className={`px-4 py-2 rounded text-xs transition-colors duration-200 ${
-                              isActive(subItem.href)
+                              isActive(subItem.href!)
                                 ? "bg-orange-50 text-[#E8500A]"
                                 : "text-gray-500 hover:bg-gray-50 hover:text-[#E8500A]"
                             }`}
@@ -338,11 +369,11 @@ export default function Navbar() {
 
               return (
                 <Link
-                  key={item.href}
-                  href={item.href}
+                  key={item.name}
+                  href={item.href!}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={`px-4 py-3 rounded-lg text-sm font-bold uppercase tracking-wider transition-all duration-200 ${
-                    isActive(item.href)
+                    isActive(item.href!)
                       ? "bg-orange-50 text-[#E8500A]"
                       : "text-gray-600 hover:bg-gray-50"
                   }`}
