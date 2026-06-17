@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import ContactForPricingLink from '@/components/ContactForPricingLink';
 import ProductSidebar from '@/components/ProductSidebar';
 
 export default function StudyChairs() {
@@ -54,8 +55,8 @@ export default function StudyChairs() {
                 <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
                   Comfortable and durable seating solution designed for collaborative learning and cafeteria environments.
                 </p>
-                <div className="mt-4 pt-4 border-t border-gray-50">
-                  <Link href="/contact" className="text-[#EB5324] text-[9px] font-bold uppercase tracking-widest cursor-pointer hover:underline underline-offset-4">Contact for Pricing</Link>
+                <div className="mt-6">
+                  <ContactForPricingLink />
                 </div>
               </div>
             </div>
@@ -74,8 +75,8 @@ export default function StudyChairs() {
                 <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
                   Ergonomic task chair engineered for daily office productivity and comfort.
                 </p>
-                <div className="mt-4 pt-4 border-t border-gray-50">
-                  <Link href="/contact" className="text-[#EB5324] text-[9px] font-bold uppercase tracking-widest cursor-pointer hover:underline underline-offset-4">Contact for Pricing</Link>
+                <div className="mt-6">
+                  <ContactForPricingLink />
                 </div>
               </div>
             </div>
@@ -94,8 +95,8 @@ export default function StudyChairs() {
                 <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
                   Modern, responsive task chair offering dynamic back support and sleek aesthetics.
                 </p>
-                <div className="mt-4 pt-4 border-t border-gray-50">
-                  <Link href="/contact" className="text-[#EB5324] text-[9px] font-bold uppercase tracking-widest cursor-pointer hover:underline underline-offset-4">Contact for Pricing</Link>
+                <div className="mt-6">
+                  <ContactForPricingLink />
                 </div>
               </div>
             </div>
@@ -114,8 +115,8 @@ export default function StudyChairs() {
                 <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
                   Agile and breathable seating solution perfect for intensive work or study sessions.
                 </p>
-                <div className="mt-4 pt-4 border-t border-gray-50">
-                  <Link href="/contact" className="text-[#EB5324] text-[9px] font-bold uppercase tracking-widest cursor-pointer hover:underline underline-offset-4">Contact for Pricing</Link>
+                <div className="mt-6">
+                  <ContactForPricingLink />
                 </div>
               </div>
             </div>
@@ -134,8 +135,8 @@ export default function StudyChairs() {
                 <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
                   Versatile, minimalist chair ideal for quick meetings and dynamic workspaces.
                 </p>
-                <div className="mt-4 pt-4 border-t border-gray-50">
-                  <Link href="/contact" className="text-[#EB5324] text-[9px] font-bold uppercase tracking-widest cursor-pointer hover:underline underline-offset-4">Contact for Pricing</Link>
+                <div className="mt-6">
+                  <ContactForPricingLink />
                 </div>
               </div>
             </div>
@@ -154,8 +155,8 @@ export default function StudyChairs() {
                 <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
                   High-performance task chair featuring breathable mesh and intuitive ergonomic controls.
                 </p>
-                <div className="mt-4 pt-4 border-t border-gray-50">
-                  <Link href="/contact" className="text-[#EB5324] text-[9px] font-bold uppercase tracking-widest cursor-pointer hover:underline underline-offset-4">Contact for Pricing</Link>
+                <div className="mt-6">
+                  <ContactForPricingLink />
                 </div>
               </div>
             </div>
@@ -174,8 +175,8 @@ export default function StudyChairs() {
                 <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
                   Contemporary seating combining aesthetic appeal with all-day ergonomic support.
                 </p>
-                <div className="mt-4 pt-4 border-t border-gray-50">
-                  <Link href="/contact" className="text-[#EB5324] text-[9px] font-bold uppercase tracking-widest cursor-pointer hover:underline underline-offset-4">Contact for Pricing</Link>
+                <div className="mt-6">
+                  <ContactForPricingLink />
                 </div>
               </div>
             </div>

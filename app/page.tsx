@@ -43,7 +43,7 @@ export default function Home() {
 
       {/* Stats Bar */}
       <div className="relative z-20 max-w-4xl mx-auto -mt-12 bg-white shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)]">
-        <div className="grid grid-cols-3 divide-x divide-gray-100 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100 py-8 gap-y-8 md:gap-y-0">
           <div className="flex flex-col items-center justify-center text-center px-4">
             <span className="text-4xl font-bold text-[#EB5324] mb-2">60+</span>
             <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Years of Heritage</span>
@@ -76,7 +76,7 @@ export default function Home() {
               Our approach blends heritage manufacturing principles with cutting-edge architectural design. We don't just supply furniture; we engineer environments that foster productivity, well-being, and corporate prestige.
             </p>
 
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="bg-white border border-gray-100 shadow-sm p-6">
                 <svg className="w-6 h-6 text-[#EB5324] mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />

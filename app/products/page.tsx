@@ -40,15 +40,15 @@ export default function Products() {
   },
 
   {
-    name: 'Visitor Chairs',
+    name: 'Visitors Chairs',
     href: '/visitor-chairs',
     image: '/f.jpg'
   },
 
   {
-    name: 'Conference & Meeting Tables',
-    href: '/conference-meeting-tables',
-    image: '/g.png'
+    name: 'Conference and Meeting Tables',
+    href: '/products/conference-and-meeting-tables',
+    image: '/175 (1).png'
   },
 
   {
@@ -58,7 +58,7 @@ export default function Products() {
   },
 
   {
-    name: 'Sofas & Lounge Seating',
+    name: 'Sofas and Lounge Setting',
     href: '/sofas-lounge-seating',
     image: '/i.jpg'
   },
@@ -67,6 +67,76 @@ export default function Products() {
     name: 'Technology',
     href: '/technology-suite',
     image: '/j.jpg'
+  },
+  {
+    name: 'Workspace Solutions',
+    href: '/workspace-solutions',
+    image: '/Screenshot 2026-06-16 163413.png'
+  },
+  {
+    name: 'Guest Chairs',
+    href: '/guest-chairs',
+    image: '/101 (3).png'
+  },
+  {
+    name: 'Gravity Workstations',
+    href: '/gravity-workstations',
+    image: '/Screenshot 2026-06-16 164124.png'
+  },
+  {
+    name: 'Hardwood Executive Tables',
+    href: '/hardwood-executive-tables',
+    image: '/Screenshot 2026-06-16 164439.png'
+  },
+  {
+    name: 'Ant Chair',
+    href: '/ant-chairs',
+    image: '/129.png'
+  },
+  {
+    name: 'Library Shelves',
+    href: '/library-shelves',
+    image: '/155 (3).png'
+  },
+  {
+    name: 'Modern Workstation System',
+    href: '/products/modern-workstation-systems',
+    image: '/Screenshot 2026-06-16 164657.png'
+  },
+  {
+    name: 'Lotus 30 Office Workstation',
+    href: '/products/lotus-30-office-workstations',
+    image: '/Screenshot 2026-06-16 164809.png'
+  },
+  {
+    name: 'Executive Chairs',
+    href: '/products/executive-chairs',
+    image: '/230 (1).png'
+  },
+  {
+    name: 'Paris Chairs',
+    href: '/products/paris-chairs',
+    image: '/231.png'
+  },
+  {
+    name: 'Director Chair',
+    href: '/products/director-chair',
+    image: '/Screenshot 2026-06-16 165028.png'
+  },
+  {
+    name: 'Executive Furniture',
+    href: '/products/executive-furniture',
+    image: '/240(1).png'
+  },
+  {
+    name: 'Manager Chair Collection',
+    href: '/products/manager-chair-collection',
+    image: '/Screenshot 2026-06-16 165302.png'
+  },
+  {
+    name: 'Laboratory Solution',
+    href: '/products/laboratory-solutions',
+    image: '/skylab-page-1.png'
   }
 ].map((cat, i) => (
             <Link href={cat.href} key={i} className="group cursor-pointer relative aspect-square overflow-hidden bg-gray-100 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300">

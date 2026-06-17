@@ -9,10 +9,12 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@types/progress": "^2.0.7",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "lucide-react": "^1.17.0",
     "next": "16.2.6",
+    "nprogress": "^0.2.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-icons": "^5.6.0"
@@ -20,10 +22,14 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/nprogress": "^0.2.3",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
+    "pdf-to-img": "^6.2.0",
+    "pdfjs-dist": "^6.0.227",
+    "sharp": "^0.35.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

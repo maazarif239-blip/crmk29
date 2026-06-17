@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import ProductSidebar from '@/components/ProductSidebar';
+import ContactForPricingLink from '@/components/ContactForPricingLink';
 
 export default function ConferenceMeetingTables() {
   return (
@@ -114,8 +115,8 @@ export default function ConferenceMeetingTables() {
                   <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
                     {product.desc}
                   </p>
-                  <div className="mt-4 pt-4 border-t border-gray-50">
-                    <Link href="/contact" className="text-[#EB5324] text-[9px] font-bold uppercase tracking-widest cursor-pointer hover:underline underline-offset-4">Contact for Pricing</Link>
+                  <div className="mt-6">
+                    <ContactForPricingLink />
                   </div>
                 </div>
               </div>

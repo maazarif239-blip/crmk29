@@ -5,19 +5,34 @@ import { useState } from "react";
 
 type ProductSidebarProps = {
   activeCategory: string;
+  assistanceText?: string;
 };
 
-export default function ProductSidebar({ activeCategory }: ProductSidebarProps) {
+export default function ProductSidebar({ activeCategory, assistanceText }: ProductSidebarProps) {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   const categories = [
     { name: "Study Chairs", href: "/study-chairs" },
     { name: "Office Chairs", href: "/office-chairs" },
-    { name: "Visitor Chairs", href: "/visitor-chairs" },
-    { name: "Conference & Meeting Tables", href: "/conference-meeting-tables" },
+    { name: "Visitors Chairs", href: "/visitor-chairs" },
+    { name: "Conference and Meeting Tables", href: "/products/conference-and-meeting-tables" },
     { name: "Reception Counters", href: "/reception-counters" },
-    { name: "Sofas", href: "/sofas-lounge-seating" },
+    { name: "Sofas and Lounge Setting", href: "/sofas-lounge-seating" },
     { name: "Technology", href: "/technology-suite" },
+    { name: "Workspace Solutions", href: "/workspace-solutions" },
+    { name: "Guest Chairs", href: "/guest-chairs" },
+    { name: "Gravity Workstations", href: "/gravity-workstations" },
+    { name: "Hardwood Executive Tables", href: "/hardwood-executive-tables" },
+    { name: "Ant Chair", href: "/ant-chairs" },
+    { name: "Library Shelves", href: "/library-shelves" },
+    { name: "Modern Workstation System", href: "/products/modern-workstation-systems" },
+    { name: "Lotus 30 Office Workstation", href: "/products/lotus-30-office-workstations" },
+    { name: "Executive Chairs", href: "/products/executive-chairs" },
+    { name: "Paris Chairs", href: "/products/paris-chairs" },
+    { name: "Director Chair", href: "/products/director-chair" },
+    { name: "Executive Furniture", href: "/products/executive-furniture" },
+    { name: "Manager Chair Collection", href: "/products/manager-chair-collection" },
+    { name: "Laboratory Solution", href: "/products/laboratory-solutions" },
   ];
 
   const sidebarContent = (
@@ -35,12 +50,12 @@ export default function ProductSidebar({ activeCategory }: ProductSidebarProps) 
                 onClick={() => setIsMobileOpen(false)}
                 className={`flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider transition-colors ${
                   isActive
-                    ? "text-[#EB5324]"
+                    ? "text-[#E04E1B]"
                     : "text-gray-500 hover:text-gray-900"
                 }`}
               >
                 {isActive && (
-                  <span className="w-1.5 h-1.5 bg-[#EB5324] rounded-full"></span>
+                  <span className="w-1.5 h-1.5 bg-[#E04E1B] rounded-full"></span>
                 )}
                 {cat.name}
               </Link>
@@ -52,7 +67,7 @@ export default function ProductSidebar({ activeCategory }: ProductSidebarProps) 
       <div className="mt-12 bg-[#F9F9F9] p-6 border border-gray-100 shadow-sm hidden md:block">
         <h4 className="text-[13px] font-bold text-gray-900 mb-2">Need Assistance?</h4>
         <p className="text-gray-500 text-[11px] leading-relaxed mb-6">
-          Our design team is ready to help you plan your workspace.
+          {assistanceText || "Our design team is ready to help you plan your workspace."}
         </p>
         <Link
           href="/contact"

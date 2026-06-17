@@ -1,0 +1,356 @@
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { useState, useEffect, useCallback, useRef } from "react";
+
+type NavItem = {
+  name: string;
+  href: string;
+  dropdown?: NavItem[];
+};
+
+const productDropdownItems: NavItem[] = [
+  { name: "Office Chairs", href: "/office-chairs" },
+  { name: "Office Tables", href: "/products/conference-and-meeting-tables" },
+  { name: "Storage Solutions", href: "/library-shelves" },
+  { name: "Sofas", href: "/sofas-lounge-seating" },
+];
+
+const workstationDropdownItems: NavItem[] = [
+  { name: "Open Plan", href: "/products/modern-workstation-systems" },
+  { name: "Private Cabin", href: "/products/lotus-30-office-workstations" },
+  { name: "Cubicle Systems", href: "/workspace-solutions" },
+  { name: "Standing Desks", href: "/our-workstations" },
+];
+
+const premiumExecutiveDropdownItems: NavItem[] = [
+  { name: "Executive Chairs", href: "/products/executive-chairs" },
+  { name: "Executive Desks", href: "/hardwood-executive-tables" },
+  { name: "Conference Tables", href: "/products/conference-and-meeting-tables" },
+  { name: "VIP Lounges", href: "/sofas-lounge-seating" },
+];
+
+const navItems: NavItem[] = [
+  { name: "Home", href: "/" },
+  { name: "Projects", href: "/projects" },
+  { name: "Products", href: "/products", dropdown: productDropdownItems },
+  { name: "Workstations", href: "/our-workstations", dropdown: workstationDropdownItems },
+  { name: "Premium Executive Range", href: "/premium-executive-range", dropdown: premiumExecutiveDropdownItems },
+  { name: "Field of Expertise", href: "/field-of-expertise" },
+  { name: "HB Clientage", href: "/hb-clientage" },
+  { name: "Management & Employees", href: "/management-and-employees" },
+];
+
+export default function Navbar() {
+  const pathname = usePathname();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+    setActiveDropdown(null);
+  }, [pathname]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+  
+  // Close dropdown on click outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setActiveDropdown(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const isActive = useCallback(
+    (href: string) => {
+      if (href === "/") return pathname === "/";
+      return pathname === href || pathname.startsWith(href + "/");
+    },
+    [pathname]
+  );
+
+  const toggleMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen((prev) => !prev);
+  }, []);
+  
+  const handleMouseEnter = useCallback((name: string) => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+    }
+    setActiveDropdown(name);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 150);
+  }, []);
+
+  return (
+    <>
+      <header 
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled 
+            ? "bg-white shadow-md py-3" 
+            : "bg-white py-5"
+        }`}
+      >
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-full relative">
+            {/* Logo - Left */}
+            <Link
+              href="/"
+              className="flex items-center gap-2 transition-opacity hover:opacity-80 shrink-0"
+            >
+              <Image
+                src="/hb-logo.png.png"
+                alt="HB Furniture"
+                width={isScrolled ? 40 : 56}
+                height={isScrolled ? 40 : 56}
+                className="object-contain transition-all duration-300"
+                priority
+              />
+              <span className="text-lg font-bold tracking-tight whitespace-nowrap text-[#E8500A]">
+                HB Furniture
+              </span>
+            </Link>
+
+            {/* Desktop Navigation - Center */}
+            <nav className="hidden xl:flex items-center justify-center flex-1 gap-5 px-4" ref={dropdownRef}>
+              {navItems.map((item) => {
+                if (item.dropdown) {
+                  return (
+                    <div 
+                      key={item.href}
+                      className="relative group"
+                      onMouseEnter={() => handleMouseEnter(item.name)}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      <Link
+                        href={item.href}
+                        className={`text-xs font-medium transition-colors duration-200 relative flex items-center gap-1 py-4 ${
+                          isActive(item.href) || activeDropdown === item.name
+                            ? "text-[#E8500A]"
+                            : "text-gray-600 hover:text-[#E8500A]"
+                        }`}
+                      >
+                        {item.name}
+                        <svg
+                          className={`w-3 h-3 transition-transform duration-200 ${activeDropdown === item.name ? "rotate-180" : ""}`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                        <span
+                          className={`absolute bottom-0 left-0 right-0 h-0.5 bg-[#E8500A] transition-transform duration-200 ease-out origin-left ${
+                            isActive(item.href) || activeDropdown === item.name ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                          }`}
+                        />
+                      </Link>
+
+                      {/* Dropdown Menu */}
+                      {activeDropdown === item.name && (
+                        <div className="absolute top-full left-0 mt-0 w-64 bg-white rounded-lg shadow-xl border border-gray-100 py-2 z-50 animate-in fade-in zoom-in-95 duration-200 max-h-[70vh] overflow-y-auto">
+                          {item.dropdown.map((subItem) => (
+                            <Link
+                              key={subItem.href}
+                              href={subItem.href}
+                              className={`block px-4 py-2 text-xs transition-colors duration-200 ${
+                                isActive(subItem.href)
+                                  ? "bg-orange-50 text-[#E8500A]"
+                                  : "text-gray-600 hover:bg-gray-50 hover:text-[#E8500A]"
+                              }`}
+                              onClick={() => setActiveDropdown(null)}
+                            >
+                              {subItem.name}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`text-xs font-medium transition-colors duration-200 relative group whitespace-nowrap py-4 ${
+                      isActive(item.href)
+                        ? "text-[#E8500A]"
+                        : "text-gray-600 hover:text-[#E8500A]"
+                    }`}
+                  >
+                    {item.name}
+                    <span
+                      className={`absolute bottom-0 left-0 right-0 h-0.5 bg-[#E8500A] transition-transform duration-200 ease-out origin-left ${
+                        isActive(item.href) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                      }`}
+                    />
+                  </Link>
+                );
+              })}
+            </nav>
+
+            {/* Desktop Contact Us Button - Right */}
+            <div className="hidden xl:flex shrink-0">
+              <Link
+                href="/contact"
+                className="bg-[#E8500A] text-white px-6 py-2 rounded-full text-xs font-bold hover:bg-[#d64a09] transition-colors whitespace-nowrap shadow-sm hover:shadow-md"
+              >
+                Contact Us
+              </Link>
+            </div>
+
+            {/* Mobile Hamburger Button */}
+            <button
+              type="button"
+              className="xl:hidden p-2 text-gray-700 hover:text-[#E8500A] transition-colors"
+              onClick={toggleMobileMenu}
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMobileMenuOpen}
+            >
+              {isMobileMenuOpen ? (
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-x-0 top-0 bottom-0 z-40 bg-white pt-20 px-4 xl:hidden animate-in slide-in-from-top duration-300 flex flex-col overflow-y-auto pb-6">
+          <nav className="flex flex-col gap-2 flex-1">
+            {navItems.map((item) => {
+              if (item.dropdown) {
+                return (
+                  <div key={item.href} className="flex flex-col">
+                    <div 
+                      className={`w-full text-left px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors duration-200 ${
+                        isActive(item.href) || activeDropdown === item.name
+                          ? "bg-orange-50 text-[#E8500A]"
+                          : "text-gray-600 hover:bg-gray-50"
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <Link 
+                          href={item.href}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="flex-1 py-1"
+                        >
+                          {item.name}
+                        </Link>
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setActiveDropdown((prev) => (prev === item.name ? null : item.name));
+                          }}
+                          className="p-1 -mr-1 rounded hover:bg-orange-100 transition-colors"
+                        >
+                          <svg
+                            className={`w-5 h-5 transition-transform duration-200 ${activeDropdown === item.name ? "rotate-180" : ""}`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Mobile Dropdown */}
+                    {activeDropdown === item.name && (
+                      <div className="pl-4 mt-1 flex flex-col gap-1">
+                        {item.dropdown.map((subItem) => (
+                          <Link
+                            key={subItem.href}
+                            href={subItem.href}
+                            onClick={() => {
+                              setIsMobileMenuOpen(false);
+                              setActiveDropdown(null);
+                            }}
+                            className={`px-4 py-2 rounded text-xs transition-colors duration-200 ${
+                              isActive(subItem.href)
+                                ? "bg-orange-50 text-[#E8500A]"
+                                : "text-gray-500 hover:bg-gray-50 hover:text-[#E8500A]"
+                            }`}
+                          >
+                            {subItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`px-4 py-3 rounded-lg text-sm font-bold uppercase tracking-wider transition-all duration-200 ${
+                    isActive(item.href)
+                      ? "bg-orange-50 text-[#E8500A]"
+                      : "text-gray-600 hover:bg-gray-50"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
+          </nav>
+          
+          <div className="mt-8 px-4">
+            <Link
+              href="/contact"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block w-full text-center bg-[#E8500A] text-white px-6 py-3 rounded-full text-sm font-bold hover:bg-[#d64a09] transition-colors shadow-sm"
+            >
+              Contact Us
+            </Link>
+          </div>
+        </div>
+      )}
+
+      {/* Spacer to prevent content from going under fixed navbar */}
+      <div className={`transition-all duration-300 ${isScrolled ? "h-16" : "h-24"}`} />
+    </>
+  );
+}

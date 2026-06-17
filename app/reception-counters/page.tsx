@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import ProductSidebar from '@/components/ProductSidebar';
+import ContactForPricingLink from '@/components/ContactForPricingLink';
 
 export default function ReceptionCounters() {
   return (
@@ -41,35 +42,35 @@ export default function ReceptionCounters() {
                 name: 'Corby Reception', 
                 desc: 'A sleek modern reception counter designed for corporate offices, featuring clean lines and professional aesthetics.',
                 badge: null,
-                image: '/a.jpg',
+                image: '48c3f57d-f393-48fc-96d1-fbcde25cdb07.jpg',
                 isPlaceholder: false
               },
               { 
                 name: 'Halton Reception', 
                 desc: 'Elegant reception desk solution perfect for executive environments and premium commercial workspaces.',
                 badge: null,
-                image: '/b.jpg',
+                image: '/325b49eb-d282-4810-a1e2-cc13f320242e.jpg',
                 isPlaceholder: false
               },
               { 
                 name: 'Lufton Reception', 
                 desc: 'Contemporary front desk design offering both style and functionality for high-traffic reception areas.',
                 badge: null,
-                image: '/c.jpg',
+                image: '/9953db69-dc1c-4496-aa2d-f8d7e98a333d.jpg',
                 isPlaceholder: false
               },
               { 
                 name: 'Princeton Reception', 
                 desc: 'Sophisticated reception counter crafted for corporate headquarters and professional office settings.',
                 badge: null,
-                image: '/d.jpg',
+                image: '/ac2f479c-caae-4392-9e41-254be366a5fb.jpg',
                 isPlaceholder: false
               },
               { 
                 name: 'Zara Reception', 
                 desc: 'Modern minimalist reception desk ideal for creating a welcoming first impression in commercial spaces.',
                 badge: null,
-                image: '/e.jpg',
+                image: '/eb89f3e7-13bb-41c2-8692-a3836f1503ce.jpg',
                 isPlaceholder: false
               },
             ].map((product, i) => (
@@ -95,10 +96,10 @@ export default function ReceptionCounters() {
                 <div className="p-6 flex-1 flex flex-col">
                   <h3 className="text-[14px] font-bold text-gray-900 mb-2">{product.name}</h3>
                   <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
-                     {product.desc}
-                   </p>
-                  <div className="mt-4 pt-4 border-t border-gray-50">
-                    <Link href="/contact" className="text-[#EB5324] text-[9px] font-bold uppercase tracking-widest cursor-pointer hover:underline underline-offset-4">Contact for Pricing</Link>
+                    {product.desc}
+                  </p>
+                  <div className="mt-6">
+                    <ContactForPricingLink />
                   </div>
                 </div>
               </div>
