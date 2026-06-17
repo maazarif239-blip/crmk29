@@ -17,67 +17,82 @@ export default function ManagementEmployees() {
     },
     {
       id: 3,
+      name: "Syed Habib Hasan Gardezi",
+      role: "Social Media Manager"
+    },
+    {
+      id: 4,
+      name: "Syeda Hoor Hasan Gardezi",
+      role: "Director (Architecture)"
+    },
+    {
+      id: 5,
+      name: "Syed Hasham Hasan Gardezi",
+      role: "Director (Sales & Marketing)"
+    },
+    {
+      id: 6,
       name: "Mr. Ali Ejaz",
       role: "DIRECTOR OPERATIONS",
       description: "Ali Ijaz is a Diploma Holder in Material Sciences and is having over five years of experience in Staff Administration and Production Supervision."
     },
     {
-      id: 4,
+      id: 7,
       name: "Mr. Mohammad Ali",
       role: "MANAGER ADMIN"
     },
     {
-      id: 5,
+      id: 8,
       name: "Mr. Irfan Baloch",
       role: "ACCOUNTS OFFICER"
     },
     {
-      id: 6,
+      id: 9,
       name: "Mr. Zulfiqar Ali",
       role: "AUTOCAD OPERATOR / 3D GRAPHICS EXPERT"
     },
     {
-      id: 7,
+      id: 10,
       name: "Mr. Imran Chatha",
       role: "MANAGER MARKETING"
     },
     {
-      id: 8,
+      id: 11,
       name: "Mr. Waqas Ali",
       role: "MARKETING EXECUTIVE"
     },
     {
-      id: 9,
+      id: 12,
       name: "Mr. Umer Malik",
       role: "MARKETING EXECUTIVE"
     },
     {
-      id: 10,
+      id: 13,
       name: "Mr. Saghir Ahmed",
       role: "MARKETING EXECUTIVE"
     },
     {
-      id: 11,
+      id: 14,
       name: "Mr. Muzaffar Shah",
       role: "SITE SUPERVISOR"
     },
     {
-      id: 12,
+      id: 15,
       name: "Mr. Mohd Taqseer",
       role: "CNC TECHNOLOGIST"
     },
     {
-      id: 13,
+      id: 16,
       name: "Mr. Mohammad Imran",
       role: "FOREMAN"
     },
     {
-      id: 14,
+      id: 17,
       name: "Mr. Sabbir Hussain",
       role: "SUPERVISOR"
     },
     {
-      id: 15,
+      id: 18,
       name: "Mr. Mohd Ali",
       role: "QUALITY CONTROL MANAGER"
     }
