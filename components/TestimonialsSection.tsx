@@ -148,18 +148,18 @@ export default function TestimonialsSection() {
           {/* Controls */}
           <button
             onClick={scrollPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-6 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-400 hover:text-[#EB5324] hover:shadow-xl z-20 transition-all focus:outline-none"
+            className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-400 hover:text-[#EB5324] hover:shadow-xl z-20 transition-all focus:outline-none"
             aria-label="Previous review"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
           </button>
 
           <button
             onClick={scrollNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-6 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-400 hover:text-[#EB5324] hover:shadow-xl z-20 transition-all focus:outline-none"
+            className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-400 hover:text-[#EB5324] hover:shadow-xl z-20 transition-all focus:outline-none"
             aria-label="Next review"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
           </button>
 
           {/* Cards Wrapper (Embla Viewport) */}
