@@ -51,13 +51,13 @@ const premiumExecutiveDropdownItems: NavItem[] = [
 const navItems: NavItem[] = [
   { name: "Home", href: "/" },
   { name: "Projects", href: "/projects" },
-  { name: "Certificates", href: "/certificates" },
   { name: "Products", href: "/products", dropdown: productDropdownItems },
   { name: "Workstations", dropdown: workstationDropdownItems },
   { name: "Premium Executive Range", dropdown: premiumExecutiveDropdownItems },
   { name: "Field of Expertise", href: "/field-of-expertise" },
   { name: "HB Clientage", href: "/clientage" },
   { name: "Management & Employees", href: "/management-employees" },
+  { name: "Certificates", href: "/certificates" },
 ];
 
 export default function Navbar() {
