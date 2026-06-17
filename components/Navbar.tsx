@@ -36,10 +36,9 @@ const productDropdownItems: NavItem[] = [
 ];
 
 const workstationDropdownItems: NavItem[] = [
-  { name: "Open Plan", href: "/products/modern-workstation-systems" },
-  { name: "Private Cabin", href: "/products/lotus-30-office-workstations" },
-  { name: "Cubicle Systems", href: "/workspace-solutions" },
-  { name: "Standing Desks", href: "/our-workstations" },
+  { name: "Modern Workstation", href: "/products/modern-workstation-systems" },
+  { name: "Lotus 30 Workstation", href: "/products/lotus-30-office-workstations" },
+  { name: "Workspace Solutions", href: "/workspace-solutions" },
 ];
 
 const premiumExecutiveDropdownItems: NavItem[] = [
