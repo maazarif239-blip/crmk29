@@ -47,7 +47,7 @@ export default function ProductSidebar({ activeCategory, assistanceText }: Produ
       <h3 className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-8 hidden md:block">
         Categories
       </h3>
-      <ul className="space-y-5">
+      <ul className="space-y-2">
         {categories.map((cat) => {
           const isActive = activeCategory === cat.href;
           return (

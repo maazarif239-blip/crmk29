@@ -61,7 +61,7 @@ export default function GlobalFooter() {
           <h4 className="text-white font-bold uppercase tracking-wider mb-6 text-[11px]">
             Company
           </h4>
-          <ul className="space-y-3">
+          <ul className="space-y-1.5">
             <li>
               <Link href="/about" className="hover:text-white transition-colors">
                 About Us
@@ -85,7 +85,7 @@ export default function GlobalFooter() {
           <h4 className="text-white font-bold uppercase tracking-wider mb-6 text-[11px]">
             Legal
           </h4>
-          <ul className="space-y-3">
+          <ul className="space-y-1.5">
             <li>
               <Link href="/privacy-policy" className="hover:text-white transition-colors">
                 Privacy Policy
@@ -109,7 +109,7 @@ export default function GlobalFooter() {
           <h4 className="text-white font-bold uppercase tracking-wider mb-6 text-[11px]">
             Contact Us
           </h4>
-          <address className="not-italic space-y-3">
+          <address className="not-italic space-y-1.5">
             <p>
               Plot 56 Service Rd N, I-10/3,
               <br />

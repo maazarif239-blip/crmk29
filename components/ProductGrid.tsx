@@ -20,7 +20,7 @@ export default function ProductGrid({ children }: ProductGridProps) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasAnimated.current.has(entry.target)) {
+          if (entry.isIntersecting && !hasAnimated.current.has(entry.target) && entry.target instanceof HTMLElement) {
             // Mark as animated
             hasAnimated.current.add(entry.target);
             
