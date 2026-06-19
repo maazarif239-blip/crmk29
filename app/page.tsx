@@ -230,60 +230,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Category Showcase */}
-      <section className="py-24 bg-[#FAFAFA]">
-        <div className="max-w-[1200px] mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
-              {
-                title: "Revolving Chairs",
-                tagline: "Designed for productivity",
-                image: "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?auto=format&fit=crop&w=900&q=80",
-                fallback: "https://picsum.photos/900/550?random=1"
-              },
-              {
-                title: "Cafeteria Furniture",
-                tagline: "Redefine your space",
-                image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=900&q=80",
-                fallback: "https://picsum.photos/900/550?random=2"
-              },
-              {
-                title: "Study Tables",
-                tagline: "Style you want",
-                image: "https://images.unsplash.com/photo-1518455027359-f3f11187ba17?auto=format&fit=crop&w=900&q=80",
-                fallback: "https://picsum.photos/900/550?random=3"
-              },
-              {
-                title: "Sofa Sets",
-                tagline: "Comfort you deserve",
-                image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80",
-                fallback: "https://picsum.photos/900/550?random=4"
-              }
-            ].map((category, i) => (
-              <Link key={i} href="/products" className="group block">
-                <div className="relative h-[550px] overflow-hidden rounded-xl shadow-xl bg-[#E5E0D8]">
-                  <img
-                    src={category.image}
-                    alt={category.title}
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = category.fallback;
-                    }}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
-                  <div className="absolute bottom-12 left-12 z-20">
-                    <h3 className="text-3xl md:text-4xl font-bold text-white mb-3 font-serif">{category.title}</h3>
-                    <p className="text-gray-200 text-base font-medium">{category.tagline}</p>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Frequently Asked Questions */}
       <section className="py-24 max-w-[1000px] mx-auto px-4">
         <div className="text-center mb-16">
