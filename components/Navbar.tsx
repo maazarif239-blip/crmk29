@@ -4,6 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useCallback, useRef } from "react";
+import { Sun, Moon } from "lucide-react";
+import { useTheme } from "./ThemeProvider";
 
 type NavItem = {
   name: string;
@@ -91,6 +93,7 @@ const navItems: NavItem[] = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { theme, toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -163,8 +166,8 @@ export default function Navbar() {
       <header 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled 
-            ? "bg-white shadow-md py-3" 
-            : "bg-white py-5"
+            ? "bg-white dark:bg-gray-900 shadow-md py-3" 
+            : "bg-white dark:bg-gray-900 py-5"
         }`}
       >
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -204,7 +207,7 @@ export default function Navbar() {
                           className={`text-xs font-medium transition-colors duration-200 relative flex items-center gap-1 py-4 ${
                             isActive(item.href) || activeDropdown === item.name
                               ? "text-[#E8500A]"
-                              : "text-gray-600 hover:text-[#E8500A]"
+                              : "text-gray-600 dark:text-gray-300 hover:text-[#E8500A]"
                           }`}
                         >
                           {item.name}
@@ -227,7 +230,7 @@ export default function Navbar() {
                           className={`text-xs font-medium transition-colors duration-200 relative flex items-center gap-1 py-4 cursor-pointer ${
                             activeDropdown === item.name
                               ? "text-[#E8500A]"
-                              : "text-gray-600 hover:text-[#E8500A]"
+                              : "text-gray-600 dark:text-gray-300 hover:text-[#E8500A]"
                           }`}
                         >
                           {item.name}
@@ -249,19 +252,19 @@ export default function Navbar() {
 
                       {/* Dropdown Menu */}
                       {activeDropdown === item.name && (
-                        <div className={`absolute top-full left-0 mt-0 w-56 bg-white rounded-lg shadow-xl border border-gray-100 py-2 z-50 animate-in fade-in zoom-in-95 duration-200 flex flex-col ${item.leftDropdown && item.rightDropdown ? "w-auto overflow-hidden" : "max-h-[70vh] overflow-y-auto"}`}>
+                        <div className={`absolute top-full left-0 mt-0 w-56 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-100 dark:border-gray-700 py-2 z-50 animate-in fade-in zoom-in-95 duration-200 flex flex-col ${item.leftDropdown && item.rightDropdown ? "w-auto overflow-hidden" : "max-h-[70vh] overflow-y-auto"}`}>
                           {item.leftDropdown && item.rightDropdown ? (
                             <div className="grid grid-cols-2 gap-0 w-[560px]">
                               {/* Left Column */}
-                              <div className="border-r border-gray-100">
+                              <div className="border-r border-gray-100 dark:border-gray-700">
                                 {item.leftDropdown.map((subItem) => (
                                   <Link
                                     key={subItem.href!}
                                     href={subItem.href!}
                                     className={`block px-4 py-2 text-xs transition-colors duration-200 ${
                                       isActive(subItem.href!)
-                                        ? "bg-orange-50 text-[#E8500A]"
-                                        : "text-gray-600 hover:bg-gray-50 hover:text-[#E8500A]"
+                                        ? "bg-orange-50 dark:bg-orange-900/30 text-[#E8500A]"
+                                        : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-[#E8500A]"
                                     }`}
                                     onClick={() => setActiveDropdown(null)}
                                   >
@@ -277,8 +280,8 @@ export default function Navbar() {
                                     href={subItem.href!}
                                     className={`block px-4 py-2 text-xs transition-colors duration-200 ${
                                       isActive(subItem.href!)
-                                        ? "bg-orange-50 text-[#E8500A]"
-                                        : "text-gray-600 hover:bg-gray-50 hover:text-[#E8500A]"
+                                        ? "bg-orange-50 dark:bg-orange-900/30 text-[#E8500A]"
+                                        : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-[#E8500A]"
                                     }`}
                                     onClick={() => setActiveDropdown(null)}
                                   >
@@ -294,8 +297,8 @@ export default function Navbar() {
                                 href={subItem.href!}
                                 className={`block px-4 py-2 text-xs transition-colors duration-200 ${
                                   isActive(subItem.href!)
-                                    ? "bg-orange-50 text-[#E8500A]"
-                                    : "text-gray-600 hover:bg-gray-50 hover:text-[#E8500A]"
+                                    ? "bg-orange-50 dark:bg-orange-900/30 text-[#E8500A]"
+                                    : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-[#E8500A]"
                                 }`}
                                 onClick={() => setActiveDropdown(null)}
                               >
@@ -316,7 +319,7 @@ export default function Navbar() {
                     className={`text-xs font-medium transition-colors duration-200 relative group whitespace-nowrap py-4 ${
                       isActive(item.href!)
                         ? "text-[#E8500A]"
-                        : "text-gray-600 hover:text-[#E8500A]"
+                        : "text-gray-600 dark:text-gray-300 hover:text-[#E8500A]"
                     }`}
                   >
                     {item.name}
@@ -330,8 +333,22 @@ export default function Navbar() {
               })}
             </nav>
 
-            {/* Desktop Contact Us Button - Right */}
-            <div className="hidden xl:flex shrink-0">
+            {/* Desktop Controls (Theme Toggle + Contact Us) */}
+            <div className="hidden xl:flex items-center gap-3 shrink-0">
+              {/* Theme Toggle - Desktop */}
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
+              >
+                {theme === "light" ? (
+                  <Moon className="w-5 h-5" />
+                ) : (
+                  <Sun className="w-5 h-5" />
+                )}
+              </button>
+
+              {/* Contact Us Button */}
               <Link
                 href="/contact"
                 className="bg-[#E8500A] text-white px-6 py-2 rounded-full text-xs font-bold hover:bg-[#d64a09] transition-colors whitespace-nowrap shadow-sm hover:shadow-md"
@@ -340,31 +357,47 @@ export default function Navbar() {
               </Link>
             </div>
 
-            {/* Mobile Hamburger Button */}
-            <button
-              type="button"
-              className="xl:hidden p-2 text-gray-700 hover:text-[#E8500A] transition-colors"
-              onClick={toggleMobileMenu}
-              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={isMobileMenuOpen}
-            >
-              {isMobileMenuOpen ? (
-                <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </button>
+            {/* Mobile Controls */}
+            <div className="xl:hidden flex items-center gap-2">
+              {/* Theme Toggle - Mobile */}
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
+              >
+                {theme === "light" ? (
+                  <Moon className="w-6 h-6" />
+                ) : (
+                  <Sun className="w-6 h-6" />
+                )}
+              </button>
+
+              {/* Mobile Hamburger Button */}
+              <button
+                type="button"
+                className="p-2 text-gray-700 dark:text-gray-300 hover:text-[#E8500A] transition-colors"
+                onClick={toggleMobileMenu}
+                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isMobileMenuOpen}
+              >
+                {isMobileMenuOpen ? (
+                  <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                ) : (
+                  <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </header>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-x-0 top-0 bottom-0 z-40 bg-white pt-20 px-4 xl:hidden animate-in slide-in-from-top duration-300 flex flex-col overflow-y-auto pb-6">
+        <div className="fixed inset-x-0 top-0 bottom-0 z-40 bg-white dark:bg-gray-900 pt-20 px-4 xl:hidden animate-in slide-in-from-top duration-300 flex flex-col overflow-y-auto pb-6">
           <nav className="flex flex-col gap-2 flex-1">
             {navItems.map((item) => {
               if (item.dropdown) {
@@ -373,8 +406,8 @@ export default function Navbar() {
                     <div 
                       className={`w-full text-left px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors duration-200 ${
                         (item.href && isActive(item.href)) || activeDropdown === item.name
-                          ? "bg-orange-50 text-[#E8500A]"
-                          : "text-gray-600 hover:bg-gray-50"
+                          ? "bg-orange-50 dark:bg-orange-900/30 text-[#E8500A]"
+                          : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
                       }`}
                     >
                       <div className="flex items-center justify-between">
@@ -396,7 +429,7 @@ export default function Navbar() {
                             e.stopPropagation();
                             setActiveDropdown((prev) => (prev === item.name ? null : item.name));
                           }}
-                          className="p-1 -mr-1 rounded hover:bg-orange-100 transition-colors"
+                          className="p-1 -mr-1 rounded hover:bg-orange-100 dark:hover:bg-orange-900/30 transition-colors"
                         >
                           <svg
                             className={`w-5 h-5 transition-transform duration-200 ${activeDropdown === item.name ? "rotate-180" : ""}`}
@@ -423,8 +456,8 @@ export default function Navbar() {
                             }}
                             className={`px-4 py-2 rounded text-xs transition-colors duration-200 ${
                               isActive(subItem.href!)
-                                ? "bg-orange-50 text-[#E8500A]"
-                                : "text-gray-500 hover:bg-gray-50 hover:text-[#E8500A]"
+                                ? "bg-orange-50 dark:bg-orange-900/30 text-[#E8500A]"
+                                : "text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-[#E8500A]"
                             }`}
                           >
                             {subItem.name}
@@ -443,8 +476,8 @@ export default function Navbar() {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={`px-4 py-3 rounded-lg text-sm font-bold uppercase tracking-wider transition-all duration-200 ${
                     isActive(item.href!)
-                      ? "bg-orange-50 text-[#E8500A]"
-                      : "text-gray-600 hover:bg-gray-50"
+                      ? "bg-orange-50 dark:bg-orange-900/30 text-[#E8500A]"
+                      : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
                   }`}
                 >
                   {item.name}
