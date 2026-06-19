@@ -15,7 +15,7 @@ type NavItem = {
   rightDropdown?: NavItem[];
 };
 
-const productDropdownLeftItems: NavItem[] = [
+const productDropdownItems: NavItem[] = [
   { name: "Study Chairs", href: "/study-chairs" },
   { name: "Office Chairs", href: "/office-chairs" },
   { name: "Visitors Chairs", href: "/visitor-chairs" },
@@ -30,9 +30,6 @@ const productDropdownLeftItems: NavItem[] = [
   { name: "Ant Chair", href: "/ant-chairs" },
   { name: "Library Shelves", href: "/library-shelves" },
   { name: "Modern Workstation System", href: "/products/modern-workstation-systems" },
-];
-
-const productDropdownRightItems: NavItem[] = [
   { name: "Lotus 30 Office Workstation", href: "/products/lotus-30-office-workstations" },
   { name: "Executive Chairs", href: "/products/executive-chairs" },
   { name: "Paris Chairs", href: "/products/paris-chairs" },
@@ -75,12 +72,7 @@ const navItems: NavItem[] = [
   { 
     name: "Products", 
     href: "/products", 
-    dropdown: [
-      { name: "left", href: "#" },
-      { name: "right", href: "#" }
-    ],
-    leftDropdown: productDropdownLeftItems,
-    rightDropdown: productDropdownRightItems,
+    dropdown: productDropdownItems,
   },
   { name: "Workstations", dropdown: workstationDropdownItems },
   { name: "Premium Executive Range", dropdown: premiumExecutiveDropdownItems },
@@ -251,63 +243,36 @@ export default function Navbar() {
                       )}
 
                       {/* Dropdown Menu */}
-                      {activeDropdown === item.name && (
-                        <div className={`absolute top-full left-0 mt-0 w-56 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-100 dark:border-gray-700 py-2 z-50 animate-in fade-in zoom-in-95 duration-200 flex flex-col ${item.leftDropdown && item.rightDropdown ? "w-auto overflow-hidden" : "max-h-[70vh] overflow-y-auto"}`}>
-                          {item.leftDropdown && item.rightDropdown ? (
-                            <div className="grid grid-cols-2 gap-0 w-[560px]">
-                              {/* Left Column */}
-                              <div className="border-r border-gray-100 dark:border-gray-700">
-                                {item.leftDropdown.map((subItem) => (
-                                  <Link
-                                    key={subItem.href!}
-                                    href={subItem.href!}
-                                    className={`block px-4 py-2 text-xs transition-colors duration-200 ${
-                                      isActive(subItem.href!)
-                                        ? "bg-orange-50 dark:bg-orange-900/30 text-[#E8500A]"
-                                        : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-[#E8500A]"
-                                    }`}
-                                    onClick={() => setActiveDropdown(null)}
-                                  >
-                                    {subItem.name}
-                                  </Link>
-                                ))}
-                              </div>
-                              {/* Right Column */}
-                              <div>
-                                {item.rightDropdown.map((subItem) => (
-                                  <Link
-                                    key={subItem.href!}
-                                    href={subItem.href!}
-                                    className={`block px-4 py-2 text-xs transition-colors duration-200 ${
-                                      isActive(subItem.href!)
-                                        ? "bg-orange-50 dark:bg-orange-900/30 text-[#E8500A]"
-                                        : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-[#E8500A]"
-                                    }`}
-                                    onClick={() => setActiveDropdown(null)}
-                                  >
-                                    {subItem.name}
-                                  </Link>
-                                ))}
-                              </div>
-                            </div>
-                          ) : (
-                            item.dropdown?.map((subItem) => (
-                              <Link
-                                key={subItem.href!}
-                                href={subItem.href!}
-                                className={`block px-4 py-2 text-xs transition-colors duration-200 ${
-                                  isActive(subItem.href!)
-                                    ? "bg-orange-50 dark:bg-orange-900/30 text-[#E8500A]"
-                                    : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-[#E8500A]"
-                                }`}
-                                onClick={() => setActiveDropdown(null)}
-                              >
-                                {subItem.name}
-                              </Link>
-                            ))
-                          )}
+                      <div className={`absolute top-full left-0 mt-0 min-w-[260px] bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 overflow-hidden z-50 transition-all duration-300 ${
+                        activeDropdown === item.name
+                          ? "opacity-100 visible translate-y-0"
+                          : "opacity-0 invisible translate-y-2 pointer-events-none"
+                      }`}>
+                        <div className="flex flex-col max-h-[70vh] overflow-y-auto">
+                          {item.dropdown?.map((subItem, index) => (
+                            <Link
+                              key={subItem.href!}
+                              href={subItem.href!}
+                              className={`group flex items-center justify-between px-5 py-3 text-sm font-normal text-gray-700 dark:text-gray-200 transition-all duration-200 ${
+                                index !== item.dropdown!.length - 1 ? "border-b border-gray-100 dark:border-gray-700" : ""
+                              } hover:bg-gray-50 dark:hover:bg-gray-700`}
+                              onClick={() => setActiveDropdown(null)}
+                            >
+                              <span>{subItem.name}</span>
+                              {subItem.dropdown && (
+                                <svg
+                                  className="w-4 h-4 text-gray-400 dark:text-gray-500 transition-colors duration-200 group-hover:text-gray-600 dark:group-hover:text-gray-300"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                              )}
+                            </Link>
+                          ))}
                         </div>
-                      )}
+                      </div>
                     </div>
                   );
                 }
