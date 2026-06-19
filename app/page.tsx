@@ -1,8 +1,66 @@
+"use client";
+
 import Image from 'next/image';
 import Link from 'next/link';
 import TestimonialsSection from '../components/TestimonialsSection';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Home() {
+  const signatureSliderRef = useRef<HTMLDivElement>(null);
+  const signatureTranslateRef = useRef(0);
+
+  // Signature Collection Slider
+  const slideSignature = (direction: "left" | "right") => {
+    if (!signatureSliderRef.current) return;
+    const slideWidth = 320;
+    const maxTranslate = (signatureSliderRef.current.children.length - 4) * slideWidth;
+
+    if (direction === "left") {
+      signatureTranslateRef.current = Math.max(signatureTranslateRef.current - slideWidth, 0);
+    } else {
+      signatureTranslateRef.current = Math.min(signatureTranslateRef.current + slideWidth, maxTranslate);
+    }
+
+    signatureSliderRef.current.style.transform = `translateX(-${signatureTranslateRef.current}px)`;
+  };
+
+  // FAQ Accordion
+  const toggleFaq = (index: number) => {
+    const content = document.getElementById(`faq-content-${index}`);
+    const icon = document.getElementById(`faq-icon-${index}`);
+
+    if (content && icon) {
+      if (content.classList.contains("hidden")) {
+        content.classList.remove("hidden");
+        icon.style.transform = "rotate(180deg)";
+      } else {
+        content.classList.add("hidden");
+        icon.style.transform = "rotate(0deg)";
+      }
+    }
+  };
+
+  useEffect(() => {
+    // Attach FAQ listeners
+    for (let i = 0; i < 6; i++) {
+      const btn = document.getElementById(`faq-btn-${i}`);
+      if (btn) {
+        btn.addEventListener("click", () => toggleFaq(i));
+      }
+    }
+
+    // Attach slider listeners
+    const leftBtn = document.getElementById("slider-left");
+    const rightBtn = document.getElementById("slider-right");
+
+    if (leftBtn) {
+      leftBtn.addEventListener("click", () => slideSignature("left"));
+    }
+    if (rightBtn) {
+      rightBtn.addEventListener("click", () => slideSignature("right"));
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans">
       
@@ -111,6 +169,192 @@ export default function Home() {
 
       {/* Testimonials */}
       <TestimonialsSection />
+
+      {/* Signature Collection */}
+      <section className="py-24 max-w-[1200px] mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">Signature Collection</h2>
+          <p className="text-gray-500 text-sm md:text-base max-w-2xl mx-auto">
+            Explore our best-selling furniture crafted for modern spaces.
+          </p>
+        </div>
+
+        <div className="relative">
+          <div className="overflow-hidden">
+            <div ref={signatureSliderRef} className="flex gap-8 transition-transform duration-500" id="signature-slider">
+              {[
+                { name: "Executive Office Chair", price: "Rs. 45,000", image: "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?auto=format&fit=crop&w=400&q=80" },
+                { name: "Modern Study Desk", price: "Rs. 35,000", image: "https://images.unsplash.com/photo-1518455027359-f3f11187ba17?auto=format&fit=crop&w=400&q=80" },
+                { name: "Premium Sofa Set", price: "Rs. 120,000", image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=80" },
+                { name: "Ergonomic Visitor Chair", price: "Rs. 18,000", image: "https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&w=400&q=80" },
+                { name: "Wooden Conference Table", price: "Rs. 85,000", image: "https://images.unsplash.com/photo-1535230366096-f1280536613a?auto=format&fit=crop&w=400&q=80" },
+              ].map((product, i) => (
+                <div key={i} className="min-w-[280px] md:min-w-[28%] group">
+                  <div className="relative overflow-hidden rounded-lg mb-4 bg-[#F5F5F5] aspect-[4/3] flex items-center justify-center">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100">
+                      <button className="bg-white text-gray-900 px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-sm shadow-lg hover:bg-[#EB5324] hover:text-white transition-all duration-200">
+                        Quick View
+                      </button>
+                      <button className="bg-[#EB5324] text-white px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-sm shadow-lg hover:bg-[#d4481f] transition-all duration-200">
+                        Add to Cart
+                      </button>
+                    </div>
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-1">{product.name}</h3>
+                  <p className="text-[#EB5324] font-bold text-sm">{product.price}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <button
+            id="slider-left"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-900 hover:bg-[#EB5324] hover:text-white transition-all duration-200 z-10"
+          >
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button
+            id="slider-right"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-900 hover:bg-[#EB5324] hover:text-white transition-all duration-200 z-10"
+          >
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      {/* Category Showcase */}
+      <section className="py-24 bg-[#FAFAFA]">
+        <div className="max-w-[1200px] mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              {
+                title: "Revolving Chairs",
+                tagline: "Designed for productivity",
+                image: "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?auto=format&fit=crop&w=600&q=80"
+              },
+              {
+                title: "Cafeteria Furniture",
+                tagline: "Redefine your space",
+                image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=600&q=80"
+              },
+              {
+                title: "Study Tables",
+                tagline: "Style you want",
+                image: "https://images.unsplash.com/photo-1518455027359-f3f11187ba17?auto=format&fit=crop&w=600&q=80"
+              },
+              {
+                title: "Sofa Sets",
+                tagline: "Comfort you deserve",
+                image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80"
+              }
+            ].map((category, i) => (
+              <Link key={i} href="/products" className="group">
+                <div className="relative h-[350px] overflow-hidden rounded-xl shadow-lg">
+                  <img
+                    src={category.image}
+                    alt={category.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+                  <div className="absolute bottom-8 left-8 z-10">
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 font-serif">{category.title}</h3>
+                    <p className="text-gray-200 text-sm">{category.tagline}</p>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Frequently Asked Questions */}
+      <section className="py-24 max-w-[1000px] mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">Frequently Asked Questions</h2>
+        </div>
+
+        <div className="space-y-4">
+          {[
+            {
+              question: "Product Quality",
+              answer: "All our products are crafted with premium materials and undergo rigorous quality checks to ensure durability and excellence. We use only the finest wood, upholstery, and hardware in every piece."
+            },
+            {
+              question: "Customization",
+              answer: "We offer complete customization for most of our products. You can choose from a variety of finishes, fabrics, sizes, and configurations to match your exact requirements."
+            },
+            {
+              question: "Delivery & Shipping",
+              answer: "We provide delivery across Pakistan with professional handling. Shipping times vary by location, typically within 7-14 business days. Expedited delivery options are available upon request."
+            },
+            {
+              question: "Order Issues",
+              answer: "For any order-related issues, our customer support team is available 24/7. We'll help you track your order, resolve any problems, or make changes to your order as needed."
+            },
+            {
+              question: "Returns, Exchanges & Refunds",
+              answer: "We offer a 7-day return policy for defective products. Exchanges are easy within 14 days. Refunds are processed quickly after inspection and verification."
+            },
+            {
+              question: "Installation & Support",
+              answer: "Professional installation services are available for all our products. Our team ensures proper assembly and setup. We also provide comprehensive after-sales support."
+            }
+          ].map((faq, i) => (
+            <div key={i} className="border border-gray-200 rounded-lg overflow-hidden bg-white">
+              <button
+                id={`faq-btn-${i}`}
+                className="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors duration-200"
+              >
+                <span className="text-sm md:text-base font-bold text-gray-900">{faq.question}</span>
+                <svg id={`faq-icon-${i}`} className="w-6 h-6 text-gray-400 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div id={`faq-content-${i}`} className="hidden px-6 pb-6">
+                <p className="text-gray-500 text-sm md:text-base leading-relaxed">{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Our Prestigious Clients */}
+      <section className="py-24 bg-[#FAFAFA]">
+        <div className="max-w-[1200px] mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">Our Prestigious Clients</h2>
+          </div>
+
+          <div className="relative overflow-hidden">
+            <div className="flex gap-8 animate-marquee items-center" id="clients-slider">
+              {[
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/200px-Microsoft_logo.svg.png",
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/200px-Google_2015_logo.svg.png",
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/200px-Amazon_logo.svg.png",
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/132px-Apple_logo_black.svg.png",
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/200px-Facebook_Logo_%282019%29.png",
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/200px-Microsoft_logo.svg.png",
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/200px-Google_2015_logo.svg.png",
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/200px-Amazon_logo.svg.png",
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/132px-Apple_logo_black.svg.png",
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/200px-Facebook_Logo_%282019%29.png",
+              ].map((logo, i) => (
+                <div key={i} className="flex-shrink-0 w-[180px] md:w-[200px] bg-white rounded-lg shadow-sm p-6 flex items-center justify-center h-[120px]">
+                  <img src={logo} alt={`Client ${i + 1}`} className="max-h-[60px] object-contain opacity-60 hover:opacity-100 transition-opacity duration-300" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
     </div>
   );
