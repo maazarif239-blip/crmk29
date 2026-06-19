@@ -137,6 +137,11 @@ export default function Products() {
     name: 'Laboratory Solution',
     href: '/products/laboratory-solutions',
     image: '/skylab-page-1.png'
+  },
+  {
+    name: 'Coffee Sets',
+    href: '/products/coffee-sets',
+    image: '/54e5b0c3-88a1-4b2f-a846-b92291f11681.png'
   }
 ].map((cat, i) => (
             <Link href={cat.href} key={i} className="group cursor-pointer relative aspect-square overflow-hidden bg-gray-100 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300">

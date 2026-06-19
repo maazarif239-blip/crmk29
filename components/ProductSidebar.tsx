@@ -33,6 +33,7 @@ export default function ProductSidebar({ activeCategory, assistanceText }: Produ
     { name: "Executive Furniture", href: "/products/executive-furniture" },
     { name: "Manager Chair Collection", href: "/products/manager-chair-collection" },
     { name: "Laboratory Solution", href: "/products/laboratory-solutions" },
+    { name: "Coffee Sets", href: "/products/coffee-sets" },
   ];
 
   const sidebarContent = (
