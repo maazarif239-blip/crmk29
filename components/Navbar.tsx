@@ -55,12 +55,20 @@ const premiumExecutiveDropdownItems: NavItem[] = [
   { name: "VIP Lounges", href: "/sofas-lounge-seating" },
 ];
 
+const coffeeLoungeDropdownItems: NavItem[] = [
+  { name: "Coffee Sets", href: "/products/coffee-sets" },
+  { name: "Coffee Tables", href: "/products/coffee-tables" },
+  { name: "Coffee Chairs", href: "/products/coffee-chairs" },
+  { name: "Stools", href: "/products/stools" },
+];
+
 const navItems: NavItem[] = [
   { name: "Home", href: "/" },
   { name: "Projects", href: "/projects" },
   { name: "Products", href: "/products", dropdown: productDropdownItems },
   { name: "Workstations", dropdown: workstationDropdownItems },
   { name: "Premium Executive Range", dropdown: premiumExecutiveDropdownItems },
+  { name: "Coffe Lounge", dropdown: coffeeLoungeDropdownItems },
   { name: "Field of Expertise", href: "/field-of-expertise" },
   { name: "HB Clientage", href: "/clientage" },
   { name: "Management & Employees", href: "/management-employees" },
