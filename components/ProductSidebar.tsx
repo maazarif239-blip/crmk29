@@ -44,7 +44,7 @@ export default function ProductSidebar({ activeCategory, assistanceText }: Produ
 
   const sidebarContent = (
     <>
-      <h3 className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-8 hidden md:block">
+      <h3 className="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-8 hidden md:block">
         Categories
       </h3>
       <ul className="space-y-2">
@@ -58,7 +58,7 @@ export default function ProductSidebar({ activeCategory, assistanceText }: Produ
                 className={`flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider transition-colors ${
                   isActive
                     ? "text-[#E04E1B]"
-                    : "text-gray-500 hover:text-gray-900"
+                    : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                 }`}
               >
                 {isActive && (
@@ -71,14 +71,14 @@ export default function ProductSidebar({ activeCategory, assistanceText }: Produ
         })}
       </ul>
 
-      <div className="mt-12 bg-[#F9F9F9] p-6 border border-gray-100 shadow-sm hidden md:block">
-        <h4 className="text-[13px] font-bold text-gray-900 mb-2">Need Assistance?</h4>
-        <p className="text-gray-500 text-[11px] leading-relaxed mb-6">
+      <div className="mt-12 bg-[#F9F9F9] dark:bg-gray-800 p-6 border border-gray-100 dark:border-gray-700 shadow-sm hidden md:block">
+        <h4 className="text-[13px] font-bold text-gray-900 dark:text-white mb-2">Need Assistance?</h4>
+        <p className="text-gray-500 dark:text-gray-400 text-[11px] leading-relaxed mb-6">
           {assistanceText || "Our design team is ready to help you plan your workspace."}
         </p>
         <Link
           href="/contact"
-          className="block text-center w-full border border-gray-300 bg-white text-gray-700 py-2.5 text-[10px] font-bold uppercase tracking-widest hover:bg-gray-50 transition-colors"
+          className="block text-center w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 py-2.5 text-[10px] font-bold uppercase tracking-widest hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
         >
           Contact Experts
         </Link>
@@ -92,7 +92,7 @@ export default function ProductSidebar({ activeCategory, assistanceText }: Produ
       <div className="md:hidden mb-6 flex justify-end">
         <button
           onClick={() => setIsMobileOpen(true)}
-          className="flex items-center gap-2 bg-gray-100 text-gray-900 px-4 py-2 text-[11px] font-bold uppercase tracking-wider rounded"
+          className="flex items-center gap-2 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white px-4 py-2 text-[11px] font-bold uppercase tracking-wider rounded transition-colors"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -113,12 +113,12 @@ export default function ProductSidebar({ activeCategory, assistanceText }: Produ
             className="absolute inset-0 bg-black/50"
             onClick={() => setIsMobileOpen(false)}
           />
-          <div className="relative bg-white w-full rounded-t-2xl p-6 shadow-xl max-h-[80vh] overflow-y-auto">
+          <div className="relative bg-white dark:bg-gray-900 w-full rounded-t-2xl p-6 shadow-xl max-h-[80vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-6">
-              <span className="font-bold uppercase tracking-wider text-gray-900 text-sm">Categories</span>
+              <span className="font-bold uppercase tracking-wider text-gray-900 dark:text-white text-sm">Categories</span>
               <button
                 onClick={() => setIsMobileOpen(false)}
-                className="text-gray-500 hover:text-gray-900 p-2 bg-gray-100 rounded-full"
+                className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white p-2 bg-gray-100 dark:bg-gray-800 rounded-full transition-colors"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

@@ -93,7 +93,7 @@ const navItems: NavItem[] = [
 
 export default function Navbar() {
   const pathname = usePathname();
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme, isMounted } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -336,17 +336,19 @@ export default function Navbar() {
             {/* Desktop Controls (Theme Toggle + Contact Us) */}
             <div className="hidden xl:flex items-center gap-2 shrink-0">
               {/* Theme Toggle - Desktop */}
-              <button
-                onClick={toggleTheme}
-                className="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
-              >
-                {theme === "light" ? (
-                  <Moon className="w-5 h-5" />
-                ) : (
-                  <Sun className="w-5 h-5" />
-                )}
-              </button>
+              {isMounted && (
+                <button
+                  onClick={toggleTheme}
+                  className="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
+                  aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
+                >
+                  {theme === "light" ? (
+                    <Moon className="w-5 h-5" />
+                  ) : (
+                    <Sun className="w-5 h-5" />
+                  )}
+                </button>
+              )}
 
               {/* Contact Us Button */}
               <Link
@@ -360,17 +362,19 @@ export default function Navbar() {
             {/* Mobile Controls */}
             <div className="xl:hidden flex items-center gap-2">
               {/* Theme Toggle - Mobile */}
-              <button
-                onClick={toggleTheme}
-                className="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
-              >
-                {theme === "light" ? (
-                  <Moon className="w-6 h-6" />
-                ) : (
-                  <Sun className="w-6 h-6" />
-                )}
-              </button>
+              {isMounted && (
+                <button
+                  onClick={toggleTheme}
+                  className="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
+                  aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
+                >
+                  {theme === "light" ? (
+                    <Moon className="w-6 h-6" />
+                  ) : (
+                    <Sun className="w-6 h-6" />
+                  )}
+                </button>
+              )}
 
               {/* Mobile Hamburger Button */}
               <button
