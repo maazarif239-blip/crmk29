@@ -167,6 +167,11 @@ export default function Products() {
     name: 'Almirahs',
     href: '/products/almirahs',
     image: '/f8f1903f-3a91-4b6f-9db7-6efdb338568b.png'
+  },
+  {
+    name: 'Rostrum',
+    href: '/products/rostrum',
+    image: '/28ce7446-3163-4f23-95ab-ce914cc78217.png'
   }
 ].map((cat, i) => (
             <Link href={cat.href} key={i} className="group cursor-pointer relative aspect-square overflow-hidden bg-gray-100 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300">

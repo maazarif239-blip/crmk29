@@ -44,6 +44,19 @@
   .animate-pulse-dot {
     animation: pulse-dot 1.5s ease-in-out infinite;
   }
+
+  /* Product Card Staggered Reveal */
+  .product-card-hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition-delay: var(--card-delay, 0s);
+  }
+
+  .product-card-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 :root {

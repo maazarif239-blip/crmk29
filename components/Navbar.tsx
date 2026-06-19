@@ -39,6 +39,7 @@ const productDropdownItems: NavItem[] = [
   { name: "Stools", href: "/products/stools" },
   { name: "Office Sets", href: "/products/office-sets" },
   { name: "Almirahs", href: "/products/almirahs" },
+  { name: "Rostrum", href: "/products/rostrum" },
 ];
 
 const workstationDropdownItems: NavItem[] = [
