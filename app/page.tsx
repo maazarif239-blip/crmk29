@@ -167,9 +167,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <TestimonialsSection />
-
       {/* Signature Collection */}
       <section className="py-24 max-w-[1200px] mx-auto px-4">
         <div className="text-center mb-16">
@@ -280,6 +277,9 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* Testimonials */}
+      <TestimonialsSection />
 
       {/* Our Prestigious Clients */}
       <section className="py-24 bg-[#FAFAFA]">
