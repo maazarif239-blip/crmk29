@@ -9,9 +9,11 @@ type NavItem = {
   name: string;
   href?: string;
   dropdown?: NavItem[];
+  leftDropdown?: NavItem[];
+  rightDropdown?: NavItem[];
 };
 
-const productDropdownItems: NavItem[] = [
+const productDropdownLeftItems: NavItem[] = [
   { name: "Study Chairs", href: "/study-chairs" },
   { name: "Office Chairs", href: "/office-chairs" },
   { name: "Visitors Chairs", href: "/visitor-chairs" },
@@ -26,6 +28,9 @@ const productDropdownItems: NavItem[] = [
   { name: "Ant Chair", href: "/ant-chairs" },
   { name: "Library Shelves", href: "/library-shelves" },
   { name: "Modern Workstation System", href: "/products/modern-workstation-systems" },
+];
+
+const productDropdownRightItems: NavItem[] = [
   { name: "Lotus 30 Office Workstation", href: "/products/lotus-30-office-workstations" },
   { name: "Executive Chairs", href: "/products/executive-chairs" },
   { name: "Paris Chairs", href: "/products/paris-chairs" },
@@ -65,7 +70,16 @@ const coffeeLoungeDropdownItems: NavItem[] = [
 const navItems: NavItem[] = [
   { name: "Home", href: "/" },
   { name: "Projects", href: "/projects" },
-  { name: "Products", href: "/products", dropdown: productDropdownItems },
+  { 
+    name: "Products", 
+    href: "/products", 
+    dropdown: [
+      { name: "left", href: "#" },
+      { name: "right", href: "#" }
+    ],
+    leftDropdown: productDropdownLeftItems,
+    rightDropdown: productDropdownRightItems,
+  },
   { name: "Workstations", dropdown: workstationDropdownItems },
   { name: "Premium Executive Range", dropdown: premiumExecutiveDropdownItems },
   { name: "Coffe Lounge", dropdown: coffeeLoungeDropdownItems },
@@ -235,21 +249,60 @@ export default function Navbar() {
 
                       {/* Dropdown Menu */}
                       {activeDropdown === item.name && (
-                        <div className="absolute top-full left-0 mt-0 w-56 bg-white rounded-lg shadow-xl border border-gray-100 py-2 z-50 animate-in fade-in zoom-in-95 duration-200 max-h-[70vh] overflow-y-auto flex flex-col">
-                          {item.dropdown.map((subItem) => (
-                            <Link
-                              key={subItem.href!}
-                              href={subItem.href!}
-                              className={`block px-4 py-2 text-xs transition-colors duration-200 ${
-                                isActive(subItem.href!)
-                                  ? "bg-orange-50 text-[#E8500A]"
-                                  : "text-gray-600 hover:bg-gray-50 hover:text-[#E8500A]"
-                              }`}
-                              onClick={() => setActiveDropdown(null)}
-                            >
-                              {subItem.name}
-                            </Link>
-                          ))}
+                        <div className={`absolute top-full left-0 mt-0 w-56 bg-white rounded-lg shadow-xl border border-gray-100 py-2 z-50 animate-in fade-in zoom-in-95 duration-200 flex flex-col ${item.leftDropdown && item.rightDropdown ? "w-auto overflow-hidden" : "max-h-[70vh] overflow-y-auto"}`}>
+                          {item.leftDropdown && item.rightDropdown ? (
+                            <div className="grid grid-cols-2 gap-0 w-[560px]">
+                              {/* Left Column */}
+                              <div className="border-r border-gray-100">
+                                {item.leftDropdown.map((subItem) => (
+                                  <Link
+                                    key={subItem.href!}
+                                    href={subItem.href!}
+                                    className={`block px-4 py-2 text-xs transition-colors duration-200 ${
+                                      isActive(subItem.href!)
+                                        ? "bg-orange-50 text-[#E8500A]"
+                                        : "text-gray-600 hover:bg-gray-50 hover:text-[#E8500A]"
+                                    }`}
+                                    onClick={() => setActiveDropdown(null)}
+                                  >
+                                    {subItem.name}
+                                  </Link>
+                                ))}
+                              </div>
+                              {/* Right Column */}
+                              <div>
+                                {item.rightDropdown.map((subItem) => (
+                                  <Link
+                                    key={subItem.href!}
+                                    href={subItem.href!}
+                                    className={`block px-4 py-2 text-xs transition-colors duration-200 ${
+                                      isActive(subItem.href!)
+                                        ? "bg-orange-50 text-[#E8500A]"
+                                        : "text-gray-600 hover:bg-gray-50 hover:text-[#E8500A]"
+                                    }`}
+                                    onClick={() => setActiveDropdown(null)}
+                                  >
+                                    {subItem.name}
+                                  </Link>
+                                ))}
+                              </div>
+                            </div>
+                          ) : (
+                            item.dropdown?.map((subItem) => (
+                              <Link
+                                key={subItem.href!}
+                                href={subItem.href!}
+                                className={`block px-4 py-2 text-xs transition-colors duration-200 ${
+                                  isActive(subItem.href!)
+                                    ? "bg-orange-50 text-[#E8500A]"
+                                    : "text-gray-600 hover:bg-gray-50 hover:text-[#E8500A]"
+                                }`}
+                                onClick={() => setActiveDropdown(null)}
+                              >
+                                {subItem.name}
+                              </Link>
+                            ))
+                          )}
                         </div>
                       )}
                     </div>
