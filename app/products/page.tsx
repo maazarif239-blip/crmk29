@@ -152,6 +152,11 @@ export default function Products() {
     name: 'Coffee Chairs',
     href: '/products/coffee-chairs',
     image: '/10004.png'
+  },
+  {
+    name: 'Stools',
+    href: '/products/stools',
+    image: '/10010.png'
   }
 ].map((cat, i) => (
             <Link href={cat.href} key={i} className="group cursor-pointer relative aspect-square overflow-hidden bg-gray-100 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300">
