@@ -170,7 +170,7 @@ export default function Navbar() {
             : "bg-white dark:bg-gray-900 py-5"
         }`}
       >
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1600px] mx-auto px-3 md:px-4 lg:px-6">
           <div className="flex items-center justify-between h-full relative">
             {/* Logo - Left */}
             <Link
@@ -191,7 +191,7 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Navigation - Center */}
-            <nav className="hidden xl:flex items-center justify-center flex-1 gap-5 px-4" ref={dropdownRef}>
+            <nav className="hidden xl:flex items-center justify-center flex-1 gap-3 2xl:gap-5 px-2 2xl:px-4" ref={dropdownRef}>
               {navItems.map((item) => {
                 if (item.dropdown) {
                   return (
@@ -208,7 +208,7 @@ export default function Navbar() {
                             isActive(item.href) || activeDropdown === item.name
                               ? "text-[#E8500A]"
                               : "text-gray-600 dark:text-gray-300 hover:text-[#E8500A]"
-                          }`}
+                          } ${item.name === "Premium Executive Range" || item.name === "Coffe Lounge" ? "" : "whitespace-nowrap"}`}
                         >
                           {item.name}
                           <svg
@@ -231,7 +231,7 @@ export default function Navbar() {
                             activeDropdown === item.name
                               ? "text-[#E8500A]"
                               : "text-gray-600 dark:text-gray-300 hover:text-[#E8500A]"
-                          }`}
+                          } ${item.name === "Premium Executive Range" || item.name === "Coffe Lounge" ? "" : "whitespace-nowrap"}`}
                         >
                           {item.name}
                           <svg
@@ -334,7 +334,7 @@ export default function Navbar() {
             </nav>
 
             {/* Desktop Controls (Theme Toggle + Contact Us) */}
-            <div className="hidden xl:flex items-center gap-3 shrink-0">
+            <div className="hidden xl:flex items-center gap-2 shrink-0">
               {/* Theme Toggle - Desktop */}
               <button
                 onClick={toggleTheme}
