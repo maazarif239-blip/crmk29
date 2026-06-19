@@ -71,6 +71,113 @@ const signatureProducts = [
   }
 ];
 
+// Signature Collection product data
+const signatureProducts = [
+  {
+    name: "Prestige Executive Chair",
+    image: "/230 (6).png",
+    href: "/products/executive-chairs"
+  },
+  {
+    name: "Ravi Executive Desk",
+    image: "/240(1).png",
+    href: "/products/executive-furniture"
+  },
+  {
+    name: "HB-Sofa TQ-01",
+    image: "/270 (1).png",
+    href: "/sofas-lounge-seating"
+  },
+  {
+    name: "Director-J",
+    image: "/Screenshot 2026-06-13 215230.png",
+    href: "/products/director-chair"
+  },
+  {
+    name: "Odyssey Conference Table",
+    image: "/g.png",
+    href: "/conference-meeting-tables"
+  },
+  {
+    name: "Stylish Coffee Table With Fabric Chairs",
+    image: "/7fc2df0a-b586-4b2f-a495-b96d1f6a4664.png",
+    href: "/products/coffee-tables"
+  },
+  {
+    name: "Office Filing Almirah",
+    image: "/8a71e3c2-b151-4768-aa5a-22cb4be0b797.jpg",
+    href: "/products/almirahs"
+  },
+  {
+    name: "Modern Wooden Rostrum",
+    image: "/28ce7446-3163-4f23-95ab-ce914cc78217.png",
+    href: "/products/rostrum"
+  },
+  {
+    name: "Tilton Copper and Wood Table Lamp",
+    image: "/10.jpg",
+    href: "/products"
+  },
+  {
+    name: "Presidential Executive Desk Series",
+    image: "/Screenshot 2026-06-16 163413.png",
+    href: "/products/executive-furniture"
+  },
+  {
+    name: "R-Type Workstation",
+    image: "/Screenshot 2026-06-16 184319.png",
+    href: "/products/modern-workstation-systems"
+  },
+  {
+    name: "Hudson-J",
+    image: "/245 (2).png",
+    href: "/products/executive-chairs"
+  }
+];
+
+// Client logo data
+const clientLogos = [
+  { name: "HBL", filename: "hbl.png" },
+  { name: "Askari Bank", filename: "askari-bank.png" },
+  { name: "UBL", filename: "ubl.png" },
+  { name: "Citibank", filename: "citibank.png" },
+  { name: "MCB Bank", filename: "mcb-bank.png" },
+  { name: "Mobilink", filename: "mobilink.png" },
+  { name: "FFC", filename: "ffc.png" },
+  { name: "Pepsi", filename: "pepsi.png" },
+  { name: "Pak Turk Ict", filename: "pak-turk-ict.png" },
+  { name: "Bata", filename: "bata.png" },
+  { name: "Engro Corp", filename: "engro-corp.png" },
+  { name: "Care", filename: "care.png" },
+  { name: "WWF Pakistan", filename: "wwf-pakistan.png" },
+  { name: "Shell", filename: "shell.png" },
+  { name: "CDM", filename: "cdm.png" },
+  { name: "Weatherford", filename: "weatherford.png" },
+  { name: "Mercy Corps", filename: "mercy-corps.png" },
+  { name: "Telenor", filename: "telenor.png" },
+  { name: "Lucky Cement", filename: "lucky-cement.png" },
+  { name: "Nestle", filename: "nestle.png" },
+  { name: "Deloitte", filename: "deloitte.png" },
+  { name: "Schlumberger", filename: "schlumberger.png" },
+  { name: "Coffey", filename: "coffey.png" },
+  { name: "Total", filename: "total.png" },
+  { name: "Alstom", filename: "alstom.png" },
+  { name: "World Health Organization", filename: "world-health-organization.png" },
+  { name: "Gul Ahmed", filename: "gul-ahmed.png" },
+  { name: "Scomi", filename: "scomi.png" },
+  { name: "Huawei", filename: "huawei.png" },
+  { name: "Attock Petroleum", filename: "attock-petroleum.png" },
+  { name: "Hoechst", filename: "hoechst.png" },
+  { name: "Subsea", filename: "subsea.png" },
+  { name: "Zong", filename: "zong.png" },
+  { name: "EasyPaisa", filename: "easypaisa.png" },
+  { name: "Ufone", filename: "ufone.png" },
+  { name: "MOL", filename: "mol.png" },
+  { name: "PTCL", filename: "ptcl.png" },
+  { name: "Wateen", filename: "wateen.png" },
+  { name: "BASF", filename: "basf.png" }
+];
+
 export default function Home() {
   // Initialize Embla Carousel for Signature Collection
   const [emblaRef, emblaApi] = useEmblaCarousel(
@@ -85,6 +192,21 @@ export default function Home() {
       }
     },
     [Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true })]
+  );
+
+  // Initialize Embla Carousel for Clients
+  const [clientsEmblaRef, clientsEmblaApi] = useEmblaCarousel(
+    {
+      loop: true,
+      align: 'start',
+      slidesToScroll: 1,
+      containScroll: 'trimSnaps',
+      breakpoints: {
+        '(min-width: 768px)': { slidesToScroll: 3 },
+        '(min-width: 1024px)': { slidesToScroll: 6 }
+      }
+    },
+    [Autoplay({ delay: 2500, stopOnInteraction: false, stopOnMouseEnter: true })]
   );
 
   // FAQ Accordion
@@ -233,16 +355,30 @@ export default function Home() {
             <div className="flex gap-4 md:gap-6 lg:gap-8">
               {signatureProducts.map((product, i) => (
                 <div key={i} className="min-w-0 flex-[0_0_100%] md:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(25%-24px)]">
-                  <Link href={product.href} className="group block">
-                    <div className="relative overflow-hidden rounded-lg mb-4 bg-[#F5F5F5] aspect-[4/3] flex items-center justify-center">
+                  <Link 
+                    href={product.href} 
+                    className="group flex flex-col h-full bg-white rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_30px_-6px_rgba(0,0,0,0.12)] transition-all duration-300 overflow-hidden border border-gray-50"
+                  >
+                    {/* Image Container */}
+                    <div 
+                      className="relative w-full overflow-hidden bg-gray-50"
+                      style={{ aspectRatio: '4/5' }}
+                    >
                       <Image
-                        src={product.image}
+                        src={encodeURI(product.image)}
                         alt={product.name}
                         fill
-                        className="object-contain mix-blend-multiply p-4 transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
                       />
                     </div>
-                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{product.name}</h3>
+                    
+                    {/* Text Container */}
+                    <div className="flex flex-col flex-1 px-6 py-7 items-center justify-center text-center">
+                      <h3 className="text-[15px] font-medium text-gray-800 transition-colors duration-300">
+                        {product.name}
+                      </h3>
+                    </div>
                   </Link>
                 </div>
               ))}
@@ -323,22 +459,47 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">Our Prestigious Clients</h2>
           </div>
 
-          <div className="relative overflow-hidden">
-            <div className="flex gap-8 animate-marquee items-center" id="clients-slider">
-              {[
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/200px-Microsoft_logo.svg.png",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/200px-Google_2015_logo.svg.png",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/200px-Amazon_logo.svg.png",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/132px-Apple_logo_black.svg.png",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/200px-Facebook_Logo_%282019%29.png",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/200px-Microsoft_logo.svg.png",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/200px-Google_2015_logo.svg.png",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/200px-Amazon_logo.svg.png",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/132px-Apple_logo_black.svg.png",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/200px-Facebook_Logo_%282019%29.png",
-              ].map((logo, i) => (
-                <div key={i} className="flex-shrink-0 w-[180px] md:w-[200px] bg-white rounded-lg shadow-sm p-6 flex items-center justify-center h-[120px]">
-                  <img src={logo} alt={`Client ${i + 1}`} className="max-h-[60px] object-contain opacity-60 hover:opacity-100 transition-opacity duration-300" />
+          <div className="overflow-hidden" ref={clientsEmblaRef}>
+            <div className="flex">
+              {clientLogos.map((client, i) => (
+                <div key={i} className="flex-[0_0_50%] md:flex-[0_0_33.33%] lg:flex-[0_0_16.66%] px-3 md:px-4">
+                  <div className="flex-shrink-0 w-full bg-white rounded-xl shadow-sm p-6 flex items-center justify-center h-[140px] group transition-all duration-300">
+                    <img 
+                      src={`/clients/${client.filename}`} 
+                      alt={client.name} 
+                      className="max-h-[70px] object-contain opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" 
+                      onError={(e) => {
+                        // Fallback if logo not found
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const placeholder = document.createElement('div');
+                        placeholder.className = 'flex items-center justify-center w-full h-full text-gray-400 text-sm font-bold';
+                        placeholder.textContent = client.name;
+                        target.parentNode?.appendChild(placeholder);
+                      }}
+                    />
+                  </div>
+                </div>
+              ))}
+              {/* Duplicate for infinite loop effect */}
+              {clientLogos.map((client, i) => (
+                <div key={`duplicate-${i}`} className="flex-[0_0_50%] md:flex-[0_0_33.33%] lg:flex-[0_0_16.66%] px-3 md:px-4">
+                  <div className="flex-shrink-0 w-full bg-white rounded-xl shadow-sm p-6 flex items-center justify-center h-[140px] group transition-all duration-300">
+                    <img 
+                      src={`/clients/${client.filename}`} 
+                      alt={client.name} 
+                      className="max-h-[70px] object-contain opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" 
+                      onError={(e) => {
+                        // Fallback if logo not found
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const placeholder = document.createElement('div');
+                        placeholder.className = 'flex items-center justify-center w-full h-full text-gray-400 text-sm font-bold';
+                        placeholder.textContent = client.name;
+                        target.parentNode?.appendChild(placeholder);
+                      }}
+                    />
+                  </div>
                 </div>
               ))}
             </div>
