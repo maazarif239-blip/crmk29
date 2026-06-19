@@ -35,7 +35,7 @@ const productDropdownItems: NavItem[] = [
   { name: "Laboratory Solution", href: "/products/laboratory-solutions" },
   { name: "Coffee Sets", href: "/products/coffee-sets" },
   { name: "Coffee Tables", href: "/products/coffee-tables" },
-  { name: "Dining Chairs", href: "/products/dining-chairs" },
+  { name: "Coffee Chairs", href: "/products/coffee-chairs" },
 ];
 
 const workstationDropdownItems: NavItem[] = [

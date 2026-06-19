@@ -149,8 +149,8 @@ export default function Products() {
     image: '/10001.png'
   },
   {
-    name: 'Dining Chairs',
-    href: '/products/dining-chairs',
+    name: 'Coffee Chairs',
+    href: '/products/coffee-chairs',
     image: '/10004.png'
   }
 ].map((cat, i) => (

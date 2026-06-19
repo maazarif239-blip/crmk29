@@ -3,7 +3,7 @@ import Link from 'next/link';
 import ProductSidebar from '@/components/ProductSidebar';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
 
-export default function DiningChairs() {
+export default function CoffeeChairs() {
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
       
@@ -14,7 +14,7 @@ export default function DiningChairs() {
           <div className="absolute inset-0 z-0">
             <img 
               src="/10004.png" 
-              alt="Dining Chairs" 
+              alt="Coffee Chairs" 
               className="w-full h-full object-cover opacity-80"
             />
             {/* Center gradient for text readability */}
@@ -23,10 +23,10 @@ export default function DiningChairs() {
 
           <div className="relative z-10 w-full text-center px-4">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight font-serif">
-              Dining Chairs
+              Coffee Chairs
             </h1>
             <p className="text-gray-200 text-[13px] md:text-sm font-medium leading-relaxed max-w-2xl mx-auto">
-              Elegant dining chairs designed for restaurants, cafes, and modern homes.
+              Elegant coffee chairs designed for restaurants, cafes, and modern homes.
             </p>
           </div>
         </section>
@@ -36,7 +36,7 @@ export default function DiningChairs() {
       <section className="max-w-[1200px] mx-auto px-4 py-12 flex flex-col md:flex-row gap-16">
         
         {/* Sidebar */}
-        <ProductSidebar activeCategory="/products/dining-chairs" />
+        <ProductSidebar activeCategory="/products/coffee-chairs" />
 
         {/* Product Grid */}
         <div className="flex-1">
