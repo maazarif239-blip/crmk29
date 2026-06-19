@@ -19,23 +19,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   // Prevent hydration errors by only setting state after mount
   useEffect(() => {
     setIsMounted(true);
+    // Initialize theme from documentElement (already set by the script in head)
+    const root = window.document.documentElement;
+    const initialTheme = root.classList.contains("dark") ? "dark" : "light";
+    setTheme(initialTheme);
   }, []);
-
-  useEffect(() => {
-    if (!isMounted) return;
-
-    // Check localStorage first
-    const savedTheme = localStorage.getItem("theme") as Theme | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
-    } else {
-      // Use system preference
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-      setTheme(prefersDark ? "dark" : "light");
-    }
-  }, [isMounted]);
 
   useEffect(() => {
     if (!isMounted) return;
