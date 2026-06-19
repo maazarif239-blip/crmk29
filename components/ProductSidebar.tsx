@@ -37,6 +37,8 @@ export default function ProductSidebar({ activeCategory, assistanceText }: Produ
     { name: "Coffee Tables", href: "/products/coffee-tables" },
     { name: "Coffee Chairs", href: "/products/coffee-chairs" },
     { name: "Stools", href: "/products/stools" },
+    { name: "Office Sets", href: "/products/office-sets" },
+    { name: "Almirahs", href: "/products/almirahs" },
   ];
 
   const sidebarContent = (
