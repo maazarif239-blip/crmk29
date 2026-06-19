@@ -1,60 +1,36 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+import type { ThemeProviderProps } from "next-themes";
+import { useTheme as useNextTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
-type Theme = "light" | "dark";
-
-type ThemeContextType = {
-  theme: Theme;
-  toggleTheme: () => void;
-  isMounted: boolean;
-};
-
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
-
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("light");
-  const [isMounted, setIsMounted] = useState(false);
-
-  // Prevent hydration errors by only setting state after mount
-  useEffect(() => {
-    setIsMounted(true);
-    // Initialize theme from documentElement (already set by the script in head)
-    const root = window.document.documentElement;
-    const initialTheme = root.classList.contains("dark") ? "dark" : "light";
-    setTheme(initialTheme);
-  }, []);
-
-  useEffect(() => {
-    if (!isMounted) return;
-
-    // Apply theme to document
-    const root = window.document.documentElement;
-    if (theme === "dark") {
-      root.classList.add("dark");
-    } else {
-      root.classList.remove("dark");
-    }
-    // Save to localStorage
-    localStorage.setItem("theme", theme);
-  }, [theme, isMounted]);
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  };
-
-  // Always provide the context, even before mounted
+export function ThemeProvider({
+  children,
+  ...props
+}: ThemeProviderProps) {
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, isMounted }}>
+    <NextThemesProvider {...props}>
       {children}
-    </ThemeContext.Provider>
+    </NextThemesProvider>
   );
 }
 
 export function useTheme() {
-  const context = useContext(ThemeContext);
-  if (context === undefined) {
-    throw new Error("useTheme must be used within a ThemeProvider");
-  }
-  return context;
+  const { theme, setTheme, systemTheme } = useNextTheme();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
+  return {
+    theme: theme || "light",
+    toggleTheme,
+    isMounted,
+  };
 }
