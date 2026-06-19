@@ -3,26 +3,89 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import TestimonialsSection from '../components/TestimonialsSection';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
+
+// Signature Collection product data
+const signatureProducts = [
+  {
+    name: "Prestige Executive Chair",
+    image: "/230 (6).png",
+    href: "/products/executive-chairs"
+  },
+  {
+    name: "Ravi Executive Desk",
+    image: "/240(1).png",
+    href: "/products/executive-furniture"
+  },
+  {
+    name: "HB-Sofa TQ-01",
+    image: "/270 (1).png",
+    href: "/sofas-lounge-seating"
+  },
+  {
+    name: "Director-J",
+    image: "/Screenshot 2026-06-13 215230.png",
+    href: "/products/director-chair"
+  },
+  {
+    name: "Odyssey Conference Table",
+    image: "/g.png",
+    href: "/conference-meeting-tables"
+  },
+  {
+    name: "Stylish Coffee Table With Fabric Chairs",
+    image: "/7fc2df0a-b586-4b8d-a495-b96d1f6a4664.png",
+    href: "/products/coffee-tables"
+  },
+  {
+    name: "Office Filing Almirah",
+    image: "/8a71e3c2-b151-4768-aa5a-22cb4be0b797.jpg",
+    href: "/products/almirahs"
+  },
+  {
+    name: "Modern Wooden Rostrum",
+    image: "/28ce7446-3163-4f23-95ab-ce914cc78217.png",
+    href: "/products/rostrum"
+  },
+  {
+    name: "Tilton Copper and Wood Table Lamp",
+    image: "/10.jpg",
+    href: "/products"
+  },
+  {
+    name: "Presidential Executive Desk Series",
+    image: "/Screenshot 2026-06-16 175937.png",
+    href: "/products/executive-furniture"
+  },
+  {
+    name: "R-Type Workstation",
+    image: "/Screenshot 2026-06-16 184319.png",
+    href: "/products/modern-workstation-systems"
+  },
+  {
+    name: "Hudson-J",
+    image: "/245 (2).png",
+    href: "/products/executive-chairs"
+  }
+];
 
 export default function Home() {
-  const signatureSliderRef = useRef<HTMLDivElement>(null);
-  const signatureTranslateRef = useRef(0);
-
-  // Signature Collection Slider
-  const slideSignature = (direction: "left" | "right") => {
-    if (!signatureSliderRef.current) return;
-    const slideWidth = 320;
-    const maxTranslate = (signatureSliderRef.current.children.length - 4) * slideWidth;
-
-    if (direction === "left") {
-      signatureTranslateRef.current = Math.max(signatureTranslateRef.current - slideWidth, 0);
-    } else {
-      signatureTranslateRef.current = Math.min(signatureTranslateRef.current + slideWidth, maxTranslate);
-    }
-
-    signatureSliderRef.current.style.transform = `translateX(-${signatureTranslateRef.current}px)`;
-  };
+  // Initialize Embla Carousel for Signature Collection
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      loop: true,
+      align: 'start',
+      slidesToScroll: 1,
+      containScroll: 'trimSnaps',
+      breakpoints: {
+        '(min-width: 768px)': { slidesToScroll: 2 },
+        '(min-width: 1024px)': { slidesToScroll: 4 }
+      }
+    },
+    [Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true })]
+  );
 
   // FAQ Accordion
   const toggleFaq = (index: number) => {
@@ -47,17 +110,6 @@ export default function Home() {
       if (btn) {
         btn.addEventListener("click", () => toggleFaq(i));
       }
-    }
-
-    // Attach slider listeners
-    const leftBtn = document.getElementById("slider-left");
-    const rightBtn = document.getElementById("slider-right");
-
-    if (leftBtn) {
-      leftBtn.addEventListener("click", () => slideSignature("left"));
-    }
-    if (rightBtn) {
-      rightBtn.addEventListener("click", () => slideSignature("right"));
     }
   }, []);
 
@@ -177,52 +229,32 @@ export default function Home() {
         </div>
 
         <div className="relative">
-          <div className="overflow-hidden">
-            <div ref={signatureSliderRef} className="flex gap-8 transition-transform duration-500" id="signature-slider">
-              {[
-                { name: "Executive Office Chair", price: "Rs. 45,000", image: "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?auto=format&fit=crop&w=400&q=80" },
-                { name: "Modern Study Desk", price: "Rs. 35,000", image: "https://images.unsplash.com/photo-1518455027359-f3f11187ba17?auto=format&fit=crop&w=400&q=80" },
-                { name: "Premium Sofa Set", price: "Rs. 120,000", image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=80" },
-                { name: "Ergonomic Visitor Chair", price: "Rs. 18,000", image: "https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&w=400&q=80" },
-                { name: "Wooden Conference Table", price: "Rs. 85,000", image: "https://images.unsplash.com/photo-1535230366096-f1280536613a?auto=format&fit=crop&w=400&q=80" },
-              ].map((product, i) => (
-                <div key={i} className="min-w-[280px] md:min-w-[28%] group">
-                  <div className="relative overflow-hidden rounded-lg mb-4 bg-[#F5F5F5] aspect-[4/3] flex items-center justify-center">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-1">{product.name}</h3>
-                  <p className="text-[#EB5324] font-bold text-sm">{product.price}</p>
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex gap-4 md:gap-6 lg:gap-8">
+              {signatureProducts.map((product, i) => (
+                <div key={i} className="min-w-0 flex-[0_0_100%] md:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(25%-24px)]">
+                  <Link href={product.href} className="group block">
+                    <div className="relative overflow-hidden rounded-lg mb-4 bg-[#F5F5F5] aspect-[4/3] flex items-center justify-center">
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        className="object-contain mix-blend-multiply p-4 transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{product.name}</h3>
+                  </Link>
                 </div>
               ))}
             </div>
           </div>
-          <button
-            id="slider-left"
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-900 hover:bg-[#EB5324] hover:text-white transition-all duration-200 z-10"
-          >
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <button
-            id="slider-right"
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-900 hover:bg-[#EB5324] hover:text-white transition-all duration-200 z-10"
-          >
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
         </div>
 
         {/* View All Button */}
         <div className="text-center mt-12">
           <Link
             href="/products"
-            className="inline-flex items-center gap-2 border border-gray-300 bg-white text-gray-900 px-8 py-3 text-[11px] font-bold uppercase tracking-wider hover:bg-gray-50 hover:border-gray-400 transition-all duration-300"
+            className="inline-flex items-center gap-2 border border-gray-300 bg-white dark:bg-gray-800 text-gray-900 dark:text-white px-8 py-3 text-[11px] font-bold uppercase tracking-wider hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-400 transition-all duration-300"
           >
             View All
             <span>→</span>
