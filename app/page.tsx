@@ -193,14 +193,6 @@ export default function Home() {
                       alt={product.name}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100">
-                      <button className="bg-white text-gray-900 px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-sm shadow-lg hover:bg-[#EB5324] hover:text-white transition-all duration-200">
-                        Quick View
-                      </button>
-                      <button className="bg-[#EB5324] text-white px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-sm shadow-lg hover:bg-[#d4481f] transition-all duration-200">
-                        Add to Cart
-                      </button>
-                    </div>
                   </div>
                   <h3 className="text-lg font-bold text-gray-900 mb-1">{product.name}</h3>
                   <p className="text-[#EB5324] font-bold text-sm">{product.price}</p>
@@ -224,6 +216,17 @@ export default function Home() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
+        </div>
+
+        {/* View All Button */}
+        <div className="text-center mt-12">
+          <Link
+            href="/products"
+            className="inline-flex items-center gap-2 border border-gray-300 bg-white text-gray-900 px-8 py-3 text-[11px] font-bold uppercase tracking-wider hover:bg-gray-50 hover:border-gray-400 transition-all duration-300"
+          >
+            View All
+            <span>→</span>
+          </Link>
         </div>
       </section>
 
