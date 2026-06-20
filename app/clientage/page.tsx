@@ -99,14 +99,7 @@ export default function HBClientage() {
                 <p className="text-gray-500 text-[13px] leading-relaxed flex-1">
                   {featured.overview}
                 </p>
-                <div className="mt-6 pt-6 border-t border-gray-50">
-                  <span className="text-[#EB5324] text-[11px] font-bold uppercase tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all">
-                    Read Case Study
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </span>
-                </div>
+
               </div>
             </div>
           ))}
@@ -121,27 +114,8 @@ export default function HBClientage() {
               <h2 className="text-3xl font-serif text-gray-900 mb-2">Our Esteemed Clients</h2>
               <div className="w-12 h-0.5 bg-[#EB5324]"></div>
             </div>
-            
-            {/* Search and Filter UI */}
-            <div className="flex gap-4">
-              <select className="border border-gray-200 rounded-sm px-4 py-2.5 text-sm focus:outline-none focus:border-[#EB5324] bg-white text-gray-600">
-                <option value="">All Industries</option>
-                <option value="Banking & Finance">Banking & Finance</option>
-                <option value="NGO">NGO / INGO</option>
-                <option value="Oil & Gas">Oil & Gas</option>
-                <option value="Telecom">Telecom & Tech</option>
-              </select>
-              <div className="relative">
-                <input 
-                  type="text" 
-                  placeholder="Search clients..." 
-                  className="w-full md:w-64 border border-gray-200 rounded-sm px-4 py-2.5 text-sm focus:outline-none focus:border-[#EB5324] focus:ring-1 focus:ring-[#EB5324] transition-colors"
-                />
-                <svg className="w-4 h-4 text-gray-400 absolute right-3 top-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </div>
-            </div>
+
+
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">

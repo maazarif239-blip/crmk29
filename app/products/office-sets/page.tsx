@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import ProductSidebar from '@/components/ProductSidebar';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
+import ProductSidebar from '@/components/ProductSidebar';
 
 export default function OfficeSets() {
   return (
@@ -13,7 +13,7 @@ export default function OfficeSets() {
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <img 
-              src="/10028.png" 
+              src="/10016.jpeg" 
               alt="Office Sets" 
               className="w-full h-full object-cover opacity-80"
             />
@@ -26,7 +26,7 @@ export default function OfficeSets() {
               Office Sets
             </h1>
             <p className="text-gray-200 text-[13px] md:text-sm font-medium leading-relaxed max-w-2xl mx-auto">
-              Complete office furniture sets designed to create cohesive, professional workspaces with matching desks, chairs, and storage solutions.
+              Modern office table and seating combinations designed for executive cabins, workspaces, and collaborative environments.
             </p>
           </div>
         </section>
@@ -44,50 +44,50 @@ export default function OfficeSets() {
             
             {[
               {
-                name: 'Executive Office Set',
-                image: '/240(1).png',
-                description: 'Premium executive office set featuring a spacious desk, ergonomic chair, and matching storage for a complete professional workspace.',
+                name: 'Executive Office Table Set',
+                image: '/10016.jpeg',
+                description: 'Transform your executive suite with this masterfully crafted office table set. It blends expansive work surfaces with integrated storage and premium seating, creating an environment that balances sophisticated aesthetics with everyday functionality for senior leadership.',
               },
               {
-                name: 'Manager Office Set',
-                image: '/Screenshot 2026-06-16 165302.png',
-                description: 'Complete manager office set with elegant design, perfect for creating a sophisticated and functional workspace.',
+                name: 'Modern Office Workstation Set',
+                image: '/10008.jpeg',
+                description: 'Engineered for dynamic and collaborative environments, this modern workstation set delivers clean lines and ergonomic comfort. Featuring adaptable desk configurations and matching supportive seating, it optimizes space while maintaining a high-end corporate look.',
               },
               {
-                name: 'Modern Office Set',
-                image: '/Screenshot 2026-06-16 164657.png',
-                description: 'Contemporary office set with clean lines and modern aesthetics, ideal for forward-thinking workplaces.',
+                name: 'Premium Office Table Set',
+                image: '/10009.jpeg',
+                description: 'A striking combination of elegant materials and precise engineering, this premium set redefines workspace luxury. It provides an expansive primary desk alongside coordinated seating, ensuring a commanding presence that caters to intense work sessions and formal meetings alike.',
               },
               {
-                name: 'Compact Office Set',
-                image: '/Screenshot 2026-06-16 164809.png',
-                description: 'Space-saving compact office set designed for smaller offices and home workspaces without compromising style.',
+                name: 'Contemporary Office Desk Set',
+                image: '/10003.jpeg',
+                description: 'Designed for the modern professional, this contemporary desk set pairs minimalist architecture with uncompromising durability. The integrated layout includes sleek table surfaces and ergonomic chairs, perfectly suited for private cabins or focused management zones.',
               },
               {
-                name: 'Luxury Office Set',
-                image: '/230 (1).png',
-                description: 'High-end luxury office set with premium materials and finishes, perfect for executive suites and upscale offices.',
+                name: 'Manager Office Table Set',
+                image: '/10004.jpeg',
+                description: 'This comprehensive manager set is tailored for mid-to-senior level executives who require both style and substance. It seamlessly integrates a robust primary desk with comfortable guest seating, establishing a welcoming yet professional atmosphere for daily operations and team reviews.',
               },
               {
-                name: 'Home Office Set',
-                image: '/Screenshot 2026-06-16 164124.png',
-                description: 'Versatile home office set that blends seamlessly with home decor while providing professional functionality.',
+                name: 'Luxury Executive Office Set',
+                image: '/10005.jpeg',
+                description: 'Exuding prestige and authority, this luxury executive set represents the pinnacle of corporate furniture design. With richly finished table surfaces, distinguished high-back seating, and refined details, it instantly elevates any corner office to an impressive leadership space.',
               },
               {
-                name: 'Open Plan Office Set',
-                image: '/Screenshot 2026-06-16 163413.png',
-                description: 'Modular open plan office set designed for collaborative work environments and shared spaces.',
+                name: 'Modern Corporate Office Set',
+                image: '/10012.jpg',
+                description: 'Versatile and highly functional, this corporate office set is built to meet the rigorous demands of fast-paced business environments. It offers a cohesive pairing of a durable work desk and supportive seating, bringing a unified and professional aesthetic to any department.',
               },
               {
-                name: 'Traditional Office Set',
-                image: '/Screenshot 2026-06-16 164439.png',
-                description: 'Classic traditional office set with timeless design elements, perfect for established professional settings.',
+                name: 'Executive Office Furniture Set',
+                image: '/10010.jpg',
+                description: 'Crafted to make a lasting impression, this cohesive furniture set integrates a spacious executive desk with premium ergonomic chairs. The refined finish and solid construction provide a durable, high-performance workspace designed specifically for top-tier management.',
               },
               {
-                name: 'Minimalist Office Set',
-                image: '/129.png',
-                description: 'Sleek minimalist office set with clean aesthetics and functional design, ideal for modern minimalistic workspaces.',
-              },
+                name: 'Premium Workspace Furniture Set',
+                image: '/10007.jpg',
+                description: 'This premium set delivers an all-encompassing workspace solution with meticulously coordinated desk and seating components. Built to enhance both productivity and office aesthetics, it stands as a testament to quality craftsmanship and thoughtful architectural design.',
+              }
             ].map((product, i) => (
               <div key={i} className="group flex flex-col cursor-pointer h-full">
                 <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden transition-colors group-hover:bg-[#f0f0f0]">

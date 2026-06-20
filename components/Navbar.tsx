@@ -155,8 +155,8 @@ export default function Navbar() {
  <header 
  className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
  isScrolled 
- ? "bg-white shadow-md py-3" 
- : "bg-white py-5"
+ ? "bg-white  shadow-md py-3" 
+ : "bg-white  py-5"
  }`}
  >
  <div className="max-w-[1600px] mx-auto px-3 md:px-4 lg:px-6">
@@ -174,7 +174,7 @@ export default function Navbar() {
  className="object-contain transition-all duration-300"
  priority
  />
- <span className="text-lg font-normal tracking-[0.046875em] leading-none whitespace-nowrap text-[#222222]" style={{ fontFamily: 'var(--font-marcellus)', textRendering: 'optimizeLegibility', WebkitFontSmoothing: 'antialiased' }}>
+ <span className="text-lg font-normal tracking-[0.046875em] leading-none whitespace-nowrap text-[#222222] " style={{ fontFamily: 'var(--font-marcellus)', textRendering: 'optimizeLegibility', WebkitFontSmoothing: 'antialiased' }}>
  HB Furniture
  </span>
  </Link>
@@ -240,7 +240,7 @@ export default function Navbar() {
  )}
 
  {/* Dropdown Menu */}
- <div className={`absolute top-full left-0 mt-0 min-w-[260px] bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden z-50 transition-all duration-300 ${
+ <div className={`absolute top-full left-0 mt-0 min-w-[260px] bg-white  rounded-xl shadow-xl border border-gray-100  overflow-hidden z-50 transition-all duration-300 ${
  activeDropdown === item.name
  ? "opacity-100 visible translate-y-0"
  : "opacity-0 invisible translate-y-2 pointer-events-none"
@@ -250,15 +250,15 @@ export default function Navbar() {
  <Link
  key={subItem.href!}
  href={subItem.href!}
- className={`group flex items-center justify-between px-5 py-3 text-sm font-normal text-gray-700 transition-all duration-200 ${
- index !== item.dropdown!.length - 1 ? "border-b border-gray-100 " : ""
+ className={`group flex items-center justify-between px-5 py-3 text-sm font-normal text-gray-700  transition-all duration-200 ${
+ index !== item.dropdown!.length - 1 ? "border-b border-gray-100  " : ""
  } hover:bg-gray-50 `}
  onClick={() => setActiveDropdown(null)}
  >
  <span>{subItem.name}</span>
  {subItem.dropdown && (
  <svg
- className="w-4 h-4 text-gray-400 transition-colors duration-200 group-hover:text-gray-600 "
+ className="w-4 h-4 text-gray-400  transition-colors duration-200 group-hover:text-gray-600 "
  fill="none"
  stroke="currentColor"
  viewBox="0 0 24 24"
@@ -297,6 +297,7 @@ export default function Navbar() {
 
  {/* Desktop Controls (Contact Us) */}
  <div className="hidden xl:flex items-center gap-2 shrink-0">
+ 
  {/* Contact Us Button */}
  <Link
  href="/contact"
@@ -308,10 +309,11 @@ export default function Navbar() {
 
  {/* Mobile Controls */}
  <div className="xl:hidden flex items-center gap-2">
+ 
  {/* Mobile Hamburger Button */}
  <button
  type="button"
- className="p-2 text-gray-700 hover:text-[#E8500A] transition-colors"
+ className="p-2 text-gray-700  hover:text-[#E8500A] transition-colors"
  onClick={toggleMobileMenu}
  aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
  aria-expanded={isMobileMenuOpen}
@@ -333,7 +335,7 @@ export default function Navbar() {
 
  {/* Mobile Menu */}
  {isMobileMenuOpen && (
- <div className="fixed inset-x-0 top-0 bottom-0 z-40 bg-white pt-20 px-4 xl:hidden animate-in slide-in-from-top duration-300 flex flex-col overflow-y-auto pb-6">
+ <div className="fixed inset-x-0 top-0 bottom-0 z-40 bg-white  pt-20 px-4 xl:hidden animate-in slide-in-from-top duration-300 flex flex-col overflow-y-auto pb-6">
  <nav className="flex flex-col gap-2 flex-1">
  {navItems.map((item) => {
  if (item.dropdown) {
@@ -342,8 +344,8 @@ export default function Navbar() {
  <div 
  className={`w-full text-left px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors duration-200 ${
  (item.href && isActive(item.href)) || activeDropdown === item.name
- ? "bg-orange-50 text-[#E8500A]"
- : "text-gray-600 hover:bg-gray-50 "
+ ? "bg-orange-50  text-[#E8500A]"
+ : "text-gray-600  hover:bg-gray-50 "
  }`}
  >
  <div className="flex items-center justify-between">
@@ -392,8 +394,8 @@ export default function Navbar() {
  }}
  className={`px-4 py-2 rounded text-xs transition-colors duration-200 ${
  isActive(subItem.href!)
- ? "bg-orange-50 text-[#E8500A]"
- : "text-gray-500 hover:bg-gray-50 hover:text-[#E8500A]"
+ ? "bg-orange-50  text-[#E8500A]"
+ : "text-gray-500  hover:bg-gray-50 hover:text-[#E8500A]"
  }`}
  >
  {subItem.name}
@@ -412,8 +414,8 @@ export default function Navbar() {
  onClick={() => setIsMobileMenuOpen(false)}
  className={`px-4 py-3 rounded-lg text-sm font-bold uppercase tracking-wider transition-all duration-200 ${
  isActive(item.href!)
- ? "bg-orange-50 text-[#E8500A]"
- : "text-gray-600 hover:bg-gray-50 "
+ ? "bg-orange-50  text-[#E8500A]"
+ : "text-gray-600  hover:bg-gray-50 "
  }`}
  >
  {item.name}
