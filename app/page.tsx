@@ -152,31 +152,12 @@ export default function Home() {
  [Autoplay({ delay: 2500, stopOnInteraction: false, stopOnMouseEnter: true })]
  );
 
- // FAQ Accordion
- const toggleFaq = (index: number) => {
- const content = document.getElementById(`faq-content-${index}`);
- const icon = document.getElementById(`faq-icon-${index}`);
+  // FAQ Accordion
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
- if (content && icon) {
- if (content.classList.contains("hidden")) {
- content.classList.remove("hidden");
- icon.style.transform = "rotate(180deg)";
- } else {
- content.classList.add("hidden");
- icon.style.transform = "rotate(0deg)";
- }
- }
- };
-
- useEffect(() => {
- // Attach FAQ listeners
- for (let i = 0; i < 6; i++) {
- const btn = document.getElementById(`faq-btn-${i}`);
- if (btn) {
- btn.addEventListener("click", () => toggleFaq(i));
- }
- }
- }, []);
+  const toggleFaq = (index: number) => {
+  setOpenIndex(openIndex === index ? null : index);
+  };
 
  return (
  <div className="min-h-screen bg-white text-gray-900 font-sans">
@@ -374,21 +355,23 @@ export default function Home() {
  answer: "Professional installation services are available for all our products. Our team ensures proper assembly and setup. We also provide comprehensive after-sales support."
  }
  ].map((faq, i) => (
- <div key={i} className="border border-gray-200 rounded-lg overflow-hidden bg-white">
- <button
- id={`faq-btn-${i}`}
- className="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors duration-200"
- >
- <span className="text-sm md:text-base font-bold text-gray-900">{faq.question}</span>
- <svg id={`faq-icon-${i}`} className="w-6 h-6 text-gray-400 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
- <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
- </svg>
- </button>
- <div id={`faq-content-${i}`} className="hidden px-6 pb-6">
- <p className="text-gray-500 text-sm md:text-base leading-relaxed">{faq.answer}</p>
- </div>
- </div>
- ))}
+  <div key={i} className="border border-gray-200 rounded-lg overflow-hidden bg-white">
+  <button
+  onClick={() => toggleFaq(i)}
+  className="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors duration-200"
+  >
+  <span className="text-sm md:text-base font-bold text-gray-900">{faq.question}</span>
+  <svg className={`w-6 h-6 text-gray-400 transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+  </svg>
+  </button>
+  <div className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === i ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'}`}>
+  <div className="px-6 pb-6">
+  <p className="text-gray-500 text-sm md:text-base leading-relaxed">{faq.answer}</p>
+  </div>
+  </div>
+  </div>
+  ))}
  </div>
  </section>
 
@@ -406,20 +389,13 @@ export default function Home() {
  <div className="flex">
  {clientLogos.map((client, i) => (
  <div key={i} className="flex-[0_0_50%] md:flex-[0_0_33.33%] lg:flex-[0_0_16.66%] px-3 md:px-4">
- <div className="flex-shrink-0 w-full bg-white rounded-xl shadow-sm p-6 flex items-center justify-center h-[140px] group transition-all duration-300">
- <img 
- src={client.isDirect ? client.filename : `/clients/${client.filename}`} 
+ <div className="flex-shrink-0 w-full bg-white rounded-xl shadow-sm p-6 flex items-center justify-center h-[140px] group transition-all duration-300 relative">
+ <Image 
+ src={client.filename} 
  alt={client.name} 
- className="max-h-[70px] object-contain opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" 
- onError={(e) => {
- // Fallback if logo not found
- const target = e.target as HTMLImageElement;
- target.style.display = 'none';
- const placeholder = document.createElement('div');
- placeholder.className = 'flex items-center justify-center w-full h-full text-gray-400 text-sm font-bold';
- placeholder.textContent = client.name;
- target.parentNode?.appendChild(placeholder);
- }}
+ fill
+ sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33.33vw, 16.66vw"
+ className="object-contain opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 p-4"
  />
  </div>
  </div>
@@ -427,20 +403,13 @@ export default function Home() {
  {/* Duplicate for infinite loop effect */}
  {clientLogos.map((client, i) => (
  <div key={`duplicate-${i}`} className="flex-[0_0_50%] md:flex-[0_0_33.33%] lg:flex-[0_0_16.66%] px-3 md:px-4">
- <div className="flex-shrink-0 w-full bg-white rounded-xl shadow-sm p-6 flex items-center justify-center h-[140px] group transition-all duration-300">
- <img 
- src={client.isDirect ? client.filename : `/clients/${client.filename}`} 
+ <div className="flex-shrink-0 w-full bg-white rounded-xl shadow-sm p-6 flex items-center justify-center h-[140px] group transition-all duration-300 relative">
+ <Image 
+ src={client.filename} 
  alt={client.name} 
- className="max-h-[70px] object-contain opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" 
- onError={(e) => {
- // Fallback if logo not found
- const target = e.target as HTMLImageElement;
- target.style.display = 'none';
- const placeholder = document.createElement('div');
- placeholder.className = 'flex items-center justify-center w-full h-full text-gray-400 text-sm font-bold';
- placeholder.textContent = client.name;
- target.parentNode?.appendChild(placeholder);
- }}
+ fill
+ sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33.33vw, 16.66vw"
+ className="object-contain opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 p-4"
  />
  </div>
  </div>
