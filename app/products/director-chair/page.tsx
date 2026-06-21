@@ -13,7 +13,7 @@ export default function DirectorChair() {
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <img 
-              src="/Screenshot 2026-06-16 165028.png" 
+              src="/screenshot-2026-06-16-165028.png" 
               alt="Director Chair" 
               className="w-full h-full object-cover opacity-80"
             />

@@ -14,7 +14,7 @@ export default function ExecutiveChairs() {
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <img 
-              src="/230 (1).png" 
+              src="/230-1-.png" 
               alt="Executive Chairs" 
               className="w-full h-full object-cover opacity-80"
             />

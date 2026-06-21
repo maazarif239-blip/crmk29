@@ -13,7 +13,7 @@ export default function SofasLoungeSeating() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="i.jpg" 
+            src="/i.jpg" 
             alt="Sofas & Lounge Seating" 
             className="w-full h-full object-cover opacity-60"
           />

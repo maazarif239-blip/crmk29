@@ -14,7 +14,7 @@ export default function AntChair() {
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <img 
-              src="Screenshot 2026-06-16 180825.png" 
+              src="/Screenshot 2026-06-16 180825.png" 
               alt="Ant Chair" 
               className="w-full h-full object-cover opacity-80"
             />

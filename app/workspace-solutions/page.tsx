@@ -147,7 +147,7 @@ export default function WorkspaceSolutions() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0 bg-gray-100">
           <img 
-            src="/Screenshot 2026-06-16 163413.png"
+            src="/screenshot-2026-06-16-163413.png"
             alt="Workspace Solutions Background" 
             className="w-full h-full object-cover hover:scale-105 transition-transform duration-[8s]"
           />

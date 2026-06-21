@@ -14,7 +14,7 @@ export default function ModernWorkstationSystems() {
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <img 
-              src="/Screenshot 2026-06-16 164657.png" 
+              src="/screenshot-2026-06-16-164657.png" 
               alt="Modern Workstation Systems" 
               className="w-full h-full object-cover opacity-80"
             />

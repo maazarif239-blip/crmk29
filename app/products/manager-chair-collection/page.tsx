@@ -13,7 +13,7 @@ export default function ManagerChairCollection() {
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <img 
-              src="/245 (1).png" 
+              src="/245-1-.png" 
               alt="Manager Chair Collection" 
               className="w-full h-full object-cover opacity-80"
             />

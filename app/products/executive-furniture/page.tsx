@@ -13,7 +13,7 @@ export default function ExecutiveFurniture() {
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <img 
-              src="/240(1).png" 
+              src="/240-1-.png" 
               alt="Executive Furniture" 
               className="w-full h-full object-cover opacity-80"
             />

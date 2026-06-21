@@ -31,7 +31,7 @@ export default function HardwoodExecutiveTables() {
         {/* Background Image with Dark Mask overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/Screenshot 2026-06-16 164439.png"
+            src="/screenshot-2026-06-16-164439.png"
             alt="Hardwood Executive Tables Background"
             className="w-full h-full object-cover opacity-50 grayscale hover:scale-105 transition-transform duration-[8s]"
           />

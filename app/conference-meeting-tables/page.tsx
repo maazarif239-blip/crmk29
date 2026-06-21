@@ -14,7 +14,7 @@ export default function ConferenceMeetingTables() {
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <img 
-              src="g.png" 
+              src="/g.png" 
               alt="Conference & Meeting Tables" 
               className="w-full h-full object-cover opacity-60"
             />

@@ -13,7 +13,7 @@ export default function ConferenceAndMeetingTables() {
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <img 
-              src="/175 (1).png" 
+              src="/175-1-.png" 
               alt="Conference & Meeting Tables" 
               className="w-full h-full object-cover opacity-80"
             />

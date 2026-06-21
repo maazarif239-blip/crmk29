@@ -13,7 +13,7 @@ export default function LibraryShelves() {
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <img 
-              src="/155 (4).png" 
+              src="/155-4-.png" 
               alt="Library Shelves" 
               className="w-full h-full object-cover opacity-80"
             />

@@ -14,7 +14,7 @@ export default function Lotus30OfficeWorkstations() {
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <img 
-              src="/Screenshot 2026-06-16 183344.png" 
+              src="/screenshot-2026-06-16-183344.png" 
               alt="Lotus 30 Office Workstations" 
               className="w-full h-full object-cover opacity-80"
             />

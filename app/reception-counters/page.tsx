@@ -13,7 +13,7 @@ export default function ReceptionCounters() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="h.jpg" 
+            src="/h.jpg" 
             alt="Reception Counters" 
             className="w-full h-full object-cover opacity-40"
           />
