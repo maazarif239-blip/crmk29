@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import ProductSidebar from '@/components/ProductSidebar';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
 
 export default function Rostrum() {
@@ -35,9 +34,6 @@ export default function Rostrum() {
       {/* Main Content Area */}
       <section className="max-w-[1200px] mx-auto px-4 py-12 flex flex-col md:flex-row gap-16">
         
-        {/* Sidebar */}
-        <ProductSidebar activeCategory="/products/rostrum" />
-
         {/* Product Grid */}
         <div className="flex-1">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">

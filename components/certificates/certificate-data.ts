@@ -12,7 +12,7 @@ export const certificates: Certificate[] = [
     title: "National Tax Registration",
     description:
       "Official corporate registration certificate from the Federal Board of Revenue, ensuring full legal compliance and transparent business operations.",
-    image: "/Screenshot 2026-06-15 225440.png",
+    image: "/screenshot-2026-06-15-225440.png",
     alt: "FBR National Tax Registration Certificate for HB Furniture",
   },
   {
@@ -20,7 +20,7 @@ export const certificates: Certificate[] = [
     title: "Chamber of Commerce Membership",
     description:
       "Verified member of the Rawalpindi Chamber of Commerce & Industry, reflecting our commitment to professional standards and industry credibility.",
-    image: "/Screenshot 2026-06-15 225357.png",
+    image: "/screenshot-2026-06-15-225357.png",
     alt: "Chamber of Commerce Membership Certificate for HB Furniture",
   },
 ];

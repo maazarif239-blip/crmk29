@@ -5,38 +5,38 @@ export default function FieldOfExpertise() {
   const expertise = [
     {
       title: "Industrial Manufacturing",
-      desc: "Large-scale production of specialized workspace elements using automated, high-precision technology.",
-      strengths: ["Volume Capacity", "Consistent Quality", "Material Mastery"],
+      desc: "Producing specialized workspace components using advanced technology and efficient manufacturing processes.",
+
       icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
     },
     {
       title: "Precision Engineering",
-      desc: "Detailed structural planning and ergonomic design ensuring every piece meets rigorous international standards.",
-      strengths: ["Ergonomic Focus", "Micro-tolerance", "Durability Testing"],
+      desc: "Carefully designing and developing furniture pieces to ensure quality, comfort, and long-lasting performance.",
+
       icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z"
     },
     {
       title: "Infrastructure Solutions",
-      desc: "Turnkey spatial planning and furniture integration for massive corporate headquarters and institutions.",
-      strengths: ["Space Optimization", "Acoustic Planning", "Modular Systems"],
+      desc: "Carefully designing and developing furniture pieces to ensure quality, comfort, and long-lasting performance.",
+
       icon: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
     },
     {
       title: "Custom Fabrication",
-      desc: "Bespoke executive suites and specialized furniture crafted to unique architectural specifications.",
-      strengths: ["Premium Veneers", "Unique Geometries", "Architectural Symbiosis"],
+      desc: "Creating custom furniture and executive solutions designed to match specific styles and requirements.",
+
       icon: "M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"
     },
     {
       title: "Project Management",
-      desc: "End-to-end oversight ensuring that multi-floor deliveries are executed on schedule and within budget.",
-      strengths: ["Timeline Adherence", "Resource Allocation", "Risk Mitigation"],
+      desc: "Managing projects from start to finish to ensure timely delivery and smooth execution.",
+
       icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
     },
     {
       title: "Installation & Execution",
-      desc: "Professional on-site assembly and configuration by trained technicians for flawless finishing.",
-      strengths: ["Site Safety", "Rapid Deployment", "Zero Defect Guarantee"],
+      desc: "Providing professional installation and on-site support to ensure a perfect final setup.",
+
       icon: "M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"
     }
   ];
@@ -77,7 +77,7 @@ export default function FieldOfExpertise() {
         <h2 className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-4">What We Excel At</h2>
         <div className="w-12 h-0.5 bg-[#EB5324] mx-auto mb-8"></div>
         <p className="text-gray-600 text-lg leading-relaxed font-serif max-w-3xl mx-auto">
-          Over six decades, we have refined our capabilities to master the complete lifecycle of workspace creation. Our expertise lies at the intersection of heavy industrial manufacturing and refined architectural detailing.
+          Crafting exceptional workspaces since 1964 with precision, innovation, and enduring quality.
         </p>
       </section>
 
@@ -90,15 +90,7 @@ export default function FieldOfExpertise() {
                 <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={item.icon} /></svg>
               </div>
               <h3 className="text-xl font-serif text-gray-900 mb-3">{item.title}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-1">{item.desc}</p>
-              <div className="space-y-2 mb-8">
-                {item.strengths.map((str, j) => (
-                  <div key={j} className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#EB5324]"></div>
-                    <span className="text-[12px] font-medium text-gray-600">{str}</span>
-                  </div>
-                ))}
-              </div>
+              <p className="text-gray-500 text-sm leading-relaxed flex-1">{item.desc}</p>
 
             </div>
           ))}
@@ -152,7 +144,7 @@ export default function FieldOfExpertise() {
           <h3 className="text-2xl font-serif mb-8 text-[#EB5324]">Project Highlights</h3>
           <div className="space-y-8">
             <div>
-              <div className="text-4xl font-bold mb-1">500+</div>
+              <div className="text-4xl font-bold mb-1">300+</div>
               <div className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Turnkey Projects Delivered</div>
             </div>
             <div className="w-full h-px bg-white/10"></div>

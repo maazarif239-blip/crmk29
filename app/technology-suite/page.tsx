@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import ProductSidebar from '@/components/ProductSidebar';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
 
 export default function TechnologySuite() {
@@ -37,9 +36,6 @@ export default function TechnologySuite() {
       {/* Main Content Area */}
       <section className="max-w-[1200px] mx-auto px-4 py-8 flex flex-col md:flex-row gap-16">
         
-        {/* Sidebar */}
-        <ProductSidebar activeCategory="/technology-suite" />
-
         {/* Product Grid (2 Columns) */}
         <div className="flex-1">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -69,6 +65,51 @@ export default function TechnologySuite() {
                 name: 'Integrated Workspace Technology',
                 desc: 'A refined corporate technology solution that brings efficiency and connectivity to premium office settings.',
                 image: '/40.jpg',
+              },
+              {
+                name: 'Black Recessed Mounting Box',
+                desc: 'Compact black plastic housing unit designed for embedding power or data sockets into desktop cutouts, providing a clean recessed fit for cable management hardware.',
+                image: '/Screenshot 2026-06-23 233442.png',
+              },
+              {
+                name: 'Sliding Cable Tray with Cover',
+                desc: 'Slim rectangular tray with a sliding white insert panel, used for routing and concealing desktop cables neatly within table-top grommet systems.',
+                image: '/Screenshot 2026-06-23 233450.png',
+              },
+              {
+                name: 'Wireless Charging Desktop Module',
+                desc: 'Brushed metal in-desk panel with wireless charging pad, USB ports, and control icons integrated power and charging solution for modern office desks.',
+                image: '/Screenshot 2026-06-23 233457.png',
+              },
+              {
+                name: 'Aluminum Power Socket Housing',
+                desc: 'Silver metal under-desk mounting unit with multiple cutouts for sockets and switches, offering sturdy support for built-in desktop power modules.',
+                image: '/Screenshot 2026-06-23 233502.png',
+              },
+              {
+                name: 'Stainless Steel Cable Tray Insert',
+                desc: 'Long brushed steel tray with mesh cable port, designed to sit flush within desktops for organized wire routing and a polished finish.',
+                image: '/Screenshot 2026-06-23 233505.png',
+              },
+              {
+                name: 'Round Wireless Charger with Cable',
+                desc: 'Compact white circular wireless charging pad with attached power cord, suitable for placement on desks or side tables for convenient device charging.',
+                image: '/Screenshot 2026-06-23 233516.png',
+              },
+              {
+                name: 'Portable Wireless Charging Puck',
+                desc: 'Small blue-and-white handheld wireless charger with dual USB cable ports, offering flexible fast-charging for phones and small devices on the go.',
+                image: '/Screenshot 2026-06-23 233519.png',
+              },
+              {
+                name: 'Oval Desktop Power & USB Module',
+                desc: 'Sleek grey oval-shaped power module with built-in sockets and USB ports, designed to sit on desktops for easy access to charging and connectivity.',
+                image: '/Screenshot 2026-06-23 233703.png',
+              },
+              {
+                name: 'Round Pop-Up Power Grommet',
+                desc: 'Black circular flip-top desktop grommet housing multiple power sockets, allowing concealed, flush-mounted access to electricity directly on the work surface.',
+                image: '/Screenshot 2026-06-23 233712.png',
               },
             ].map((product, i) => (
               <div key={i} className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">

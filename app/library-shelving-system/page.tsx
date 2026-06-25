@@ -148,7 +148,7 @@ export default function LibraryShelvingSystem() {
       <section className="relative h-[450px] flex items-center justify-center text-center bg-[#111111] overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&q=80&w=2000" 
+            src="/155-4-.png" 
             alt="Library Shelving" 
             className="w-full h-full object-cover opacity-35 mix-blend-multiply"
           />

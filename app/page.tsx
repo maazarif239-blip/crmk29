@@ -11,33 +11,28 @@ import Autoplay from 'embla-carousel-autoplay';
 const signatureProducts = [
   {
     name: "Prestige Executive Chair",
-    image: "/230 (6).png",
+    image: "/230-6-.png",
     href: "/products/executive-chairs"
   },
   {
     name: "Ravi Executive Desk",
-    image: "/240(1).png",
-    href: "/products/executive-furniture"
+    image: "/240-1-.png",
+    href: "/office-furniture"
   },
   {
     name: "HB-Sofa TQ-01",
-    image: "/270 (1).png",
+    image: "/270-1-.png",
     href: "/sofas-lounge-seating"
   },
   {
     name: "Director-J",
-    image: "/Screenshot 2026-06-13 215230.png",
+    image: "/screenshot-2026-06-13-215230.png",
     href: "/products/director-chair"
   },
   {
     name: "Odyssey Conference Table",
     image: "/g.png",
     href: "/conference-meeting-tables"
-  },
-  {
-    name: "Stylish Coffee Table With Fabric Chairs",
-    image: "/7fc2df0a-b586-4b8d-a495-b96d1f6a4664.png",
-    href: "/products/coffee-tables"
   },
   {
     name: "Office Filing Almirah",
@@ -56,17 +51,17 @@ const signatureProducts = [
   },
   {
     name: "Presidential Executive Desk Series",
-    image: "/Screenshot 2026-06-16 175937.png",
-    href: "/products/executive-furniture"
+    image: "/screenshot-2026-06-16-175937.png",
+    href: "/office-furniture"
   },
   {
     name: "R-Type Workstation",
-    image: "/Screenshot 2026-06-16 184319.png",
+    image: "/screenshot-2026-06-16-184319.png",
     href: "/products/modern-workstation-systems"
   },
   {
     name: "Hudson-J",
-    image: "/245 (2).png",
+    image: "/245-2-.png",
     href: "/products/executive-chairs"
   }
 ];
@@ -185,10 +180,10 @@ export default function Home() {
           </p>
 
           <Link
-            href="/products"
+            href="/products/office-sets"
             className="inline-flex items-center gap-3 bg-[#EB5324] hover:bg-[#d4481f] text-white px-6 py-3 text-[11px] font-bold uppercase tracking-wider transition-all duration-300"
           >
-            Explore Products
+            Explore Office Sets
 
             <span className="w-5 h-5 border border-white/50 flex items-center justify-center">
               →
@@ -254,14 +249,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right Image */}
-          <div className="relative h-[400px] md:h-[600px] w-full rounded-xl overflow-hidden shadow-2xl">
-            <img
-              src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&q=80&w=1000"
-              alt="Craftsmanship"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          </div>
+          
         </div>
       </section>
 
@@ -313,10 +301,10 @@ export default function Home() {
         {/* View All Button */}
         <div className="text-center mt-12">
           <Link
-            href="/products"
+            href="/products/office-sets"
             className="inline-flex items-center gap-2 border border-gray-300 bg-white text-gray-900 px-8 py-3 text-[11px] font-bold uppercase tracking-wider hover:bg-gray-50 hover:border-gray-400 transition-all duration-300"
           >
-            View All
+            View All Office Sets
             <span>→</span>
           </Link>
         </div>

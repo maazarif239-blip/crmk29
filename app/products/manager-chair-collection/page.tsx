@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import ProductSidebar from '@/components/ProductSidebar';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
 
 export default function ManagerChairCollection() {
@@ -35,66 +34,45 @@ export default function ManagerChairCollection() {
       {/* Main Content Area */}
       <section className="max-w-[1200px] mx-auto px-4 py-12 flex flex-col md:flex-row gap-16">
         
-        {/* Sidebar */}
-        <ProductSidebar activeCategory="/products/manager-chair-collection" />
-
         {/* Product Grid */}
         <div className="flex-1">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
             
             {[
               {
-                name: 'Orlando-J',
-                image: '/245 (1).png',
-                description: 'The Orlando-J is a BIFMA Certified mid-back manager chair delivering bold ergonomic performance in a vibrant upholstered form. The fully fabric-upholstered back and seat provide consistent comfort across extended working sessions, while the black frame, fixed T-armrests, and robust five-star castor base ensure lasting durability. Available in a range of fabric colors. BIFMA certification guarantees compliance with internationally recognized standards for safety, durability, and sustainability in office seating.',
+                name: 'Pink High-Back Manager Chair',
+                image: '/245-1-.png',
+                description: 'BIFMA certified pink fabric chair with high back support and black base. Smooth wheels, ideal for comfortable daily office work.',
                 bifma: true,
               },
               {
-                name: 'Hudson-J',
-                image: '/245 (2).png',
-                description: 'The Hudson-J is a BIFMA Certified premium manager chair that stands apart through its distinctive white sculptural outer shell — a bold design statement in any contemporary office environment. The dark grey breathable mesh back panel provides excellent airflow and lumbar support, while the generously padded fabric seat ensures all-day comfort. Height-adjustable white T-armrests and a matching white five-star base complete the cohesive premium aesthetic. A chair that combines serious ergonomic credentials with striking visual presence.',
+                name: 'White Frame Mesh Manager Chair Black & Grey',
+                image: '/245-2-.png',
+                description: 'Premium mesh-back chair with white frame, adjustable arms and headrest support. Ergonomic design for executive-level comfort.',
                 bifma: true,
               },
               {
-                name: 'Portrait',
-                image: '/245 (3).png',
-                description: 'The Portrait is a refined mid-back manager task chair that brings quiet sophistication to any professional environment. The fully upholstered back and seat in warm fabric tones offer consistent comfort throughout the working day, while the clean black frame with fixed loop armrests delivers a timeless, understated aesthetic that integrates naturally into any office interior. A reliable, well-proportioned manager chair built for daily professional use.',
+                name: 'Brown Fabric Manager Chair',
+                image: '/245-3-.png',
+                description: 'Simple brown fabric manager chair with adjustable armrests and black base. Comfortable padded seat, suitable for regular office use.',
                 bifma: false,
               },
               {
-                name: 'Nero',
-                image: '/245 (4).png',
-                description: 'The Nero is a contemporary mid-back mesh manager chair that injects energy and personality into the modern office environment. The black breathable mesh back delivers superior ventilation and lumbar support, while the boldly colored fabric seat adds a dynamic accent to open-plan and collaborative workspaces. Adjustable T-armrests and a sturdy black five-star base complete a chair designed for professionals who want both ergonomic performance and visual impact. Available in multiple seat color options.',
-                bifma: false,
-              },
-              {
-                name: 'See',
-                image: '/245 (5).png',
-                description: 'The See is a mid-back mesh manager chair that balances breathable ergonomic performance with a bold color statement. The tall black mesh back panel maximizes airflow and provides excellent lumbar and mid-back support across long work sessions, while the vividly colored fabric seat creates a striking visual contrast. Padded height-adjustable T-armrests and a robust five-star black base complete a chair built for productive, comfortable professional use. Available in a range of seat upholstery colors.',
-                bifma: false,
-              },
-              {
-                name: 'Generation',
-                image: '/245 (6).png',
-                description: 'The Generation is a distinctively styled mid-back manager task chair featuring an eye-catching two-tone upholstery design with contrasting blue upper back panel and deep charcoal seat and lower back. Its generous ergonomic proportions, fixed curved armrests, and solid black five-star base deliver reliable everyday performance for team leaders, supervisors, and department managers who want a professional chair with a memorable design signature.',
-                bifma: false,
-              },
-              {
-                name: 'Ego',
-                image: '/245 (7).png',
-                description: 'The Ego is a BIFMA Certified mid-back mesh manager chair that delivers a premium, light aesthetic through its silver-white frame and base paired with a breathable silver-grey mesh back. The vibrant red fabric seat creates a striking color accent that energizes the workspace. BIFMA certification confirms compliance with rigorous international standards for seating safety, durability, and environmental responsibility. The Ego is ideal for modern, light-toned office interiors where ergonomic performance and visual elegance are equally valued.',
+                name: ' White Frame Mesh Manager Chair Red Seat',
+                image: '/245-7-.png',
+                description: 'BIFMA certified mesh-back chair with white frame and bold red cushion. Adjustable arms and lumbar support for better posture.',
                 bifma: true,
               },
               {
-                name: 'Gravity-J',
-                image: '/245 (8).png',
-                description: 'The Gravity-J is a sophisticated mid-back mesh manager chair featuring a warm beige mesh back that combines breathable ergonomic support with a refined, understated aesthetic. The dark charcoal fabric seat provides a complementary contrast, while the height-adjustable black T-armrests and five-star castor base deliver reliable everyday ergonomic adjustment. An ideal choice for professional office environments where comfort, quality, and visual restraint are prioritized.',
+                name: ' Beige Mesh High-Back Manager Chair',
+                image: '/245-8-.png',
+                description: 'Breathable beige mesh back chair with adjustable arms and dark seat cushion. Great airflow and comfort for long working hours.',
                 bifma: false,
               },
               {
-                name: 'Paris-J',
-                image: '/245 (9).png',
-                description: 'The Paris-J is a BIFMA Certified mid-back manager chair that makes a bold statement through its vibrant fully upholstered lime green fabric finish. Designed for modern, energetic office environments, creative studios, and collaborative workspaces, the Paris-J combines BIFMA certified ergonomic performance with a color-forward design that commands attention. Fixed open-loop armrests and a robust black five-star castor base ensure durability and stability. Available in a wide range of upholstery color options to suit any office interior palette.',
+                name: ' Green Mid-Back Manager Chair',
+                image: '/245-9-.png',
+                description: 'BIFMA certified green fabric chair with fixed armrests and black base. Simple modern design, good for everyday manager seating.',
                 bifma: true,
               }
             ].map((product, i) => (

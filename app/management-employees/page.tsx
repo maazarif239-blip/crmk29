@@ -5,97 +5,110 @@ export default function ManagementEmployees() {
   const allEmployees = [
     {
       id: 1,
-      name: "Mr. Hasan Ayub Gardezi",
+      name: "Mr. Hasan Ahmed Gardezi",
       role: "C.E.O, HB FURNITURE",
       description: "Bachelor in Business Administration with over fifteen years of experience in Sales & Production Management, Material Procurement & Site Supervision."
     },
     {
       id: 2,
-      name: "Ms. Hira Gardezi",
+      name: "Syeda Hoor Hassan Gardezi",
       role: "ARCHITECT, CAD EXPERT",
-      description: "Hira Gardezi is diploma holder in architectural technology, educated from Humber Institute of Technology in Toronto, Canada, having a three year experience working as an assistant manager at Bell Canada."
+      description: "Syeda Hoor Hassan Gardezi is diploma holder in architectural technology, educated from Humber Institute of Technology in Toronto, Canada, having a three year experience working as an assistant manager at Bell Canada."
+    },
+     {
+      id: 6,
+      name: "Mr. Danyal Hassan Gardezi",
+      role: "DIRECTOR OPERATIONS",
+      description: "Managing daily operations with dedication, he ensures projects are completed smoothly, efficiently, and on time."
     },
     {
       id: 3,
       name: "Syed Habib Hasan Gardezi",
-      role: "Social Media Manager"
+      role: "Social Media Manager",
+      description: "Helping strengthen the company's online presence through creative content and meaningful engagement with customers and audiences."
     },
     {
-      id: 4,
-      name: "Syeda Hoor Hasan Gardezi",
-      role: "Director (Architecture)"
+      id: 10,
+      name: "Mr. Syed Ali Naqvi",
+      role: "MANAGER MARKETING",
+      description: "Focused on growing the brand and building strong relationships through effective marketing and customer-focused strategies."
     },
     {
       id: 5,
       name: "Syed Hasham Hasan Gardezi",
-      role: "Director (Sales & Marketing)"
+      role: "Director (Sales & Marketing)",
+      description: "Leading sales and marketing efforts while working to expand the company's reach and maintain strong client partnerships."
     },
+   
     {
-      id: 6,
-      name: "Mr. Ali Ejaz",
-      role: "DIRECTOR OPERATIONS",
-      description: "Ali Ijaz is a Diploma Holder in Material Sciences and is having over five years of experience in Staff Administration and Production Supervision."
+      id: 18,
+      name: "Mr. Syed Shabbaz",
+      role: "QUALITY CONTROL MANAGER",
+      description: "Ensuring every product meets high standards by maintaining quality, consistency, and attention to detail."
+    },
+     {
+      id: 14,
+      name: "Mr. Khuram",
+      role: "SITE SUPERVISOR",
+      description: "Overseeing site activities and making sure projects are carried out safely, smoothly, and on schedule."
     },
     {
       id: 7,
-      name: "Mr. Mohammad Ali",
-      role: "MANAGER ADMIN"
+      name: "Mr. Bilal Yasir",
+      role: "MANAGER ADMIN",
+      description: "Managing administrative tasks and supporting smooth coordination across different departments."
     },
     {
       id: 8,
-      name: "Mr. Irfan Baloch",
-      role: "ACCOUNTS OFFICER"
+      name: "Mr. Abdullah Haneef",
+      role: "ACCOUNTS OFFICER",
+      description: "Handling financial records and daily accounts with accuracy and professionalism."
     },
     {
       id: 9,
-      name: "Mr. Zulfiqar Ali",
-      role: "AUTOCAD OPERATOR / 3D GRAPHICS EXPERT"
+      name: "Mr. Zaid Khalid",
+      role: "AUTOCAD OPERATOR / 3D GRAPHICS EXPERT",
+      description: "Creating detailed drawings and realistic 3D designs to turn ideas into practical solutions."
     },
-    {
-      id: 10,
-      name: "Mr. Imran Chatha",
-      role: "MANAGER MARKETING"
-    },
+    
     {
       id: 11,
-      name: "Mr. Waqas Ali",
-      role: "MARKETING EXECUTIVE"
+      name: "Mr. Usama Akram",
+      role: "MARKETING EXECUTIVE",
+      description: "Supporting business growth by connecting with clients and promoting the company's services."
     },
     {
       id: 12,
-      name: "Mr. Umer Malik",
-      role: "MARKETING EXECUTIVE"
+      name: "Mr. Yahya Abbas",
+      role: "MARKETING EXECUTIVE",
+      description: "Building customer relationships and helping expand the company's presence in the market."
     },
     {
       id: 13,
-      name: "Mr. Saghir Ahmed",
-      role: "MARKETING EXECUTIVE"
+      name: "Mr. Saad Saleem",
+      role: "MARKETING EXECUTIVE",
+      description: "Contributing to business development through effective communication and customer engagement."
     },
-    {
-      id: 14,
-      name: "Mr. Muzaffar Shah",
-      role: "SITE SUPERVISOR"
-    },
+   
     {
       id: 15,
-      name: "Mr. Mohd Taqseer",
-      role: "CNC TECHNOLOGIST"
+      name: "Mr. Usman Akhtar",
+      role: "CNC TECHNOLOGIST",
+      description: "Working with advanced machinery to ensure precision and quality in production."
     },
     {
       id: 16,
-      name: "Mr. Mohammad Imran",
-      role: "FOREMAN"
+      name: "Mr. Zaman Tariq",
+      role: "FOREMAN",
+      description: "Leading the workforce and ensuring smooth and efficient operations on the production floor."
     },
     {
       id: 17,
-      name: "Mr. Sabbir Hussain",
-      role: "SUPERVISOR"
+      name: "Mr. Azan Yaseen",
+      role: "SUPERVISOR",
+      description: "Monitoring daily activities and helping maintain quality and efficiency in every task."
     },
-    {
-      id: 18,
-      name: "Mr. Mohd Ali",
-      role: "QUALITY CONTROL MANAGER"
-    }
+    
   ];
 
   return (

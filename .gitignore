@@ -41,3 +41,25 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+# Temporary files and backups
+.backups/
+*.bak
+*.mjs
+*.js
+!next.config.js
+!tailwind.config.js
+!postcss.config.js
+console.log
+audit_output.json
+scratch_*.mjs
+fix_*.mjs
+find_*.js
+remove_*.js
+check_links.js
+create_director_chair.mjs
+fix_images.js
+fix_jsx.mjs
+fix_missing_routes.mjs
+fix_ts.mjs
+public/Screenshot*.png
+public/screenshot*.png

@@ -1,8 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
-import ProductSidebar from '@/components/ProductSidebar';
-
 export default function VisitorChairs() {
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
@@ -36,118 +34,58 @@ export default function VisitorChairs() {
       {/* Main Content Area */}
       <section className="max-w-[1200px] mx-auto px-4 py-12 flex flex-col md:flex-row gap-16">
         
-        {/* Sidebar */}
-        <ProductSidebar activeCategory="/visitor-chairs" />
-
         {/* Product Grid */}
         <div className="flex-1">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
             
             {[
               {
-                name: 'Austin',
+                name: 'Wooden Modern Visitor Chair',
                 image: '/11.jpg',
-                description: 'A refined visitor chair with clean lines and supportive comfort for reception areas and executive waiting spaces.',
+                description: 'Wooden frame visitor chair with black cushioned seat and stylish open armrest design for guests.',
               },
               {
-                name: 'Cambri',
+                name: 'White Fabric Visitor Chair',
                 image: '/12.jpg',
-                description: 'Contemporary guest seating designed to bring a polished look and dependable comfort to modern office interiors.',
+                description: 'White fabric visitor chair with wooden legs, soft armrests, and simple elegant look for office.',
               },
+             
+              
               {
-                name: 'Classic Chair',
-                image: '/13.jpg',
-                description: 'Timeless office seating solution offering an elegant silhouette ideal for meeting rooms and visitor zones.',
-              },
-              {
-                name: 'Classic Visitor Chair',
-                image: '/14.jpg',
-                description: 'Professional visitor chair crafted for welcoming clients with balanced comfort and enduring everyday performance.',
-              },
-              {
-                name: 'Conte Visitor Chair',
-                image: '/15.jpg',
-                description: 'Sleek guest chair that complements collaborative spaces, reception counters, and corporate meeting environments.',
-              },
-              {
-                name: 'Dallas Red',
+                name: 'Maroon Cantilever Visitor Chair',
                 image: '/16.jpg',
-                description: 'Bold visitor seating option that adds a vibrant accent while maintaining comfort for office guests and clients.',
+                description: 'Maroon and black visitor chair with chrome base, padded armrests, and comfy cushioned seat design.',
               },
               {
-                name: 'Dallas',
+                name: 'Blue Cantilever Visitor Chair',
                 image: '/17.jpg',
-                description: 'Versatile seating piece with a modern profile, suitable for lobbies, breakout spaces, and conference waiting areas.',
+                description: 'Blue fabric visitor chair with chrome frame, curved armrests, and smooth cantilever base for guests.',
               },
+              
               {
-                name: 'Ring Chair',
-                image: '/18.jpg',
-                description: 'Stylish contemporary chair designed for informal meeting spaces and high-traffic visitor seating applications.',
-              },
-              {
-                name: 'Swiss',
+                name: 'Wooden Slat Back Visitor Chair',
                 image: '/19.jpg',
-                description: 'Minimalist visitor chair that delivers a sophisticated presence and reliable comfort in premium office settings.',
+                description: 'Light wood visitor chair with slatted backrest, grey cushioned seat, and simple sturdy armrest design.',
               },
               {
-                name: 'Visitor Chair',
+                name: 'Striped Cantilever Visitor Chair',
                 image: '/20.jpg',
-                description: 'Practical and professional guest chair built to support daily use across receptions, offices, and meeting rooms.',
+                description: 'Black and white striped visitor chair with metal base, padded armrests, and comfy cushioned seat design.',
               },
               {
-                name: 'Aurora Visitor Chair',
-                image: '/99 (17).png',
-                description: 'An elegant guest seating solution combining a contoured mesh backrest with a stable base for reception areas.',
+                name: 'Black Leather Cantilever Visitor Chair',
+                image: '/Screenshot 2026-06-24 001523.png',
+                description: 'Elegant black leather visitor chair with padded armrests and a chrome cantilever sleigh base, offering a sleek, executive look for guest seating in offices.',
               },
               {
-                name: 'Orion Chair Visitor',
-                image: '/99 (18).png',
-                description: 'A premium office visitor chair featuring padded armrests and reliable lumbar support for client meeting rooms.',
+                name: 'Grey Fabric Sled-Base Visitor Chair',
+                image: '/Screenshot 2026-06-24 001528.png',
+                description: 'Contemporary visitor chair upholstered in light grey fabric with curved black armrests and a black sled base, combining comfort with a soft modern aesthetic.',
               },
               {
-                name: 'Minos Visitor Chair',
-                image: '/99 (19).png',
-                description: 'A modern lobby chair built with durable steel frames and cushioned seats for busy professional reception zones.',
-              },
-              {
-                name: 'Circa-v',
-                image: '/113 (1).png',
-                description: 'A sophisticated guest chair offering superior lumbar alignment and modern aesthetics for waiting halls and meetings.',
-              },
-              {
-                name: 'Generation-v',
-                image: '/113 (2).png',
-                description: 'An innovative visitor chair engineered with a responsive backrest to ensure dynamic, long-lasting comfort.',
-              },
-              {
-                name: 'Dwell-v',
-                image: '/113 (3).png',
-                description: 'A premium lobby chair featuring elegant fabric upholstery and cushioned support to put clients at ease.',
-              },
-              {
-                name: 'Syntax-v',
-                image: '/113 (4).png',
-                description: 'Contemporary meeting room chair showcasing a sleek profile and highly breathable mesh ventilation.',
-              },
-              {
-                name: 'Nano',
-                image: '/113 (5).png',
-                description: 'A compact and stackable visitor chair built with a heavy-duty chrome frame for flexible office utility.',
-              },
-              {
-                name: 'Apollo-v',
-                image: '/113 (6).png',
-                description: 'Executive-class guest chair boasting thick foam padding and classic structural support for reception rooms.',
-              },
-              {
-                name: 'Orlando-v',
-                image: '/113 (7).png',
-                description: 'A stylish guest armchair designed with padded rest guards and premium contouring for professional spaces.',
-              },
-              {
-                name: 'Ring-v',
-                image: '/113 (8).png',
-                description: 'Modern circular-back visitor chair providing space-saving elegance and robust stability for office environments.',
+                name: 'Mesh Back Chrome Cantilever Visitor Chair',
+                image: '/Screenshot 2026-06-24 001548.png',
+                description: 'Breathable mesh-back visitor chair with black fabric seat, chrome armrests, and a polished chrome cantilever frame, practical and durable for reception or meeting areas.',
               },
             ].map((product, i) => (
               <div key={i} className="group flex flex-col cursor-pointer h-full">

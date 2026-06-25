@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import ProductSidebar from '@/components/ProductSidebar';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
 
 export default function ConferenceMeetingTables() {
@@ -34,9 +33,6 @@ export default function ConferenceMeetingTables() {
       {/* Main Content Area */}
       <section className="max-w-[1200px] mx-auto px-4 py-12 flex flex-col md:flex-row gap-16">
         
-        {/* Sidebar */}
-        <ProductSidebar activeCategory="/conference-meeting-tables" />
-
         {/* Product Grid */}
         <div className="flex-1">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -96,6 +92,60 @@ export default function ConferenceMeetingTables() {
                 badge: null,
                 image: '/29.jpg'
               },
+              { 
+                name: 'Diagonal Inlay Conference Table', 
+                desc: 'Rectangular walnut finish table with diagonal black inlay design, slim X-shaped metal legs, modern aesthetic, ideal for boardrooms and meeting spaces.',
+                badge: null,
+                image: '/Screenshot 2026-06-24 001228.png'
+              },
+              { 
+                name: 'Geometric Top Meeting Table', 
+                desc: 'Long walnut conference table featuring angular black geometric pattern on tabletop, sleek criss-cross metal legs, contemporary look for executive meeting rooms.',
+                badge: null,
+                image: '/Screenshot 2026-06-24 001231.png'
+              },
+              { 
+                name: 'Lift-Top Convertible Conference Table', 
+                desc: 'Walnut finish table with raised center lift panel, X-frame metal legs, versatile design allowing height adjustment for laptop or presentation use.',
+                badge: null,
+                image: '/Screenshot 2026-06-24 001236.png'
+              },
+              { 
+                name: 'Triangle Inlay Meeting Table', 
+                desc: 'Compact rectangular table with triangular black inlay accent, crossed metal leg base, walnut wood finish, suited for small meeting or discussion rooms.',
+                badge: null,
+                image: '/Screenshot 2026-06-24 001244.png'
+              },
+              { 
+                name: 'White Frame Modular Meeting Table', 
+                desc: 'Light wood-top table with white metal legs, seats 10. Simple, modern design with cream leather chairs.',
+                badge: null,
+                image: '/25.jpg'
+              },
+              { 
+                name: 'Natural Wood Rectangular Meeting Table', 
+                desc: 'Plain rectangular table in natural wood finish, seats 8–10. Mixed black and cream chairs create a clean modern appearance.',
+                badge: null,
+                image: '/26.jpg'
+              },
+              { 
+                name: 'Oak Boat-Shape Conference Table', 
+                desc: 'Boat-shaped oak conference table with curved wood base, seats 14. Black leather chairs provide a refined professional appearance.',
+                badge: null,
+                image: '/27.jpg'
+              },
+              { 
+                name: 'Classic Mahogany Conference Table', 
+                desc: 'Traditional mahogany conference table with wood-panel base, seats 8. Includes matching wood-arm leather chairs for a timeless executive look.',
+                badge: null,
+                image: '/28.jpg'
+              },
+              { 
+                name: 'Modern Chrome-Leg Meeting Table', 
+                desc: 'Compact wood-top meeting table with chrome angular legs, seats 6–8. Black leather chairs complement its sleek contemporary design.',
+                badge: null,
+                image: '/29.jpg'
+              }
             ].map((product, i) => (
               <div key={i} className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">
                 <div className="aspect-[4/3] bg-[#F5F5F5] relative overflow-hidden">

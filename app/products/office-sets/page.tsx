@@ -1,8 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
-import ProductSidebar from '@/components/ProductSidebar';
-
 export default function OfficeSets() {
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
@@ -35,9 +33,6 @@ export default function OfficeSets() {
       {/* Main Content Area */}
       <section className="max-w-[1200px] mx-auto px-4 py-12 flex flex-col md:flex-row gap-16">
         
-        {/* Sidebar */}
-        <ProductSidebar activeCategory="/products/office-sets" />
-
         {/* Product Grid */}
         <div className="flex-1">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
@@ -46,47 +41,47 @@ export default function OfficeSets() {
               {
                 name: 'Executive Office Table Set',
                 image: '/10016.jpeg',
-                description: 'Transform your executive suite with this masterfully crafted office table set. It blends expansive work surfaces with integrated storage and premium seating, creating an environment that balances sophisticated aesthetics with everyday functionality for senior leadership.',
+                description: 'Masterfully crafted executive office set with expansive work surface, integrated storage aur premium seating for senior leadership.',
               },
               {
                 name: 'Modern Office Workstation Set',
                 image: '/10008.jpeg',
-                description: 'Engineered for dynamic and collaborative environments, this modern workstation set delivers clean lines and ergonomic comfort. Featuring adaptable desk configurations and matching supportive seating, it optimizes space while maintaining a high-end corporate look.',
+                description: ' Modern workstation set with clean lines, ergonomic seating aur adaptable desk configuration, perfect for collaborative corporate environments.',
               },
               {
                 name: 'Premium Office Table Set',
                 image: '/10009.jpeg',
-                description: 'A striking combination of elegant materials and precise engineering, this premium set redefines workspace luxury. It provides an expansive primary desk alongside coordinated seating, ensuring a commanding presence that caters to intense work sessions and formal meetings alike.',
+                description: 'Premium desk set with elegant materials, expansive primary desk aur coordinated seating for formal meetings and intense work.',
               },
               {
                 name: 'Contemporary Office Desk Set',
                 image: '/10003.jpeg',
-                description: 'Designed for the modern professional, this contemporary desk set pairs minimalist architecture with uncompromising durability. The integrated layout includes sleek table surfaces and ergonomic chairs, perfectly suited for private cabins or focused management zones.',
+                description: 'Contemporary minimalist desk set with sleek table surface aur ergonomic chairs, ideal for private cabins or management zones.',
               },
               {
                 name: 'Manager Office Table Set',
                 image: '/10004.jpeg',
-                description: 'This comprehensive manager set is tailored for mid-to-senior level executives who require both style and substance. It seamlessly integrates a robust primary desk with comfortable guest seating, establishing a welcoming yet professional atmosphere for daily operations and team reviews.',
+                description: 'Comprehensive manager set with robust primary desk aur comfortable guest seating, perfect for daily operations and team reviews.',
               },
               {
                 name: 'Luxury Executive Office Set',
                 image: '/10005.jpeg',
-                description: 'Exuding prestige and authority, this luxury executive set represents the pinnacle of corporate furniture design. With richly finished table surfaces, distinguished high-back seating, and refined details, it instantly elevates any corner office to an impressive leadership space.',
+                description: 'Luxury executive set with richly finished desk, high-back seating aur refined details for an impressive corner office space.',
               },
               {
                 name: 'Modern Corporate Office Set',
                 image: '/10012.jpg',
-                description: 'Versatile and highly functional, this corporate office set is built to meet the rigorous demands of fast-paced business environments. It offers a cohesive pairing of a durable work desk and supportive seating, bringing a unified and professional aesthetic to any department.',
+                description: 'Versatile corporate office set with durable work desk aur supportive seating, bringing professional aesthetic to any department.',
               },
               {
                 name: 'Executive Office Furniture Set',
                 image: '/10010.jpg',
-                description: 'Crafted to make a lasting impression, this cohesive furniture set integrates a spacious executive desk with premium ergonomic chairs. The refined finish and solid construction provide a durable, high-performance workspace designed specifically for top-tier management.',
+                description: 'Spacious executive desk set with premium ergonomic chairs, refined finish aur solid construction for top-tier management workspace.',
               },
               {
                 name: 'Premium Workspace Furniture Set',
                 image: '/10007.jpg',
-                description: 'This premium set delivers an all-encompassing workspace solution with meticulously coordinated desk and seating components. Built to enhance both productivity and office aesthetics, it stands as a testament to quality craftsmanship and thoughtful architectural design.',
+                description: 'Premium workspace set with coordinated desk and seating components, built for enhanced productivity aur quality office aesthetics.',
               }
             ].map((product, i) => (
               <div key={i} className="group flex flex-col cursor-pointer h-full">

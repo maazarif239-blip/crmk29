@@ -140,7 +140,7 @@ export default function SignUp() {
                 required
               />
               <label htmlFor="terms" className="ml-2 text-[11px] text-gray-500 leading-relaxed">
-                I agree to the <Link href="/terms" className="text-gray-900 hover:text-[#EB5324] transition-colors underline underline-offset-2">Terms of Service</Link> and <Link href="/privacy-policy" className="text-gray-900 hover:text-[#EB5324] transition-colors underline underline-offset-2">Privacy Policy</Link>.
+                I agree to the Terms and Conditions.
               </label>
             </div>
 

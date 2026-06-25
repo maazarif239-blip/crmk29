@@ -1,8 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
-import ProductSidebar from '@/components/ProductSidebar';
-
 export default function OfficeChairs() {
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
@@ -34,108 +32,84 @@ export default function OfficeChairs() {
       {/* Main Content Area */}
       <section className="max-w-[1200px] mx-auto px-4 py-20 flex flex-col md:flex-row gap-16">
         
-        {/* Sidebar */}
-        <ProductSidebar activeCategory="/office-chairs" />
-
         {/* Product Grid */}
         <div className="flex-1">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                name: "Chesterfield Tufted Accent Chair",
+                name: "Tufted Grey Accent Office Chair",
                 src: "/8.jpg",
-                desc: "Elegant tufted accent chair designed for executive spaces, lounges, and premium office interiors."
+                desc: "Grey leather tufted chair with wooden legs, soft armrests, and comfy cushioned seat for office." 
               },
+              
               {
-                name: "Light Hounslow Flushmount",
-                src: "/9.jpg",
-                desc: "Contemporary lighting fixture that enhances workspace ambiance with clean and modern aesthetics."
-              },
-              {
-                name: "Tilton Copper and Wood Table Lamp",
+                name: "Tan Leather Executive Office Chair",
                 src: "/10.jpg",
-                desc: "Stylish copper and wood table lamp offering warm illumination for offices, reception areas, and meeting spaces."
+                desc: "Tan leather office chair with padded armrests, smooth wheels, and adjustable height for comfort."
+              },
+             
+              {
+                name: "Beige Mesh Adjustable Office Chair",
+                src: "/99-3-.png",
+                desc: "Beige mesh-back chair with adjustable armrests, comfy seat aur smooth rolling wheels for office desk."
+              },
+              
+              
+              {
+                name: "Red Headrest Office Chair",
+                src: "/99-8-.png",
+                desc: "Red mesh chair with headrest, fixed armrests aur black cushioned seat for long office hours."  
               },
               {
-                name: "RICH Hi-Back Chair",
-                src: "/99 (1).png",
-                desc: "An ergonomic high-back chair engineered with premium lumbar support and breathable mesh for executive workspaces."
+                name: "White Mesh Ergonomic Office Chair",
+                src: "/99-9-.png",
+                desc: "White frame mesh chair with adjustable armrests, black seat aur smooth wheels for easy movement."
               },
               {
-                name: "Glory Chair",
-                src: "/99 (2).png",
-                desc: "A premium corporate desk chair featuring synchronous tilt mechanics and plush cushioning for all-day comfort."
+                name: "Red Cushioned Office Chair",
+                src: "/99-10-.png",
+                desc: "Red fabric office chair with padded armrests, soft backrest aur rolling wheels for comfort."
               },
               {
-                name: "Glory Chair without Neck Back",
-                src: "/99 (3).png",
-                desc: "A sleek mid-back office chair offering excellent lumbar alignment and freedom of motion for dynamic tasks."
+                name: "Black Mesh Office Chair",
+                src: "/99-11-.png",
+                desc: "Black mesh-back chair with adjustable armrests, cushioned seat aur smooth rolling wheels for office use."
               },
               {
-                name: "Radius 17",
-                src: "/99 (4).png",
-                desc: "A contemporary office chair designed with a flexible backrest and contour molding for optimal ergonomic posture."
+                name: "Striped Mesh Task Chair",
+                src: "/Screenshot 2026-06-24 000146.png",
+                desc: "Black mesh back with horizontal stripe pattern, fixed armrests, padded seat, tilt mechanism, and smooth-rolling caster wheels for everyday office use."
               },
               {
-                name: "S3",
-                src: "/99 (5).png",
-                desc: "An ultra-modern task chair utilizing premium responsive mesh and adjustable armrests for tailored seating comfort."
+                name: "Grey Fabric Executive Chair",
+                src: "/Screenshot 2026-06-24 000202.png",
+                desc: "Light grey upholstered chair with curved loop armrests, high back support, swivel base, and sturdy five-star nylon legs for comfortable seating."
               },
               {
-                name: "Calypso Chair",
-                src: "/99 (6).png",
-                desc: "A high-performance ergonomic chair built with full body support, dynamic neck cradle, and active response tension."
+                name: "Boucle Swivel Accent Chair",
+                src: "/Screenshot 2026-06-24 000213.png",
+                desc: "Cream textured boucle fabric chair with rounded tub-style back, wrapped armrests, height-adjustable swivel base, ideal for stylish home office setups."
               },
               {
-                name: "Calypso Chair without Neck Back",
-                src: "/99 (7).png",
-                desc: "A mid-back professional seating option combining breathable mesh ventilation with premium lumbar cushioning."
+                name: "X-Back Mesh Office Chair",
+                src: "/Screenshot 2026-06-24 000242.png",
+                desc: "Black mesh chair featuring distinctive X-pattern backrest design, adjustable armrests, cushioned seat, lumbar support, and durable rolling base."
               },
               {
-                name: "Aurora High Back",
-                src: "/99 (8).png",
-                desc: "An executive-class high-back chair with luxurious foam padding and a heavy-duty chrome frame for lasting comfort."
+                name: "Compact Mesh Staff Chair",
+                src: "/Screenshot 2026-06-24 000314.png",
+                desc: "Simple black mesh-back chair with fixed armrests, breathable design, padded seat cushion, tilt-lock mechanism, suited for budget-friendly workstation seating."
               },
               {
-                name: "J-1 Chair",
-                src: "/99 (9).png",
-                desc: "A versatile office chair featuring customizable tension adjustability and a contoured seat for daily productivity."
+                name: "Wave Pattern Mesh Chair",
+                src: "/Screenshot 2026-06-24 000329.png",
+                desc: "Sleek black mesh chair with subtle wave-line texture, solid loop armrests, ergonomic curved back, smooth recline function, and stable wheeled base."
               },
               {
-                name: "J-2 Chair",
-                src: "/99 (10).png",
-                desc: "A durable and compact task chair designed with high-density foam and smooth swivel controls for agile office use."
+                name: "Curved Mesh Visitor Chair",
+                src: "/Screenshot 2026-06-24 000336.png",
+                desc: "Minimalist black mesh chair with curved waterfall seat edge, slim armrests, breathable backrest, adjustable height, perfect for guest or staff seating."
               },
-              {
-                name: "E-1 Luxury Chair",
-                src: "/99 (11).png",
-                desc: "A premium executive armchair boasting high-end upholstery, polished aluminum accents, and fully customizable tilt angles."
-              },
-              {
-                name: "E-1 Simple Chair",
-                src: "/99 (12).png",
-                desc: "An elegant and minimalist task chair designed with sleek structural lines and comfortable mesh seating for modern workspaces."
-              },
-              {
-                name: "Dallas Chair",
-                src: "/99 (13).png",
-                desc: "A classic conference room chair offering superior foam support, refined fabric stitching, and an elegant profile."
-              },
-              {
-                name: "Orion Chair",
-                src: "/99 (14).png",
-                desc: "An advanced ergonomic office chair engineered with 3D armrests and intuitive weight-sensing tilt technology."
-              },
-              {
-                name: "Aurora Chair",
-                src: "/99 (15).png",
-                desc: "A stylish mid-back desk chair featuring a breathable flex-back design and a heavy-duty nylon base for everyday office comfort."
-              },
-              {
-                name: "Leto Chair",
-                src: "/99 (16).png",
-                desc: "A premium architectural task chair designed to provide precise spine alignment and modern aesthetic appeal."
-              }
             ].map((product, index) => (
               <div key={index} className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">
                 <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden">

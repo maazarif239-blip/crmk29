@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import ProductSidebar from '@/components/ProductSidebar';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
 
 export default function ReceptionCounters() {
@@ -30,47 +29,65 @@ export default function ReceptionCounters() {
       {/* Main Content Area */}
       <section className="max-w-[1200px] mx-auto px-4 py-16 flex flex-col md:flex-row gap-16">
         
-        {/* Sidebar */}
-        <ProductSidebar activeCategory="/reception-counters" />
-
         {/* Product Grid */}
         <div className="flex-1">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             
             {[
               { 
-                name: 'Corby Reception', 
-                desc: 'A sleek modern reception counter designed for corporate offices, featuring clean lines and professional aesthetics.',
+                name: 'Walnut L-Shape Reception Counter', 
+                desc: 'Wooden L-shape reception counter with raised top panel, spacious desk area, and modern elegant finish.',
                 badge: null,
                 image: '48c3f57d-f393-48fc-96d1-fbcde25cdb07.jpg',
                 isPlaceholder: false
               },
               { 
-                name: 'Halton Reception', 
-                desc: 'Elegant reception desk solution perfect for executive environments and premium commercial workspaces.',
+                name: 'Geometric Walnut Reception Counter', 
+                desc: 'Wooden reception counter with unique geometric line design, sturdy build, and stylish corner L-shape layout.',
                 badge: null,
                 image: '/325b49eb-d282-4810-a1e2-cc13f320242e.jpg',
                 isPlaceholder: false
               },
               { 
-                name: 'Lufton Reception', 
-                desc: 'Contemporary front desk design offering both style and functionality for high-traffic reception areas.',
+                name: 'Striped Walnut Reception Desk', 
+                desc: 'Long wooden reception desk with striped front panel, sleek white base, and clean modern design.',
                 badge: null,
                 image: '/9953db69-dc1c-4496-aa2d-f8d7e98a333d.jpg',
                 isPlaceholder: false
               },
               { 
-                name: 'Princeton Reception', 
-                desc: 'Sophisticated reception counter crafted for corporate headquarters and professional office settings.',
+                name: 'White & Walnut Reception Counter', 
+                desc: 'White and wooden reception counter with raised display top, dual-tone finish, and compact modern style.',
                 badge: null,
                 image: '/ac2f479c-caae-4392-9e41-254be366a5fb.jpg',
                 isPlaceholder: false
               },
               { 
-                name: 'Zara Reception', 
-                desc: 'Modern minimalist reception desk ideal for creating a welcoming first impression in commercial spaces.',
+                name: 'Dark Wood Glass Reception Counter', 
+                desc: 'Dark wood reception counter with frosted glass panels, layered design, and sleek contemporary office look.',
                 badge: null,
                 image: '/eb89f3e7-13bb-41c2-8692-a3836f1503ce.jpg',
+                isPlaceholder: false
+              },
+              { 
+                name: 'Curved Wood-Black Reception Counter', 
+                desc: 'Elegant curved reception desk with walnut wood panels, black metal accents, perforated dot pattern detailing, modern design for stylish front-office areas.',
+                badge: null,
+                image: '/Screenshot 2026-06-24 000733.png',
+                isPlaceholder: false
+              },
+              { 
+                name: 'Slate & Walnut Reception Desk', 
+                desc: 'Sleek rectangular reception counter with dark slate front panel, contrasting walnut wood transaction top, minimalist modern design for compact reception areas.',
+                badge: null,
+                image: '/Screenshot 2026-06-24 000752.png',
+                isPlaceholder: false
+              },
+              { 
+                name: 'Angular Wood-Charcoal Reception Counter', 
+                desc: 'Bold rectangular reception desk with charcoal grey body, diagonal walnut wood panel accent, floating wood top, contemporary design for modern offices.',
+                badge: null,
+                image: '/Screenshot 2026-06-24 000953.png',
                 isPlaceholder: false
               },
             ].map((product, i) => (

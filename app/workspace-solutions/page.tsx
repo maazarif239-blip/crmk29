@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import ProductSidebar from '@/components/ProductSidebar';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
 
 type LayoutKey = 'S' | 'D' | 'X' | 'U' | 'R';
@@ -84,7 +83,7 @@ const variantCards = [
     key: "S" as const,
     title: "S-Type Workstation",
     description: "2-person cluster layout engineered for focused collaboration.",
-    image: "/Screenshot 2026-06-16 163413.png",
+    image: "/screenshot-2026-06-16-163413.png",
     configValue: "2-Person",
     dims: "1425 x 1210 x 1140 mm",
   },
@@ -92,7 +91,7 @@ const variantCards = [
     key: "U" as const,
     title: "U-Type Workstation",
     description: "Semi-private workstation plan for high-concentration work.",
-    image: "/Screenshot 2026-06-16 184300.png",
+    image: "/screenshot-2026-06-16-184300.png",
     configValue: "2-Person",
     dims: "3200 x 2000 x 1200 mm",
   },
@@ -100,7 +99,7 @@ const variantCards = [
     key: "D" as const,
     title: "D-Type Workstation",
     description: "Linear desking system optimized for open-plan efficiency.",
-    image: "/Screenshot 2026-06-16 184310.png",
+    image: "/screenshot-2026-06-16-184310.png",
     configValue: "D-I 2-Person",
     dims: "1200 x 600 x 1200 mm",
   },
@@ -108,7 +107,7 @@ const variantCards = [
     key: "R" as const,
     title: "R-Type Workstation",
     description: "Row-based alignment built for modular expansion.",
-    image: "/Screenshot 2026-06-16 184319.png",
+    image: "/screenshot-2026-06-16-184319.png",
     configValue: "2-Person",
     dims: "1205 x 1600 x 1220 mm",
   },
@@ -116,7 +115,7 @@ const variantCards = [
     key: "X" as const,
     title: "X-Type Workstation",
     description: "Cross partition arrangement that supports agile teamwork.",
-    image: "/Screenshot 2026-06-16 184330.png",
+    image: "/screenshot-2026-06-16-184330.png",
     configValue: "2-Person",
     dims: "1205 x 3200 x 1220 mm",
   },
@@ -174,16 +173,12 @@ export default function WorkspaceSolutions() {
         <div className="flex flex-col lg:flex-row gap-16">
           
           {/* Sidebar Area */}
-          <ProductSidebar activeCategory="/workspace-solutions" />
-
           {/* Product Detail Spotlight Column */}
           <div className="flex-1">
             
             {/* Breadcrumb Navigation */}
             <nav className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-6 flex gap-2 items-center">
               <Link href="/" className="hover:text-gray-900 transition-colors">Home</Link>
-              <span>/</span>
-              <Link href="/products" className="hover:text-gray-900 transition-colors">Products</Link>
               <span>/</span>
               <span className="text-gray-900">Workspace Solutions</span>
             </nav>

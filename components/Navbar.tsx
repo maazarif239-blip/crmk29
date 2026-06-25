@@ -12,73 +12,56 @@ type NavItem = {
  leftDropdown?: NavItem[];
  rightDropdown?: NavItem[];
 };
-
-const productDropdownItems: NavItem[] = [
- { name: "Study Chairs", href: "/study-chairs" },
- { name: "Office Chairs", href: "/office-chairs" },
- { name: "Visitors Chairs", href: "/visitor-chairs" },
- { name: "Conference and Meeting Tables", href: "/products/conference-and-meeting-tables" },
- { name: "Reception Counters", href: "/reception-counters" },
- { name: "Sofas and Lounge Setting", href: "/sofas-lounge-seating" },
- { name: "Technology", href: "/technology-suite" },
- { name: "Workspace Solutions", href: "/workspace-solutions" },
- { name: "Guest Chairs", href: "/guest-chairs" },
- { name: "Gravity Workstations", href: "/gravity-workstations" },
- { name: "Hardwood Executive Tables", href: "/hardwood-executive-tables" },
- { name: "Ant Chair", href: "/ant-chairs" },
- { name: "Library Shelves", href: "/library-shelves" },
- { name: "Modern Workstation System", href: "/products/modern-workstation-systems" },
- { name: "Lotus 30 Office Workstation", href: "/products/lotus-30-office-workstations" },
- { name: "Executive Chairs", href: "/products/executive-chairs" },
- { name: "Paris Chairs", href: "/products/paris-chairs" },
- { name: "Director Chair", href: "/products/director-chair" },
- { name: "Executive Furniture", href: "/products/executive-furniture" },
- { name: "Manager Chair Collection", href: "/products/manager-chair-collection" },
- { name: "Laboratory Solution", href: "/products/laboratory-solutions" },
- { name: "Coffee Sets", href: "/products/coffee-sets" },
- { name: "Coffee Tables", href: "/products/coffee-tables" },
- { name: "Coffee Chairs", href: "/products/coffee-chairs" },
- { name: "Stools", href: "/products/stools" },
- { name: "Almirahs", href: "/products/almirahs" },
- { name: "Rostrum", href: "/products/rostrum" },
- { name: "Office Sets", href: "/products/office-sets" },
+const seatingDropdownItems: NavItem[] = [
+  { name: "Study Chairs", href: "/study-chairs" },
+  { name: "Office Chairs", href: "/office-chairs" },
+  { name: "Visitors Chairs", href: "/visitor-chairs" },
+  { name: "Sofas and Lounge Setting", href: "/sofas-lounge-seating" },
+  { name: "Guest Chairs", href: "/guest-chairs" },
+  { name: "Manager Chair Collection", href: "/products/manager-chair-collection" },
 ];
+
+const storageDropdownItems: NavItem[] = [
+  { name: "Almirah", href: "/products/almirahs" },
+  { name: "Storage Cabinets", href: "/products/storage-cabinets" },
+];
+
 
 const workstationDropdownItems: NavItem[] = [
- { name: "Modern Workstation", href: "/products/modern-workstation-systems" },
- { name: "Lotus 30 Workstation", href: "/products/lotus-30-office-workstations" },
- { name: "Workspace Solutions", href: "/workspace-solutions" },
+  { name: "Gravity Workstation Series", href: "/products/gravity-workstation-series" },
+  { name: "Urban Loft Workstation Series", href: "/products/urban-loft-workstation-series" },
+  { name: "Classic Cubicle Workstation Series", href: "/products/classic-cubicle-workstation-series" },
+  { name: "Compact Pod Workstation Series", href: "/products/compact-pod-workstation-series" },
+  { name: "Lotus 30 Office Workstation", href: "/products/lotus-30-office-workstations" },
+  { name: "Cross-Leg Walnut Workstation Series", href: "/products/cross-leg-walnut-workstation-series" },
+  { name: "Urban Edge Workstation Series", href: "/products/urban-edge-workstation-series" },
+  { name: "Loop Frame Workstation Series", href: "/products/loop-frame-workstation-series" },
+  { name: "Heritage Executive Workstation Series", href: "/products/heritage-executive-workstation-series" },
+  { name: "Skyline Walnut Workstation Series", href: "/products/skyline-walnut-workstation-series" },
+  { name: "Brickline Industrial Workstation Series", href: "/products/brickline-industrial-workstation-series" },
 ];
 
-const premiumExecutiveDropdownItems: NavItem[] = [
- { name: "Executive Chairs", href: "/products/executive-chairs" },
- { name: "Executive Desks", href: "/hardwood-executive-tables" },
- { name: "Conference Tables", href: "/products/conference-and-meeting-tables" },
- { name: "VIP Lounges", href: "/sofas-lounge-seating" },
+const officeTablesDropdownItems: NavItem[] = [
+  { name: "Executive Office Tables", href: "/products/executive-office-tables" },
+  { name: "Manager Office Tables", href: "/products/manager-office-tables" },
+  { name: "Reception Counters", href: "/reception-counters" },
+  { name: "Conference & Meeting Tables", href: "/products/conference-and-meeting-tables" },
+  { name: "Center & Side Tables", href: "/products/center-and-side-tables" },
 ];
-
-const coffeeLoungeDropdownItems: NavItem[] = [
- { name: "Coffee Sets", href: "/products/coffee-sets" },
- { name: "Coffee Tables", href: "/products/coffee-tables" },
- { name: "Coffee Chairs", href: "/products/coffee-chairs" },
- { name: "Stools", href: "/products/stools" },
-];
-
 const navItems: NavItem[] = [
- { name: "Home", href: "/" },
- { name: "Projects", href: "/projects" },
- { 
- name: "Products", 
- href: "/products", 
- dropdown: productDropdownItems,
- },
- { name: "Workstations", dropdown: workstationDropdownItems },
- { name: "Premium Executive Range", dropdown: premiumExecutiveDropdownItems },
- { name: "Coffe Lounge", dropdown: coffeeLoungeDropdownItems },
- { name: "Field of Expertise", href: "/field-of-expertise" },
- { name: "HB Clientage", href: "/clientage" },
- { name: "Management & Employees", href: "/management-employees" },
- { name: "Certificates", href: "/certificates" },
+  { name: "Home", href: "/" },
+  { name: "Projects", href: "/projects" },
+  { name: "Office Sets", href: "/products/office-sets" },
+  { name: "Office Tables", dropdown: officeTablesDropdownItems },
+  { name: "Seating", dropdown: seatingDropdownItems },
+  { name: "Storage", dropdown: storageDropdownItems },
+  { name: "Technology", href: "/technology-suite" },
+  { name: "Workstation", dropdown: workstationDropdownItems },
+  { name: "Breakout & Lounge Pods", href: "/smart-spaces" },
+  { name: "Field of Expertise", href: "/field-of-expertise" },
+  { name: "HB Clientage", href: "/clientage" },
+  { name: "Management & Employees", href: "/management-employees" },
+  { name: "About", href: "/about" },
 ];
 
 export default function Navbar() {
@@ -155,11 +138,11 @@ export default function Navbar() {
  <header 
  className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
  isScrolled 
- ? "bg-white  shadow-md py-3" 
- : "bg-white  py-5"
+ ? "bg-white shadow-md py-3" 
+ : "bg-white py-4"
  }`}
  >
- <div className="max-w-[1600px] mx-auto px-3 md:px-4 lg:px-6">
+ <div className="max-w-[1800px] mx-auto px-4 lg:px-6">
  <div className="flex items-center justify-between h-full relative">
  {/* Logo - Left */}
  <Link
@@ -168,19 +151,20 @@ export default function Navbar() {
  >
  <Image
  src="/hb-logo.png.png"
- alt="HB Furniture"
- width={isScrolled ? 40 : 56}
- height={isScrolled ? 40 : 56}
+ alt="HB Logo"
+ 
+ width={isScrolled ? 40 : 52}
+ height={isScrolled ? 40 : 52}
  className="object-contain transition-all duration-300"
  priority
  />
- <span className="text-lg font-normal tracking-[0.046875em] leading-none whitespace-nowrap text-[#222222] " style={{ fontFamily: 'var(--font-marcellus)', textRendering: 'optimizeLegibility', WebkitFontSmoothing: 'antialiased' }}>
- HB Furniture
+ <span className="text-lg font-normal tracking-[0.046875em] leading-none whitespace-nowrap text-[#222222]" style={{ fontFamily: 'var(--font-marcellus)', textRendering: 'optimizeLegibility', WebkitFontSmoothing: 'antialiased' }}>
+ 
  </span>
  </Link>
 
  {/* Desktop Navigation - Center */}
- <nav className="hidden xl:flex items-center justify-center flex-1 gap-3 2xl:gap-5 px-2 2xl:px-4" ref={dropdownRef}>
+ <nav className="hidden lg:flex items-center justify-center flex-1 gap-4 px-3" ref={dropdownRef}>
  {navItems.map((item) => {
  if (item.dropdown) {
  return (
@@ -193,46 +177,48 @@ export default function Navbar() {
  {item.href ? (
  <Link
  href={item.href}
- className={`text-xs font-medium transition-colors duration-200 relative flex items-center gap-1 py-4 ${
+ className={`text-[13px] font-medium transition-colors duration-200 relative flex items-center gap-1.5 py-2.5 ${
  isActive(item.href) || activeDropdown === item.name
  ? "text-[#E8500A]"
- : "text-gray-600 hover:text-[#E8500A]"
- } ${item.name === "Premium Executive Range" || item.name === "Coffe Lounge" ? "" : "whitespace-nowrap"}`}
+ : "text-gray-700 hover:text-[#E8500A]"
+ } whitespace-nowrap`}
  >
  {item.name}
  <svg
- className={`w-3 h-3 transition-transform duration-200 ${activeDropdown === item.name ? "rotate-180" : ""}`}
+ className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === item.name ? "rotate-180" : ""}`}
  fill="none"
  stroke="currentColor"
+ strokeWidth={2}
  viewBox="0 0 24 24"
  >
- <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+ <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
  </svg>
  <span
- className={`absolute bottom-0 left-0 right-0 h-0.5 bg-[#E8500A] transition-transform duration-200 ease-out origin-left ${
+ className={`absolute bottom-0 left-0 right-0 h-0.5 bg-[#E8500A] transition-transform duration-300 ease-out origin-left ${
  isActive(item.href) || activeDropdown === item.name ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
  }`}
  />
  </Link>
  ) : (
  <div
- className={`text-xs font-medium transition-colors duration-200 relative flex items-center gap-1 py-4 cursor-pointer ${
+ className={`text-[13px] font-medium transition-colors duration-200 relative flex items-center gap-1.5 py-2.5 cursor-pointer ${
  activeDropdown === item.name
  ? "text-[#E8500A]"
- : "text-gray-600 hover:text-[#E8500A]"
- } ${item.name === "Premium Executive Range" || item.name === "Coffe Lounge" ? "" : "whitespace-nowrap"}`}
+ : "text-gray-700 hover:text-[#E8500A]"
+ } whitespace-nowrap`}
  >
  {item.name}
  <svg
- className={`w-3 h-3 transition-transform duration-200 ${activeDropdown === item.name ? "rotate-180" : ""}`}
+ className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === item.name ? "rotate-180" : ""}`}
  fill="none"
  stroke="currentColor"
+ strokeWidth={2}
  viewBox="0 0 24 24"
  >
- <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+ <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
  </svg>
  <span
- className={`absolute bottom-0 left-0 right-0 h-0.5 bg-[#E8500A] transition-transform duration-200 ease-out origin-left ${
+ className={`absolute bottom-0 left-0 right-0 h-0.5 bg-[#E8500A] transition-transform duration-300 ease-out origin-left ${
  activeDropdown === item.name ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
  }`}
  />
@@ -240,30 +226,31 @@ export default function Navbar() {
  )}
 
  {/* Dropdown Menu */}
- <div className={`absolute top-full left-0 mt-0 min-w-[260px] bg-white  rounded-xl shadow-xl border border-gray-100  overflow-hidden z-50 transition-all duration-300 ${
+ <div className={`absolute top-full left-0 mt-2 min-w-[320px] w-max max-w-[95vw] bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-50 transition-all duration-300 ${
  activeDropdown === item.name
  ? "opacity-100 visible translate-y-0"
- : "opacity-0 invisible translate-y-2 pointer-events-none"
+ : "opacity-0 invisible translate-y-3 pointer-events-none"
  }`}>
- <div className="flex flex-col max-h-[70vh] overflow-y-auto">
+ <div className="flex flex-col max-h-[75vh] overflow-y-auto">
  {item.dropdown?.map((subItem, index) => (
  <Link
  key={subItem.href!}
  href={subItem.href!}
- className={`group flex items-center justify-between px-5 py-3 text-sm font-normal text-gray-700  transition-all duration-200 ${
- index !== item.dropdown!.length - 1 ? "border-b border-gray-100  " : ""
- } hover:bg-gray-50 `}
+ className={`group flex items-center justify-between px-6 py-4 text-[15px] leading-relaxed font-normal text-gray-700 transition-all duration-200 ${
+ index !== item.dropdown!.length - 1 ? "border-b border-gray-100" : ""
+ } hover:bg-gray-50 hover:text-gray-900`}
  onClick={() => setActiveDropdown(null)}
  >
- <span>{subItem.name}</span>
+ <span className="flex-1">{subItem.name}</span>
  {subItem.dropdown && (
  <svg
- className="w-4 h-4 text-gray-400  transition-colors duration-200 group-hover:text-gray-600 "
+ className="w-4 h-4 text-gray-400 transition-colors duration-200 group-hover:text-gray-600"
  fill="none"
  stroke="currentColor"
+ strokeWidth={2}
  viewBox="0 0 24 24"
  >
- <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+ <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
  </svg>
  )}
  </Link>
@@ -278,15 +265,15 @@ export default function Navbar() {
  <Link
  key={item.name}
  href={item.href!}
- className={`text-xs font-medium transition-colors duration-200 relative group whitespace-nowrap py-4 ${
+ className={`text-[13px] font-medium transition-colors duration-200 relative group whitespace-nowrap py-2.5 ${
  isActive(item.href!)
  ? "text-[#E8500A]"
- : "text-gray-600 hover:text-[#E8500A]"
+ : "text-gray-700 hover:text-[#E8500A]"
  }`}
  >
  {item.name}
  <span
- className={`absolute bottom-0 left-0 right-0 h-0.5 bg-[#E8500A] transition-transform duration-200 ease-out origin-left ${
+ className={`absolute bottom-0 left-0 right-0 h-0.5 bg-[#E8500A] transition-transform duration-300 ease-out origin-left ${
  isActive(item.href!) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
  }`}
  />
@@ -296,34 +283,34 @@ export default function Navbar() {
  </nav>
 
  {/* Desktop Controls (Contact Us) */}
- <div className="hidden xl:flex items-center gap-2 shrink-0">
+ <div className="hidden lg:flex items-center gap-3 shrink-0">
  
  {/* Contact Us Button */}
  <Link
  href="/contact"
- className="bg-[#E8500A] text-white px-6 py-2 rounded-full text-xs font-bold hover:bg-[#d64a09] transition-colors whitespace-nowrap shadow-sm hover:shadow-md"
+ className="bg-[#E8500A] text-white px-5 py-2.5 rounded-full text-[13px] font-semibold tracking-wide hover:bg-[#d64a09] transition-all duration-200 whitespace-nowrap shadow-sm hover:shadow-md hover:scale-[1.02]"
  >
  Contact Us
  </Link>
  </div>
 
  {/* Mobile Controls */}
- <div className="xl:hidden flex items-center gap-2">
+ <div className="lg:hidden flex items-center gap-3">
  
  {/* Mobile Hamburger Button */}
  <button
  type="button"
- className="p-2 text-gray-700  hover:text-[#E8500A] transition-colors"
+ className="p-3 text-gray-700 hover:text-[#E8500A] transition-colors"
  onClick={toggleMobileMenu}
  aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
  aria-expanded={isMobileMenuOpen}
  >
  {isMobileMenuOpen ? (
- <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+ <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
  </svg>
  ) : (
- <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+ <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
  </svg>
  )}
@@ -335,17 +322,17 @@ export default function Navbar() {
 
  {/* Mobile Menu */}
  {isMobileMenuOpen && (
- <div className="fixed inset-x-0 top-0 bottom-0 z-40 bg-white  pt-20 px-4 xl:hidden animate-in slide-in-from-top duration-300 flex flex-col overflow-y-auto pb-6">
- <nav className="flex flex-col gap-2 flex-1">
+ <div className="fixed inset-x-0 top-0 bottom-0 z-40 bg-white pt-24 px-6 lg:hidden animate-in slide-in-from-top duration-300 flex flex-col overflow-y-auto pb-8">
+ <nav className="flex flex-col gap-3 flex-1">
  {navItems.map((item) => {
  if (item.dropdown) {
  return (
  <div key={item.name} className="flex flex-col">
  <div 
- className={`w-full text-left px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors duration-200 ${
+ className={`w-full text-left px-5 py-4 rounded-xl text-base font-semibold tracking-wide transition-colors duration-200 ${
  (item.href && isActive(item.href)) || activeDropdown === item.name
- ? "bg-orange-50  text-[#E8500A]"
- : "text-gray-600  hover:bg-gray-50 "
+ ? "bg-orange-50 text-[#E8500A]"
+ : "text-gray-700 hover:bg-gray-50"
  }`}
  >
  <div className="flex items-center justify-between">
@@ -353,12 +340,12 @@ export default function Navbar() {
  <Link 
  href={item.href}
  onClick={() => setIsMobileMenuOpen(false)}
- className="flex-1 py-1"
+ className="flex-1"
  >
  {item.name}
  </Link>
  ) : (
- <span className="flex-1 py-1">
+ <span className="flex-1">
  {item.name}
  </span>
  )}
@@ -367,42 +354,42 @@ export default function Navbar() {
  e.stopPropagation();
  setActiveDropdown((prev) => (prev === item.name ? null : item.name));
  }}
- className="p-1 -mr-1 rounded hover:bg-orange-100 transition-colors"
+ className="p-2 -mr-2 rounded-lg hover:bg-orange-100 transition-colors"
  >
  <svg
- className={`w-5 h-5 transition-transform duration-200 ${activeDropdown === item.name ? "rotate-180" : ""}`}
+ className={`w-6 h-6 transition-transform duration-300 ${activeDropdown === item.name ? "rotate-180" : ""}`}
  fill="none"
  stroke="currentColor"
+ strokeWidth={2}
  viewBox="0 0 24 24"
  >
- <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+ <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
  </svg>
  </button>
  </div>
  </div>
-
- {/* Mobile Dropdown */}
- {activeDropdown === item.name && (
- <div className="pl-4 mt-1 flex flex-col gap-1">
- {item.dropdown.map((subItem) => (
- <Link
- key={subItem.href!}
- href={subItem.href!}
- onClick={() => {
- setIsMobileMenuOpen(false);
- setActiveDropdown(null);
- }}
- className={`px-4 py-2 rounded text-xs transition-colors duration-200 ${
- isActive(subItem.href!)
- ? "bg-orange-50  text-[#E8500A]"
- : "text-gray-500  hover:bg-gray-50 hover:text-[#E8500A]"
- }`}
- >
- {subItem.name}
- </Link>
- ))}
- </div>
- )}
+             {/* Mobile Dropdown */}
+             {activeDropdown === item.name && (
+             <div className="pl-6 mt-3 flex flex-col gap-2">
+             {item.dropdown.map((subItem) => (
+             <Link
+             key={subItem.href!}
+             href={subItem.href!}
+             onClick={() => {
+             setIsMobileMenuOpen(false);
+             setActiveDropdown(null);
+             }}
+             className={`block px-5 py-4 rounded-lg text-[15px] leading-relaxed transition-colors duration-200 ${
+             isActive(subItem.href!)
+             ? "bg-orange-50 text-[#E8500A]"
+             : "text-gray-600 hover:bg-gray-50 hover:text-[#E8500A]"
+             }`}
+             >
+             {subItem.name}
+             </Link>
+             ))}
+             </div>
+             )}
  </div>
  );
  }
@@ -412,10 +399,10 @@ export default function Navbar() {
  key={item.name}
  href={item.href!}
  onClick={() => setIsMobileMenuOpen(false)}
- className={`px-4 py-3 rounded-lg text-sm font-bold uppercase tracking-wider transition-all duration-200 ${
+ className={`px-5 py-4 rounded-xl text-base font-semibold tracking-wide transition-all duration-200 ${
  isActive(item.href!)
- ? "bg-orange-50  text-[#E8500A]"
- : "text-gray-600  hover:bg-gray-50 "
+ ? "bg-orange-50 text-[#E8500A]"
+ : "text-gray-700 hover:bg-gray-50"
  }`}
  >
  {item.name}
@@ -424,11 +411,11 @@ export default function Navbar() {
  })}
  </nav>
  
- <div className="mt-8 px-4">
+ <div className="mt-10 px-6">
  <Link
  href="/contact"
  onClick={() => setIsMobileMenuOpen(false)}
- className="block w-full text-center bg-[#E8500A] text-white px-6 py-3 rounded-full text-sm font-bold hover:bg-[#d64a09] transition-colors shadow-sm"
+ className="block w-full text-center bg-[#E8500A] text-white px-8 py-4 rounded-full text-base font-semibold tracking-wide hover:bg-[#d64a09] transition-all duration-200 shadow-md hover:shadow-lg"
  >
  Contact Us
  </Link>
@@ -437,7 +424,7 @@ export default function Navbar() {
  )}
 
  {/* Spacer to prevent content from going under fixed navbar */}
- <div className={`transition-all duration-300 ${isScrolled ? "h-16" : "h-24"}`} />
+ <div className={`transition-all duration-300 ${isScrolled ? "h-[72px]" : "h-[80px]"}`} />
  </>
  );
 }

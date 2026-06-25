@@ -3,18 +3,16 @@ import Link from 'next/link';
 
 export default function HBClientage() {
   const clients = [
-    { id: 1, name: "Asian Development Bank", industry: "Banking & Finance", logoText: "ADB" },
+    { id: 1, name: "Asian Development Bank", industry: "Banking & Finance", logoText: "ADB", logo: "/logos/adb.png" },
     { id: 2, name: "Askari Bank", industry: "Banking & Finance", logoText: "ASKARI" },
     { id: 3, name: "Citibank", industry: "Banking & Finance", logoText: "CITI" },
     { id: 4, name: "MCB", industry: "Banking & Finance", logoText: "MCB" },
     { id: 5, name: "HBL", industry: "Banking & Finance", logoText: "HBL" },
-    { id: 6, name: "Pepsi", industry: "FMCG", logoText: "PEPSI" },
-    { id: 7, name: "Nestle", industry: "FMCG", logoText: "NESTLE" },
     { id: 8, name: "Engro Corp", industry: "Conglomerate", logoText: "ENGRO" },
     { id: 9, name: "WWF", industry: "NGO", logoText: "WWF" },
-    { id: 10, name: "World Health Organization", industry: "NGO / INGO", logoText: "WHO" },
-    { id: 11, name: "United Nations", industry: "NGO / INGO", logoText: "UN" },
-    { id: 12, name: "UNICEF", industry: "NGO / INGO", logoText: "UNICEF" },
+    { id: 10, name: "World Health Organization", industry: "NGO", logoText: "WHO" },
+    { id: 11, name: "United Nations", industry: "NGO", logoText: "UN" },
+    { id: 12, name: "UNICEF", industry: "NGO", logoText: "UNICEF" },
     { id: 13, name: "MercyCorps", industry: "NGO", logoText: "MERCY" },
     { id: 14, name: "Save the Children", industry: "NGO", logoText: "SAVE" },
     { id: 15, name: "Oxfam", industry: "NGO", logoText: "OXFAM" },
@@ -48,24 +46,66 @@ export default function HBClientage() {
   const featuredClients = [
     {
       id: 1,
-      name: "United Nations (UN) & WHO",
-      overview: "Provided sustainable, modular workspace systems designed for agility and collaborative team environments across multiple regional offices.",
-      industry: "International Organization",
-      color: "bg-blue-600"
+      name: "Dalda Foods Limited",
+      overview: "Delivered modern workspace solutions and office furnishings that support productivity and everyday operations.",
+      industry: "Food & Consumer Goods",
+      color: "bg-amber-500"
     },
     {
       id: 2,
-      name: "HBL (Habib Bank Limited)",
-      overview: "Executed complete executive floor furnishings and deployed ergonomic workstations for over 500 employees at their corporate headquarters.",
-      industry: "Banking & Finance",
-      color: "bg-emerald-700"
+      name: "Shell Pakistan Limited",
+      overview: "Provided functional office setups and collaborative workspaces for efficient and streamlined operations.",
+      industry: "Energy & Oil",
+      color: "bg-yellow-500"
     },
     {
       id: 3,
-      name: "Engro Corporation",
-      overview: "Designed and implemented bespoke conference tables, acoustic solutions, and executive suites fitting a premier industrial conglomerate.",
-      industry: "Conglomerate",
-      color: "bg-orange-600"
+      name: "Zong (CMPak)",
+      overview: "Created flexible work environments designed to support teamwork and fast-paced business needs.",
+      industry: "Telecommunications",
+      color: "bg-red-600"
+    },
+    {
+      id: 4,
+      name: "Lucky Cement Limited",
+      overview: "Designed practical office spaces and executive setups tailored for a leading industrial company.",
+      industry: "Cement & Construction",
+      color: "bg-stone-600"
+    },
+    {
+      id: 5,
+      name: "Huawei Technologies Pakistan",
+      overview: "Implemented smart workspace solutions that encourage efficiency and collaboration across teams.",
+      industry: "Technology & ICT",
+      color: "bg-rose-600"
+    },
+    {
+      id: 6,
+      name: "Easypaisa",
+      overview: "Developed modern office environments that support innovation and seamless digital services.",
+      industry: "Fintech & Digital Payments",
+      color: "bg-emerald-600"
+    },
+    {
+      id: 7,
+      name: "Alstom",
+      overview: "Delivered modern workspace solutions and office furnishings that support collaboration and efficient operations.",
+      industry: "Transportation & Rail Solutions",
+      color: "bg-blue-600"
+    },
+    {
+      id: 8,
+      name: "GSK (GlaxoSmithKline)",
+      overview: "Designed functional office environments that promote productivity and support everyday business needs.",
+      industry: "Pharmaceuticals & Healthcare",
+      color: "bg-teal-600"
+    },
+    {
+      id: 9,
+      name: "BASF",
+      overview: "Provided practical workspace and executive office solutions tailored for smooth and efficient operations.",
+      industry: "Chemicals & Industrial Solutions",
+      color: "bg-purple-600"
     }
   ];
 

@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import ProductSidebar from '@/components/ProductSidebar';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
 
 export default function Lotus30OfficeWorkstations() {
@@ -36,9 +35,6 @@ export default function Lotus30OfficeWorkstations() {
       {/* Main Content Area */}
       <section className="max-w-[1200px] mx-auto px-4 py-12 flex flex-col md:flex-row gap-16">
         
-        {/* Sidebar */}
-        <ProductSidebar activeCategory="/products/lotus-30-office-workstations" />
-
         {/* Product Grid */}
         <div className="flex-1">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
@@ -46,7 +42,7 @@ export default function Lotus30OfficeWorkstations() {
             {[
               {
                 name: 'Lotus Aluminum 30mm Workstation',
-                image: '/Screenshot 2026-06-16 183344.png',
+                image: '/screenshot-2026-06-16-183344.png',
                 description: 'The Lotus 30 is an elegant and economical screen workstation system that is architectural in nature. A smart solution and complete modular product — suitable as a touch-down station, carrel, or dividing screen used in conjunction with other products. Features a universal connector hardware system making it very easy to specify and install. Available in a wide range of fabric colors for panel customization.',
               },
              

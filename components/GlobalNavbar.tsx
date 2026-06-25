@@ -12,7 +12,6 @@ export default function GlobalNavbar() {
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'Projects', href: '/projects' },
-    { name: 'Products', href: '/products' },
     { name: 'About Us', href: '/about' },
   ];
 

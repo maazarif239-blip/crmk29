@@ -1,8 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
-import ProductSidebar from '@/components/ProductSidebar';
-
 export default function StudyChairs() {
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
@@ -34,9 +32,6 @@ export default function StudyChairs() {
       {/* Main Content Area */}
       <section className="max-w-[1200px] mx-auto px-4 py-20 flex flex-col md:flex-row gap-16">
         
-        {/* Sidebar */}
-        <ProductSidebar activeCategory="/study-chairs" />
-
         {/* Product Grid */}
         <div className="flex-1">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -46,14 +41,14 @@ export default function StudyChairs() {
               <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden">
                 <img 
                   src="/1.jpg" 
-                  alt="Cateteria Chair" 
+                  alt=" SkyBlue Stackable Study Chair" 
                   className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="p-6 flex-1 flex flex-col">
                 <h3 className="text-[15px] font-bold text-gray-900 mb-2">Cateteria Chair</h3>
                 <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
-                  Comfortable and durable seating solution designed for collaborative learning and cafeteria environments.
+                 Sky blue plastic study chair with metal frame, lightweight, stackable and easy to clean design.
                 </p>
                 <div className="mt-6">
                   <ContactForPricingLink />
@@ -66,14 +61,14 @@ export default function StudyChairs() {
               <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden">
                 <img 
                   src="/2.jpg" 
-                  alt="Circa Task Chair" 
+                  alt="Navy Blue Cushioned Study Chair" 
                   className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="p-6 flex-1 flex flex-col">
                 <h3 className="text-[15px] font-bold text-gray-900 mb-2">Circa Task Chair</h3>
                 <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
-                  Ergonomic task chair engineered for daily office productivity and comfort.
+                  Navy blue fabric study chair with thick cushioned back aur seat, foldable armrests, height-adjustable mechanism aur rolling caster wheels. Offers great back support for extended study or work hours.
                 </p>
                 <div className="mt-6">
                   <ContactForPricingLink />
@@ -86,14 +81,14 @@ export default function StudyChairs() {
               <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden">
                 <img 
                   src="/3.jpg" 
-                  alt="Generation Task Chair" 
+                  alt="Two-Tone Blue Grey Study Chair" 
                   className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Generation Task Chair</h3>
+                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Two-Tone Blue Grey Study Chair</h3>
                 <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
-                  Modern, responsive task chair offering dynamic back support and sleek aesthetics.
+                  Stylish blue backrest with grey cushioned seat, fixed armrests aur unique cutout back design. Smooth height adjustment aur rolling wheels make it comfortable for daily study or desk use.
                 </p>
                 <div className="mt-6">
                   <ContactForPricingLink />
@@ -106,14 +101,14 @@ export default function StudyChairs() {
               <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden">
                 <img 
                   src="/4.jpg" 
-                  alt="Puma Task Chair" 
+                  alt=" Mesh Back Ergonomic Study Chair" 
                   className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Puma Task Chair</h3>
+                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Mesh Back Ergonomic Study Chair</h3>
                 <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
-                  Agile and breathable seating solution perfect for intensive work or study sessions.
+                  Breathable black mesh-back study chair with adjustable armrests, lumbar support aur cushioned seat. Smooth-rolling wheels aur tilt mechanism provide flexible comfort for long hours of studying or working.
                 </p>
                 <div className="mt-6">
                   <ContactForPricingLink />
@@ -126,14 +121,14 @@ export default function StudyChairs() {
               <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden">
                 <img 
                   src="/5.jpg" 
-                  alt="Ring Chair" 
+                  alt="Foldable Tablet Arm Study Chair" 
                   className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Ring Chair</h3>
+                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Foldable Tablet Arm Study Chair</h3> 
                 <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
-                  Versatile, minimalist chair ideal for quick meetings and dynamic workspaces.
+                  Compact mesh chair with foldable writing tablet, castor wheels aur space-saving foldable frame design.
                 </p>
                 <div className="mt-6">
                   <ContactForPricingLink />
@@ -146,14 +141,14 @@ export default function StudyChairs() {
               <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden">
                 <img 
                   src="/6.jpg" 
-                  alt="Syntex Task Chair" 
+                  alt="Red & Black Classic Study Chair" 
                   className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Syntex Task Chair</h3>
+                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Red & Black Classic Study Chair</h3>
                 <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
-                  High-performance task chair featuring breathable mesh and intuitive ergonomic controls.
+                 Red backrest with black cushioned seat, fixed armrests aur height-adjustable rolling base comfort.
                 </p>
                 <div className="mt-6">
                   <ContactForPricingLink />
@@ -166,14 +161,14 @@ export default function StudyChairs() {
               <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden">
                 <img 
                   src="/7.jpg" 
-                  alt="Trend Task Chair" 
+                  alt="Comfort Study Black Fabric Chair" 
                   className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Trend Task Chair</h3>
+                <h3 className="text-[15px] font-bold text-gray-900 mb-2">Comfort Study Black Fabric Chair</h3>
                 <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
-                  Contemporary seating combining aesthetic appeal with all-day ergonomic support.
+                  Black fabric study chair with padded seat, armrests, adjustable height aur smooth rolling wheels for comfort.
                 </p>
                 <div className="mt-6">
                   <ContactForPricingLink />

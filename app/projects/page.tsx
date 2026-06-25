@@ -66,7 +66,7 @@ export default function Projects() {
           <div className="bg-white border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex flex-col h-full rounded-sm overflow-hidden">
             <div className="relative h-[280px] w-full bg-gray-100 shrink-0">
               <span className="absolute top-4 left-4 z-10 bg-[#EB5324] text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 shadow-sm rounded-full">
-                NGO & INGO
+                NGO
               </span>
             <img
   src="/c.jpg"
@@ -91,7 +91,7 @@ export default function Projects() {
           <h2 className="text-2xl font-serif text-gray-900 mb-10 tracking-tight">Sectors We Serve</h2>
           
           <div className="flex flex-wrap justify-center items-center gap-y-4 gap-x-6">
-            {['Telecom & IT', 'Pharma Industry', 'Oil & Energy', 'Educational Institutes', 'NGO & Foreign Missions'].map((sector, idx, arr) => (
+            {['Telecom & IT', 'Pharma Industry', 'Oil & Energy', 'Educational Institutes', 'NGO & Foreign Missions', 'Food Chain Industry', 'Laboratories', 'Travel Agencies', 'Cement Industry', 'Banks'].map((sector, idx, arr) => (
               <div key={idx} className="flex items-center gap-6">
                 <span className="text-gray-500 text-[13px] font-medium tracking-wide">{sector}</span>
                 {idx !== arr.length - 1 && (

@@ -32,10 +32,9 @@ export default function AboutUs() {
         <div className="flex flex-col md:flex-row gap-16 items-center">
           <div className="w-full md:w-1/2">
             <img 
-              src="90.png
-" 
-              alt="Workshop" 
-             className="w-full h-auto object-cover shadow-lg"
+              src="/90.png"
+              alt="CEO Portrait"
+              className="w-full h-[500px] object-cover grayscale opacity-90"
             />
           </div>
           <div className="w-full md:w-1/2">

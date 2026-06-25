@@ -1,8 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
-import ProductSidebar from '@/components/ProductSidebar';
-
 export default function GuestChairs() {
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
@@ -15,7 +13,7 @@ export default function GuestChairs() {
           <div 
             className="absolute inset-0 z-0"
             style={{
-              backgroundImage: 'url("/101 (1).png")',
+              backgroundImage: 'url("/101-1-.png")',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat'
@@ -39,32 +37,29 @@ export default function GuestChairs() {
       {/* Main Content Area */}
       <section className="max-w-[1200px] mx-auto px-4 py-12 flex flex-col md:flex-row gap-16">
         
-        {/* Sidebar */}
-        <ProductSidebar activeCategory="/guest-chairs" />
-
         {/* Product Grid */}
         <div className="flex-1">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
             
             {[
               {
-                name: 'Armas',
-                image: '/101 (1).png',
-                description: 'An elegant guest chair featuring deep cushioning and robust arm support, perfect for executive reception areas.',
+                name: 'White Upholstered Guest Chair with Wood Legs',
+                image: '/101-1-.png',
+                description: 'Simple white fabric guest chair with curved arms and natural wood legs. Clean modern look, comfortable for waiting or meeting areas.',
               },
               {
-                name: 'Cambri',
-                image: '/101 (2).png',
-                description: 'Sleek and professional visitor seating designed to provide reliable support and comfort for corporate guests.',
+                name: 'Wooden Lattice-Back Guest Chair',
+                image: '/101-2-.png',
+                description: 'Dark wood guest chair with criss-cross back design and orange cushion seat. Sturdy build, adds a classic touch to office spaces.',
               },
               {
-                name: 'California',
-                image: '/101 (3).png',
-                description: 'A modern guest seating solution with contoured lumbar alignment, ideal for high-end meeting rooms and lobbies.',
+                name: 'Walnut Wood Guest Chair with Black Seat',
+                image: '/101-3-.png',
+                description: 'Modern walnut wood guest chair with curved open back and black leather-style cushion. Stylish design, good for executive guest seating.',
               },
               {
                 name: 'Austin',
-                image: '/101 (4).png',
+                image: '/101-4-.png',
                 description: 'A classic guest chair combining durable frame construction with plush, breathable fabric for all-day comfort.',
               },
             ].map((product, i) => (
