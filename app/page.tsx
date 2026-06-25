@@ -7,64 +7,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 
-// Signature Collection product data
-const signatureProducts = [
-  {
-    name: "Prestige Executive Chair",
-    image: "/230-6-.png",
-    href: "/products/executive-chairs"
-  },
-  {
-    name: "Ravi Executive Desk",
-    image: "/240-1-.png",
-    href: "/office-furniture"
-  },
-  {
-    name: "HB-Sofa TQ-01",
-    image: "/270-1-.png",
-    href: "/sofas-lounge-seating"
-  },
-  {
-    name: "Director-J",
-    image: "/screenshot-2026-06-13-215230.png",
-    href: "/products/director-chair"
-  },
-  {
-    name: "Odyssey Conference Table",
-    image: "/g.png",
-    href: "/conference-meeting-tables"
-  },
-  {
-    name: "Office Filing Almirah",
-    image: "/8a71e3c2-b151-4768-aa5a-22cb4be0b797.jpg",
-    href: "/products/almirahs"
-  },
-  {
-    name: "Modern Wooden Rostrum",
-    image: "/28ce7446-3163-4f23-95ab-ce914cc78217.png",
-    href: "/products/rostrum"
-  },
-  {
-    name: "Tilton Copper and Wood Table Lamp",
-    image: "/10.jpg",
-    href: "/products"
-  },
-  {
-    name: "Presidential Executive Desk Series",
-    image: "/screenshot-2026-06-16-175937.png",
-    href: "/office-furniture"
-  },
-  {
-    name: "R-Type Workstation",
-    image: "/screenshot-2026-06-16-184319.png",
-    href: "/products/modern-workstation-systems"
-  },
-  {
-    name: "Hudson-J",
-    image: "/245-2-.png",
-    href: "/products/executive-chairs"
-  }
-];
+
 
 // Client logo data
 const clientLogos = [
@@ -117,20 +60,6 @@ const clientLogos = [
 ];
 
 export default function Home() {
-  // Initialize Embla Carousel for Signature Collection
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    {
-      loop: true,
-      align: 'start',
-      slidesToScroll: 1,
-      containScroll: 'trimSnaps',
-      breakpoints: {
-        '(min-width: 768px)': { slidesToScroll: 2 },
-        '(min-width: 1024px)': { slidesToScroll: 4 }
-      }
-    },
-    [Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true })]
-  );
 
   // Initialize Embla Carousel for Clients
   const [clientsEmblaRef, clientsEmblaApi] = useEmblaCarousel(
@@ -253,62 +182,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Signature Collection */}
-      <section className="py-24 max-w-[1200px] mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">Signature Collection</h2>
-          <p className="text-gray-500 text-sm md:text-base max-w-2xl mx-auto">
-            Explore our best-selling furniture crafted for modern spaces.
-          </p>
-        </div>
 
-        <div className="relative">
-          <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex gap-4 md:gap-6 lg:gap-8">
-              {signatureProducts.map((product, i) => (
-                <div key={i} className="min-w-0 flex-[0_0_100%] md:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(25%-24px)]">
-                  <Link
-                    href={product.href}
-                    className="group flex flex-col h-full bg-white rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_30px_-6px_rgba(0,0,0,0.12)] transition-all duration-300 overflow-hidden border border-gray-50"
-                  >
-                    {/* Image Container */}
-                    <div
-                      className="relative w-full overflow-hidden bg-gray-50"
-                      style={{ aspectRatio: '4/5' }}
-                    >
-                      <Image
-                        src={encodeURI(product.image)}
-                        alt={product.name}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-                      />
-                    </div>
-
-                    {/* Text Container */}
-                    <div className="flex flex-col flex-1 px-6 py-7 items-center justify-center text-center">
-                      <h3 className="text-[15px] font-medium text-gray-800 transition-colors duration-300">
-                        {product.name}
-                      </h3>
-                    </div>
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* View All Button */}
-        <div className="text-center mt-12">
-          <Link
-            href="/products/office-sets"
-            className="inline-flex items-center gap-2 border border-gray-300 bg-white text-gray-900 px-8 py-3 text-[11px] font-bold uppercase tracking-wider hover:bg-gray-50 hover:border-gray-400 transition-all duration-300"
-          >
-            View All Office Sets
-            <span>→</span>
-          </Link>
-        </div>
-      </section>
 
       {/* Frequently Asked Questions */}
       <section className="py-24 max-w-[1000px] mx-auto px-4">
