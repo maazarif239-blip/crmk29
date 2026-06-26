@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import TestimonialsSection from '../components/TestimonialsSection';
 import SignatureCollection from '../components/SignatureCollection';
+import GlobalFooter from '@/components/GlobalFooter';
 import { useState } from 'react';
 
 // Prestige Client Logos for infinite scroll
@@ -23,7 +24,9 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-white text-gray-900 font-sans">
+  <>
+      <style>{`main.flex-1 + .shrink-0 { display: none !important; }`}</style>
+    <div className="bg-white text-gray-900 font-sans w-full overflow-x-clip">
 
       {/* Hero + Stats */}
       <div className="relative overflow-hidden">
@@ -223,7 +226,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section (Above Footer) */}
-      <section className="relative py-24">
+      <section className="relative py-24 overflow-hidden isolate">
         {/* Background Image with dark overlay */}
         <div className="absolute inset-0 z-0">
           <img
@@ -260,6 +263,9 @@ export default function Home() {
         </div>
       </section>
 
+      <GlobalFooter />
+
     </div>
+  </>
   );
 }
