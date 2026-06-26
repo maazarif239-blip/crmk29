@@ -16,10 +16,10 @@ export default function GlobalFooter() {
   return (
     <>
       <footer className="bg-[#121212] text-gray-400 pt-20 pb-10 border-t-4 border-[#EB5324]">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
+        <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12">
             {/* Column 1 — BRAND */}
-            <div className="border-b md:border-b-0 lg:border-r border-gray-700/30 pb-8 md:pb-0 lg:pb-0 lg:pr-16">
+            <div className="border-b md:border-b-0 lg:border-r border-gray-700/30 pb-8 md:pb-0 lg:pb-0 lg:pr-10">
               <Link href="/" className="flex items-start gap-4 mb-6">
                 <Image
                   src="/hb-logo.png.png"
@@ -73,7 +73,7 @@ export default function GlobalFooter() {
             </div>
 
             {/* Column 2 — COMPANY */}
-            <div className="border-b md:border-b-0 pb-8 md:pb-0 lg:border-r border-gray-700/30 lg:pr-16">
+            <div className="border-b md:border-b-0 pb-8 md:pb-0 lg:border-r border-gray-700/30 lg:pr-10">
               <h4 className="text-white font-bold uppercase tracking-widest mb-7 text-sm">
                 COMPANY
               </h4>
@@ -106,7 +106,7 @@ export default function GlobalFooter() {
             </div>
 
             {/* Column 3 — QUICK LINKS */}
-            <div className="border-b md:border-b-0 pb-8 md:pb-0 lg:border-r border-gray-700/30 lg:pr-16">
+            <div className="border-b md:border-b-0 pb-8 md:pb-0 lg:border-r border-gray-700/30 lg:pr-10">
               <h4 className="text-white font-bold uppercase tracking-widest mb-7 text-sm">
                 QUICK LINKS
               </h4>
@@ -157,7 +157,7 @@ export default function GlobalFooter() {
             </div>
 
             {/* Column 4 — CONTACT US */}
-            <div>
+            <div className="border-b md:border-b-0 pb-8 md:pb-0 lg:border-r border-gray-700/30 lg:pr-10">
               <h4 className="text-white font-bold uppercase tracking-widest mb-7 text-sm">
                 CONTACT US
               </h4>
@@ -198,6 +198,37 @@ export default function GlobalFooter() {
                   </a>
                 </div>
               </address>
+            </div>
+
+            {/* Column 5 — OUR LOCATION */}
+            <div>
+              <h4 className="text-white font-bold uppercase tracking-widest mb-7 text-sm">
+                OUR LOCATION
+              </h4>
+              <div className="w-full h-48 mb-4 rounded-xl overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3320.641467604047!2d73.0357053!3d33.6575153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38df95384559b40d%3A0x11098f728e61baed!2sHB%20Furniture%20Hassan%20Brother%20(Pvt)%20Limited!5e0!3m2!1sen!2s!4v1750747080000!5m2!1sen!2s"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="HB Furniture Location"
+                ></iframe>
+              </div>
+              <a
+                href="https://www.google.com/maps/place/HB+Furniture+Hassan+Brother+(Pvt)+Limited/@33.657515,73.0357053,17z/data=!3m1!4b1!4m6!3m5!1s0x38df95384559b40d:0x11098f728e61baed!8m2!3d33.6575106!4d73.0382802!16s%2Fg%2F11xh6rfbd2?entry=ttu&g_ep=EgoyMDI2MDYyNC4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-all duration-200 text-sm mb-3"
+              >
+                <span className="text-[#EB5324]">📍</span>
+                Open in Google Maps
+              </a>
+              <p className="text-gray-500 text-sm leading-relaxed">
+                Visit our showroom to explore premium workspace solutions and experience HB Furniture craftsmanship firsthand.
+              </p>
             </div>
           </div>
         </div>

@@ -9,6 +9,43 @@ import Autoplay from 'embla-carousel-autoplay';
 
 
 
+// Signature Collection Products (18 products)
+const signatureProducts = [
+  // Executive Office Tables (3)
+  { name: "Classic Mahogany Executive Desk Set", image: "/Screenshot 2026-06-23 234454.png", href: "/products/executive-office-tables" },
+  { name: "Carved Wood Executive Office Set", image: "/Screenshot 2026-06-23 234504.png", href: "/products/executive-office-tables" },
+  { name: "Walnut Executive Desk with Bookcase", image: "/Screenshot 2026-06-23 234512.png", href: "/products/executive-office-tables" },
+  // Office Sets (3)
+  { name: "Executive Office Table Set", image: "/10016.jpeg", href: "/products/office-sets" },
+  { name: "Modern Office Workstation Set", image: "/10008.jpeg", href: "/products/office-sets" },
+  { name: "Premium Office Table Set", image: "/10009.jpeg", href: "/products/office-sets" },
+  // Conference & Meeting Tables (3)
+  { name: "Walnut Executive Conference Table", image: "/175-1-.png", href: "/products/conference-and-meeting-tables" },
+  { name: "Curved Boardroom Table with Center Display", image: "/175-2-.png", href: "/products/conference-and-meeting-tables" },
+  { name: "Extra Long Boardroom Conference Table", image: "/175-3-.png", href: "/products/conference-and-meeting-tables" },
+  // Manager Chairs (2)
+  { name: "Pink High-Back Manager Chair", image: "/245-1-.png", href: "/products/manager-chair-collection" },
+  { name: "White Frame Mesh Manager Chair Black & Grey", image: "/245-2-.png", href: "/products/manager-chair-collection" },
+  // Center & Side Tables (2)
+  { name: "Classic Wood Side Table", image: "/Screenshot 2026-06-23 235247.png", href: "/products/center-and-side-tables" },
+  { name: "Carved Console Side Table", image: "/Screenshot 2026-06-23 235252.png", href: "/products/center-and-side-tables" },
+  // Almirahs (2)
+  { name: "Executive Storage Almirah", image: "/f8f1903f-3a91-4b6f-9db7-6efdb338568b.png", href: "/products/almirahs" },
+  { name: "Premium Steel Almirah", image: "/1f6a1a87-8fc6-434f-bed8-10d6459de6e1.png", href: "/products/almirahs" },
+  // Workstations (1)
+  { name: "L-Shape Executive Workstation", image: "/Screenshot 2026-06-23 225449.png", href: "/products/heritage-executive-workstation-series" },
+  // Storage Cabinets (1)
+  { name: "Mahogany Display & Storage Hutch", image: "/Screenshot 2026-06-23 233940.png", href: "/products/storage-cabinets" },
+];
+
+// Prestige Client Logos for infinite scroll
+const prestigeClientLogos = [
+  "/96 (2).png", "/96 (3).png", "/96 (4).png", "/96 (5).png", "/96 (7).png",
+  "/96 (8).png", "/96 (9).png", "/96 (10).png", "/96 (13).png", "/96 (15).png",
+  "/96 (18).png", "/96 (19).png", "/96 (21).png", "/96 (24).png", "/96 (26).png",
+  "/96 (27).png", "/96 (32).png", "/96 (34).png", "/96 (35).png", "/96 (42).png"
+];
+
 // Client logo data
 const clientLogos = [
   { name: "Client 1", filename: "/Screenshot 2026-06-20 162627.png", isDirect: true },
@@ -139,6 +176,61 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Signature Collection Section (Homepage Section 2) */}
+      <section className="py-24 max-w-[1200px] mx-auto px-4">
+        <div className="text-center mb-16">
+          <span className="text-[10px] font-bold text-[#EB5324] uppercase tracking-widest mb-2 block">Signature Collection</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">Discover Our Signature Collection</h2>
+          <p className="text-gray-500 text-sm md:text-base max-w-2xl mx-auto">
+            Showcase a curated collection of HB Furniture's premium office furniture solutions designed for executive offices, collaborative workspaces, meeting rooms, reception areas, and modern workplaces.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          {signatureProducts.map((product, i) => (
+            <Link
+              key={i}
+              href={product.href}
+              className="group flex flex-col cursor-pointer h-full border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white rounded-2xl overflow-hidden"
+            >
+              {/* Image Container */}
+              <div
+                className="relative w-full overflow-hidden bg-gray-50"
+                style={{ aspectRatio: '4/5' }}
+              >
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  fill
+                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 16.667vw"
+                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                />
+              </div>
+
+              {/* Text Container */}
+              <div className="flex flex-col flex-1 px-4 py-4 items-center justify-center text-center">
+                <h3 className="text-[12px] md:text-[13px] font-medium text-gray-800 transition-colors duration-300">
+                  {product.name}
+                </h3>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* View Complete Collection Button */}
+        <div className="text-center mt-12">
+          <Link
+            href="/products/office-sets"
+            className="inline-flex items-center gap-3 bg-[#EB5324] hover:bg-[#d4481f] text-white px-8 py-3 text-[11px] font-bold uppercase tracking-wider transition-all duration-300"
+          >
+            View Complete Collection
+            <span className="w-5 h-5 border border-white/50 flex items-center justify-center">
+              →
+            </span>
+          </Link>
+        </div>
+      </section>
+
       {/* About Section */}
       <section className="py-24 max-w-[1200px] mx-auto px-4 mt-12">
         <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-16 items-center">
@@ -177,11 +269,39 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-          
         </div>
       </section>
 
+      {/* Our Prestige Clients (Homepage Section 5) */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-[1200px] mx-auto px-4">
+          <div className="text-center mb-16">
+            <span className="text-[10px] font-bold text-[#EB5324] uppercase tracking-widest mb-2 block">Our Prestige Clients</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">Trusted By Leading Organizations</h2>
+            <p className="text-gray-500 text-sm md:text-base max-w-2xl mx-auto">
+              Highlight that HB Furniture has successfully delivered workspace solutions for respected organizations across multiple industries.
+            </p>
+          </div>
+
+          {/* Infinite Logo Carousel */}
+          <div className="overflow-hidden">
+            <div className="flex gap-12 animate-marquee">
+              {/* Duplicate logos for seamless loop */}
+              {[...prestigeClientLogos, ...prestigeClientLogos].map((logo, i) => (
+                <div key={i} className="flex-shrink-0 flex items-center justify-center w-40 h-20 grayscale hover:grayscale-0 transition-all duration-300">
+                  <Image
+                    src={logo}
+                    alt={`Client Logo ${i + 1}`}
+                    width={160}
+                    height={80}
+                    className="object-contain w-full h-full"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
 
       {/* Frequently Asked Questions */}
@@ -234,6 +354,44 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="relative py-24">
+        {/* Background Image with dark overlay */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2000&q=80"
+            alt="Office Background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/60"></div>
+        </div>
+        
+        <div className="relative z-10 max-w-[1200px] mx-auto px-4 text-center">
+          <span className="text-[10px] font-bold text-[#EB5324] uppercase tracking-widest mb-2 block">Let's Create Something Great Together</span>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 font-serif">Ready To Transform Your Workspace?</h2>
+          <p className="text-gray-200 text-sm md:text-base max-w-2xl mx-auto mb-12">
+            From executive offices to complete workplace solutions, HB Furniture helps organizations create productive environments that inspire performance.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-3 bg-[#EB5324] hover:bg-[#d4481f] text-white px-8 py-3 text-[11px] font-bold uppercase tracking-wider transition-all duration-300"
+            >
+              Request Consultation
+              <span className="w-5 h-5 border border-white/50 flex items-center justify-center">
+                →
+              </span>
+            </Link>
+            <Link
+              href="/projects"
+              className="inline-flex items-center justify-center gap-3 border border-white text-white hover:bg-white/10 px-8 py-3 text-[11px] font-bold uppercase tracking-wider transition-all duration-300"
+            >
+              View Projects
+            </Link>
+          </div>
         </div>
       </section>
 
