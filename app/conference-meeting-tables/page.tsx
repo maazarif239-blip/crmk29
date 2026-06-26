@@ -1,22 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
+import ProductPageHeader from '@/components/ProductPageHeader';
 
 export default function ConferenceMeetingTables() {
   return (
     <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
-      
-
-            <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
-        <section className="bg-white py-16 sm:py-20 md:py-24 text-center">
-          <div className="w-full px-4 max-w-2xl mx-auto">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 tracking-tight font-serif max-w-3xl leading-tight mx-auto">
-              Conference & Meeting<br/>Tables
-            </h1>
-          <div className="w-16 h-1 bg-[#EB5324] mx-auto mt-2"></div>
-          </div>
-        </section>
-      </div>
+      <ProductPageHeader title="Conference & Meeting Tables" />
 {/* Main Content Area */}
       <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12 flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16">
         

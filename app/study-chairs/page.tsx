@@ -1,24 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
+import ProductPageHeader from '@/components/ProductPageHeader';
 export default function StudyChairs() {
   return (
     <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
-      
-
-            <section className="bg-white">
-        <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24 text-center">
-        <div className="max-w-2xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight font-serif mx-auto">
-            Study Chairs
-          </h1>
-          <p className="text-gray-700 text-[13px] md:text-sm font-medium leading-relaxed max-w-xl mx-auto">
-            Ergonomic principles meet architectural minimalism. Discover seating designed for sustained focus and comfort.
-          </p>
-
-        </div>
-        </div>
-      </section>
+      <ProductPageHeader title="Study Chairs" description="Ergonomic principles meet architectural minimalism. Discover seating designed for sustained focus and comfort." />
 {/* Main Content Area */}
       <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-20 flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16">
         

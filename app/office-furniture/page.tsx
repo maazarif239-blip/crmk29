@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
+import ProductPageHeader from '@/components/ProductPageHeader';
 import { 
   Award, 
   Crown, 
@@ -163,18 +164,7 @@ export default function OfficeFurniture() {
   return (
     <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-[#FDFDFD] text-gray-900 font-sans selection:bg-[#E5E0D8]">
       
-      <section className="bg-white">
-        <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24 text-center">
-          <div className="max-w-2xl mx-auto">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 tracking-tight font-serif uppercase">
-              Office Furniture
-            </h1>
-            <p className="text-gray-500 text-sm md:text-base font-medium max-w-2xl mx-auto leading-relaxed">
-              High-quality office furniture engineered for productivity, comfort, and modern workplaces.
-            </p>
-          </div>
-        </div>
-      </section>
+      <ProductPageHeader title="Office Furniture" description="High-quality office furniture engineered for productivity, comfort, and modern workplaces." />
 
       {/* Introduction Section */}
       <section className="py-24 max-w-[1000px] mx-auto px-4 text-center">

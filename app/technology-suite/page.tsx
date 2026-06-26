@@ -1,28 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
+import ProductPageHeader from '@/components/ProductPageHeader';
 
 export default function TechnologySuite() {
   return (
     <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
       {/* Header (Alternative Style) */}
-      
-
-            <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
-        <section className="bg-white py-16 sm:py-20 md:py-24 text-center">
-          <div className="w-full px-4 max-w-2xl mx-auto">
-          <span className="text-[#EB5324] text-[9px] sm:text-[10px] font-bold uppercase tracking-widest mb-3 block">
-            Product Category
-          </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight mx-auto">
-              Technology
-            </h1>
-          <p className="text-gray-500 text-[13px] max-w-sm leading-relaxed mx-auto">
-            Advanced power, data, and connectivity integration for the modern workspace.
-          </p>
-          </div>
-        </section>
-      </div>
+      <ProductPageHeader title="Technology" description="Advanced power, data, and connectivity integration for the modern workspace." />
 {/* Main Content Area */}
       <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-8 flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16">
         

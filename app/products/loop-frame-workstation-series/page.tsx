@@ -1,23 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
+import ProductPageHeader from '@/components/ProductPageHeader';
 
 export default function LoopFrameWorkstationSeries() {
   return (
     <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
-      
-
-            <section className="bg-white">
-        <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight font-serif">
-            Loop Frame Workstation Series
-          </h1>
-          <p className="text-gray-500 text-[13px] md:text-sm font-medium leading-relaxed max-w-2xl">
-            Smooth curved metal loop-frame workstations with clean lines, integrated storage, and modular desk configurations for collaborative office environments.
-          </p>
-
-        </div>
-      </section>
+      <ProductPageHeader title="Loop Frame Workstation Series" description="Smooth curved metal loop-frame workstations with clean lines, integrated storage, and modular desk configurations for collaborative office environments." />
 {/* Main Content Area */}
       <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-20">
         

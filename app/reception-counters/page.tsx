@@ -1,23 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
+import ProductPageHeader from '@/components/ProductPageHeader';
 
 export default function ReceptionCounters() {
   return (
     <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
-      
-
-            <section className="bg-white">
-        <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24 text-center">
-        <div className="max-w-2xl mx-auto">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 tracking-tight font-sans mx-auto">
-            Reception Counters
-          </h1>
-          <div className="w-16 h-1 bg-[#EB5324] mx-auto mt-2"></div>
-
-        </div>
-        </div>
-      </section>
+      <ProductPageHeader title="Reception Counters" />
 {/* Main Content Area */}
       <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-16 flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16">
         

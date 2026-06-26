@@ -1,23 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
+import ProductPageHeader from '@/components/ProductPageHeader';
 
 export default function ConferenceAndMeetingTables() {
   return (
     <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
-      
-            <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
-        <section className="bg-white py-16 sm:py-20 md:py-24 text-center">
-          <div className="w-full px-4 max-w-2xl mx-auto">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight font-serif mx-auto">
-              Conference & Meeting Tables
-            </h1>
-          <p className="text-gray-500 text-[13px] md:text-sm font-medium leading-relaxed max-w-2xl mx-auto">
-            Precision-engineered meeting tables for boardrooms, executive suites, and collaborative workspaces. Built to make every meeting count.
-          </p>
-          </div>
-        </section>
-      </div>
+      <ProductPageHeader title="Conference & Meeting Tables" description="Precision-engineered meeting tables for boardrooms, executive suites, and collaborative workspaces. Built to make every meeting count." />
 {/* Main Content Area */}
       <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12 flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16">
         
