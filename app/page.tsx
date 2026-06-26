@@ -142,25 +142,25 @@ export default function Home() {
       <section className="py-24 bg-gray-50">
         <div className="max-w-[1600px] mx-auto px-4">
           <div className="text-center mb-16">
-            <span className="text-[10px] font-bold text-[#EB5324] uppercase tracking-widest mb-2 block">Signature Collection</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">Discover Our Signature Collection</h2>
+            <span className="text-[10px] font-bold text-[#EB5324] uppercase tracking-widest mb-2 block">SIGNATURE COLLECTION</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">Signature Collection</h2>
             <p className="text-gray-500 text-sm md:text-base max-w-2xl mx-auto">
-              Showcase a curated collection of HB Furniture's premium office furniture solutions designed for executive offices, collaborative workspaces, meeting rooms, reception areas, and modern workplaces.
+              Explore our finest handcrafted office furniture designed for executive workspaces, collaborative environments, and modern offices.
             </p>
           </div>
 
-          {/* First Row of Moving Cards */}
-          <div className="overflow-hidden mb-8">
+          {/* Horizontal Marquee Showcase */}
+          <div className="overflow-hidden mb-12">
             <div className="flex gap-6 animate-marquee-slow">
               {[...signatureProducts, ...signatureProducts].map((product, i) => (
                 <Link
                   key={i}
                   href={product.href}
-                  className="group flex-shrink-0 w-48 sm:w-56 md:w-64 flex flex-col cursor-pointer border border-gray-100 shadow-sm hover:shadow-md transition-all bg-white rounded-2xl overflow-hidden"
+                  className="group flex-shrink-0 w-52 sm:w-60 md:w-64 flex flex-col cursor-pointer border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 bg-white rounded-2xl overflow-hidden"
                 >
                   {/* Image Container */}
                   <div
-                    className="relative w-full overflow-hidden bg-gray-50"
+                    className="relative w-full overflow-hidden bg-gray-100"
                     style={{ aspectRatio: '4/5' }}
                   >
                     <Image
@@ -168,13 +168,13 @@ export default function Home() {
                       alt={product.name}
                       fill
                       sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 16.667vw"
-                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
                     />
                   </div>
 
                   {/* Text Container */}
-                  <div className="flex flex-col flex-1 px-4 py-4 items-center justify-center text-center">
-                    <h3 className="text-[11px] md:text-[12px] font-medium text-gray-800 transition-colors duration-300">
+                  <div className="flex flex-col px-5 py-5 items-center justify-center text-center">
+                    <h3 className="text-[12px] md:text-[13px] font-medium text-gray-800 group-hover:text-[#EB5324] transition-colors duration-300">
                       {product.name}
                     </h3>
                   </div>
@@ -183,38 +183,15 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Second Row of Moving Cards (Reverse Direction) */}
-          <div className="overflow-hidden">
-            <div className="flex gap-6 animate-marquee-reverse">
-              {[...signatureProducts.slice().reverse(), ...signatureProducts.slice().reverse()].map((product, i) => (
-                <Link
-                  key={i}
-                  href={product.href}
-                  className="group flex-shrink-0 w-48 sm:w-56 md:w-64 flex flex-col cursor-pointer border border-gray-100 shadow-sm hover:shadow-md transition-all bg-white rounded-2xl overflow-hidden"
-                >
-                  {/* Image Container */}
-                  <div
-                    className="relative w-full overflow-hidden bg-gray-50"
-                    style={{ aspectRatio: '4/5' }}
-                  >
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 16.667vw"
-                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-                    />
-                  </div>
-
-                  {/* Text Container */}
-                  <div className="flex flex-col flex-1 px-4 py-4 items-center justify-center text-center">
-                    <h3 className="text-[11px] md:text-[12px] font-medium text-gray-800 transition-colors duration-300">
-                      {product.name}
-                    </h3>
-                  </div>
-                </Link>
-              ))}
-            </div>
+          {/* View All Button */}
+          <div className="flex justify-center">
+            <Link
+              href="/office-furniture"
+              className="inline-flex items-center gap-2 border-2 border-gray-800 text-gray-800 hover:bg-[#EB5324] hover:border-[#EB5324] hover:text-white px-8 py-3 text-[11px] font-bold uppercase tracking-wider transition-all duration-300 rounded-full"
+            >
+              View All
+              <span className="text-lg">→</span>
+            </Link>
           </div>
         </div>
       </section>
