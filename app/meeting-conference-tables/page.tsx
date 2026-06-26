@@ -141,24 +141,16 @@ export default function MeetingConferenceTables() {
   return (
     <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-[#FDFDFD] text-gray-900 font-sans selection:bg-[#E5E0D8]">
       
-      {/* Hero Section */}
-      <section className="relative h-[280px] sm:h-[380px] md:h-[450px] flex items-center justify-center text-center bg-[#111111] overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=2000" 
-            alt="Meeting & Conference Tables" 
-            className="w-full h-full object-cover opacity-35 mix-blend-multiply"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 to-transparent"></div>
-        </div>
-
-        <div className="relative z-10 max-w-[1000px] px-4 mt-8">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight font-serif uppercase">
-            Meeting & Conference Tables
-          </h1>
-          <p className="text-gray-300 text-sm md:text-base font-medium max-w-2xl mx-auto leading-relaxed">
-            Professional collaboration spaces designed for productivity and elegance.
-          </p>
+      <section className="bg-white">
+        <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24 text-center">
+          <div className="max-w-2xl mx-auto">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 tracking-tight font-serif uppercase">
+              Meeting & Conference Tables
+            </h1>
+            <p className="text-gray-500 text-sm md:text-base font-medium max-w-2xl mx-auto leading-relaxed">
+              Professional collaboration spaces designed for productivity and elegance.
+            </p>
+          </div>
         </div>
       </section>
 

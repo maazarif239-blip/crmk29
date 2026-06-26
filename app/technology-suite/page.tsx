@@ -8,32 +8,22 @@ export default function TechnologySuite() {
       {/* Header (Alternative Style) */}
       
 
-      {/* Hero Section (Light & Contained) */}
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-8 pb-12">
-        <section className="relative h-[300px] flex items-center justify-center text-center overflow-hidden border border-gray-100 bg-[#FAFAFA]">
-          {/* Background Image with Light Overlay */}
-          <div className="absolute inset-0 z-0">
-            <img 
-              src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=2000" 
-              alt="Technology" 
-              className="w-full h-full object-cover opacity-50 grayscale"
-            />
-            <div className="absolute inset-0 bg-white/70"></div>
-          </div>
-
-          <div className="relative z-10 w-full px-4 flex flex-col items-center">
-            <span className="text-[#EB5324] text-[9px] font-bold uppercase tracking-widest mb-3">Product Category</span>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+            <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+        <section className="bg-white py-16 sm:py-20 md:py-24 text-center">
+          <div className="w-full px-4 max-w-2xl mx-auto">
+          <span className="text-[#EB5324] text-[9px] sm:text-[10px] font-bold uppercase tracking-widest mb-3 block">
+            Product Category
+          </span>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight mx-auto">
               Technology
             </h1>
-            <p className="text-gray-600 text-[13px] max-w-sm leading-relaxed">
-              Advanced power, data, and connectivity integration for the modern workspace.
-            </p>
+          <p className="text-gray-500 text-[13px] max-w-sm leading-relaxed mx-auto">
+            Advanced power, data, and connectivity integration for the modern workspace.
+          </p>
           </div>
         </section>
       </div>
-
-      {/* Main Content Area */}
+{/* Main Content Area */}
       <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-8 flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16">
         
         {/* Product Grid (2 Columns) */}

@@ -7,30 +7,18 @@ export default function UrbanEdgeWorkstationSeries() {
     <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
       
 
-      {/* Hero Section */}
-      <section className="relative h-[280px] sm:h-[380px] md:h-[450px] flex items-end pb-16 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0 bg-gray-900">
-          <img 
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000" 
-            alt="Urban Edge Workstation Series" 
-            className="w-full h-full object-cover opacity-60"
-          />
-          {/* Bottom gradient so text is easily readable */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-        </div>
-
-        <div className="relative z-10 w-full max-w-[1200px] mx-auto px-4 sm:px-6">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight font-serif">
+            <section className="bg-white">
+        <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight font-serif">
             Urban Edge Workstation Series
           </h1>
-          <p className="text-gray-200 text-[13px] md:text-sm font-medium leading-relaxed max-w-2xl">
+          <p className="text-gray-500 text-[13px] md:text-sm font-medium leading-relaxed max-w-2xl">
             Bold contemporary workstations with sharp angular lines, premium finishes, and versatile configurations for dynamic modern office spaces.
           </p>
+
         </div>
       </section>
-
-      {/* Main Content Area */}
+{/* Main Content Area */}
       <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-20">
         
 

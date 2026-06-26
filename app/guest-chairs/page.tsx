@@ -6,35 +6,19 @@ export default function GuestChairs() {
     <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
       
 
-      {/* Hero Section (Contained) */}
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-12 pb-8">
-        <section className="relative h-[240px] sm:h-[300px] md:h-[400px] flex items-center justify-center overflow-hidden bg-gray-900">
-          {/* Background Image */}
-          <div 
-            className="absolute inset-0 z-0"
-            style={{
-              backgroundImage: 'url("/101-1-.png")',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
-            }}
-          >
-            {/* Center gradient for text readability */}
-            <div className="absolute inset-0 bg-black/50"></div>
-          </div>
-
-          <div className="relative z-10 w-full text-center px-4">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight font-serif">
+            <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+        <section className="bg-white py-16 sm:py-20 md:py-24 text-center">
+          <div className="w-full px-4 max-w-2xl mx-auto">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight font-serif mx-auto">
               Guest Chairs
             </h1>
-            <p className="text-gray-200 text-[13px] md:text-sm font-medium leading-relaxed">
-              Warm and supportive guest seating crafted to elevate the comfort of clients and visitors.
-            </p>
+          <p className="text-gray-500 text-[13px] md:text-sm font-medium leading-relaxed mx-auto">
+            Warm and supportive guest seating crafted to elevate the comfort of clients and visitors.
+          </p>
           </div>
         </section>
       </div>
-
-      {/* Main Content Area */}
+{/* Main Content Area */}
       <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12 flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16">
         
         {/* Product Grid */}

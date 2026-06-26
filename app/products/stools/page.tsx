@@ -6,32 +6,19 @@ export default function Stools() {
   return (
     <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
       
-      {/* Hero Section (Contained) */}
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-12 pb-8">
-        <section className="relative h-[240px] sm:h-[300px] md:h-[400px] flex items-center justify-center overflow-hidden bg-gray-900">
-          {/* Background Image */}
-          <div className="absolute inset-0 z-0">
-            <img 
-              src="/245-1-.png" 
-              alt="Stools" 
-              className="w-full h-full object-cover opacity-80"
-            />
-            {/* Center gradient for text readability */}
-            <div className="absolute inset-0 bg-black/40"></div>
-          </div>
-
-          <div className="relative z-10 w-full text-center px-4">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight font-serif">
+            <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+        <section className="bg-white py-16 sm:py-20 md:py-24 text-center">
+          <div className="w-full px-4 max-w-2xl mx-auto">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight font-serif mx-auto">
               Stools
             </h1>
-            <p className="text-gray-200 text-[13px] md:text-sm font-medium leading-relaxed max-w-2xl mx-auto">
-              Ergonomically engineered manager and task seating for the modern professional. BIFMA certified performance meets contemporary design across our complete manager chair range.
-            </p>
+          <p className="text-gray-500 text-[13px] md:text-sm font-medium leading-relaxed max-w-2xl mx-auto">
+            Ergonomically engineered manager and task seating for the modern professional. BIFMA certified performance meets contemporary design across our complete manager chair range.
+          </p>
           </div>
         </section>
       </div>
-
-      {/* Main Content Area */}
+{/* Main Content Area */}
       <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12 flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16">
         
         {/* Product Grid */}

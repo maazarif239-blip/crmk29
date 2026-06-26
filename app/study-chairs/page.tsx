@@ -6,30 +6,20 @@ export default function StudyChairs() {
     <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
       
 
-      {/* Hero Section */}
-      <section className="relative h-[400px] flex items-center justify-center text-center overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0 bg-[#f4f4f4]">
-          <img 
-            src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=2000" 
-            alt="Study Chairs" 
-            className="w-full h-full object-cover opacity-80"
-          />
-          {/* Faint white gradient to ensure dark text pops while matching image look */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white/40 to-white/80"></div>
-        </div>
-
-        <div className="relative z-10 max-w-2xl mx-auto px-4 mt-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight font-serif">
+            <section className="bg-white">
+        <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24 text-center">
+        <div className="max-w-2xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight font-serif mx-auto">
             Study Chairs
           </h1>
           <p className="text-gray-700 text-[13px] md:text-sm font-medium leading-relaxed max-w-xl mx-auto">
             Ergonomic principles meet architectural minimalism. Discover seating designed for sustained focus and comfort.
           </p>
+
+        </div>
         </div>
       </section>
-
-      {/* Main Content Area */}
+{/* Main Content Area */}
       <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-20 flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16">
         
         {/* Product Grid */}

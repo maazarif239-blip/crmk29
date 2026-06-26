@@ -141,34 +141,21 @@ export default function WorkspaceSolutions() {
   return (
     <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
       
-      {/* Hero Header Section */}
-      <section className="relative h-[280px] sm:h-[380px] md:h-[450px] flex items-end pb-16 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0 bg-gray-100">
-          <img 
-            src="/screenshot-2026-06-16-163413.png"
-            alt="Workspace Solutions Background" 
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-[8s]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-        </div>
+            <section className="bg-white">
+        <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24">
+          <span className="text-[#EB5324] text-[9px] sm:text-[10px] font-bold uppercase tracking-widest mb-3 block">
+            High-Performance Systems
+          </span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 tracking-tight font-serif">
+            Workspace Solutions
+          </h1>
+          <p className="text-gray-500 text-xs md:text-sm font-medium leading-relaxed mt-2">
+            Transforming modern offices with premium, modular desking and partition systems. Engineered for collaboration, focus, and seamless integration of ideas.
+          </p>
 
-        <div className="relative z-10 w-full max-w-[1200px] mx-auto px-4 sm:px-6">
-          <div className="flex flex-col gap-2 max-w-2xl">
-            <span className="text-[#EB5324] text-[10px] font-bold uppercase tracking-widest">
-              High-Performance Systems
-            </span>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight font-serif">
-              Workspace Solutions
-            </h1>
-            <p className="text-gray-300 text-xs md:text-sm font-medium leading-relaxed mt-2">
-              Transforming modern offices with premium, modular desking and partition systems. Engineered for collaboration, focus, and seamless integration of ideas.
-            </p>
-          </div>
         </div>
       </section>
-
-      {/* Main Catalog Area */}
+{/* Main Catalog Area */}
       <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-20">
         <div className="flex flex-col lg:flex-row gap-16">
           
