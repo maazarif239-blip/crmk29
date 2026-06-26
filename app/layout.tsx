@@ -46,20 +46,20 @@ export default function RootLayout({
     >
       <head>
       </head>
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col overflow-x-clip">
           <Suspense fallback={null}>
             <ProgressBar />
           </Suspense>
           <Navbar />
-          <main className="flex-1 w-full">{children}</main>
-          <div className="shrink-0 w-full">
+          <main className="flex-1 w-full min-w-0 overflow-x-clip">{children}</main>
+          <div className="shrink-0 w-full min-w-0">
             <GlobalFooter />
           </div>
         <a
           href="https://wa.me/971524331920"
           target="_blank"
           rel="noopener noreferrer"
-          className="fixed bottom-[24px] right-[24px] z-50 flex items-center justify-center w-[56px] h-[56px] bg-[#25D366] text-white rounded-full shadow-lg hover:shadow-xl transition-shadow"
+          className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] z-50 flex items-center justify-center w-14 h-14 sm:w-[56px] sm:h-[56px] bg-[#25D366] text-white rounded-full shadow-lg hover:shadow-xl transition-shadow"
           title="Chat with us on WhatsApp"
         >
           <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24">

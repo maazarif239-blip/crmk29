@@ -4,11 +4,11 @@ import ContactForPricingLink from '@/components/ContactForPricingLink';
 
 export default function SofasLoungeSeating() {
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
+    <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
       
 
       {/* Hero Section (Edge-to-Edge) */}
-      <section className="relative h-[350px] md:h-[450px] flex items-center justify-center text-center bg-[#111111] overflow-hidden">
+      <section className="relative h-[350px] md:h-[280px] sm:h-[380px] md:h-[450px] flex items-center justify-center text-center bg-[#111111] overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -27,7 +27,7 @@ export default function SofasLoungeSeating() {
       </section>
 
       {/* Main Content Area */}
-      <section className="max-w-[1200px] mx-auto px-4 py-16 flex flex-col md:flex-row gap-16">
+      <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-16 flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16">
         
         {/* Product Grid */}
         <div className="flex-1">

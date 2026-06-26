@@ -4,11 +4,11 @@ import ContactForPricingLink from '@/components/ContactForPricingLink';
 
 export default function CoffeeChairs() {
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
+    <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
       
       {/* Hero Section (Contained) */}
-      <div className="max-w-[1200px] mx-auto px-4 pt-12 pb-8">
-        <section className="relative h-[300px] md:h-[400px] flex items-center justify-center overflow-hidden bg-gray-900">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-12 pb-8">
+        <section className="relative h-[240px] sm:h-[300px] md:h-[400px] flex items-center justify-center overflow-hidden bg-gray-900">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <img 
@@ -21,7 +21,7 @@ export default function CoffeeChairs() {
           </div>
 
           <div className="relative z-10 w-full text-center px-4">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight font-serif">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight font-serif">
               Coffee Chairs
             </h1>
             <p className="text-gray-200 text-[13px] md:text-sm font-medium leading-relaxed max-w-2xl mx-auto">
@@ -32,15 +32,15 @@ export default function CoffeeChairs() {
       </div>
 
       {/* Main Content Area */}
-      <section className="max-w-[1200px] mx-auto px-4 py-12 flex flex-col md:flex-row gap-16">
+      <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12 flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16">
         
         {/* Product Grid */}
         <div className="flex-1">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 sm:gap-x-6 lg:gap-x-8 gap-y-8 sm:gap-y-10 lg:gap-y-12">
             
             {([] as any[]).map((product: any, i: number) => (
               <div key={i} className="group flex flex-col cursor-pointer h-full border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white">
-                <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden transition-colors group-hover:bg-[#f0f0f0]">
+                <div className="aspect-square bg-[#F5F5F5] p-4 sm:p-6 md:p-8 flex items-center justify-center relative overflow-hidden transition-colors group-hover:bg-[#f0f0f0]">
                   <img
                     src={product.image}
                     alt={product.name}

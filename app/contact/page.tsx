@@ -3,11 +3,11 @@ import Link from 'next/link';
 
 export default function ContactUs() {
   return (
-    <div className="min-h-screen bg-[#FAFAFA] text-gray-900 font-sans selection:bg-[#E5E0D8]">
+    <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-[#FAFAFA] text-gray-900 font-sans selection:bg-[#E5E0D8]">
       
 
       {/* Hero Section */}
-      <section className="relative h-[350px] md:h-[450px] flex items-center justify-center text-center bg-[#111111] overflow-hidden">
+      <section className="relative h-[350px] md:h-[280px] sm:h-[380px] md:h-[450px] flex items-center justify-center text-center bg-[#111111] overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000" 
@@ -18,7 +18,7 @@ export default function ContactUs() {
         </div>
 
         <div className="relative z-10 w-full px-4 flex flex-col items-center pt-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight font-serif">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight font-serif">
             Let's Build Your Workspace Together
           </h1>
           <p className="text-[#EB5324] text-[10px] md:text-[11px] font-bold uppercase tracking-widest mt-2">
@@ -28,7 +28,7 @@ export default function ContactUs() {
       </section>
 
       {/* Contact Details Section */}
-      <section className="max-w-[1200px] mx-auto px-4 -mt-24 relative z-20 mb-24">
+      <section className="max-w-[1200px] mx-auto px-4 sm:px-6 -mt-24 relative z-20 mb-24">
         <div className="bg-white shadow-2xl rounded-sm overflow-hidden p-10 md:p-16 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 font-serif">Reach Out to Us</h2>
           <p className="text-gray-600 mb-12 max-w-lg mx-auto">
@@ -102,8 +102,8 @@ export default function ContactUs() {
       </section>
 
       {/* Map Section */}
-      <section className="bg-white py-24 border-y border-gray-100">
-        <div className="max-w-[1200px] mx-auto px-4">
+      <section className="bg-white py-16 sm:py-20 md:py-24 border-y border-gray-100">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-3 font-serif">Our Headquarters & Factory</h2>
             <p className="text-[#EB5324] text-[11px] font-bold uppercase tracking-widest">Islamabad</p>

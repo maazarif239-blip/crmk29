@@ -23,8 +23,8 @@ export default function ProductCard({
   showAddToCart = false,
 }: ProductCardProps) {
   return (
-    <div className="group flex flex-col cursor-pointer h-full">
-      <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden transition-colors group-hover:bg-[#f0f0f0]">
+    <div className="group flex flex-col cursor-pointer h-full min-w-0">
+      <div className="aspect-square bg-[#F5F5F5] p-4 sm:p-6 md:p-8 flex items-center justify-center relative overflow-hidden transition-colors group-hover:bg-[#f0f0f0]">
         {/* Primary Image */}
         <img
           src={primaryImage}

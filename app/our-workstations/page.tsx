@@ -96,7 +96,7 @@ export default function OurWorkstations() {
       {/* SECTION 3: DESIGN PHILOSOPHY / VALUE SECTION */}
       <section className="bg-white border-t border-gray-100 py-[120px] px-6 lg:px-12">
         <div className="max-w-[1200px] mx-auto">
-          <div className="flex flex-col md:flex-row gap-16 md:gap-24 items-start">
+          <div className="flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16 md:gap-24 items-start">
             
             {/* Left Header */}
             <div className="md:w-1/3">

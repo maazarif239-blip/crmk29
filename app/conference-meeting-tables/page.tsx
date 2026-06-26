@@ -4,12 +4,12 @@ import ContactForPricingLink from '@/components/ContactForPricingLink';
 
 export default function ConferenceMeetingTables() {
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
+    <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
       
 
       {/* Hero Section (Contained) */}
-      <div className="max-w-[1200px] mx-auto px-4 pt-12 pb-8">
-        <section className="relative h-[300px] md:h-[400px] flex items-center justify-center overflow-hidden bg-gray-900">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-12 pb-8">
+        <section className="relative h-[240px] sm:h-[300px] md:h-[400px] flex items-center justify-center overflow-hidden bg-gray-900">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <img 
@@ -31,7 +31,7 @@ export default function ConferenceMeetingTables() {
       </div>
 
       {/* Main Content Area */}
-      <section className="max-w-[1200px] mx-auto px-4 py-12 flex flex-col md:flex-row gap-16">
+      <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12 flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16">
         
         {/* Product Grid */}
         <div className="flex-1">

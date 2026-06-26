@@ -139,10 +139,10 @@ export default function MeetingConferenceTables() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FDFDFD] text-gray-900 font-sans selection:bg-[#E5E0D8]">
+    <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-[#FDFDFD] text-gray-900 font-sans selection:bg-[#E5E0D8]">
       
       {/* Hero Section */}
-      <section className="relative h-[450px] flex items-center justify-center text-center bg-[#111111] overflow-hidden">
+      <section className="relative h-[280px] sm:h-[380px] md:h-[450px] flex items-center justify-center text-center bg-[#111111] overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=2000" 
@@ -174,7 +174,7 @@ export default function MeetingConferenceTables() {
 
       {/* Product Showcase Grid */}
       <section className="py-20 bg-[#FAFAFA] border-y border-gray-100">
-        <div className="max-w-[1200px] mx-auto px-4">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
           <div className="mb-12">
             <h2 className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-2">Our Range</h2>
             <h3 className="text-3xl font-serif text-gray-900">Conference Systems</h3>
@@ -225,7 +225,7 @@ export default function MeetingConferenceTables() {
       </section>
 
       {/* Features Section */}
-      <section className="py-24 max-w-[1200px] mx-auto px-4">
+      <section className="py-24 max-w-[1200px] mx-auto px-4 sm:px-6">
         <div className="text-center mb-16">
           <h2 className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-2">Designed For Excellence</h2>
           <h3 className="text-3xl font-serif text-gray-900">Key Features</h3>
@@ -252,7 +252,7 @@ export default function MeetingConferenceTables() {
 
       {/* Benefits Section */}
       <section className="py-20 bg-gray-900 text-white">
-        <div className="max-w-[1200px] mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div>
             <h2 className="text-[11px] font-bold text-[#EB5324] uppercase tracking-widest mb-4">Value Proposition</h2>
             <h3 className="text-3xl font-serif mb-6 leading-tight">Elevating Collaborative Professionalism</h3>
@@ -286,7 +286,7 @@ export default function MeetingConferenceTables() {
 
       {/* Project Gallery Section */}
       <section className="py-20 bg-[#FAFAFA] border-t border-gray-100">
-        <div className="max-w-[1200px] mx-auto px-4">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
             <h2 className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-2">Portfolio</h2>
             <h3 className="text-3xl font-serif text-gray-900">Project Gallery</h3>
@@ -317,7 +317,7 @@ export default function MeetingConferenceTables() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-[#EBEBEB] py-24 text-center">
+      <section className="bg-[#EBEBEB] py-16 sm:py-20 md:py-24 text-center">
         <div className="max-w-2xl mx-auto px-4">
           <h3 className="text-3xl font-bold text-gray-900 mb-4 font-serif">Design Your Perfect Meeting Space</h3>
           <p className="text-gray-500 text-xs md:text-sm mb-8 leading-relaxed">

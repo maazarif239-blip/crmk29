@@ -112,7 +112,7 @@ export default function ManagementEmployees() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#f8f9fa] text-gray-900 font-sans selection:bg-[#E5E0D8]">
+    <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-[#f8f9fa] text-gray-900 font-sans selection:bg-[#E5E0D8]">
       {/* Premium Dark Hero Section */}
       <section className="relative pt-32 pb-24 bg-[#111111] text-center flex flex-col items-center justify-center overflow-hidden border-b-4 border-[#EB5324]">
         {/* Subtle background gradient overlay */}

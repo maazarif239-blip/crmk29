@@ -15,12 +15,12 @@ export default function GlobalFooter() {
 
   return (
     <>
-      <footer className="bg-[#121212] text-gray-400 pt-20 pb-10 border-t-4 border-[#EB5324]">
-        <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12">
+      <footer className="bg-[#121212] text-gray-400 pt-12 sm:pt-16 md:pt-20 pb-8 sm:pb-10 border-t-4 border-[#EB5324]">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-12">
             {/* Column 1 — BRAND */}
             <div className="border-b md:border-b-0 lg:border-r border-gray-700/30 pb-8 md:pb-0 lg:pb-0 lg:pr-10">
-              <Link href="/" className="flex items-start gap-4 mb-6">
+              <Link href="/" className="flex items-start gap-3 sm:gap-4 mb-6 min-w-0">
                 <Image
                   src="/hb-logo.png.png"
                   alt="HB Furniture Logo"
@@ -29,12 +29,12 @@ export default function GlobalFooter() {
                   className="rounded-xl bg-white p-2 object-contain"
                 />
                 <div>
-                  <h3 className="text-white text-2xl font-bold mb-2" style={{ fontFamily: 'var(--font-marcellus)' }}>
+                  <h3 className="text-white text-xl sm:text-2xl font-bold mb-2" style={{ fontFamily: 'var(--font-marcellus)' }}>
                     HB Furniture
                   </h3>
                 </div>
               </Link>
-              <p className="text-gray-400 text-base leading-relaxed mb-8">
+              <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8">
                 Crafting inspired workspaces with innovative furniture solutions designed for comfort, style and productivity.
               </p>
               {/* Social Icons */}
@@ -79,7 +79,7 @@ export default function GlobalFooter() {
               </h4>
               <ul className="space-y-4">
                 <li>
-                  <Link href="/about" className="flex items-center gap-2 text-gray-400 hover:text-white transition-all duration-200 group">
+                  <Link href="/about" className="flex items-center gap-2 text-gray-400 hover:text-white transition-all duration-200 group min-h-[44px] py-1">
                     <FaArrowRight className="w-3 h-3 text-[#EB5324] opacity-0 group-hover:opacity-100 transition-opacity" />
                     About Us
                   </Link>
@@ -205,11 +205,12 @@ export default function GlobalFooter() {
               <h4 className="text-white font-bold uppercase tracking-widest mb-7 text-sm">
                 OUR LOCATION
               </h4>
-              <div className="w-full h-48 mb-4 rounded-xl overflow-hidden">
+              <div className="w-full min-h-[12rem] sm:min-h-[13rem] md:h-48 mb-4 rounded-xl overflow-hidden">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3320.641467604047!2d73.0357053!3d33.6575153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38df95384559b40d%3A0x11098f728e61baed!2sHB%20Furniture%20Hassan%20Brother%20(Pvt)%20Limited!5e0!3m2!1sen!2s!4v1750747080000!5m2!1sen!2s"
                   width="100%"
                   height="100%"
+                  className="h-full w-full min-h-[12rem] sm:min-h-[13rem] md:min-h-0"
                   style={{ border: 0 }}
                   allowFullScreen={true}
                   loading="lazy"
@@ -234,17 +235,17 @@ export default function GlobalFooter() {
         </div>
       </footer>
       {/* Bottom Bar */}
-      <div className="bg-[#0D0D0D] border-t border-gray-800 py-6">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-500 text-sm">
+      <div className="bg-[#0D0D0D] border-t border-gray-800 py-5 sm:py-6">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+            <p className="text-gray-500 text-xs sm:text-sm">
               © 2025 HB Furniture. All Rights Reserved.
             </p>
             <div className="text-center">
               <p className="text-white text-sm font-semibold">Trusted Furniture Brand</p>
               <p className="text-gray-500 text-xs tracking-wider mt-1">Quality | Durability | Design</p>
             </div>
-            <p className="text-gray-500 text-sm text-right">
+            <p className="text-gray-500 text-xs sm:text-sm md:text-right">
               Designed for Better Workspaces
             </p>
           </div>

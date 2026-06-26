@@ -3,11 +3,11 @@ import Link from 'next/link';
 
 export default function AboutUs() {
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
+    <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
       
 
       {/* Hero Section */}
-      <section className="relative h-[450px] md:h-[550px] flex items-center justify-center text-center bg-[#111111] overflow-hidden">
+      <section className="relative h-[280px] sm:h-[380px] md:h-[450px] md:h-[550px] flex items-center justify-center text-center bg-[#111111] overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000" 
@@ -28,8 +28,8 @@ export default function AboutUs() {
       </section>
 
       {/* The Foundation of Excellence */}
-      <section className="max-w-[1200px] mx-auto px-4 py-24">
-        <div className="flex flex-col md:flex-row gap-16 items-center">
+      <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16 items-center">
           <div className="w-full md:w-1/2">
             <img 
               src="/90.png"
@@ -52,7 +52,7 @@ export default function AboutUs() {
       </section>
 
       {/* Milestones of Progress */}
-      <section className="bg-[#FAFAFA] py-24 border-y border-gray-100">
+      <section className="bg-[#FAFAFA] py-16 sm:py-20 md:py-24 border-y border-gray-100">
         <div className="max-w-[1000px] mx-auto px-4">
           <div className="text-center mb-20">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 font-serif">Milestones of Progress</h2>
@@ -109,7 +109,7 @@ export default function AboutUs() {
       </section>
 
       {/* Architects of Our Vision */}
-      <section className="max-w-[1200px] mx-auto px-4 py-24">
+      <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24">
         <div className="text-center mb-20">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 font-serif">Architects of Our Vision</h2>
           <div className="w-16 h-1 bg-[#EB5324] mx-auto"></div>
@@ -150,8 +150,8 @@ export default function AboutUs() {
       </section>
 
       {/* Why Choose HB Furniture */}
-      <section className="bg-[#FAFAFA] py-24 border-y border-gray-100">
-        <div className="max-w-[1200px] mx-auto px-4">
+      <section className="bg-[#FAFAFA] py-16 sm:py-20 md:py-24 border-y border-gray-100">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
           <div className="text-center mb-20">
             <h2 className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-6">Why Choose HB Furniture</h2>
             <div className="w-12 h-0.5 bg-[#EB5324] mx-auto"></div>
@@ -193,7 +193,7 @@ export default function AboutUs() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-[#EBEBEB] py-24 text-center">
+      <section className="bg-[#EBEBEB] py-16 sm:py-20 md:py-24 text-center">
         <h2 className="text-3xl font-bold text-gray-900 mb-8 font-serif">Ready to Build Your Legacy?</h2>
         <Link href="/contact" className="bg-[#EB5324] text-white px-8 py-4 text-[11px] font-bold hover:bg-[#d4481f] transition-colors uppercase tracking-widest inline-flex items-center gap-3">
           Discuss Your Project

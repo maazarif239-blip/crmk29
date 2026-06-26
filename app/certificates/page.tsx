@@ -17,7 +17,7 @@ export default function CertificatesPage() {
   return (
     <div className="min-h-screen bg-[#F7F5F2] text-neutral-900 font-sans selection:bg-[#E5E0D8]">
       {/* Hero */}
-      <section className="bg-[#111111] px-4 py-24 sm:py-28 lg:py-32">
+      <section className="bg-[#111111] px-4 py-16 sm:py-20 md:py-24 sm:py-28 lg:py-32">
         <div className="mx-auto max-w-[900px] text-center">
           <h1 className="font-serif text-4xl leading-tight text-white sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
             Built on Trust Since 1964.
@@ -96,7 +96,7 @@ export default function CertificatesPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-[#111111] px-4 py-24 sm:py-28">
+      <section className="bg-[#111111] px-4 py-16 sm:py-20 md:py-24 sm:py-28">
         <div className="mx-auto max-w-[760px] text-center">
           <p className="font-serif text-2xl leading-relaxed text-white sm:text-3xl">
             If you&apos;d like to see the workshop, you&apos;re welcome.

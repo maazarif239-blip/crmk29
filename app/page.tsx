@@ -30,28 +30,28 @@ export default function Home() {
 
       {/* Hero + Stats */}
       <div className="relative overflow-hidden">
-        <section className="relative min-h-[600px] flex items-center justify-center flex-col text-center px-4 py-24">
+        <section className="relative min-h-[min(600px,85vh)] sm:min-h-[600px] flex items-center justify-center flex-col text-center px-4 sm:px-6 py-16 sm:py-20 md:py-24">
           <img
             src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2000&q=80"
             alt="Workspace"
             className="absolute inset-0 w-full h-full object-cover"
           />
 
-          <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">
+          <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center w-full">
+          <h1 className="text-[clamp(1.75rem,5vw,3rem)] font-bold text-white mb-2 tracking-tight">
             Since 1964 —
           </h1>
-          <h1 className="text-4xl md:text-5xl font-bold text-[#EB5324] mb-6 tracking-tight">
-            Building Workspaces That <br className="hidden md:block" /> Perform
+          <h1 className="text-[clamp(1.75rem,5vw,3rem)] font-bold text-[#EB5324] mb-4 sm:mb-6 tracking-tight">
+            Building Workspaces That <br className="hidden sm:block" /> Perform
           </h1>
 
-          <p className="text-gray-200 text-sm md:text-base max-w-2xl mx-auto font-medium leading-relaxed mb-8">
+          <p className="text-gray-200 text-sm md:text-base max-w-2xl mx-auto font-medium leading-relaxed mb-6 sm:mb-8 px-2">
             Precision engineering meets architectural elegance. We deliver premium <br className="hidden md:block" /> turnkey solutions for the modern corporate environment.
           </p>
 
           <Link
             href="/products/office-sets"
-            className="inline-flex items-center gap-3 bg-[#EB5324] hover:bg-[#d4481f] text-white px-6 py-3 text-[11px] font-bold uppercase tracking-wider transition-all duration-300"
+            className="inline-flex items-center justify-center gap-3 bg-[#EB5324] hover:bg-[#d4481f] text-white px-5 sm:px-6 py-3 text-[11px] font-bold uppercase tracking-wider transition-all duration-300 min-h-[44px] w-full max-w-xs sm:w-auto sm:max-w-none"
           >
             Explore Office Sets
             <span className="w-5 h-5 border border-white/50 flex items-center justify-center">
@@ -61,19 +61,19 @@ export default function Home() {
           </div>
         </section>
 
-        <div className="relative z-20 max-w-4xl mx-auto -mt-12 mb-10 md:mb-14 px-4">
+        <div className="relative z-20 max-w-4xl mx-auto -mt-8 sm:-mt-12 mb-8 sm:mb-10 md:mb-14 px-4 sm:px-6">
           <div className="bg-white shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)]">
             <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100 py-8 gap-y-8 md:gap-y-0">
               <div className="flex flex-col items-center justify-center text-center px-4">
-                <span className="text-4xl font-bold text-[#EB5324] mb-2">60+</span>
+                <span className="text-3xl sm:text-4xl font-bold text-[#EB5324] mb-2">60+</span>
                 <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Years of Heritage</span>
               </div>
               <div className="flex flex-col items-center justify-center text-center px-4">
-                <span className="text-4xl font-bold text-[#EB5324] mb-2">300+</span>
+                <span className="text-3xl sm:text-4xl font-bold text-[#EB5324] mb-2">300+</span>
                 <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Corporate Clients</span>
               </div>
               <div className="flex flex-col items-center justify-center text-center px-4">
-                <span className="text-4xl font-bold text-[#EB5324] mb-2">500+</span>
+                <span className="text-3xl sm:text-4xl font-bold text-[#EB5324] mb-2">500+</span>
                 <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Projects Delivered</span>
               </div>
             </div>
@@ -84,11 +84,11 @@ export default function Home() {
       <SignatureCollection />
 
       {/* A Legacy of Craftsmanship Section */}
-      <section className="py-24 max-w-[1200px] mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <section className="py-16 sm:py-20 md:py-24 max-w-[1200px] mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
           {/* Left Text */}
           <div className="text-center md:text-left">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight leading-tight mb-2">
+            <h2 className="text-[clamp(1.875rem,4vw,3rem)] font-bold text-gray-900 tracking-tight leading-tight mb-2">
               A Legacy of <br />
               <span className="text-[#EB5324]">Craftsmanship</span>
             </h2>
@@ -139,9 +139,9 @@ export default function Home() {
       </section>
 
       {/* Our Prestige Clients */}
-      <section className="py-24">
-        <div className="max-w-[1200px] mx-auto px-4">
-          <div className="text-center mb-16">
+      <section className="py-16 sm:py-20 md:py-24 overflow-hidden">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+          <div className="text-center mb-10 sm:mb-16">
             <span className="text-[10px] font-bold text-[#EB5324] uppercase tracking-widest mb-2 block">Our Prestige Clients</span>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">Trusted By Leading Organizations</h2>
             <p className="text-gray-500 text-sm md:text-base max-w-2xl mx-auto">
@@ -151,10 +151,10 @@ export default function Home() {
 
           {/* Infinite Logo Carousel */}
           <div className="overflow-hidden">
-            <div className="flex gap-12 animate-marquee">
+            <div className="flex gap-8 sm:gap-12 animate-marquee">
               {/* Duplicate logos for seamless loop */}
               {[...prestigeClientLogos, ...prestigeClientLogos].map((logo, i) => (
-                <div key={i} className="flex-shrink-0 flex items-center justify-center w-40 h-20 grayscale hover:grayscale-0 transition-all duration-300">
+                <div key={i} className="flex-shrink-0 flex items-center justify-center w-28 h-14 sm:w-36 sm:h-16 md:w-40 md:h-20 grayscale hover:grayscale-0 transition-all duration-300">
                   <Image
                     src={logo}
                     alt={`Client Logo ${i + 1}`}
@@ -173,8 +173,8 @@ export default function Home() {
       <TestimonialsSection />
 
       {/* Frequently Asked Questions */}
-      <section className="py-24 max-w-[1000px] mx-auto px-4">
-        <div className="text-center mb-16">
+      <section className="py-16 sm:py-20 md:py-24 max-w-[1000px] mx-auto px-4 sm:px-6">
+        <div className="text-center mb-10 sm:mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">Frequently Asked Questions</h2>
         </div>
 
@@ -208,10 +208,10 @@ export default function Home() {
             <div key={i} className="border border-gray-200 rounded-lg overflow-hidden bg-white">
               <button
                 onClick={() => toggleFaq(i)}
-                className="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors duration-200"
+                className="w-full flex items-center justify-between gap-4 p-4 sm:p-6 text-left hover:bg-gray-50 transition-colors duration-200 min-h-[44px]"
               >
-                <span className="text-sm md:text-base font-bold text-gray-900">{faq.question}</span>
-                <svg className={`w-6 h-6 text-gray-400 transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <span className="text-sm md:text-base font-bold text-gray-900 text-left">{faq.question}</span>
+                <svg className={`w-5 h-5 sm:w-6 sm:h-6 shrink-0 text-gray-400 transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
@@ -226,7 +226,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section (Above Footer) */}
-      <section className="relative py-24 overflow-hidden isolate">
+      <section className="relative py-16 sm:py-20 md:py-24 overflow-hidden isolate">
         {/* Background Image with dark overlay */}
         <div className="absolute inset-0 z-0">
           <img
@@ -237,16 +237,16 @@ export default function Home() {
           <div className="absolute inset-0 bg-black/60"></div>
         </div>
 
-        <div className="relative z-10 max-w-[1200px] mx-auto px-4 text-center">
+        <div className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-6 text-center">
           <span className="text-[10px] font-bold text-[#EB5324] uppercase tracking-widest mb-2 block">Let's Create Something Great Together</span>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 font-serif">Ready To Transform Your Workspace?</h2>
-          <p className="text-gray-200 text-sm md:text-base max-w-2xl mx-auto mb-12">
+          <h2 className="text-[clamp(1.75rem,4.5vw,3rem)] font-bold text-white mb-4 font-serif">Ready To Transform Your Workspace?</h2>
+          <p className="text-gray-200 text-sm md:text-base max-w-2xl mx-auto mb-8 sm:mb-12">
             From executive offices to complete workplace solutions, HB Furniture helps organizations create productive environments that inspire performance.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center max-w-md sm:max-w-none mx-auto">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-3 bg-[#EB5324] hover:bg-[#d4481f] text-white px-8 py-3 text-[11px] font-bold uppercase tracking-wider transition-all duration-300"
+              className="inline-flex items-center justify-center gap-3 bg-[#EB5324] hover:bg-[#d4481f] text-white px-6 sm:px-8 py-3 text-[11px] font-bold uppercase tracking-wider transition-all duration-300 min-h-[44px]"
             >
               Request Consultation
               <span className="w-5 h-5 border border-white/50 flex items-center justify-center">
@@ -255,7 +255,7 @@ export default function Home() {
             </Link>
             <Link
               href="/projects"
-              className="inline-flex items-center justify-center gap-3 border border-white text-white hover:bg-white/10 px-8 py-3 text-[11px] font-bold uppercase tracking-wider transition-all duration-300"
+              className="inline-flex items-center justify-center gap-3 border border-white text-white hover:bg-white/10 px-6 sm:px-8 py-3 text-[11px] font-bold uppercase tracking-wider transition-all duration-300 min-h-[44px]"
             >
               View Projects
             </Link>

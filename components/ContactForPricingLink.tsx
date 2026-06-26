@@ -19,7 +19,7 @@ export default function ContactForPricingLink({
   return (
     <Link
       href={href}
-      className={`group inline-flex items-center text-[10px] font-bold uppercase tracking-[0.12em] text-[#EB5324] transition-all duration-300 hover:opacity-75 focus-visible:outline-none ${className}`}
+      className={`group inline-flex items-center py-2 text-[10px] font-bold uppercase tracking-[0.12em] text-[#EB5324] transition-all duration-300 hover:opacity-75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EB5324] focus-visible:ring-offset-2 min-h-[44px] ${className}`}
     >
       <span className="relative">
         <span className="block">CONTACT FOR PRICING</span>

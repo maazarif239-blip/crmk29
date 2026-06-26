@@ -142,10 +142,10 @@ export default function LibraryShelvingSystem() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FDFDFD] text-gray-900 font-sans selection:bg-[#E5E0D8]">
+    <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-[#FDFDFD] text-gray-900 font-sans selection:bg-[#E5E0D8]">
       
       {/* Hero Section */}
-      <section className="relative h-[450px] flex items-center justify-center text-center bg-[#111111] overflow-hidden">
+      <section className="relative h-[280px] sm:h-[380px] md:h-[450px] flex items-center justify-center text-center bg-[#111111] overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src="/155-4-.png" 
@@ -177,7 +177,7 @@ export default function LibraryShelvingSystem() {
 
       {/* Product Categories Grid */}
       <section className="py-20 bg-[#FAFAFA] border-y border-gray-100">
-        <div className="max-w-[1200px] mx-auto px-4">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
           <div className="mb-12">
             <h2 className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-2">Our Offerings</h2>
             <h3 className="text-3xl font-serif text-gray-900">Shelving Categories</h3>
@@ -224,7 +224,7 @@ export default function LibraryShelvingSystem() {
       </section>
 
       {/* Features Section */}
-      <section className="py-24 max-w-[1200px] mx-auto px-4">
+      <section className="py-24 max-w-[1200px] mx-auto px-4 sm:px-6">
         <div className="text-center mb-16">
           <h2 className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-2">Designed For Excellence</h2>
           <h3 className="text-3xl font-serif text-gray-900">Shelving Key Features</h3>
@@ -251,7 +251,7 @@ export default function LibraryShelvingSystem() {
 
       {/* Gallery Section */}
       <section className="py-20 bg-[#FAFAFA] border-t border-gray-100">
-        <div className="max-w-[1200px] mx-auto px-4">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
             <h2 className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-2">Visual Showcase</h2>
             <h3 className="text-3xl font-serif text-gray-900">Project Gallery</h3>
@@ -282,7 +282,7 @@ export default function LibraryShelvingSystem() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-[#EBEBEB] py-24 text-center">
+      <section className="bg-[#EBEBEB] py-16 sm:py-20 md:py-24 text-center">
         <div className="max-w-2xl mx-auto px-4">
           <h3 className="text-3xl font-bold text-gray-900 mb-4 font-serif">Build Better Learning Spaces</h3>
           <p className="text-gray-500 text-xs md:text-sm mb-8 leading-relaxed">

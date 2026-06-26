@@ -89,6 +89,27 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* Reusable responsive layout helpers */
+  .page-shell {
+    width: 100%;
+    min-width: 0;
+    overflow-x: clip;
+  }
+
+  .section-y {
+    padding-top: clamp(3.5rem, 6vw, 6rem);
+    padding-bottom: clamp(3.5rem, 6vw, 6rem);
+  }
+
+  .container-page {
+    width: 100%;
+    max-width: 75rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(1rem, 3vw, 1.5rem);
+    padding-right: clamp(1rem, 3vw, 1.5rem);
+  }
 }
 
 :root {
@@ -96,40 +117,67 @@
   --foreground: #171717;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-/* Global Responsive Fixes */
-* {
-  box-sizing: border-box;
-}
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    max-width: 100vw;
+    overflow-x: clip;
+  }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 100vw;
+    overflow-x: clip;
+    min-width: 0;
+  }
 
-/* Touch-friendly minimum tap targets */
-a, button {
-  min-height: 44px;
-  min-width: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
+  main {
+    min-width: 0;
+    overflow-x: clip;
+  }
 
-/* Table horizontal scroll on mobile */
-table {
-  display: block;
-  width: 100%;
-  overflow-x: auto;
-}
+  img,
+  video,
+  iframe,
+  svg {
+    max-width: 100%;
+  }
 
-/* Prevent horizontal overflow */
-html, body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    overflow-wrap: anywhere;
+    word-wrap: break-word;
+  }
+
+  button {
+    touch-action: manipulation;
+    min-height: 44px;
+  }
+
+  button:not(.inline-flex):not([class*="flex"]) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }

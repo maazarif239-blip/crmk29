@@ -107,7 +107,7 @@ export default function TestimonialsSection() {
   }, [emblaApi]);
 
   return (
-    <section className="relative py-24 bg-[#F5F5F3] overflow-hidden">
+    <section className="relative py-16 sm:py-20 md:py-24 bg-[#F5F5F3] overflow-hidden">
       {/* Subtle dotted background pattern */}
       <div
         className="absolute inset-0 opacity-[0.15] pointer-events-none"
@@ -117,9 +117,9 @@ export default function TestimonialsSection() {
         }}
       ></div>
 
-      <div className="relative z-10 max-w-[1200px] mx-auto px-4">
+      <div className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 sm:mb-16">
           <span className="text-[#EB5324] text-[11px] font-bold uppercase tracking-widest block mb-4">
             Google Reviews
           </span>
@@ -144,11 +144,11 @@ export default function TestimonialsSection() {
         </div>
 
         {/* Carousel */}
-        <div className="relative">
+        <div className="relative px-10 sm:px-12 md:px-14">
           {/* Controls */}
           <button
             onClick={scrollPrev}
-            className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-400 hover:text-[#EB5324] hover:shadow-xl z-20 transition-all focus:outline-none"
+            className="absolute left-0 sm:left-2 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-400 hover:text-[#EB5324] hover:shadow-xl z-20 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#EB5324]"
             aria-label="Previous review"
           >
             <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
@@ -156,7 +156,7 @@ export default function TestimonialsSection() {
 
           <button
             onClick={scrollNext}
-            className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-400 hover:text-[#EB5324] hover:shadow-xl z-20 transition-all focus:outline-none"
+            className="absolute right-0 sm:right-2 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-400 hover:text-[#EB5324] hover:shadow-xl z-20 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#EB5324]"
             aria-label="Next review"
           >
             <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
@@ -170,7 +170,7 @@ export default function TestimonialsSection() {
                   key={idx}
                   className="pl-4 flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333333%] min-w-0"
                 >
-                  <div className="h-full bg-white p-8 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border-l-4 border-l-[#EB5324] flex flex-col transition-transform duration-300 hover:-translate-y-1">
+                  <div className="h-full bg-white p-5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border-l-4 border-l-[#EB5324] flex flex-col transition-transform duration-300 hover:-translate-y-1">
                     <div className="flex gap-1 text-[#EB5324] mb-6">
                       {[...Array(5)].map((_, i) => (
                         <Star key={i} className="w-4 h-4 fill-current" />

@@ -3,11 +3,11 @@ import Link from 'next/link';
 
 export default function Projects() {
   return (
-    <div className="min-h-screen bg-[#FDFDFD] text-gray-900 font-sans selection:bg-[#E5E0D8]">
+    <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-[#FDFDFD] text-gray-900 font-sans selection:bg-[#E5E0D8]">
       
 
       {/* Hero Section */}
-      <section className="pt-24 pb-12 max-w-[1200px] mx-auto px-4">
+      <section className="pt-24 pb-12 max-w-[1200px] mx-auto px-4 sm:px-6">
         <h1 className="text-4xl md:text-5xl font-serif text-[#111111] mb-4 tracking-tight">
           Projects That Define Our Legacy
         </h1>
@@ -17,7 +17,7 @@ export default function Projects() {
       </section>
 
       {/* Projects Grid */}
-      <section className="pb-32 max-w-[1200px] mx-auto px-4">
+      <section className="pb-32 max-w-[1200px] mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           
           {/* Card 1 */}
@@ -87,7 +87,7 @@ export default function Projects() {
 
       {/* Sectors We Serve */}
       <section className="py-16 border-y border-gray-100 bg-white">
-        <div className="max-w-[1200px] mx-auto px-4 text-center">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-2xl font-serif text-gray-900 mb-10 tracking-tight">Sectors We Serve</h2>
           
           <div className="flex flex-wrap justify-center items-center gap-y-4 gap-x-6">

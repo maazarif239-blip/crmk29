@@ -8,7 +8,7 @@ export default function CookiePolicy() {
       
 
       {/* Main Layout Area */}
-      <section className="max-w-[1200px] mx-auto px-4 py-20 relative">
+      <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-20 relative">
         
         {/* Content Column */}
         <div className="max-w-4xl mx-auto">
@@ -106,7 +106,7 @@ export default function CookiePolicy() {
 
       {/* Fixed Cookie Consent Banner */}
       <div className="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-[0_-4px_10px_-2px_rgba(0,0,0,0.05)] z-50">
-        <div className="max-w-[1200px] mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-gray-500 text-[11px]">
             We use cookies to improve your experience.
           </p>

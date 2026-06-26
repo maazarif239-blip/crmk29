@@ -26,13 +26,13 @@ const marqueeItems = [...signatureProducts, ...signatureProducts];
 
 export default function SignatureCollection() {
   return (
-    <section className="relative z-10 pt-16 md:pt-20 pb-20 md:pb-24 bg-[#fafafa] overflow-hidden">
-      <div className="max-w-[1600px] mx-auto px-4 md:px-8">
-        <div className="text-center mb-12 md:mb-16">
+    <section className="relative z-10 pt-12 sm:pt-16 md:pt-20 pb-16 sm:pb-20 md:pb-24 bg-[#fafafa] overflow-hidden">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8">
+        <div className="text-center mb-10 sm:mb-12 md:mb-16">
           <span className="text-[10px] font-bold text-[#EB5324] uppercase tracking-[0.2em] mb-3 block">
             SIGNATURE COLLECTION
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-gray-900 mb-5 font-serif tracking-tight">
+          <h2 className="text-[clamp(1.75rem,4vw,2.75rem)] font-bold text-gray-900 mb-4 sm:mb-5 font-serif tracking-tight">
             Signature Collection
           </h2>
           <p className="text-gray-500 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
@@ -48,20 +48,20 @@ export default function SignatureCollection() {
           }}
         >
           <div className="overflow-hidden">
-            <div className="flex w-max gap-5 md:gap-6 animate-marquee-slow will-change-transform group-hover/marquee:[animation-play-state:paused]">
+            <div className="flex w-max gap-4 sm:gap-5 md:gap-6 animate-marquee-slow will-change-transform group-hover/marquee:[animation-play-state:paused]">
               {marqueeItems.map((product, i) => (
                 <Link
                   key={`${product.name}-${i}`}
                   href={product.href}
-                  className="group/card flex-shrink-0 w-[220px] sm:w-[250px] md:w-[280px] flex flex-col bg-white rounded-[18px] border border-gray-200/80 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.14)] hover:-translate-y-1.5 transition-all duration-500 ease-out overflow-hidden"
+                  className="group/card flex-shrink-0 w-[180px] sm:w-[220px] md:w-[260px] lg:w-[280px] flex flex-col bg-white rounded-[16px] sm:rounded-[18px] border border-gray-200/80 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.14)] hover:-translate-y-1.5 transition-all duration-500 ease-out overflow-hidden"
                 >
                   <div className="relative w-full aspect-[4/5] bg-[#f5f5f5] flex items-center justify-center overflow-hidden">
                     <Image
                       src={product.image}
                       alt={product.name}
                       fill
-                      sizes="(max-width: 640px) 220px, (max-width: 768px) 250px, 280px"
-                      className="object-contain p-5 md:p-6 transition-transform duration-700 ease-out group-hover/card:scale-105"
+                      sizes="(max-width: 390px) 180px, (max-width: 640px) 200px, (max-width: 768px) 230px, (max-width: 1024px) 260px, 280px"
+                      className="object-contain p-4 sm:p-5 md:p-6 transition-transform duration-700 ease-out group-hover/card:scale-105"
                     />
                   </div>
                   <div className="px-5 py-5 md:py-6 flex items-center justify-center text-center min-h-[72px]">

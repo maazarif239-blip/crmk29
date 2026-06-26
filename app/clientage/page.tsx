@@ -110,9 +110,9 @@ export default function HBClientage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FDFDFD] text-gray-900 font-sans selection:bg-[#E5E0D8]">
+    <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-[#FDFDFD] text-gray-900 font-sans selection:bg-[#E5E0D8]">
       {/* Hero Section */}
-      <section className="pt-24 pb-16 max-w-[1200px] mx-auto px-4 text-center md:text-left border-b border-gray-100">
+      <section className="pt-24 pb-16 max-w-[1200px] mx-auto px-4 sm:px-6 text-center md:text-left border-b border-gray-100">
         <h1 className="text-4xl md:text-5xl font-serif text-[#111111] mb-4 tracking-tight">
           HB Clientage
         </h1>
@@ -122,7 +122,7 @@ export default function HBClientage() {
       </section>
 
       {/* Featured Clients Section */}
-      <section className="py-20 max-w-[1200px] mx-auto px-4">
+      <section className="py-20 max-w-[1200px] mx-auto px-4 sm:px-6">
         <div className="mb-12">
           <h2 className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-3">Featured Partnerships</h2>
           <h3 className="text-3xl font-serif text-gray-900 mb-2">Defining Corporate Legacy</h3>
@@ -148,7 +148,7 @@ export default function HBClientage() {
 
       {/* Clients Showcase Section */}
       <section className="py-20 bg-[#FAFAFA] border-y border-gray-100">
-        <div className="max-w-[1200px] mx-auto px-4">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
           <div className="mb-12 flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div>
               <h2 className="text-3xl font-serif text-gray-900 mb-2">Our Esteemed Clients</h2>

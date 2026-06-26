@@ -139,10 +139,10 @@ export default function WorkspaceSolutions() {
   const inquiryUrl = `/contact?product=Workspace%20Solutions&brand=HB%20Furniture&layout=${currentLayout.name}&config=${currentConfig.value}&dims=${encodeURIComponent(currentConfig.dims)}`;
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
+    <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
       
       {/* Hero Header Section */}
-      <section className="relative h-[450px] flex items-end pb-16 overflow-hidden">
+      <section className="relative h-[280px] sm:h-[380px] md:h-[450px] flex items-end pb-16 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0 bg-gray-100">
           <img 
@@ -153,12 +153,12 @@ export default function WorkspaceSolutions() {
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
         </div>
 
-        <div className="relative z-10 w-full max-w-[1200px] mx-auto px-4">
+        <div className="relative z-10 w-full max-w-[1200px] mx-auto px-4 sm:px-6">
           <div className="flex flex-col gap-2 max-w-2xl">
             <span className="text-[#EB5324] text-[10px] font-bold uppercase tracking-widest">
               High-Performance Systems
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight font-serif">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight font-serif">
               Workspace Solutions
             </h1>
             <p className="text-gray-300 text-xs md:text-sm font-medium leading-relaxed mt-2">
@@ -169,7 +169,7 @@ export default function WorkspaceSolutions() {
       </section>
 
       {/* Main Catalog Area */}
-      <section className="max-w-[1200px] mx-auto px-4 py-20">
+      <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-20">
         <div className="flex flex-col lg:flex-row gap-16">
           
           {/* Sidebar Area */}
@@ -216,7 +216,7 @@ export default function WorkspaceSolutions() {
                             setSelectedConfigIdx(0);
                             setActiveImage(card.image);
                           }}
-                          className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden text-left"
+                          className="aspect-square bg-[#F5F5F5] p-4 sm:p-6 md:p-8 flex items-center justify-center relative overflow-hidden text-left"
                           aria-label={`Preview ${card.title}`}
                         >
                           <img

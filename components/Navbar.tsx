@@ -138,16 +138,16 @@ export default function Navbar() {
  <header 
  className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
  isScrolled 
- ? "bg-white shadow-md py-3" 
- : "bg-white py-4"
+ ? "bg-white shadow-md py-2 sm:py-3" 
+ : "bg-white py-3 sm:py-4"
  }`}
  >
- <div className="max-w-[1800px] mx-auto px-4 lg:px-6">
+ <div className="max-w-[1800px] mx-auto px-4 sm:px-5 lg:px-6">
  <div className="flex items-center justify-between h-full relative">
  {/* Logo - Left */}
  <Link
  href="/"
- className="flex items-center gap-2 transition-opacity hover:opacity-80 shrink-0"
+ className="flex items-center gap-2 transition-opacity hover:opacity-80 shrink-0 min-w-0"
  >
  <Image
  src="/hb-logo.png.png"
@@ -155,7 +155,7 @@ export default function Navbar() {
  
  width={isScrolled ? 40 : 52}
  height={isScrolled ? 40 : 52}
- className="object-contain transition-all duration-300"
+ className="object-contain transition-all duration-300 w-9 h-9 sm:w-10 sm:h-10 md:w-auto md:h-auto"
  priority
  />
  <span className="text-lg font-normal tracking-[0.046875em] leading-none whitespace-nowrap text-[#222222]" style={{ fontFamily: 'var(--font-marcellus)', textRendering: 'optimizeLegibility', WebkitFontSmoothing: 'antialiased' }}>
@@ -322,7 +322,13 @@ export default function Navbar() {
 
  {/* Mobile Menu */}
  {isMobileMenuOpen && (
- <div className="fixed inset-x-0 top-0 bottom-0 z-40 bg-white pt-24 px-6 lg:hidden animate-in slide-in-from-top duration-300 flex flex-col overflow-y-auto pb-8">
+ <div className="fixed inset-0 z-[49] lg:hidden">
+ <div
+ className="absolute inset-0 bg-black/20"
+ onClick={() => setIsMobileMenuOpen(false)}
+ aria-hidden="true"
+ />
+ <div className="absolute inset-x-0 top-0 bottom-0 bg-white pt-[calc(4.5rem+env(safe-area-inset-top))] px-4 sm:px-6 flex flex-col overflow-y-auto overscroll-contain pb-[max(2rem,env(safe-area-inset-bottom))] animate-in slide-in-from-top duration-300">
  <nav className="flex flex-col gap-3 flex-1">
  {navItems.map((item) => {
  if (item.dropdown) {
@@ -421,10 +427,11 @@ export default function Navbar() {
  </Link>
  </div>
  </div>
+ </div>
  )}
 
  {/* Spacer to prevent content from going under fixed navbar */}
- <div className={`transition-all duration-300 ${isScrolled ? "h-[72px]" : "h-[80px]"}`} />
+ <div className={`transition-all duration-300 ${isScrolled ? "h-[68px] sm:h-[72px]" : "h-[76px] sm:h-[80px]"}`} />
  </>
  );
 }

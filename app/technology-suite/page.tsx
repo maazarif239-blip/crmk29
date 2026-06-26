@@ -4,12 +4,12 @@ import ContactForPricingLink from '@/components/ContactForPricingLink';
 
 export default function TechnologySuite() {
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
+    <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
       {/* Header (Alternative Style) */}
       
 
       {/* Hero Section (Light & Contained) */}
-      <div className="max-w-[1200px] mx-auto px-4 pt-8 pb-12">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-8 pb-12">
         <section className="relative h-[300px] flex items-center justify-center text-center overflow-hidden border border-gray-100 bg-[#FAFAFA]">
           {/* Background Image with Light Overlay */}
           <div className="absolute inset-0 z-0">
@@ -34,7 +34,7 @@ export default function TechnologySuite() {
       </div>
 
       {/* Main Content Area */}
-      <section className="max-w-[1200px] mx-auto px-4 py-8 flex flex-col md:flex-row gap-16">
+      <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-8 flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16">
         
         {/* Product Grid (2 Columns) */}
         <div className="flex-1">

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
 export default function StudyChairs() {
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
+    <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
       
 
       {/* Hero Section */}
@@ -30,7 +30,7 @@ export default function StudyChairs() {
       </section>
 
       {/* Main Content Area */}
-      <section className="max-w-[1200px] mx-auto px-4 py-20 flex flex-col md:flex-row gap-16">
+      <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-20 flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16">
         
         {/* Product Grid */}
         <div className="flex-1">
@@ -38,7 +38,7 @@ export default function StudyChairs() {
             
             {/* Product 1 */}
             <div className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">
-              <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden">
+              <div className="aspect-square bg-[#F5F5F5] p-4 sm:p-6 md:p-8 flex items-center justify-center relative overflow-hidden">
                 <img 
                   src="/1.jpg" 
                   alt=" SkyBlue Stackable Study Chair" 
@@ -58,7 +58,7 @@ export default function StudyChairs() {
 
             {/* Product 2 */}
             <div className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">
-              <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden">
+              <div className="aspect-square bg-[#F5F5F5] p-4 sm:p-6 md:p-8 flex items-center justify-center relative overflow-hidden">
                 <img 
                   src="/2.jpg" 
                   alt="Navy Blue Cushioned Study Chair" 
@@ -78,7 +78,7 @@ export default function StudyChairs() {
 
             {/* Product 3 */}
             <div className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">
-              <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden">
+              <div className="aspect-square bg-[#F5F5F5] p-4 sm:p-6 md:p-8 flex items-center justify-center relative overflow-hidden">
                 <img 
                   src="/3.jpg" 
                   alt="Two-Tone Blue Grey Study Chair" 
@@ -98,7 +98,7 @@ export default function StudyChairs() {
 
             {/* Product 4 */}
             <div className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">
-              <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden">
+              <div className="aspect-square bg-[#F5F5F5] p-4 sm:p-6 md:p-8 flex items-center justify-center relative overflow-hidden">
                 <img 
                   src="/4.jpg" 
                   alt=" Mesh Back Ergonomic Study Chair" 
@@ -118,7 +118,7 @@ export default function StudyChairs() {
 
             {/* Product 5 */}
             <div className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">
-              <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden">
+              <div className="aspect-square bg-[#F5F5F5] p-4 sm:p-6 md:p-8 flex items-center justify-center relative overflow-hidden">
                 <img 
                   src="/5.jpg" 
                   alt="Foldable Tablet Arm Study Chair" 
@@ -138,7 +138,7 @@ export default function StudyChairs() {
 
             {/* Product 6 */}
             <div className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">
-              <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden">
+              <div className="aspect-square bg-[#F5F5F5] p-4 sm:p-6 md:p-8 flex items-center justify-center relative overflow-hidden">
                 <img 
                   src="/6.jpg" 
                   alt="Red & Black Classic Study Chair" 
@@ -158,7 +158,7 @@ export default function StudyChairs() {
 
             {/* Product 7 */}
             <div className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">
-              <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden">
+              <div className="aspect-square bg-[#F5F5F5] p-4 sm:p-6 md:p-8 flex items-center justify-center relative overflow-hidden">
                 <img 
                   src="/7.jpg" 
                   alt="Comfort Study Black Fabric Chair" 

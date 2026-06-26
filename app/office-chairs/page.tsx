@@ -3,11 +3,11 @@ import Link from 'next/link';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
 export default function OfficeChairs() {
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
+    <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
       
 
       {/* Hero Section */}
-      <section className="relative h-[450px] flex items-end pb-16 overflow-hidden">
+      <section className="relative h-[280px] sm:h-[380px] md:h-[450px] flex items-end pb-16 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0 bg-gray-900">
           <img 
@@ -19,8 +19,8 @@ export default function OfficeChairs() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
         </div>
 
-        <div className="relative z-10 w-full max-w-[1200px] mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight font-serif">
+        <div className="relative z-10 w-full max-w-[1200px] mx-auto px-4 sm:px-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight font-serif">
             Office Chairs
           </h1>
           <p className="text-gray-200 text-[13px] md:text-sm font-medium leading-relaxed max-w-2xl">
@@ -30,7 +30,7 @@ export default function OfficeChairs() {
       </section>
 
       {/* Main Content Area */}
-      <section className="max-w-[1200px] mx-auto px-4 py-20 flex flex-col md:flex-row gap-16">
+      <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-20 flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16">
         
         {/* Product Grid */}
         <div className="flex-1">
@@ -112,7 +112,7 @@ export default function OfficeChairs() {
               },
             ].map((product, index) => (
               <div key={index} className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">
-                <div className="aspect-square bg-[#F5F5F5] p-8 flex items-center justify-center relative overflow-hidden">
+                <div className="aspect-square bg-[#F5F5F5] p-4 sm:p-6 md:p-8 flex items-center justify-center relative overflow-hidden">
                   <Image 
                     src={product.src} 
                     alt={product.name} 
