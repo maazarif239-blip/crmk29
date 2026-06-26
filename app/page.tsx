@@ -3,36 +3,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import TestimonialsSection from '../components/TestimonialsSection';
+import SignatureCollection from '../components/SignatureCollection';
 import { useState } from 'react';
-
-// Signature Collection Products (18 products)
-const signatureProducts = [
-  // Executive Office Tables (3)
-  { name: "Classic Mahogany Executive Desk Set", image: "/Screenshot 2026-06-23 234454.png", href: "/products/executive-office-tables" },
-  { name: "Carved Wood Executive Office Set", image: "/Screenshot 2026-06-23 234504.png", href: "/products/executive-office-tables" },
-  { name: "Walnut Executive Desk with Bookcase", image: "/Screenshot 2026-06-23 234512.png", href: "/products/executive-office-tables" },
-  // Office Sets (3)
-  { name: "Executive Office Table Set", image: "/10016.jpeg", href: "/products/office-sets" },
-  { name: "Modern Office Workstation Set", image: "/10008.jpeg", href: "/products/office-sets" },
-  { name: "Premium Office Table Set", image: "/10009.jpeg", href: "/products/office-sets" },
-  // Conference & Meeting Tables (3)
-  { name: "Walnut Executive Conference Table", image: "/175-1-.png", href: "/products/conference-and-meeting-tables" },
-  { name: "Curved Boardroom Table with Center Display", image: "/175-2-.png", href: "/products/conference-and-meeting-tables" },
-  { name: "Extra Long Boardroom Conference Table", image: "/175-3-.png", href: "/products/conference-and-meeting-tables" },
-  // Manager Chairs (2)
-  { name: "Pink High-Back Manager Chair", image: "/245-1-.png", href: "/products/manager-chair-collection" },
-  { name: "White Frame Mesh Manager Chair Black & Grey", image: "/245-2-.png", href: "/products/manager-chair-collection" },
-  // Center & Side Tables (2)
-  { name: "Classic Wood Side Table", image: "/Screenshot 2026-06-23 235247.png", href: "/products/center-and-side-tables" },
-  { name: "Carved Console Side Table", image: "/Screenshot 2026-06-23 235252.png", href: "/products/center-and-side-tables" },
-  // Almirahs (2)
-  { name: "Executive Storage Almirah", image: "/f8f1903f-3a91-4b6f-9db7-6efdb338568b.png", href: "/products/almirahs" },
-  { name: "Premium Steel Almirah", image: "/1f6a1a87-8fc6-434f-bed8-10d6459de6e1.png", href: "/products/almirahs" },
-  // Workstations (1)
-  { name: "L-Shape Executive Workstation", image: "/Screenshot 2026-06-23 225449.png", href: "/products/heritage-executive-workstation-series" },
-  // Storage Cabinets (1)
-  { name: "Mahogany Display & Storage Hutch", image: "/Screenshot 2026-06-23 233940.png", href: "/products/storage-cabinets" },
-];
 
 // Prestige Client Logos for infinite scroll
 const prestigeClientLogos = [
@@ -138,63 +110,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Signature Collection Section (Homepage Section 2) */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-[1600px] mx-auto px-4">
-          <div className="text-center mb-16">
-            <span className="text-[10px] font-bold text-[#EB5324] uppercase tracking-widest mb-2 block">SIGNATURE COLLECTION</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">Signature Collection</h2>
-            <p className="text-gray-500 text-sm md:text-base max-w-2xl mx-auto">
-              Explore our finest handcrafted office furniture designed for executive workspaces, collaborative environments, and modern offices.
-            </p>
-          </div>
-
-          {/* Horizontal Marquee Showcase */}
-          <div className="overflow-hidden mb-12">
-            <div className="flex gap-6 animate-marquee-slow">
-              {[...signatureProducts, ...signatureProducts].map((product, i) => (
-                <Link
-                  key={i}
-                  href={product.href}
-                  className="group flex-shrink-0 w-52 sm:w-60 md:w-64 flex flex-col cursor-pointer border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 bg-white rounded-2xl overflow-hidden"
-                >
-                  {/* Image Container */}
-                  <div
-                    className="relative w-full overflow-hidden bg-gray-100"
-                    style={{ aspectRatio: '4/5' }}
-                  >
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 16.667vw"
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
-                    />
-                  </div>
-
-                  {/* Text Container */}
-                  <div className="flex flex-col px-5 py-5 items-center justify-center text-center">
-                    <h3 className="text-[12px] md:text-[13px] font-medium text-gray-800 group-hover:text-[#EB5324] transition-colors duration-300">
-                      {product.name}
-                    </h3>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* View All Button */}
-          <div className="flex justify-center">
-            <Link
-              href="/office-furniture"
-              className="inline-flex items-center gap-2 border-2 border-gray-800 text-gray-800 hover:bg-[#EB5324] hover:border-[#EB5324] hover:text-white px-8 py-3 text-[11px] font-bold uppercase tracking-wider transition-all duration-300 rounded-full"
-            >
-              View All
-              <span className="text-lg">→</span>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <SignatureCollection />
 
       {/* A Legacy of Craftsmanship Section */}
       <section className="py-24 max-w-[1200px] mx-auto px-4">
