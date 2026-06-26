@@ -51,8 +51,10 @@ export default function RootLayout({
             <ProgressBar />
           </Suspense>
           <Navbar />
-          {children}
-          <GlobalFooter />
+          <main className="flex-1 w-full">{children}</main>
+          <div className="shrink-0 w-full">
+            <GlobalFooter />
+          </div>
         <a
           href="https://wa.me/971524331920"
           target="_blank"

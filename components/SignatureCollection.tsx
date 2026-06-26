@@ -26,9 +26,9 @@ const marqueeItems = [...signatureProducts, ...signatureProducts];
 
 export default function SignatureCollection() {
   return (
-    <section className="py-24 md:py-28 bg-[#fafafa] overflow-hidden">
+    <section className="relative z-10 pt-16 md:pt-20 pb-20 md:pb-24 bg-[#fafafa] overflow-hidden">
       <div className="max-w-[1600px] mx-auto px-4 md:px-8">
-        <div className="text-center mb-14 md:mb-20">
+        <div className="text-center mb-12 md:mb-16">
           <span className="text-[10px] font-bold text-[#EB5324] uppercase tracking-[0.2em] mb-3 block">
             SIGNATURE COLLECTION
           </span>
@@ -36,12 +36,12 @@ export default function SignatureCollection() {
             Signature Collection
           </h2>
           <p className="text-gray-500 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-            Explore our finest handcrafted office furniture designed for executive workspaces, collaborative environments, and modern offices.
+            Explore our finest office furniture solutions crafted for modern workplaces and executive environments.
           </p>
         </div>
 
         <div
-          className="relative mb-14 md:mb-16 group/marquee"
+          className="relative group/marquee"
           style={{
             maskImage: 'linear-gradient(to right, transparent, black 4%, black 96%, transparent)',
             WebkitMaskImage: 'linear-gradient(to right, transparent, black 4%, black 96%, transparent)',
@@ -73,16 +73,6 @@ export default function SignatureCollection() {
               ))}
             </div>
           </div>
-        </div>
-
-        <div className="flex justify-center">
-          <Link
-            href="/office-furniture"
-            className="inline-flex items-center gap-2 border border-gray-300 text-gray-800 hover:border-[#EB5324] hover:text-[#EB5324] px-8 py-2.5 text-sm font-medium tracking-wide transition-all duration-300 hover:gap-3"
-          >
-            View All
-            <span aria-hidden="true">→</span>
-          </Link>
         </div>
       </div>
     </section>

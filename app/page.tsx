@@ -14,40 +14,6 @@ const prestigeClientLogos = [
   "/96 (27).png", "/96 (32).png", "/96 (34).png", "/96 (35).png", "/96 (42).png"
 ];
 
-// Field of Expertise Data
-const fieldOfExpertiseData = [
-  {
-    title: "Industrial Manufacturing",
-    desc: "Producing specialized workspace components using advanced technology and efficient manufacturing processes.",
-    icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-  },
-  {
-    title: "Precision Engineering",
-    desc: "Carefully designing and developing furniture pieces to ensure quality, comfort, and long-lasting performance.",
-    icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-  },
-  {
-    title: "Infrastructure Solutions",
-    desc: "Carefully designing and developing furniture pieces to ensure quality, comfort, and long-lasting performance.",
-    icon: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-  },
-  {
-    title: "Custom Fabrication",
-    desc: "Creating custom furniture and executive solutions designed to match specific styles and requirements.",
-    icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-  },
-  {
-    title: "Ergonomic Design",
-    desc: "Designing furniture that prioritizes comfort and support to enhance productivity in the workplace.",
-    icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-  },
-  {
-    title: "Turnkey Execution",
-    desc: "Complete end-to-end project delivery from design consultation to final installation and finishing touches.",
-    icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-  },
-];
-
 export default function Home() {
   // FAQ Accordion
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -57,18 +23,18 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-sans">
+    <div className="bg-white text-gray-900 font-sans">
 
-      {/* Hero Section */}
-      <section className="relative min-h-[600px] flex items-center justify-center flex-col text-center px-4 py-24">
-        {/* Background Image Overlay */}
-        <img
-          src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2000&q=80"
-          alt="Workspace"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+      {/* Hero + Stats */}
+      <div className="relative overflow-hidden">
+        <section className="relative min-h-[600px] flex items-center justify-center flex-col text-center px-4 py-24">
+          <img
+            src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2000&q=80"
+            alt="Workspace"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
 
-        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
+          <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">
             Since 1964 —
           </h1>
@@ -89,23 +55,25 @@ export default function Home() {
               →
             </span>
           </Link>
-        </div>
-      </section>
+          </div>
+        </section>
 
-      {/* Stats Bar */}
-      <div className="relative z-20 max-w-4xl mx-auto -mt-12 bg-white shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)]">
-        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100 py-8 gap-y-8 md:gap-y-0">
-          <div className="flex flex-col items-center justify-center text-center px-4">
-            <span className="text-4xl font-bold text-[#EB5324] mb-2">60+</span>
-            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Years of Heritage</span>
-          </div>
-          <div className="flex flex-col items-center justify-center text-center px-4">
-            <span className="text-4xl font-bold text-[#EB5324] mb-2">300+</span>
-            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Corporate Clients</span>
-          </div>
-          <div className="flex flex-col items-center justify-center text-center px-4">
-            <span className="text-4xl font-bold text-[#EB5324] mb-2">500+</span>
-            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Projects Delivered</span>
+        <div className="relative z-20 max-w-4xl mx-auto -mt-12 mb-10 md:mb-14 px-4">
+          <div className="bg-white shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)]">
+            <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100 py-8 gap-y-8 md:gap-y-0">
+              <div className="flex flex-col items-center justify-center text-center px-4">
+                <span className="text-4xl font-bold text-[#EB5324] mb-2">60+</span>
+                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Years of Heritage</span>
+              </div>
+              <div className="flex flex-col items-center justify-center text-center px-4">
+                <span className="text-4xl font-bold text-[#EB5324] mb-2">300+</span>
+                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Corporate Clients</span>
+              </div>
+              <div className="flex flex-col items-center justify-center text-center px-4">
+                <span className="text-4xl font-bold text-[#EB5324] mb-2">500+</span>
+                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Projects Delivered</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -163,33 +131,6 @@ export default function Home() {
                 loading="lazy"
               />
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Field of Expertise Section */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-[1200px] mx-auto px-4">
-          <div className="text-center mb-16">
-            <span className="text-[10px] font-bold text-[#EB5324] uppercase tracking-widest mb-2 block">What We Excel At</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">Field of Expertise</h2>
-            <p className="text-gray-500 text-sm md:text-base max-w-2xl mx-auto">
-              Delivering specialized expertise through innovation, technical excellence, and years of industry experience.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {fieldOfExpertiseData.map((item, i) => (
-              <div key={i} className="bg-white border border-gray-100 shadow-[0_4px_15px_rgba(0,0,0,0.03)] p-8 rounded-2xl group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
-                <div className="w-12 h-12 bg-gray-50 flex items-center justify-center rounded-full mb-6 text-[#EB5324] group-hover:bg-[#EB5324] group-hover:text-white transition-all duration-300">
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={item.icon} />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-serif text-gray-900 mb-3">{item.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed flex-1">{item.desc}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
