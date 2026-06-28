@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export default function DesksAndCasegoods() {
-  const desks = [
+  const desks: { title: string; image: string; href?: string }[] = [
     {
       title: "Executive Desks",
       image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD-Yg4fK_ydPLSE8Nl2a9C3lfRQEnr4Cjt8Rc5ynaMNDaSjEinbEDCZbWy5nZxU8bQiGVuXJqXUE0O1ynJO9Hs76t3IVxVJh6_cxK2-BJIjSE5XuUla1cAEwP_C94U1ggA6r4XdAdnT_eOX8ZQtq5qrTYejpPdm2WhB6Om5oOaQ1S4tncvb2re8JRC0iUzql1Loc1Wh-O05UdrRjG2Ty9PJCk5sxQm16WZVKZVzk-XzDzz58QmcWprlNEuzZ7VfwQ3icuRQGnKh2gM",
@@ -80,7 +80,7 @@ export default function DesksAndCasegoods() {
               {desks.map((desk, index) => (
                 <Link
                   key={index}
-                  href={item.href}
+                  href={desk.href || "#"}
                   className="group relative block overflow-hidden rounded aspect-[4/5] bg-[#eceef0] cursor-pointer"
                 >
                   <img

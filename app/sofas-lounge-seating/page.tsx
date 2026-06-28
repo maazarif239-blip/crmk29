@@ -82,9 +82,9 @@ export default function SofasLoungeSeating() {
                 desc: 'Green fabric modular sofa set with wooden legs aur side table, perfect for spacious lounge area.',
               },
               {
-                name: 'Beige Tablet Arm Lounge Chairs',
+                name: 'Beige Tablet Arm Lounge Sofas',
                 image: '/270-15-.png',
-                desc: 'Beige fabric lounge chairs with foldable tablet arms, comfy cushions aur modern waiting area design.',
+                desc: 'Beige fabric lounge sofas with foldable tablet arms, comfy cushions aur modern waiting area design.',
               },
               {
                 name: 'Grey & Blue Leather Sofa Set',

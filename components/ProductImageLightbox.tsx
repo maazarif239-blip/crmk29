@@ -27,7 +27,7 @@
     return Math.min(Math.max(value, min), max);
   }
 
-  function getTouchDistance(touches: TouchList) {
+  function getTouchDistance(touches: React.TouchList | TouchList) {
     if (touches.length < 2) {
       return 0;
     }

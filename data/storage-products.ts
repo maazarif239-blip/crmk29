@@ -30,7 +30,7 @@ export const storageProducts: StorageProduct[] = [
       "Spacious executive almirah with multiple compartments, ideal for office storage with a professional finish.",
   },
   {
-    name: "Premium Steel Almirah",
+    name: "Premium Almirah",
     image: "/1f6a1a87-8fc6-434f-bed8-10d6459de6e1.png",
     description:
       "Durable steel almirah with secure locking mechanism, perfect for keeping documents and valuables safe.",

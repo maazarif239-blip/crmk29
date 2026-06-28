@@ -190,7 +190,7 @@ export default function Home() {
             },
             {
               question: "Delivery & Shipping",
-              answer: "We provide delivery across Pakistan with professional handling. Shipping times vary by location, typically within 7-14 business days. Expedited delivery options are available upon request."
+              answer: "We provide delivery across Pakistan with professional handling. Shipping times vary by location.Expedited delivery options are available upon request."
             },
             {
               question: "Order Issues",
