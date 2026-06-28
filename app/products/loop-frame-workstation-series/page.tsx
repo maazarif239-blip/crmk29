@@ -26,11 +26,6 @@ export default function LoopFrameWorkstationSeries() {
                 desc: "Two-person bench workstation with continuous loop metal frame, shared fabric divider panel and matching mobile pedestals, streamlined team seating layout."
               },
               {
-                name: "Loop Cluster Workstation",
-                src: "/Screenshot 2026-06-23 225955.png",
-                desc: "Four-person cluster workstation with loop frame legs, center privacy screens and integrated cable trays, efficient open-plan team collaboration setup."
-              },
-              {
                 name: "Loop Manager Desk",
                 src: "/Screenshot 2026-06-23 230003.png",
                 desc: "Premium manager workstation with loop metal frame, walnut top, side return desk and credenza storage unit, sophisticated single-seat executive layout."
@@ -39,11 +34,6 @@ export default function LoopFrameWorkstationSeries() {
                 name: "Multi-Bay Loop Workstation",
                 src: "/Screenshot 2026-06-23 230010.png",
                 desc: "Large multi-seat linear workstation row with loop frame structure, uniform fabric dividers and overhead storage, scalable high-density office seating solution."
-              },
-              {
-                name: "Loop Corner Executive Workstation",
-                src: "/Screenshot 2026-06-23 230017.png",
-                desc: "L-shaped corner workstation with loop metal frame, walnut desktop, side credenza and bookshelf storage, premium executive office workspace configuration."
               },
             ].map((product, index) => (
               <div key={index} className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">

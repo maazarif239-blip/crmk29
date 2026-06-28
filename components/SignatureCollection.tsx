@@ -15,10 +15,8 @@ const signatureProducts = [
   { name: 'White Frame Mesh Manager Chair Black & Grey', image: '/245-2-.png', href: '/products/manager-chair-collection' },
   { name: 'Classic Wood Side Table', image: '/Screenshot 2026-06-23 235247.png', href: '/products/center-and-side-tables' },
   { name: 'Carved Console Side Table', image: '/Screenshot 2026-06-23 235252.png', href: '/products/center-and-side-tables' },
-  { name: 'Executive Storage Almirah', image: '/f8f1903f-3a91-4b6f-9db7-6efdb338568b.png', href: '/products/almirahs' },
-  { name: 'Premium Steel Almirah', image: '/1f6a1a87-8fc6-434f-bed8-10d6459de6e1.png', href: '/products/almirahs' },
-  { name: 'L-Shape Executive Workstation', image: '/Screenshot 2026-06-23 225449.png', href: '/products/heritage-executive-workstation-series' },
-  { name: 'Mahogany Display & Storage Hutch', image: '/Screenshot 2026-06-23 233940.png', href: '/products/storage-cabinets' },
+  { name: 'Executive Storage Almirah', image: '/f8f1903f-3a91-4b6f-9db7-6efdb338568b.png', href: '/storage' },
+  { name: 'Premium Steel Almirah', image: '/1f6a1a87-8fc6-434f-bed8-10d6459de6e1.png', href: '/storage' },
   { name: 'Classic Chesterfield Leather Sofa', image: '/270-1-.png', href: '/sofas-lounge-seating' },
 ];
 
@@ -30,7 +28,7 @@ export default function SignatureCollection() {
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8">
         <div className="text-center mb-10 sm:mb-12 md:mb-16">
           <span className="text-[10px] font-bold text-[#EB5324] uppercase tracking-[0.2em] mb-3 block">
-            SIGNATURE COLLECTION
+            
           </span>
           <h2 className="text-[clamp(1.75rem,4vw,2.75rem)] font-bold text-gray-900 mb-4 sm:mb-5 font-serif tracking-tight">
             Signature Collection

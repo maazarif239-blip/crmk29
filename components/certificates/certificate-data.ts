@@ -28,7 +28,7 @@ export const certificates: Certificate[] = [
 export const trustStats = [
   { value: "1964", label: "Established" },
   { value: "35+", label: "Years in Business" },
-  { value: "200+", label: "Projects Completed" },
+  { value: "200+", label: "Installations Completed" },
   { value: "100%", label: "Client Satisfaction" },
 ] as const;
 

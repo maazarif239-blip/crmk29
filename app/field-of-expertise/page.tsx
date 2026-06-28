@@ -29,7 +29,7 @@ export default function FieldOfExpertise() {
     },
     {
       title: "Project Management",
-      desc: "Managing projects from start to finish to ensure timely delivery and smooth execution.",
+      desc: "Managing installations from start to finish to ensure timely delivery and smooth execution.",
 
       icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
     },
@@ -144,8 +144,8 @@ export default function FieldOfExpertise() {
           <h3 className="text-2xl font-serif mb-8 text-[#EB5324]">Project Highlights</h3>
           <div className="space-y-8">
             <div>
-              <div className="text-4xl font-bold mb-1">300+</div>
-              <div className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Turnkey Projects Delivered</div>
+              <div className="text-4xl font-bold mb-1">500+</div>
+              <div className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Turnkey Solutions Delivered</div>
             </div>
             <div className="w-full h-px bg-white/10"></div>
             <div>
@@ -175,7 +175,7 @@ export default function FieldOfExpertise() {
             {[
               { q: "Do you offer custom fabrication for unique layouts?", a: "Yes, our advanced manufacturing capabilities allow us to create highly customized structural pieces tailored to specific architectural constraints." },
               { q: "What quality standards do your products adhere to?", a: "We strictly adhere to BIFMA durability testing and use GREENGUARD certified materials to ensure safety, longevity, and sustainability." },
-              { q: "Can you handle multi-city project rollouts?", a: "Absolutely. Our project management and logistics teams are equipped to execute synchronized installations across multiple regions efficiently." }
+              { q: "Can you handle multi-city installation rollouts?", a: "Absolutely. Our operations and logistics teams are equipped to execute synchronized installations across multiple regions efficiently." }
             ].map((faq, i) => (
               <details key={i} className="group bg-white border border-gray-200 rounded-sm overflow-hidden">
                 <summary className="flex items-center justify-between p-6 cursor-pointer font-bold text-gray-900 text-sm">
@@ -199,9 +199,6 @@ export default function FieldOfExpertise() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link href="/contact" className="bg-[#EB5324] text-white px-8 py-4 text-[11px] font-bold hover:bg-[#d4481f] transition-colors uppercase tracking-widest inline-flex items-center justify-center min-w-[200px]">
             Contact Us
-          </Link>
-          <Link href="/projects" className="bg-transparent border border-white/30 text-white px-8 py-4 text-[11px] font-bold hover:bg-white hover:text-gray-900 transition-colors uppercase tracking-widest inline-flex items-center justify-center min-w-[200px]">
-            View Projects
           </Link>
         </div>
       </section>

@@ -42,8 +42,9 @@ export default function DesksAndCasegoods() {
 
   const casegoods = [
     {
-      title: "Storage Cabinets",
+      title: "Storage",
       image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBbxJL-HuzHqkH9Y3kKNWUVOT-jXWYjRhnj04bnzZ8xqG8_D5C_unDRdWBe52dvKfiCnZQOx6G3M8i7yEPmDQBvk78VoKyP6Q4u90zk-Tmh9LgV9J9QrwNFSY9F-09uJNkH49O_Y_csjnya9UwiYUGI_jqU7hQwsJq1rh5BhZmmcN32wFo019n4_equ3LoXQAbmaDWMTN9ouH8bm-XN9RrfeTu7ZqTq0rTIpBLn_qOD-kb5v5pNuPGCbSnaC558np5YaKX8a4rND2o",
+      href: "/storage",
     }
   ];
 
@@ -79,7 +80,7 @@ export default function DesksAndCasegoods() {
               {desks.map((desk, index) => (
                 <Link
                   key={index}
-                  href="#"
+                  href={item.href}
                   className="group relative block overflow-hidden rounded aspect-[4/5] bg-[#eceef0] cursor-pointer"
                 >
                   <img

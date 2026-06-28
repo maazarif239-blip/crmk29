@@ -72,7 +72,7 @@ export default function SofasLoungeSeating() {
                 desc: 'Simple wooden rectangular coffee table with tapered legs, sturdy build aur minimal modern design.',
               },
               {
-                name: 'Sage Green Loveseat Sofa',
+                name: 'Sage Green Sofa',
                 image: '/270-11-.png',
                 desc: 'Sage green fabric loveseat with curved armrests, wooden legs aur soft cushioned comfortable seating.',
               },
@@ -80,16 +80,6 @@ export default function SofasLoungeSeating() {
                 name: 'Green Modular Lounge Sofa Set',
                 image: '/270-12-.png',
                 desc: 'Green fabric modular sofa set with wooden legs aur side table, perfect for spacious lounge area.',
-              },
-              {
-                name: 'Sage Green Armless Lounge Chair',
-                image: '/270-13-.png',
-                desc: 'Sage green armless lounge chair with wooden legs aur soft cushioned seat for relaxing.',
-              },
-              {
-                name: 'Sage Green Armchair',
-                image: '/270-14-.png',
-                desc: 'Sage green fabric armchair with curved arms, wooden legs aur cozy cushioned comfortable seating.',
               },
               {
                 name: 'Beige Tablet Arm Lounge Chairs',
@@ -102,24 +92,9 @@ export default function SofasLoungeSeating() {
                 desc: 'Grey leather armchair with matching blue leather loveseat, wooden legs aur sleek modern lounge design.',
               },
               {
-                name: ' Brown & Black Leather Armchairs',
-                image: '/270-17-.png',
-                desc: 'Brown aur black leather armchairs with boxy design, cushioned seats aur sturdy modern base.',
-              },
-              {
                 name: ' Classic Beige Three-Seater Sofa',
                 image: '/270-18-.png',
                 desc: 'Beige fabric three-seater sofa with soft cushions, simple armrests aur comfortable modern lounge design.',
-              },
-              {
-                name: 'Serenity Club Leather Chair',
-                image: '/270-19-.png',
-                desc: 'Black leather lounge chairs with chrome legs, cushioned seats aur sleek modern office design.',
-              },
-              {
-                name: ' Black Leather Lounge Chair Set',
-                image: '/270-20-.png',
-                desc: 'Two matching black leather chairs with chrome legs, great for office waiting areas. Simple, sturdy design with comfy padded back and arms.',
               }
             ].map((product, i) => (
               <div key={i} className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">

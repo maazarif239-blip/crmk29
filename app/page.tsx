@@ -39,7 +39,7 @@ export default function Home() {
 
           <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center w-full">
           <h1 className="text-[clamp(1.75rem,5vw,3rem)] font-bold text-white mb-2 tracking-tight">
-            Since 1964 —
+            Since 1964 
           </h1>
           <h1 className="text-[clamp(1.75rem,5vw,3rem)] font-bold text-[#EB5324] mb-4 sm:mb-6 tracking-tight">
             Building Workspaces That <br className="hidden sm:block" /> Perform
@@ -74,7 +74,7 @@ export default function Home() {
               </div>
               <div className="flex flex-col items-center justify-center text-center px-4">
                 <span className="text-3xl sm:text-4xl font-bold text-[#EB5324] mb-2">500+</span>
-                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Projects Delivered</span>
+                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Workspaces Delivered</span>
               </div>
             </div>
           </div>
@@ -94,7 +94,7 @@ export default function Home() {
             </h2>
 
             <p className="text-gray-500 text-[13px] leading-relaxed mt-8 mb-6">
-              Founded by Mr. Tahir Hassan Qureshi, HB Furniture has stood as a paragon of industrial excellence since 1964. What began as a visionary pursuit of quality has evolved into a comprehensive institution for workspace creation.
+              Founded by Mr. Tahir Hassan Gardezi, HB Furniture has stood as a paragon of industrial excellence since 1964. What began as a visionary pursuit of quality has evolved into a comprehensive institution for workspace creation.
             </p>
             <p className="text-gray-500 text-[13px] leading-relaxed mb-10">
               Our approach blends heritage manufacturing principles with cutting-edge architectural design. We don't just supply furniture; we engineer environments that foster productivity, well-being, and corporate prestige.
@@ -252,12 +252,6 @@ export default function Home() {
               <span className="w-5 h-5 border border-white/50 flex items-center justify-center">
                 →
               </span>
-            </Link>
-            <Link
-              href="/projects"
-              className="inline-flex items-center justify-center gap-3 border border-white text-white hover:bg-white/10 px-6 sm:px-8 py-3 text-[11px] font-bold uppercase tracking-wider transition-all duration-300 min-h-[44px]"
-            >
-              View Projects
             </Link>
           </div>
         </div>

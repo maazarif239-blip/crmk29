@@ -31,6 +31,7 @@ export const metadata: Metadata = {
 
 import GlobalFooter from "@/components/GlobalFooter";
 import Navbar from "@/components/Navbar";
+import ProductImageLightbox from "@/components/ProductImageLightbox";
 import ProgressBar from "@/components/ProgressBar";
 import { Suspense } from "react";
 
@@ -52,6 +53,7 @@ export default function RootLayout({
           </Suspense>
           <Navbar />
           <main className="flex-1 w-full min-w-0 overflow-x-clip">{children}</main>
+          <ProductImageLightbox />
           <div className="shrink-0 w-full min-w-0">
             <GlobalFooter />
           </div>

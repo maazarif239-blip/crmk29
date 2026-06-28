@@ -19,7 +19,7 @@ export default function ManagementEmployees() {
       id: 6,
       name: "Mr. Danyal Hassan Gardezi",
       role: "DIRECTOR OPERATIONS",
-      description: "Managing daily operations with dedication, he ensures projects are completed smoothly, efficiently, and on time."
+      description: "Managing daily operations with dedication, he ensures every installation is completed smoothly, efficiently, and on time."
     },
     {
       id: 3,
@@ -50,7 +50,7 @@ export default function ManagementEmployees() {
       id: 14,
       name: "Mr. Khuram",
       role: "SITE SUPERVISOR",
-      description: "Overseeing site activities and making sure projects are carried out safely, smoothly, and on schedule."
+      description: "Overseeing site activities and making sure every installation is carried out safely, smoothly, and on schedule."
     },
     {
       id: 7,

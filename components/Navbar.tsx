@@ -17,13 +17,7 @@ const seatingDropdownItems: NavItem[] = [
   { name: "Office Chairs", href: "/office-chairs" },
   { name: "Visitors Chairs", href: "/visitor-chairs" },
   { name: "Sofas and Lounge Setting", href: "/sofas-lounge-seating" },
-  { name: "Guest Chairs", href: "/guest-chairs" },
   { name: "Manager Chair Collection", href: "/products/manager-chair-collection" },
-];
-
-const storageDropdownItems: NavItem[] = [
-  { name: "Almirah", href: "/products/almirahs" },
-  { name: "Storage Cabinets", href: "/products/storage-cabinets" },
 ];
 
 
@@ -36,9 +30,7 @@ const workstationDropdownItems: NavItem[] = [
   { name: "Cross-Leg Walnut Workstation Series", href: "/products/cross-leg-walnut-workstation-series" },
   { name: "Urban Edge Workstation Series", href: "/products/urban-edge-workstation-series" },
   { name: "Loop Frame Workstation Series", href: "/products/loop-frame-workstation-series" },
-  { name: "Heritage Executive Workstation Series", href: "/products/heritage-executive-workstation-series" },
   { name: "Skyline Walnut Workstation Series", href: "/products/skyline-walnut-workstation-series" },
-  { name: "Brickline Industrial Workstation Series", href: "/products/brickline-industrial-workstation-series" },
 ];
 
 const officeTablesDropdownItems: NavItem[] = [
@@ -50,11 +42,10 @@ const officeTablesDropdownItems: NavItem[] = [
 ];
 const navItems: NavItem[] = [
   { name: "Home", href: "/" },
-  { name: "Projects", href: "/projects" },
   { name: "Office Sets", href: "/products/office-sets" },
   { name: "Office Tables", dropdown: officeTablesDropdownItems },
   { name: "Seating", dropdown: seatingDropdownItems },
-  { name: "Storage", dropdown: storageDropdownItems },
+  { name: "Storage", href: "/storage" },
   { name: "Technology", href: "/technology-suite" },
   { name: "Workstation", dropdown: workstationDropdownItems },
   { name: "Breakout & Lounge Pods", href: "/smart-spaces" },

@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 
 export default function AboutUs() {
@@ -105,47 +104,6 @@ export default function AboutUs() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Architects of Our Vision */}
-      <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24">
-        <div className="text-center mb-20">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 font-serif">Architects of Our Vision</h2>
-          <div className="w-16 h-1 bg-[#EB5324] mx-auto"></div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              name: "Mr. Tahir Hassan Gardezi",
-              role: "FOUNDER",
-              desc: "The visionary who brought Swedish engineering precision to Pakistan's furniture landscape."
-            },
-            {
-              name: "Mr. Syed Hassan Ahmed Gardezi",
-              role: "CEO",
-              desc: "Driving operational excellence and corporate strategy in the modern era."
-            },
-            {
-              name: "Mr. Syed Danial Hassan Gardezi",
-              role: "DIRECTOR",
-              desc: "Leading innovative design integrations and expanding project execution capabilities."
-            }
-          ].map((person, i) => (
-            <div key={i} className="bg-[#1A1A1A] text-center p-12 flex flex-col items-center shadow-lg hover:-translate-y-1 transition-transform duration-300">
-              <div className="w-20 h-20 bg-gray-700 mb-8 flex items-center justify-center rounded-sm">
-                <svg className="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-bold text-white mb-2">{person.name}</h3>
-              <p className="text-[#EB5324] text-[10px] font-bold uppercase tracking-widest mb-6">{person.role}</p>
-              <p className="text-gray-400 text-[11px] leading-relaxed max-w-[250px]">
-                {person.desc}
-              </p>
-            </div>
-          ))}
         </div>
       </section>
 

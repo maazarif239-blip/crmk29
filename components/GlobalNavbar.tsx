@@ -11,12 +11,11 @@ export default function GlobalNavbar() {
 
   const navLinks = [
     { name: 'Home', href: '/' },
-    { name: 'Projects', href: '/projects' },
     { name: 'About Us', href: '/about' },
   ];
 
   const getLinkClasses = (href: string) => {
-    // Determine if active based on exact match or startsWith for products/projects
+    // Determine if active based on exact match or a nested route prefix.
     const isActive = href === '/' ? pathname === '/' : pathname.startsWith(href);
     return `h-full flex items-center text-[11px] font-bold uppercase tracking-wider transition-colors ${
       isActive
