@@ -2,19 +2,23 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { LayoutDashboard, Settings, Users, FileText, Image as ImageIcon, Package } from 'lucide-react'
+import { LayoutDashboard, Settings, Users, Image as ImageIcon, Package, Edit, Megaphone, UserCircle } from 'lucide-react'
+import { useAuth } from '@/contexts/AuthContext'
 
 const navItems = [
   { name: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
   { name: 'Products', href: '/admin/products', icon: Package },
-  { name: 'Pages', href: '/admin/pages', icon: FileText },
+  { name: 'Content', href: '/admin/content', icon: Edit },
+  { name: 'Promotions', href: '/admin/promotions', icon: Megaphone },
   { name: 'Media', href: '/admin/media', icon: ImageIcon },
-  { name: 'Users', href: '/admin/users', icon: Users },
-  { name: 'Settings', href: '/admin/settings', icon: Settings },
+  { name: 'Users', href: '/admin/users', icon: Users, adminOnly: true },
+  { name: 'Settings', href: '/admin/settings', icon: Settings, adminOnly: true },
+  { name: 'Profile', href: '/admin/profile', icon: UserCircle },
 ]
 
 export default function Sidebar() {
   const pathname = usePathname()
+  const { profile } = useAuth()
 
   return (
     <aside className="hidden w-64 bg-gray-900 text-white md:flex md:flex-col h-screen fixed inset-y-0 left-0 z-50">
@@ -25,6 +29,10 @@ export default function Sidebar() {
       <div className="flex-1 overflow-y-auto py-4">
         <nav className="space-y-1 px-2">
           {navItems.map((item) => {
+            if (item.adminOnly && profile?.role !== 'admin') {
+              return null
+            }
+            
             const isActive = pathname === item.href
             return (
               <Link
