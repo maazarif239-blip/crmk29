@@ -196,10 +196,7 @@ export default function Home() {
               question: "Order Issues",
               answer: "For any order-related issues, our customer support team is available 24/7. We'll help you track your order, resolve any problems, or make changes to your order as needed."
             },
-            {
-              question: "Returns, Exchanges & Refunds",
-              answer: "We offer a 7-day return policy for defective products. Exchanges are easy within 14 days. Refunds are processed quickly after inspection and verification."
-            },
+            
             {
               question: "Installation & Support",
               answer: "Professional installation services are available for all our products. Our team ensures proper assembly and setup. We also provide comprehensive after-sales support."
