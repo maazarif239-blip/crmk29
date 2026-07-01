@@ -2,10 +2,11 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { LayoutDashboard, Settings, Users, FileText, Image as ImageIcon } from 'lucide-react'
+import { LayoutDashboard, Settings, Users, FileText, Image as ImageIcon, Package } from 'lucide-react'
 
 const navItems = [
   { name: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
+  { name: 'Products', href: '/admin/products', icon: Package },
   { name: 'Pages', href: '/admin/pages', icon: FileText },
   { name: 'Media', href: '/admin/media', icon: ImageIcon },
   { name: 'Users', href: '/admin/users', icon: Users },
