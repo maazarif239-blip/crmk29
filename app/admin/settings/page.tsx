@@ -1,10 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { createClient } from '@/lib/supabase'
 import { Save, Loader2 } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
 import { useRouter } from 'next/navigation'
+import { Setting } from '@/lib/types'
 
 export default function SettingsPage() {
   const [settings, setSettings] = useState<Record<string, string>>({})
@@ -21,36 +22,37 @@ export default function SettingsPage() {
     }
   }, [authLoading, profile, router])
 
-  useEffect(() => {
-    const fetchSettings = async () => {
-      const { data, error } = await supabase.from('settings').select('*')
-      if (error) {
-        console.error('Error fetching settings:', error)
-      } else if (data) {
-        const settingsMap: Record<string, string> = {}
-        data.forEach((s) => {
-          settingsMap[s.key] = s.value || ''
-        })
-        setSettings(settingsMap)
-      }
-      setLoading(false)
+  const fetchSettings = useCallback(async () => {
+    const { data, error } = await supabase.from('settings').select('*')
+    if (error) {
+      console.error('Error fetching settings:', error)
+    } else if (data) {
+      const settingsMap: Record<string, string> = {}
+      data.forEach((s) => {
+        settingsMap[s.key] = s.value || ''
+      })
+      setSettings(settingsMap)
     }
+    setLoading(false)
+  }, [supabase])
 
+  useEffect(() => {
     if (profile?.role === 'admin') {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       fetchSettings()
     }
-  }, [supabase, profile])
+  }, [fetchSettings, profile])
 
-  const handleChange = (key: string, value: string) => {
+  const handleChange = useCallback((key: string, value: string) => {
     setSettings(prev => ({ ...prev, [key]: value }))
-  }
+  }, [])
 
-  const handleSave = async (e: React.FormEvent) => {
+  const handleSave = useCallback(async (e: React.FormEvent) => {
     e.preventDefault()
     setSaving(true)
     setMessage({ type: '', text: '' })
 
-    const updates = Object.entries(settings).map(([key, value]) => ({
+    const updates: Setting[] = Object.entries(settings).map(([key, value]) => ({
       key,
       value,
       group_name: key.startsWith('meta_') || key === 'og_image' || key === 'canonical_url' || key === 'robots' || key === 'json_ld' ? 'seo' :
@@ -70,7 +72,7 @@ export default function SettingsPage() {
     } finally {
       setSaving(false)
     }
-  }
+  }, [settings, supabase])
 
   if (loading || authLoading) {
     return <div className="flex items-center justify-center h-64"><Loader2 className="w-8 h-8 animate-spin text-gray-400" /></div>

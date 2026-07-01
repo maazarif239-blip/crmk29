@@ -21,7 +21,9 @@ export default function ProfilePage() {
   // Update state when profile changes
   useEffect(() => {
     if (profile) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setFullName(prev => prev !== profile.full_name ? (profile.full_name || '') : prev)
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setAvatarUrl(prev => prev !== profile.avatar_url ? (profile.avatar_url || '') : prev)
     }
   }, [profile?.full_name, profile?.avatar_url])

@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
         hostname: "images.unsplash.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "**", // Temporary for any Supabase storage, can be updated to specific hostname later
+      },
     ],
   },
 };

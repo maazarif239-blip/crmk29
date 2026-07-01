@@ -44,7 +44,9 @@ export default function PromotionsManagerPage() {
   }
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchPromotions()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleEdit = (promotion: Promotion) => {

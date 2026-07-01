@@ -64,3 +64,21 @@ export type Promotion = {
   created_at: string
   updated_at: string
 }
+
+export type UserProfile = {
+  id: string
+  role: 'admin' | 'editor'
+  full_name: string | null
+  avatar_url: string | null
+  created_at?: string
+}
+
+export type Setting = {
+  id?: string
+  key: string
+  value: string | null
+  group_name: string | null
+  label: string | null
+  type: string
+  updated_at?: string
+}

@@ -32,7 +32,9 @@ export default function ContentManagerPage() {
   }
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchContent()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const groups = ['all', ...Array.from(new Set(content.map(c => c.group_name).filter(Boolean)))]

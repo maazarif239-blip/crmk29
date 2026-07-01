@@ -1,11 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { createClient } from '@/lib/supabase'
 import { useAuth } from '@/contexts/AuthContext'
 import { useRouter } from 'next/navigation'
 import { Loader2, Shield, User as UserIcon } from 'lucide-react'
-import { UserProfile } from '@/contexts/AuthContext'
+import { UserProfile } from '@/lib/types'
 
 export default function UsersPage() {
   const [users, setUsers] = useState<UserProfile[]>([])
@@ -20,27 +20,28 @@ export default function UsersPage() {
     }
   }, [authLoading, profile, router])
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      const { data, error } = await supabase
-        .from('user_profiles')
-        .select('*')
-        .order('created_at', { ascending: false })
-      
-      if (error) {
-        console.error('Error fetching users:', error)
-      } else {
-        setUsers(data || [])
-      }
-      setLoading(false)
+  const fetchUsers = useCallback(async () => {
+    const { data, error } = await supabase
+      .from('user_profiles')
+      .select('*')
+      .order('created_at', { ascending: false })
+    
+    if (error) {
+      console.error('Error fetching users:', error)
+    } else {
+      setUsers(data || [])
     }
+    setLoading(false)
+  }, [supabase])
 
+  useEffect(() => {
     if (profile?.role === 'admin') {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       fetchUsers()
     }
-  }, [supabase, profile])
+  }, [fetchUsers, profile])
 
-  const handleRoleChange = async (userId: string, newRole: 'admin' | 'editor') => {
+  const handleRoleChange = useCallback(async (userId: string, newRole: 'admin' | 'editor') => {
     try {
       // Don't allow changing your own role to prevent accidental lockout
       if (userId === profile?.id) {
@@ -60,7 +61,7 @@ export default function UsersPage() {
       console.error(err)
       alert(err.message || 'Failed to update user role')
     }
-  }
+  }, [supabase, users, profile])
 
   if (loading || authLoading) {
     return <div className="flex items-center justify-center h-64"><Loader2 className="w-8 h-8 animate-spin text-gray-400" /></div>
@@ -113,12 +114,10 @@ export default function UsersPage() {
                   </span>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {/* Assuming created_at is in user_profiles, but it's not strongly typed in UserProfile, we can bypass or just not show it */}
-                  {/* Let's just put a placeholder for now */}
-                  Member
+                  {user.created_at ? new Date(user.created_at).toLocaleDateString() : 'Member'}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  {user.id !== profile.id && (
+                  {user.id !== profile?.id && (
                     <select
                       value={user.role}
                       onChange={(e) => handleRoleChange(user.id, e.target.value as 'admin' | 'editor')}
