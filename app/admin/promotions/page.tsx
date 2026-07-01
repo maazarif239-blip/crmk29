@@ -26,10 +26,6 @@ export default function PromotionsManagerPage() {
   })
   const supabase = createClient()
 
-  useEffect(() => {
-    fetchPromotions()
-  }, [])
-
   const fetchPromotions = async () => {
     setLoading(true)
     try {
@@ -46,6 +42,10 @@ export default function PromotionsManagerPage() {
       setLoading(false)
     }
   }
+
+  useEffect(() => {
+    fetchPromotions()
+  }, [])
 
   const handleEdit = (promotion: Promotion) => {
     setEditingId(promotion.id)

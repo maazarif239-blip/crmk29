@@ -9,8 +9,8 @@ export default function ProfilePage() {
   const { user, profile } = useAuth()
   const supabase = createClient()
   
-  const [fullName, setFullName] = useState('')
-  const [avatarUrl, setAvatarUrl] = useState('')
+  const [fullName, setFullName] = useState(profile?.full_name || '')
+  const [avatarUrl, setAvatarUrl] = useState(profile?.avatar_url || '')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   
@@ -18,12 +18,13 @@ export default function ProfilePage() {
   const [uploading, setUploading] = useState(false)
   const [message, setMessage] = useState({ type: '', text: '' })
 
+  // Update state when profile changes
   useEffect(() => {
     if (profile) {
-      setFullName(profile.full_name || '')
-      setAvatarUrl(profile.avatar_url || '')
+      setFullName(prev => prev !== profile.full_name ? (profile.full_name || '') : prev)
+      setAvatarUrl(prev => prev !== profile.avatar_url ? (profile.avatar_url || '') : prev)
     }
-  }, [profile])
+  }, [profile?.full_name, profile?.avatar_url])
 
   const handleAvatarUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     try {

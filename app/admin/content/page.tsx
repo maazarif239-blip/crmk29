@@ -13,10 +13,6 @@ export default function ContentManagerPage() {
   const [selectedGroup, setSelectedGroup] = useState<string>('all')
   const supabase = createClient()
 
-  useEffect(() => {
-    fetchContent()
-  }, [])
-
   const fetchContent = async () => {
     setLoading(true)
     try {
@@ -34,6 +30,10 @@ export default function ContentManagerPage() {
       setLoading(false)
     }
   }
+
+  useEffect(() => {
+    fetchContent()
+  }, [])
 
   const groups = ['all', ...Array.from(new Set(content.map(c => c.group_name).filter(Boolean)))]
 
