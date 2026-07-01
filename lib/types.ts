@@ -82,3 +82,25 @@ export type Setting = {
   type: string
   updated_at?: string
 }
+
+// Storage Types
+export type StorageBucket = 
+  | 'products'
+  | 'homepage'
+  | 'clients'
+  | 'banners'
+  | 'logos'
+  | 'general'
+
+export type UploadProgressCallback = (progress: number) => void
+
+export type StorageFile = {
+  id: string
+  path: string
+  name: string
+  size: number
+  mimeType: string
+  publicUrl: string
+  bucketId: StorageBucket
+  uploadedAt: string
+}
