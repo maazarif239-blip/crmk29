@@ -4,6 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useCallback, useRef } from "react";
+import { createClient } from "@/lib/supabase";
+import type { Category } from "@/lib/types";
 
 type NavItem = {
  name: string;
@@ -12,42 +14,13 @@ type NavItem = {
  leftDropdown?: NavItem[];
  rightDropdown?: NavItem[];
 };
-const seatingDropdownItems: NavItem[] = [
-  { name: "Study Chairs", href: "/study-chairs" },
-  { name: "Office Chairs", href: "/office-chairs" },
-  { name: "Visitors Chairs", href: "/visitor-chairs" },
-  { name: "Sofas and Lounge Setting", href: "/sofas-lounge-seating" },
-  { name: "Manager Chair Collection", href: "/products/manager-chair-collection" },
-];
 
-
-const workstationDropdownItems: NavItem[] = [
-  { name: "Gravity Workstation Series", href: "/products/gravity-workstation-series" },
-  { name: "Urban Loft Workstation Series", href: "/products/urban-loft-workstation-series" },
-  { name: "Classic Cubicle Workstation Series", href: "/products/classic-cubicle-workstation-series" },
-  { name: "Compact Pod Workstation Series", href: "/products/compact-pod-workstation-series" },
-  { name: "Lotus 30 Office Workstation", href: "/products/lotus-30-office-workstations" },
-  { name: "Cross-Leg Walnut Workstation Series", href: "/products/cross-leg-walnut-workstation-series" },
-  { name: "Urban Edge Workstation Series", href: "/products/urban-edge-workstation-series" },
-  { name: "Loop Frame Workstation Series", href: "/products/loop-frame-workstation-series" },
-  { name: "Skyline Walnut Workstation Series", href: "/products/skyline-walnut-workstation-series" },
-];
-
-const officeTablesDropdownItems: NavItem[] = [
-  { name: "Executive Office Tables", href: "/products/executive-office-tables" },
-  { name: "Manager Office Tables", href: "/products/manager-office-tables" },
-  { name: "Reception Counters", href: "/reception-counters" },
-  { name: "Conference & Meeting Tables", href: "/products/conference-and-meeting-tables" },
-  { name: "Center & Side Tables", href: "/products/center-and-side-tables" },
-];
-const navItems: NavItem[] = [
+// Keep the non-category nav items static
+const staticNavItems: NavItem[] = [
   { name: "Home", href: "/" },
   { name: "Office Sets", href: "/products/office-sets" },
-  { name: "Office Tables", dropdown: officeTablesDropdownItems },
-  { name: "Seating", dropdown: seatingDropdownItems },
   { name: "Storage", href: "/storage" },
   { name: "Technology", href: "/technology-suite" },
-  { name: "Workstation", dropdown: workstationDropdownItems },
   { name: "Breakout & Lounge Pods", href: "/smart-spaces" },
   { name: "Field of Expertise", href: "/field-of-expertise" },
   { name: "HB Clientage", href: "/clientage" },
@@ -56,6 +29,109 @@ const navItems: NavItem[] = [
 ];
 
 export default function Navbar() {
+  // Add state for categories
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch categories on mount
+  useEffect(() => {
+    const fetchCategories = async () => {
+      setLoading(true);
+      try {
+        const supabase = createClient();
+        const { data, error } = await supabase
+          .from("categories")
+          .select("*")
+          .order("sort_order");
+        
+        if (error) {
+          console.error("Error fetching categories:", error);
+        } else {
+          setCategories(data || []);
+        }
+      } catch (error) {
+        console.error("Unexpected error fetching categories:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchCategories();
+  }, []);
+
+  // Convert categories to NavItem format
+  const categoryNavItems: NavItem[] = categories.map(category => ({
+    name: category.name,
+    href: `/${category.slug}`,
+  }));
+
+  // Original static dropdown items as fallback
+  const staticSeatingDropdownItems: NavItem[] = [
+    { name: "Study Chairs", href: "/study-chairs" },
+    { name: "Office Chairs", href: "/office-chairs" },
+    { name: "Visitors Chairs", href: "/visitor-chairs" },
+    { name: "Sofas and Lounge Setting", href: "/sofas-lounge-seating" },
+    { name: "Manager Chair Collection", href: "/products/manager-chair-collection" },
+  ];
+
+  const staticWorkstationDropdownItems: NavItem[] = [
+    { name: "Gravity Workstation Series", href: "/products/gravity-workstation-series" },
+    { name: "Urban Loft Workstation Series", href: "/products/urban-loft-workstation-series" },
+    { name: "Classic Cubicle Workstation Series", href: "/products/classic-cubicle-workstation-series" },
+    { name: "Compact Pod Workstation Series", href: "/products/compact-pod-workstation-series" },
+    { name: "Lotus 30 Office Workstation", href: "/products/lotus-30-office-workstations" },
+    { name: "Cross-Leg Walnut Workstation Series", href: "/products/cross-leg-walnut-workstation-series" },
+    { name: "Urban Edge Workstation Series", href: "/products/urban-edge-workstation-series" },
+    { name: "Loop Frame Workstation Series", href: "/products/loop-frame-workstation-series" },
+    { name: "Skyline Walnut Workstation Series", href: "/products/skyline-walnut-workstation-series" },
+  ];
+
+  const staticOfficeTablesDropdownItems: NavItem[] = [
+    { name: "Executive Office Tables", href: "/products/executive-office-tables" },
+    { name: "Manager Office Tables", href: "/products/manager-office-tables" },
+    { name: "Reception Counters", href: "/reception-counters" },
+    { name: "Conference & Meeting Tables", href: "/products/conference-and-meeting-tables" },
+    { name: "Center & Side Tables", href: "/products/center-and-side-tables" },
+  ];
+
+  // Filter categories by nav_group if available, otherwise use static fallbacks
+  const seatingNavItems: NavItem[] = categories
+    .filter(category => (category as any).nav_group === 'seating')
+    .map(category => ({
+      name: category.name,
+      href: `/${category.slug}`,
+    })) || staticSeatingDropdownItems;
+
+  const workstationNavItems: NavItem[] = categories
+    .filter(category => (category as any).nav_group === 'workstation')
+    .map(category => ({
+      name: category.name,
+      href: `/${category.slug}`,
+    })) || staticWorkstationDropdownItems;
+
+  const officeTablesNavItems: NavItem[] = categories
+    .filter(category => (category as any).nav_group === 'office_tables')
+    .map(category => ({
+      name: category.name,
+      href: `/${category.slug}`,
+    })) || staticOfficeTablesDropdownItems;
+
+  // Original navbar order as requested
+  const navItems: NavItem[] = [
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Office Sets", href: "/products/office-sets" },
+    { name: "Office Tables", dropdown: officeTablesNavItems.length > 0 ? officeTablesNavItems : staticOfficeTablesDropdownItems },
+    { name: "Seating", dropdown: seatingNavItems.length > 0 ? seatingNavItems : staticSeatingDropdownItems },
+    { name: "Storage", href: "/storage" },
+    { name: "Technology", href: "/technology-suite" },
+    { name: "Workstation", dropdown: workstationNavItems.length > 0 ? workstationNavItems : staticWorkstationDropdownItems },
+    { name: "Breakout & Lounge Pods", href: "/smart-spaces" },
+    { name: "Field of Expertise", href: "/field-of-expertise" },
+    { name: "HB Clientage", href: "/clientage" },
+    { name: "Management & Employees", href: "/management-employees" },
+    { name: "Projects", href: "/projects" },
+  ];
  const pathname = usePathname();
  const [isScrolled, setIsScrolled] = useState(false);
  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

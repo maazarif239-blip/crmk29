@@ -2,12 +2,13 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { LayoutDashboard, Settings, Users, Image as ImageIcon, Package, Edit, Megaphone, UserCircle } from 'lucide-react'
+import { LayoutDashboard, Settings, Users, Image as ImageIcon, Package, Edit, Megaphone, UserCircle, Folder } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
 
 const navItems = [
   { name: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
   { name: 'Products', href: '/admin/products', icon: Package },
+  { name: 'Categories', href: '/admin/categories', icon: Folder },
   { name: 'Content', href: '/admin/content', icon: Edit },
   { name: 'Promotions', href: '/admin/promotions', icon: Megaphone },
   { name: 'Media', href: '/admin/media', icon: ImageIcon },

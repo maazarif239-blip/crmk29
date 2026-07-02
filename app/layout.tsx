@@ -64,7 +64,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  let jsonLd = "";
+  let jsonLd: string | null = null;
   let primaryColor = "";
   let secondaryColor = "";
 
@@ -86,30 +86,23 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`font-sans h-full antialiased`}
+      className="font-sans h-full antialiased"
       style={{
         ...(primaryColor && { '--primary-color': primaryColor } as any),
         ...(secondaryColor && { '--secondary-color': secondaryColor } as any),
       }}
     >
-      <head>
-        {jsonLd && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: jsonLd }}
-          />
-        )}
-      </head>
+      <head>{jsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />}</head>
       <body className="min-h-full flex flex-col overflow-x-clip">
-          <Suspense fallback={null}>
-            <ProgressBar />
-          </Suspense>
-          <Navbar />
-          <main className="flex-1 w-full min-w-0 overflow-x-clip">{children}</main>
-          <ProductImageLightbox />
-          <div className="shrink-0 w-full min-w-0">
-            <GlobalFooter />
-          </div>
+        <Suspense fallback={null}>
+          <ProgressBar />
+        </Suspense>
+        <Navbar />
+        <main className="flex-1 w-full min-w-0 overflow-x-clip">{children}</main>
+        <ProductImageLightbox />
+        <div className="shrink-0 w-full min-w-0">
+          <GlobalFooter />
+        </div>
         <a
           href="https://wa.me/971524331920"
           target="_blank"

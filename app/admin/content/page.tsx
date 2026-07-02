@@ -63,8 +63,8 @@ export default function ContentManagerPage() {
   }
 
   const filteredContent = content.filter(c => {
-    const matchesSearch = c.label.toLowerCase().includes(search.toLowerCase()) || 
-                         c.content_key.toLowerCase().includes(search.toLowerCase())
+    const matchesSearch = (c.label?.toLowerCase() || '').includes(search.toLowerCase()) || 
+                         (c.content_key?.toLowerCase() || '').includes(search.toLowerCase())
     const matchesGroup = selectedGroup === 'all' || c.group_name === selectedGroup
     return matchesSearch && matchesGroup
   })

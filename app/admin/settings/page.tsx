@@ -52,7 +52,7 @@ export default function SettingsPage() {
     setSaving(true)
     setMessage({ type: '', text: '' })
 
-    const updates: Setting[] = Object.entries(settings).map(([key, value]) => ({
+    const updates: Partial<Setting>[] = Object.entries(settings).map(([key, value]) => ({
       key,
       value,
       group_name: key.startsWith('meta_') || key === 'og_image' || key === 'canonical_url' || key === 'robots' || key === 'json_ld' ? 'seo' :

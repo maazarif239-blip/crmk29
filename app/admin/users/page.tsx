@@ -22,7 +22,7 @@ export default function UsersPage() {
 
   const fetchUsers = useCallback(async () => {
     const { data, error } = await supabase
-      .from('user_profiles')
+      .from('profiles')
       .select('*')
       .order('created_at', { ascending: false })
     
@@ -50,7 +50,7 @@ export default function UsersPage() {
       }
       
       const { error } = await supabase
-        .from('user_profiles')
+        .from('profiles')
         .update({ role: newRole })
         .eq('id', userId)
 

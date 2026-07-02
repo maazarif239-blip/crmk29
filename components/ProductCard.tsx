@@ -27,8 +27,11 @@ export default function ProductCard({
       <div className="aspect-square bg-[#F5F5F5] p-4 sm:p-6 md:p-8 flex items-center justify-center relative overflow-hidden transition-colors group-hover:bg-[#f0f0f0]">
         {/* Primary Image */}
         <img
-          src={primaryImage}
+          src={primaryImage || '/placeholder.jpg'}
           alt={title}
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = '/placeholder.jpg';
+          }}
           className="w-full h-full object-contain mix-blend-multiply transition-opacity duration-400 ease-in-out group-hover:opacity-0"
         />
         {/* Secondary Image (if provided) */}
@@ -36,6 +39,9 @@ export default function ProductCard({
           <img
             src={secondaryImage}
             alt={`${title} alternate view`}
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = '/placeholder.jpg';
+            }}
             className="absolute inset-0 p-8 w-full h-full object-contain mix-blend-multiply opacity-0 transition-opacity duration-400 ease-in-out transition-transform duration-400 ease-in-out group-hover:opacity-100 group-hover:scale-105"
           />
         )}

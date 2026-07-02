@@ -133,7 +133,7 @@ export default function MediaLibraryPage() {
   }
 
   const filteredMedia = media.filter(m => 
-    m.file_name.toLowerCase().includes(search.toLowerCase())
+    (m.file_name?.toLowerCase() || '').includes(search.toLowerCase())
   )
 
   return (
@@ -195,10 +195,10 @@ export default function MediaLibraryPage() {
           {filteredMedia.map((item) => (
             <div key={item.id} className="bg-white border border-gray-200 rounded-lg overflow-hidden group">
               <div className="aspect-square relative bg-gray-100 flex items-center justify-center">
-                {item.mime_type.startsWith('image/') ? (
+                {(item.mime_type || '').startsWith('image/') ? (
                   <img
-                    src={item.public_url}
-                    alt={item.file_name}
+                    src={item.public_url || item.file_url}
+                    alt={item.file_name || item.title || ''}
                     className="w-full h-full object-cover"
                   />
                 ) : (
@@ -207,14 +207,14 @@ export default function MediaLibraryPage() {
                 
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
                   <button 
-                    onClick={() => copyToClipboard(item.public_url)}
+                    onClick={() => copyToClipboard(item.public_url || item.file_url || '')}
                     className="p-2 bg-white text-gray-900 rounded-full hover:bg-gray-100 transition-colors"
                     title="Copy URL"
                   >
                     <Copy className="h-4 w-4" />
                   </button>
                   <button 
-                    onClick={() => handleDelete(item.id, item.file_path)}
+                    onClick={() => handleDelete(item.id, item.file_path || '')}
                     className="p-2 bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors"
                     title="Delete"
                   >
@@ -223,11 +223,11 @@ export default function MediaLibraryPage() {
                 </div>
               </div>
               <div className="p-3">
-                <p className="text-xs font-medium text-gray-900 truncate" title={item.file_name}>
-                  {item.file_name}
+                <p className="text-xs font-medium text-gray-900 truncate" title={item.file_name || item.title || ''}>
+                  {item.file_name || item.title || 'Unnamed'}
                 </p>
                 <p className="text-[10px] text-gray-500 mt-1">
-                  {(item.file_size / 1024).toFixed(1)} KB
+                  {item.file_size ? `${(item.file_size / 1024).toFixed(1)} KB` : ''}
                 </p>
               </div>
             </div>

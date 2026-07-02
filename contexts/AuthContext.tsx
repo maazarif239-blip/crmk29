@@ -23,23 +23,43 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const supabase = createClient()
   const initializedRef = useRef(false)
 
-  const fetchProfile = useCallback(async (userId: string) => {
+  const fetchProfile = useCallback(async (userId: string, userData?: User) => {
     try {
-      const { data, error } = await supabase
-        .from('user_profiles')
+      let { data: existingProfile, error: fetchError } = await supabase
+        .from("profiles")
         .select('*')
         .eq('id', userId)
         .single()
-      
-      if (error) {
-        console.error('Error fetching profile:', error)
-        setProfile(null)
+
+      if (fetchError) {
+        // If no profile found (PGRST116 = "JSON object requested, multiple (or no) rows returned"), create one automatically
+        if (fetchError.code === 'PGRST116') {
+          const newProfile: Partial<UserProfile> = {
+            id: userId,
+            name: userData?.user_metadata?.name || userData?.email?.split('@')[0] || 'User',
+            email: userData?.email || '',
+            role: 'editor', // Default role is editor
+          }
+
+          const { data: createdProfile, error: createError } = await supabase
+            .from('profiles')
+            .insert([newProfile])
+            .select()
+            .single()
+
+          if (createError) {
+            console.error('Failed to create profile:', createError?.message || createError)
+            return
+          }
+          setProfile(createdProfile)
+        } else {
+          console.error('Profile fetch failed:', fetchError?.message || fetchError)
+        }
       } else {
-        setProfile(data)
+        setProfile(existingProfile)
       }
     } catch (err) {
-      console.error('Error fetching profile:', err)
-      setProfile(null)
+      console.error('Unexpected error in fetchProfile:', err)
     }
   }, [supabase])
 
@@ -49,7 +69,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setSession(session)
     setUser(session?.user ?? null)
     if (session?.user) {
-      await fetchProfile(session.user.id)
+      await fetchProfile(session.user.id, session.user)
     } else {
       setProfile(null)
     }
@@ -68,7 +88,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setSession(session)
       setUser(session?.user ?? null)
       if (session?.user) {
-        await fetchProfile(session.user.id)
+        await fetchProfile(session.user.id, session.user)
       } else {
         setProfile(null)
       }

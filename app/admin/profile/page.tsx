@@ -69,7 +69,7 @@ export default function ProfilePage() {
 
       // Update profile info
       const { error: profileError } = await supabase
-        .from('user_profiles')
+        .from('profiles')
         .update({
           full_name: fullName,
           avatar_url: avatarUrl,
