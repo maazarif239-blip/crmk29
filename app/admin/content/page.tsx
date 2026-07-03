@@ -17,7 +17,7 @@ export default function ContentManagerPage() {
     setLoading(true)
     try {
       const { data, error } = await supabase
-        .from('website_content')
+        .from('site_content')
         .select('*')
         .order('group_name', { ascending: true })
         .order('label', { ascending: true })
@@ -49,7 +49,7 @@ export default function ContentManagerPage() {
     setSaving(item.id)
     try {
       const { error } = await supabase
-        .from('website_content')
+        .from('site_content')
         .update({ content_value: item.content_value })
         .eq('id', item.id)
       
