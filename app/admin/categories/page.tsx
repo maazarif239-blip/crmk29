@@ -1,9 +1,9 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { createClient } from '@/lib/supabase'
 import { Category } from '@/lib/types'
-import { Plus, Search, MoreHorizontal, Pencil, Trash2, Loader2, X, Check } from 'lucide-react'
+import { Plus, Search, Pencil, Trash2, Loader2, X, Check } from 'lucide-react'
 
 export default function CategoriesPage() {
   const [categories, setCategories] = useState<Category[]>([])
@@ -14,34 +14,33 @@ export default function CategoriesPage() {
   const [formData, setFormData] = useState({
     name: '',
     slug: '',
-    description: '',
-    image: '',
     sort_order: 0
   })
   const [saving, setSaving] = useState(false)
-  const supabase = createClient()
+  const supabase = useMemo(() => createClient(), [])
+
+  const fetchCategories = async () => {
+    setLoading(true)
+    try {
+      const { data, error } = await supabase
+        .from('categories')
+        .select('*')
+        .order('sort_order', { ascending: true })
+      
+      if (error) throw error
+      setCategories(data || [])
+    } catch (error) {
+      console.error('Error fetching categories:', error)
+      alert('Error fetching categories')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   useEffect(() => {
-    const fetchCategories = async () => {
-      setLoading(true)
-      try {
-        const { data, error } = await supabase
-          .from('categories')
-          .select('*')
-          .order('sort_order', { ascending: true })
-        
-        if (error) throw error
-        setCategories(data || [])
-      } catch (error) {
-        console.error('Error fetching categories:', error)
-        alert('Error fetching categories')
-      } finally {
-        setLoading(false)
-      }
-    }
-    
     fetchCategories()
-  }, [supabase])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const handleSlugGenerate = () => {
     if (formData.name) {
@@ -59,18 +58,14 @@ export default function CategoriesPage() {
       setFormData({
         name: category.name,
         slug: category.slug,
-        description: category.description || '',
-        image: category.image || '',
-        sort_order: category.sort_order || 0
+        sort_order: category.sort_order
       })
     } else {
       setEditingCategory(null)
       setFormData({
         name: '',
         slug: '',
-        description: '',
-        image: '',
-        sort_order: 0
+        sort_order: categories.length
       })
     }
     setIsModalOpen(true)
@@ -82,8 +77,6 @@ export default function CategoriesPage() {
     setFormData({
       name: '',
       slug: '',
-      description: '',
-      image: '',
       sort_order: 0
     })
   }
@@ -93,29 +86,89 @@ export default function CategoriesPage() {
     setSaving(true)
     
     try {
+      const desiredOrder = formData.sort_order
+
       if (editingCategory) {
+        // Update the category's own data first
         const { error } = await supabase
           .from('categories')
-          .update(formData)
+          .update({ name: formData.name, slug: formData.slug, sort_order: desiredOrder })
           .eq('id', editingCategory.id)
         if (error) throw error
-        setCategories(categories.map(c => 
-          c.id === editingCategory.id ? { ...c, ...formData } : c
-        ))
+
+        // Rebuild the sequence: take all categories, apply the edit, then re-sequence
+        const updated = categories.map(c =>
+          c.id === editingCategory.id ? { ...c, ...formData, sort_order: desiredOrder } : c
+        )
+        await resequenceCategories(updated, editingCategory.id, desiredOrder)
       } else {
+        // Insert new category
         const { data, error } = await supabase
           .from('categories')
-          .insert([formData])
+          .insert([{ name: formData.name, slug: formData.slug, sort_order: desiredOrder }])
           .select()
         if (error) throw error
-        if (data) setCategories([...categories, data[0]])
+
+        if (data) {
+          const all = [...categories, data[0]]
+          await resequenceCategories(all, data[0].id, desiredOrder)
+        }
       }
+
       handleCloseModal()
+      await fetchCategories()
     } catch (error: any) {
       console.error('Error saving category:', error)
       alert(`Error saving category: ${error.message}`)
     } finally {
       setSaving(false)
+    }
+  }
+
+  /**
+   * Resequences all categories to maintain a contiguous 0-based order with no gaps or duplicates.
+   * The category identified by `priorityId` gets the `desiredOrder` slot.
+   * All others shift around it to fill the sequence.
+   */
+  const resequenceCategories = async (allCategories: Category[], priorityId: string, desiredOrder: number) => {
+    // Clamp desired order to valid range
+    const maxOrder = allCategories.length - 1
+    const clampedOrder = Math.max(0, Math.min(desiredOrder, maxOrder))
+
+    // Separate the priority item from the rest
+    const priorityItem = allCategories.find(c => c.id === priorityId)
+    const others = allCategories.filter(c => c.id !== priorityId)
+
+    // Sort the others by their current sort_order
+    others.sort((a, b) => a.sort_order - b.sort_order)
+
+    // Build the final ordered array by inserting the priority item at the desired position
+    const finalOrder: Category[] = []
+    let otherIdx = 0
+    for (let i = 0; i <= maxOrder; i++) {
+      if (i === clampedOrder && priorityItem) {
+        finalOrder.push(priorityItem)
+      } else {
+        if (otherIdx < others.length) {
+          finalOrder.push(others[otherIdx])
+          otherIdx++
+        }
+      }
+    }
+    // If there are remaining others (edge case), append them
+    while (otherIdx < others.length) {
+      finalOrder.push(others[otherIdx])
+      otherIdx++
+    }
+
+    // Update each category's sort_order in the database if it changed
+    for (let i = 0; i < finalOrder.length; i++) {
+      if (finalOrder[i].sort_order !== i) {
+        await supabase
+          .from('categories')
+          .update({ sort_order: i })
+          .eq('id', finalOrder[i].id)
+      }
     }
   }
 
@@ -129,7 +182,19 @@ export default function CategoriesPage() {
         .eq('id', id)
         
       if (error) throw error
-      setCategories(categories.filter(c => c.id !== id))
+
+      // After delete, resequence the remaining categories to fill the gap
+      const remaining = categories.filter(c => c.id !== id).sort((a, b) => a.sort_order - b.sort_order)
+      for (let i = 0; i < remaining.length; i++) {
+        if (remaining[i].sort_order !== i) {
+          await supabase
+            .from('categories')
+            .update({ sort_order: i })
+            .eq('id', remaining[i].id)
+        }
+      }
+
+      await fetchCategories()
     } catch (error) {
       console.error('Error deleting category:', error)
       alert('Error deleting category')
@@ -175,13 +240,13 @@ export default function CategoriesPage() {
             <thead className="bg-gray-50">
               <tr>
                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Order
+                </th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Name
                 </th>
                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Slug
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Sort Order
                 </th>
                 <th scope="col" className="relative px-6 py-3 w-20">
                   <span className="sr-only">Actions</span>
@@ -204,25 +269,16 @@ export default function CategoriesPage() {
               ) : (
                 filteredCategories.map((category) => (
                   <tr key={category.id} className="hover:bg-gray-50">
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 text-sm font-semibold text-gray-700">
+                        {category.sort_order}
+                      </span>
+                    </td>
                     <td className="px-6 py-4">
-                      <div className="flex items-center">
-                        <div className="h-10 w-10 flex-shrink-0 bg-gray-100 rounded-md overflow-hidden border border-gray-200">
-                          {category.image ? (
-                            <img src={category.image} alt="" className="h-full w-full object-cover" />
-                          ) : (
-                            <div className="h-full w-full flex items-center justify-center text-gray-400 text-xs">No img</div>
-                          )}
-                        </div>
-                        <div className="ml-4">
-                          <div className="text-sm font-medium text-gray-900">{category.name}</div>
-                        </div>
-                      </div>
+                      <div className="text-sm font-medium text-gray-900">{category.name}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                       /{category.slug}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {category.sort_order}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <div className="flex items-center justify-end gap-2">
@@ -286,34 +342,21 @@ export default function CategoriesPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
-                <textarea
-                  rows={3}
-                  value={formData.description}
-                  onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#EB5324] focus:border-transparent text-sm"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Image URL</label>
-                <input
-                  type="text"
-                  value={formData.image}
-                  onChange={(e) => setFormData(prev => ({ ...prev, image: e.target.value }))}
-                  placeholder="https://..."
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#EB5324] focus:border-transparent text-sm"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Sort Order</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Display Order
+                  <span className="text-gray-400 font-normal ml-1">(0 = first)</span>
+                </label>
                 <input
                   type="number"
+                  min={0}
+                  max={editingCategory ? categories.length - 1 : categories.length}
                   value={formData.sort_order}
                   onChange={(e) => setFormData(prev => ({ ...prev, sort_order: parseInt(e.target.value) || 0 }))}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#EB5324] focus:border-transparent text-sm"
                 />
+                <p className="text-xs text-gray-400 mt-1">
+                  Other categories will shift automatically to maintain order.
+                </p>
               </div>
 
               <div className="flex justify-end gap-3 pt-4">

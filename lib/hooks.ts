@@ -1,23 +1,27 @@
+'use client'
+
 import { useState, useEffect, useCallback, useMemo } from 'react'
 import { createClient } from './supabase'
-import { WebsiteContent, Promotion } from './types'
+import { WebsiteContent, Promotion, Media } from './types'
 
 export function useWebsiteContent() {
   const [content, setContent] = useState<Record<string, string | null>>({})
   const [loading, setLoading] = useState(true)
-  const supabase = createClient()
+  const supabase = useMemo(() => createClient(), [])
 
   const fetchContent = useCallback(async () => {
     try {
       const { data, error } = await supabase
-        .from('website_content')
-        .select('content_key, content_value')
+        .from('site_content')
+        .select('key, content_value')
       
       if (error) throw error
       
       const contentMap: Record<string, string | null> = {}
       data?.forEach(item => {
-        contentMap[item.content_key] = item.content_value
+        if (item?.key) {
+          contentMap[item.key] = item.content_value
+        }
       })
       setContent(contentMap)
     } catch (error) {
@@ -42,7 +46,7 @@ export function useWebsiteContent() {
 export function usePromotions() {
   const [promotions, setPromotions] = useState<Promotion[]>([])
   const [loading, setLoading] = useState(true)
-  const supabase = createClient()
+  const supabase = useMemo(() => createClient(), [])
 
   const fetchPromotions = useCallback(async () => {
     try {
@@ -80,4 +84,43 @@ export function usePromotions() {
   }, [promotions])
 
   return { promotions, getActivePromotions, loading, refresh: fetchPromotions }
+}
+
+export function useMedia() {
+  const [media, setMedia] = useState<Record<string, string | null>>({})
+  const [loading, setLoading] = useState(true)
+  const supabase = useMemo(() => createClient(), [])
+
+  const fetchMedia = useCallback(async () => {
+    try {
+      const { data, error } = await supabase
+        .from('media')
+        .select('media_key, public_url, file_url')
+      
+      if (error) throw error
+      
+      const mediaMap: Record<string, string | null> = {}
+      data?.forEach(item => {
+        if (item?.media_key) {
+          mediaMap[item.media_key] = item.public_url || item.file_url || null
+        }
+      })
+      setMedia(mediaMap)
+    } catch (error) {
+      console.error('Error fetching media:', error)
+    } finally {
+      setLoading(false)
+    }
+  }, [supabase])
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    fetchMedia()
+  }, [fetchMedia])
+
+  const getMedia = useCallback((key: string, defaultValue: string = '') => {
+    return media[key] ?? defaultValue
+  }, [media])
+
+  return { media, getMedia, loading, refresh: fetchMedia }
 }

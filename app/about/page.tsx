@@ -1,6 +1,11 @@
+'use client'
+
 import Link from 'next/link';
+import { useWebsiteContent, useMedia } from '@/lib/hooks';
 
 export default function AboutUs() {
+  const { getContent } = useWebsiteContent();
+  const { getMedia } = useMedia();
   return (
     <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
       
@@ -18,10 +23,15 @@ export default function AboutUs() {
 
         <div className="relative z-10 w-full px-4 flex flex-col items-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight font-serif max-w-4xl leading-tight">
-            A Legacy of Craftsmanship.<br/>A Future of Workspaces.
+            {getContent('about.hero.title', 'A Legacy of Craftsmanship.\nA Future of Workspaces.').split('\n').map((line, index) => (
+              <span key={index}>
+                {line}
+                {index < getContent('about.hero.title', 'A Legacy of Craftsmanship.\nA Future of Workspaces.').split('\n').length - 1 ? <br /> : null}
+              </span>
+            ))}
           </h1>
           <p className="text-[#EB5324] text-[13px] md:text-sm font-bold uppercase tracking-widest max-w-2xl">
-            From a small 1964 workshop to Pakistan's leading workspace execution partner.
+            {getContent('about.hero.subtitle', "From a small 1964 workshop to Pakistan's leading workspace execution partner.")}
           </p>
         </div>
       </section>
@@ -31,19 +41,19 @@ export default function AboutUs() {
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16 items-center">
           <div className="w-full md:w-1/2">
             <img 
-              src="/90.png"
+              src={getMedia('about.ceo', '/90.png')}
               alt="CEO Portrait"
               className="w-full h-[500px] object-cover grayscale opacity-90"
             />
           </div>
           <div className="w-full md:w-1/2">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 font-serif">The Foundation of Excellence</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-8 font-serif">{getContent('about.foundation.title', 'The Foundation of Excellence')}</h2>
             <div className="space-y-6 text-gray-600 text-sm leading-relaxed">
               <p>
-                Founded in 1964 by Mr. Tahir Hassan Gardezi at the ambitious age of 23, HB Furniture began with a singular vision: to bring uncompromising European craftsmanship to Pakistan. Trained extensively in Sweden, Mr. Gardezi instilled a culture of precision and structural integrity that remains the bedrock of our operations today.
+                {getContent('about.foundation.description1', 'Founded in 1964 by Mr. Tahir Hassan Gardezi at the ambitious age of 23, HB Furniture began with a singular vision: to bring uncompromising European craftsmanship to Pakistan. Trained extensively in Sweden, Mr. Gardezi instilled a culture of precision and structural integrity that remains the bedrock of our operations today.')}
               </p>
               <p>
-                Over the decades, we have evolved from a bespoke workshop into a formidable turnkey execution partner. Now under second-generation leadership, we blend heritage woodworking techniques with state-of-the-art architectural technology to deliver workspaces that define corporate legacy.
+                {getContent('about.foundation.description2', 'Over the decades, we have evolved from a bespoke workshop into a formidable turnkey execution partner. Now under second-generation leadership, we blend heritage woodworking techniques with state-of-the-art architectural technology to deliver workspaces that define corporate legacy.')}
               </p>
             </div>
           </div>
@@ -54,7 +64,7 @@ export default function AboutUs() {
       <section className="bg-[#FAFAFA] py-16 sm:py-20 md:py-24 border-y border-gray-100">
         <div className="max-w-[1000px] mx-auto px-4">
           <div className="text-center mb-20">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6 font-serif">Milestones of Progress</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6 font-serif">{getContent('about.milestones.title', 'Milestones of Progress')}</h2>
             <div className="w-16 h-1 bg-[#EB5324] mx-auto"></div>
           </div>
 
@@ -67,7 +77,7 @@ export default function AboutUs() {
               <div className="relative flex flex-col md:flex-row items-center justify-between w-full">
                 <div className="w-full md:w-5/12 text-center md:text-right md:pr-8 mb-4 md:mb-0">
                   <h3 className="text-2xl font-bold text-[#EB5324] mb-2 font-serif">1964</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">Founded by Mr. Tahir Hassan Gardezi in Karachi.</p>
+                  <p className="text-sm text-gray-600 leading-relaxed">{getContent('about.milestones.1964.description', 'Founded by Mr. Tahir Hassan Gardezi in Karachi.')}</p>
                 </div>
                 <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-white border-4 border-[#EB5324] z-10"></div>
                 <div className="w-full md:w-5/12 md:pl-8"></div>
@@ -79,7 +89,7 @@ export default function AboutUs() {
                 <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-white border-4 border-[#EB5324] z-10"></div>
                 <div className="w-full md:w-5/12 text-center md:text-left md:pl-8 mt-4 md:mt-0">
                   <h3 className="text-2xl font-bold text-[#EB5324] mb-2 font-serif">1977</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">Landmark BOT/B contract awards for Pakistan Steel Mills, establishing industrial capability.</p>
+                  <p className="text-sm text-gray-600 leading-relaxed">{getContent('about.milestones.1977.description', 'Landmark BOT/B contract awards for Pakistan Steel Mills, establishing industrial capability.')}</p>
                 </div>
               </div>
 
@@ -87,7 +97,7 @@ export default function AboutUs() {
               <div className="relative flex flex-col md:flex-row items-center justify-between w-full">
                 <div className="w-full md:w-5/12 text-center md:text-right md:pr-8 mb-4 md:mb-0">
                   <h3 className="text-2xl font-bold text-[#EB5324] mb-2 font-serif">1993</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">Premium 3-storey flagship showroom opened in the heart of Islamabad.</p>
+                  <p className="text-sm text-gray-600 leading-relaxed">{getContent('about.milestones.1993.description', 'Premium 3-storey flagship showroom opened in the heart of Islamabad.')}</p>
                 </div>
                 <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-white border-4 border-[#EB5324] z-10"></div>
                 <div className="w-full md:w-5/12 md:pl-8"></div>
@@ -99,7 +109,7 @@ export default function AboutUs() {
                 <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-white border-4 border-[#EB5324] z-10"></div>
                 <div className="w-full md:w-5/12 text-center md:text-left md:pl-8 mt-4 md:mt-0">
                   <h3 className="text-2xl font-bold text-[#EB5324] mb-2 font-serif">2024</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">New generation leadership drives expansion across a premium corporate project portfolio.</p>
+                  <p className="text-sm text-gray-600 leading-relaxed">{getContent('about.milestones.2024.description', 'New generation leadership drives expansion across a premium corporate project portfolio.')}</p>
                 </div>
               </div>
             </div>
@@ -111,40 +121,40 @@ export default function AboutUs() {
       <section className="bg-[#FAFAFA] py-16 sm:py-20 md:py-24 border-y border-gray-100">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
           <div className="text-center mb-20">
-            <h2 className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-6">Why Choose HB Furniture</h2>
+            <h2 className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-6">{getContent('about.why_choose.title', 'Why Choose HB Furniture')}</h2>
             <div className="w-12 h-0.5 bg-[#EB5324] mx-auto"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
             <div>
               <div className="text-3xl mb-4">🏆</div>
-              <h3 className="text-sm font-bold text-gray-900 mb-3">60+ Years of Proven Excellence</h3>
-              <p className="text-gray-500 text-[12px] leading-relaxed">Partnering with Pakistan's top organizations since 1964.</p>
+              <h3 className="text-sm font-bold text-gray-900 mb-3">{getContent('about.why_choose.item1.title', '60+ Years of Proven Excellence')}</h3>
+              <p className="text-gray-500 text-[12px] leading-relaxed">{getContent('about.why_choose.item1.description', "Partnering with Pakistan's top organizations since 1964.")}</p>
             </div>
             <div>
               <div className="text-3xl mb-4">🏭</div>
-              <h3 className="text-sm font-bold text-gray-900 mb-3">Complete In-House Manufacturing</h3>
-              <p className="text-gray-500 text-[12px] leading-relaxed">HB provides strict end-to-end (E2E) quality control.</p>
+              <h3 className="text-sm font-bold text-gray-900 mb-3">{getContent('about.why_choose.item2.title', 'Complete In-House Manufacturing')}</h3>
+              <p className="text-gray-500 text-[12px] leading-relaxed">{getContent('about.why_choose.item2.description', 'HB provides strict end-to-end (E2E) quality control.')}</p>
             </div>
             <div>
               <div className="text-3xl mb-4">🔑</div>
-              <h3 className="text-sm font-bold text-gray-900 mb-3">End-to-End Turnkey Delivery</h3>
-              <p className="text-gray-500 text-[12px] leading-relaxed">Design, produce, install — we take total ownership.</p>
+              <h3 className="text-sm font-bold text-gray-900 mb-3">{getContent('about.why_choose.item3.title', 'End-to-End Turnkey Delivery')}</h3>
+              <p className="text-gray-500 text-[12px] leading-relaxed">{getContent('about.why_choose.item3.description', 'Design, produce, install — we take total ownership.')}</p>
             </div>
             <div>
               <div className="text-3xl mb-4">📐</div>
-              <h3 className="text-sm font-bold text-gray-900 mb-3">Custom Built for Your Space</h3>
-              <p className="text-gray-500 text-[12px] leading-relaxed">Every project engineered to your exact specifications.</p>
+              <h3 className="text-sm font-bold text-gray-900 mb-3">{getContent('about.why_choose.item4.title', 'Custom Built for Your Space')}</h3>
+              <p className="text-gray-500 text-[12px] leading-relaxed">{getContent('about.why_choose.item4.description', 'Every project engineered to your exact specifications.')}</p>
             </div>
             <div>
               <div className="text-3xl mb-4">🤝</div>
-              <h3 className="text-sm font-bold text-gray-900 mb-3">300+ Satisfied Clients</h3>
-              <p className="text-gray-500 text-[12px] leading-relaxed">From multinationals to ministries, we deliver excellence.</p>
+              <h3 className="text-sm font-bold text-gray-900 mb-3">{getContent('about.why_choose.item5.title', '300+ Satisfied Clients')}</h3>
+              <p className="text-gray-500 text-[12px] leading-relaxed">{getContent('about.why_choose.item5.description', 'From multinationals to ministries, we deliver excellence.')}</p>
             </div>
             <div>
               <div className="text-3xl mb-4">⚡</div>
-              <h3 className="text-sm font-bold text-gray-900 mb-3">Reliable, Consistent, On Schedule</h3>
-              <p className="text-gray-500 text-[12px] leading-relaxed">Deadlines met. Standards never compromised.</p>
+              <h3 className="text-sm font-bold text-gray-900 mb-3">{getContent('about.why_choose.item6.title', 'Reliable, Consistent, On Schedule')}</h3>
+              <p className="text-gray-500 text-[12px] leading-relaxed">{getContent('about.why_choose.item6.description', 'Deadlines met. Standards never compromised.')}</p>
             </div>
           </div>
         </div>
@@ -152,9 +162,9 @@ export default function AboutUs() {
 
       {/* CTA Section */}
       <section className="bg-[#EBEBEB] py-16 sm:py-20 md:py-24 text-center">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8 font-serif">Ready to Build Your Legacy?</h2>
+        <h2 className="text-3xl font-bold text-gray-900 mb-8 font-serif">{getContent('about.cta.title', 'Ready to Build Your Legacy?')}</h2>
         <Link href="/contact" className="bg-[#EB5324] text-white px-8 py-4 text-[11px] font-bold hover:bg-[#d4481f] transition-colors uppercase tracking-widest inline-flex items-center gap-3">
-          Discuss Your Project
+          {getContent('about.cta.cta_text', 'Discuss Your Project')}
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
         </Link>
       </section>

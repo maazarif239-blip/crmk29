@@ -178,6 +178,53 @@ export const uploadFile = async (
 }
 
 /**
+ * Upload a file to the media bucket and register it in the media table.
+ * This mirrors the Media Library flow so other admin surfaces can attach
+ * uploaded files without duplicating storage/database logic.
+ */
+export const uploadMediaLibraryFile = async (
+  file: File,
+  path: string = 'products',
+  onProgress?: UploadProgressCallback,
+  compress: boolean = true
+) => {
+  const uploadedFile = await uploadFile('media', file, path, onProgress, compress)
+  const supabase = createClient()
+
+  const mediaPayload = {
+    file_name: file.name,
+    file_path: uploadedFile.path,
+    file_size: uploadedFile.size,
+    mime_type: file.type,
+    public_url: uploadedFile.publicUrl,
+    bucket: 'media',
+    file_url: uploadedFile.publicUrl,
+    uploaded_at: new Date().toISOString()
+  }
+
+  const { data, error } = await supabase
+    .from('media')
+    .insert(mediaPayload)
+    .select()
+    .single()
+
+  if (error) {
+    try {
+      await deleteFile('media', uploadedFile.path)
+    } catch {
+      // Best-effort rollback only.
+    }
+
+    throw new Error(`Media registration failed: ${error.message}`)
+  }
+
+  return {
+    storageFile: uploadedFile,
+    mediaRecord: data
+  }
+}
+
+/**
  * Replace an existing file
  */
 export const replaceFile = async (

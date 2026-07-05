@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: PageProps) {
 
   const { data: product } = await supabase
     .from('products')
-    .select('name, short_description')
+    .select('name, description')
     .eq('slug', slug)
     .eq('status', 'published')
     .single();
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PageProps) {
 
   return {
     title: product.name || 'Product',
-    description: product.short_description || '',
+    description: product.description || '',
   };
 }
 
@@ -51,7 +51,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const productImage =
     product.image_url || product.main_image || product.featured_image || '/placeholder.jpg';
   const galleryImages = product.gallery?.filter(Boolean) || [];
-  const specifications = product.specifications || {};
+
 
   return (
     <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
@@ -71,7 +71,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
               <span>/</span>
             </>
           )}
-          <span className="text-gray-900 font-medium">{product.name || product.title}</span>
+          <span className="text-gray-900 font-medium">{product.name}</span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
@@ -81,7 +81,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
             <div className="aspect-square bg-[#F5F5F5] p-6 flex items-center justify-center">
               <ImageWithFallback
                 src={productImage}
-                alt={product.name || product.title || 'Product'}
+                alt={product.name || 'Product'}
                 className="max-w-full max-h-full object-contain"
               />
             </div>
@@ -118,15 +118,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
             {/* Title */}
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
-              {product.name || product.title}
+              {product.name}
             </h1>
-
-            {/* Short Description */}
-            {product.short_description && (
-              <p className="text-gray-600 text-base leading-relaxed">
-                {product.short_description}
-              </p>
-            )}
 
             {/* Contact For Pricing */}
             <div className="pt-4">
@@ -145,24 +138,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
               </div>
             )}
 
-            {/* Specifications */}
-            {Object.keys(specifications).length > 0 && (
-              <div className="pt-8 border-t border-gray-100">
-                <h3 className="text-sm font-bold text-gray-900 uppercase tracking-widest mb-4">
-                  Specifications
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {Object.entries(specifications).map(([key, value]) => (
-                    <div key={key} className="flex flex-col gap-1">
-                      <span className="text-xs font-bold text-gray-900 uppercase tracking-wider">
-                        {key}
-                      </span>
-                      <span className="text-sm text-gray-600">{String(value)}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </section>

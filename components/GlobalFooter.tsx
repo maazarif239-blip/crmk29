@@ -1,13 +1,21 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 import { FaFacebook, FaInstagram, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa6";
+import { useWebsiteContent, useMedia } from '@/lib/hooks';
 
 export default function GlobalFooter() {
   const pathname = usePathname();
+  const { getContent } = useWebsiteContent();
+  const { getMedia } = useMedia();
+
+  const footerTagline = getContent(
+    'footer.description',
+    getContent('footer_tagline', 'Crafting inspired workspaces with innovative furniture solutions designed for comfort, style and productivity.')
+  );
 
   if (pathname === "/sign-in" || pathname === "/sign-up") {
     return null;
@@ -22,7 +30,7 @@ export default function GlobalFooter() {
             <div className="border-b md:border-b-0 lg:border-r border-gray-700/30 pb-8 md:pb-0 lg:pb-0 lg:pr-10">
               <Link href="/" className="flex items-start gap-3 sm:gap-4 mb-6 min-w-0">
                 <Image
-                  src="/hb-logo.png.png"
+                  src={getMedia('logo', '/hb-logo.png.png')}
                   alt="HB Furniture Logo"
                   width={64}
                   height={64}
@@ -35,7 +43,7 @@ export default function GlobalFooter() {
                 </div>
               </Link>
               <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8">
-                Crafting inspired workspaces with innovative furniture solutions designed for comfort, style and productivity.
+                {footerTagline}
               </p>
               {/* Social Icons */}
               <div className="flex gap-4">

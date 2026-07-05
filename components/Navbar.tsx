@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { createClient } from "@/lib/supabase";
 import type { Category } from "@/lib/types";
+import { useMedia } from "@/lib/hooks";
 
 type NavItem = {
  name: string;
@@ -32,6 +33,7 @@ export default function Navbar() {
   // Add state for categories
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
+  const { getMedia } = useMedia();
 
   // Fetch categories on mount
   useEffect(() => {
@@ -42,7 +44,7 @@ export default function Navbar() {
         const { data, error } = await supabase
           .from("categories")
           .select("*")
-          .order("sort_order");
+          .order("sort_order", { ascending: true });
         
         if (error) {
           console.error("Error fetching categories:", error);
@@ -217,7 +219,7 @@ export default function Navbar() {
  className="flex items-center gap-2 transition-opacity hover:opacity-80 shrink-0 min-w-0"
  >
  <Image
- src="/hb-logo.png.png"
+ src={getMedia('logo', '/hb-logo.png.png')}
  alt="HB Logo"
  
  width={isScrolled ? 40 : 52}

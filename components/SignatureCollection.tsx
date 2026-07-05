@@ -81,7 +81,7 @@ export default function SignatureCollection() {
             <div className="overflow-hidden">
               <div className="flex w-max gap-4 sm:gap-5 md:gap-6 animate-marquee-slow will-change-transform group-hover/marquee:[animation-play-state:paused]">
                 {marqueeItems.map((product, i) => {
-                  const productName = product.name || product.title || 'Product';
+                  const productName = product.name || 'Product';
                   const productImage = product.featured_image || product.main_image || '/placeholder.png';
                   return (
                     <Link

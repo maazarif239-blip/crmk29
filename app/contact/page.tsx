@@ -1,7 +1,11 @@
+'use client'
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useWebsiteContent } from '@/lib/hooks';
 
 export default function ContactUs() {
+  const { getContent } = useWebsiteContent();
   return (
     <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-[#FAFAFA] text-gray-900 font-sans selection:bg-[#E5E0D8]">
       
@@ -19,10 +23,10 @@ export default function ContactUs() {
 
         <div className="relative z-10 w-full px-4 flex flex-col items-center pt-8">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight font-serif">
-            Let's Build Your Workspace Together
+            {getContent('contact.hero.title', "Let's Build Your Workspace Together")}
           </h1>
           <p className="text-[#EB5324] text-[10px] md:text-[11px] font-bold uppercase tracking-widest mt-2">
-            Get in touch with our corporate design team today
+            {getContent('contact.hero.subtitle', 'Get in touch with our corporate design team today')}
           </p>
         </div>
       </section>
@@ -30,9 +34,9 @@ export default function ContactUs() {
       {/* Contact Details Section */}
       <section className="max-w-[1200px] mx-auto px-4 sm:px-6 -mt-24 relative z-20 mb-24">
         <div className="bg-white shadow-2xl rounded-sm overflow-hidden p-10 md:p-16 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 font-serif">Reach Out to Us</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 font-serif">{getContent('contact.details.title', 'Reach Out to Us')}</h2>
           <p className="text-gray-600 mb-12 max-w-lg mx-auto">
-            Connect directly with our team for quick support, consultation, or project inquiries.
+            {getContent('contact.details.description', 'Connect directly with our team for quick support, consultation, or project inquiries.')}
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-center items-stretch">
@@ -105,8 +109,8 @@ export default function ContactUs() {
       <section className="bg-white py-16 sm:py-20 md:py-24 border-y border-gray-100">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-3 font-serif">Our Headquarters & Factory</h2>
-            <p className="text-[#EB5324] text-[11px] font-bold uppercase tracking-widest">Islamabad</p>
+            <h2 className="text-3xl font-bold text-gray-900 mb-3 font-serif">{getContent('contact.map.title', 'Our Headquarters & Factory')}</h2>
+            <p className="text-[#EB5324] text-[11px] font-bold uppercase tracking-widest">{getContent('contact.map.location', 'Islamabad')}</p>
           </div>
          <div className="rounded-lg overflow-hidden shadow-lg">
           <iframe

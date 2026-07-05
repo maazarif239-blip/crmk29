@@ -10,8 +10,6 @@ CREATE TABLE IF NOT EXISTS categories (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   name TEXT NOT NULL,
   slug TEXT NOT NULL UNIQUE,
-  description TEXT,
-  image TEXT,
   sort_order INTEGER NOT NULL DEFAULT 0,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
 );
@@ -37,21 +35,16 @@ CREATE TABLE IF NOT EXISTS media (
 CREATE TABLE IF NOT EXISTS products (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   -- Old columns (backwards compatible)
-  title TEXT,
   slug TEXT NOT NULL UNIQUE,
   category_id UUID REFERENCES categories(id) ON DELETE SET NULL,
   status TEXT DEFAULT 'draft' CHECK (status IN ('draft', 'published')),
   featured BOOLEAN DEFAULT false,
-  seo_title TEXT,
-  seo_description TEXT,
   main_image TEXT, -- URL or path
   gallery TEXT[] DEFAULT '{}', -- Array of URLs
   -- New columns
   name TEXT,
-  short_description TEXT,
   description TEXT,
   featured_image TEXT,
-  specifications JSONB DEFAULT '{}',
   sort_order INTEGER DEFAULT 0,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
@@ -85,10 +78,8 @@ CREATE TABLE IF NOT EXISTS promotions (
   content TEXT,
   cta_text TEXT,
   cta_link TEXT,
-  image_url TEXT,
   enabled BOOLEAN DEFAULT false,
   schedule_enabled BOOLEAN DEFAULT false,
-  display_order INTEGER DEFAULT 0,
   style TEXT,
   -- New columns
   title TEXT NOT NULL,

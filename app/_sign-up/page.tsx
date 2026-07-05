@@ -3,8 +3,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaFacebookF, FaXTwitter } from "react-icons/fa6";
+import { useMedia } from '@/lib/hooks';
 
 export default function SignUp() {
+  const { getMedia } = useMedia();
   return (
     <div className="min-h-screen flex selection:bg-[#E5E0D8] font-sans">
       
@@ -29,7 +31,7 @@ export default function SignUp() {
           <div className="bg-white w-48 h-48 flex flex-col items-center justify-center mb-10 shadow-2xl rounded-sm">
             {/* Custom Logo SVG mimicking the screenshot */}
           <Image
-  src="/hb-logo.png.png"
+  src={getMedia('logo', '/hb-logo.png.png')}
   alt="HB Furniture Logo"
   width={180}
   height={180}

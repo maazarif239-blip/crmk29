@@ -4,10 +4,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { useMedia } from '@/lib/hooks';
 
 export default function GlobalNavbar() {
   const pathname = usePathname();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const { getMedia } = useMedia();
 
   const navLinks = [
     { name: 'Home', href: '/' },
@@ -38,7 +40,7 @@ export default function GlobalNavbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/hb-logo.png.png"
+              src={getMedia('logo', '/hb-logo.png.png')}
               alt="HB Furniture Logo"
               width={80}
               height={80}

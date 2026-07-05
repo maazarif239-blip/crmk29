@@ -1,7 +1,11 @@
+'use client'
+
 import Link from 'next/link';
 import TestimonialsSection from '@/components/TestimonialsSection';
+import { useWebsiteContent } from '@/lib/hooks';
 
 export default function FieldOfExpertise() {
+  const { getContent } = useWebsiteContent();
   const expertise = [
     {
       title: "Industrial Manufacturing",
@@ -64,20 +68,20 @@ export default function FieldOfExpertise() {
 
         <div className="relative z-10 max-w-[1000px] px-4">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight font-serif uppercase">
-            Field of Expertise
+            {getContent('field-of-expertise.hero.title', 'Field of Expertise')}
           </h1>
           <p className="text-gray-300 text-sm md:text-base font-medium max-w-2xl mx-auto leading-relaxed">
-            Delivering specialized expertise through innovation, technical excellence, and years of industry experience.
+            {getContent('field-of-expertise.hero.description', 'Delivering specialized expertise through innovation, technical excellence, and years of industry experience.')}
           </p>
         </div>
       </section>
 
       {/* Introduction Section */}
       <section className="py-24 max-w-[1000px] mx-auto px-4 text-center">
-        <h2 className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-4">What We Excel At</h2>
+        <h2 className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-4">{getContent('field-of-expertise.intro.subtitle', 'What We Excel At')}</h2>
         <div className="w-12 h-0.5 bg-[#EB5324] mx-auto mb-8"></div>
         <p className="text-gray-600 text-lg leading-relaxed font-serif max-w-3xl mx-auto">
-          Crafting exceptional workspaces since 1964 with precision, innovation, and enduring quality.
+          {getContent('field-of-expertise.intro.description', 'Crafting exceptional workspaces since 1964 with precision, innovation, and enduring quality.')}
         </p>
       </section>
 
@@ -195,10 +199,10 @@ export default function FieldOfExpertise() {
 
       {/* CTA Section */}
       <section className="bg-[#111111] py-16 sm:py-20 md:py-24 text-center">
-        <h2 className="text-3xl font-bold text-white mb-8 font-serif">Let's Turn Expertise Into Results</h2>
+        <h2 className="text-3xl font-bold text-white mb-8 font-serif">{getContent('field-of-expertise.cta.title', "Let's Turn Expertise Into Results")}</h2>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link href="/contact" className="bg-[#EB5324] text-white px-8 py-4 text-[11px] font-bold hover:bg-[#d4481f] transition-colors uppercase tracking-widest inline-flex items-center justify-center min-w-[200px]">
-            Contact Us
+            {getContent('field-of-expertise.cta.cta_text', 'Contact Us')}
           </Link>
         </div>
       </section>

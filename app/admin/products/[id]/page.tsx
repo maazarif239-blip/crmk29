@@ -1,129 +1,298 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { useRouter, useParams, usePathname } from 'next/navigation'
-import { createClient } from '@/lib/supabase'
-import { ArrowLeft, Save, Loader2, Image as ImageIcon, X } from 'lucide-react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useParams, usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { ArrowLeft, Image as ImageIcon, Loader2, Save, Upload, X } from 'lucide-react'
+import { createClient } from '@/lib/supabase'
+import { uploadMediaLibraryFile } from '@/lib/storage'
 import { Category } from '@/lib/types'
+
+type ProductFormData = {
+  name: string
+  slug: string
+  description: string
+  category_id: string
+  status: 'draft' | 'published'
+  featured: boolean
+  main_image: string
+  featured_image: string
+  gallery: string[]
+}
+
+const getUniqueImages = (images: Array<string | null | undefined>) =>
+  Array.from(new Set(images.filter((image): image is string => Boolean(image?.trim()))))
+
+const buildMediaState = (
+  images: string[],
+  featuredImage?: string,
+  mainImage?: string
+) => {
+  const uniqueImages = getUniqueImages(images)
+  const resolvedFeatured =
+    featuredImage && uniqueImages.includes(featuredImage)
+      ? featuredImage
+      : uniqueImages[0] || ''
+  const resolvedMain =
+    mainImage && uniqueImages.includes(mainImage)
+      ? mainImage
+      : uniqueImages.find((image) => image !== resolvedFeatured) || resolvedFeatured || ''
+
+  return {
+    featured_image: resolvedFeatured,
+    main_image: resolvedMain,
+    gallery: uniqueImages.filter(
+      (image) => image !== resolvedFeatured && image !== resolvedMain
+    )
+  }
+}
 
 function EditProductInner() {
   const params = useParams()
   const router = useRouter()
   const pathname = usePathname()
   const idFromParams = params.id as string | undefined
-  
-  // Compute isNew directly from pathname to avoid stale state
   const isNew = pathname?.endsWith('/products/new') ?? false
-  const isValidProductId = !isNew && idFromParams && idFromParams !== 'undefined' && idFromParams.trim() !== ''
+  const isValidProductId =
+    !isNew && idFromParams && idFromParams !== 'undefined' && idFromParams.trim() !== ''
 
-  const [loading, setLoading] = useState(isValidProductId) // Only load if we have valid id
+  const [loading, setLoading] = useState(isValidProductId)
   const [saving, setSaving] = useState(false)
+  const [isDragging, setIsDragging] = useState(false)
+  const [uploadProgress, setUploadProgress] = useState<Record<string, number>>({})
+  const [uploadError, setUploadError] = useState<string | null>(null)
   const [categories, setCategories] = useState<Category[]>([])
-  
-  const [formData, setFormData] = useState({
-    title: '',
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  const [formData, setFormData] = useState<ProductFormData>({
     name: '',
     slug: '',
     description: '',
-    short_description: '',
     category_id: '',
-    status: 'draft' as 'draft' | 'published',
+    status: 'draft',
     featured: false,
-    seo_title: '',
-    seo_description: '',
     main_image: '',
     featured_image: '',
-    gallery: [] as string[],
-    specifications: {} as Record<string, any>
+    gallery: []
   })
 
+  const supabase = useMemo(() => createClient(), [])
+
   useEffect(() => {
-    const supabase = createClient()
-    
     const loadData = async () => {
       try {
-        // Always load categories regardless of new/edit
         const { data: catData } = await supabase.from('categories').select('*')
         if (catData) setCategories(catData)
 
-        // Only fetch product data if we have a valid, non-"new" id
         if (isValidProductId && idFromParams) {
           const { data: prodData, error } = await supabase
             .from('products')
             .select('*')
             .eq('id', idFromParams)
             .single()
-          
+
           if (error) throw error
+
           if (prodData) {
+            const initialImages = getUniqueImages([
+              prodData.featured_image,
+              prodData.main_image,
+              ...(prodData.gallery || [])
+            ])
+
             setFormData({
-              title: prodData.title || '',
               name: prodData.name || '',
-              slug: prodData.slug,
+              slug: prodData.slug || '',
               description: prodData.description || '',
-              short_description: prodData.short_description || '',
               category_id: prodData.category_id || '',
-              status: prodData.status,
-              featured: prodData.featured,
-              seo_title: prodData.seo_title || '',
-              seo_description: prodData.seo_description || '',
-              main_image: prodData.main_image || '',
-              featured_image: prodData.featured_image || '',
-              gallery: prodData.gallery || [],
-              specifications: prodData.specifications || {}
+              status: prodData.status || 'draft',
+              featured: Boolean(prodData.featured),
+              ...buildMediaState(
+                initialImages,
+                prodData.featured_image || '',
+                prodData.main_image || ''
+              )
             })
           }
         }
       } catch (error) {
         console.error('Error loading data:', error)
       } finally {
-        // Always end loading, regardless of outcome
         setLoading(false)
       }
     }
 
     loadData()
-  }, [isValidProductId, idFromParams]) // Only re-run when id validity or value changes
+  }, [idFromParams, isValidProductId, supabase])
 
-  const supabase = createClient()
+  const attachedImages = useMemo(
+    () =>
+      getUniqueImages([
+        formData.featured_image,
+        formData.main_image,
+        ...formData.gallery
+      ]),
+    [formData.featured_image, formData.gallery, formData.main_image]
+  )
 
-  const handleSlugGenerate = () => {
-    const source = formData.name || formData.title
-    if (source) {
-      const slug = source
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/(^-|-$)+/g, '')
-      setFormData(prev => ({ ...prev, slug }))
-    }
-  }
+  const activeUploads = useMemo(
+    () =>
+      Object.entries(uploadProgress).map(([name, progress]) => ({
+        name,
+        progress
+      })),
+    [uploadProgress]
+  )
+
+  const setProductImages = useCallback(
+    (
+      updater: (current: {
+        images: string[]
+        featuredImage: string
+        mainImage: string
+      }) => { images: string[]; featuredImage?: string; mainImage?: string }
+    ) => {
+      setFormData((prev) => {
+        const current = {
+          images: getUniqueImages([
+            prev.featured_image,
+            prev.main_image,
+            ...prev.gallery
+          ]),
+          featuredImage: prev.featured_image,
+          mainImage: prev.main_image
+        }
+        const next = updater(current)
+
+        return {
+          ...prev,
+          ...buildMediaState(next.images, next.featuredImage, next.mainImage)
+        }
+      })
+    },
+    []
+  )
+
+  const handleSlugGenerate = useCallback(() => {
+    if (!formData.name) return
+
+    const slug = formData.name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)+/g, '')
+
+    setFormData((prev) => ({ ...prev, slug }))
+  }, [formData.name])
+
+  const handleFilesUpload = useCallback(
+    async (files: FileList | File[]) => {
+      const fileArray = Array.from(files)
+      if (!fileArray.length) return
+
+      setUploadError(null)
+
+      for (const file of fileArray) {
+        const uploadKey = `${file.name}-${file.lastModified}-${file.size}`
+
+        try {
+          setUploadProgress((prev) => ({ ...prev, [uploadKey]: 0 }))
+
+          const { storageFile } = await uploadMediaLibraryFile(
+            file,
+            'products',
+            (progress) => {
+              setUploadProgress((prev) => ({ ...prev, [uploadKey]: progress }))
+            }
+          )
+
+          setProductImages((current) => ({
+            images: [...current.images, storageFile.publicUrl],
+            featuredImage: current.featuredImage || storageFile.publicUrl,
+            mainImage: current.mainImage || storageFile.publicUrl
+          }))
+        } catch (error) {
+          console.error('Error uploading product image:', error)
+          setUploadError(
+            error instanceof Error
+              ? error.message
+              : `Failed to upload ${file.name}`
+          )
+        } finally {
+          setUploadProgress((prev) => {
+            const next = { ...prev }
+            delete next[uploadKey]
+            return next
+          })
+        }
+      }
+    },
+    [setProductImages]
+  )
+
+  const handleRemoveImage = useCallback(
+    (imageUrl: string) => {
+      setProductImages((current) => {
+        const remainingImages = current.images.filter((image) => image !== imageUrl)
+
+        return {
+          images: remainingImages,
+          featuredImage:
+            current.featuredImage === imageUrl ? undefined : current.featuredImage,
+          mainImage: current.mainImage === imageUrl ? undefined : current.mainImage
+        }
+      })
+    },
+    [setProductImages]
+  )
+
+  const handleSetFeaturedImage = useCallback(
+    (imageUrl: string) => {
+      setProductImages((current) => ({
+        images: current.images,
+        featuredImage: imageUrl,
+        mainImage: current.mainImage
+      }))
+    },
+    [setProductImages]
+  )
+
+  const handleSetMainImage = useCallback(
+    (imageUrl: string) => {
+      setProductImages((current) => ({
+        images: current.images,
+        featuredImage: current.featuredImage,
+        mainImage: imageUrl
+      }))
+    },
+    [setProductImages]
+  )
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault()
     setSaving(true)
-    
+
     try {
-      // Prepare payload, ensure category_id is null if empty string, and no id field for new
-      const payload: any = {
+      const payload = {
         ...formData,
-        category_id: formData.category_id && formData.category_id.trim() !== '' ? formData.category_id : null
-      }
-      
-      // Never include id when inserting new product!
-      if (isNew) {
-        delete payload.id
+        category_id:
+          formData.category_id && formData.category_id.trim() !== ''
+            ? formData.category_id
+            : null
       }
 
       if (isNew) {
-        // Insert product and get the inserted product
-        const { data, error } = await supabase.from('products').insert([payload]).select('*').single()
+        const { data, error } = await supabase
+          .from('products')
+          .insert([payload])
+          .select('*')
+          .single()
+
         if (error) throw error
-        
-        // Get current user ID
-        const { data: { user } } = await supabase.auth.getUser()
-        
-        // Insert into activity log if user exists
+
+        const {
+          data: { user }
+        } = await supabase.auth.getUser()
+
         if (user && data) {
           const { error: logError } = await supabase.from('activity_log').insert([
             {
@@ -133,27 +302,25 @@ function EditProductInner() {
               performed_by: user.id
             }
           ])
-          
+
           if (logError) {
             console.error('Error creating activity log entry:', logError)
-            // We don't fail the save just for log, but we log it
           }
         }
-        
-        router.push('/admin/products')
       } else {
-        // Safety check for valid id before updating
         if (!isValidProductId || !idFromParams) {
           throw new Error('Cannot update product: invalid product ID')
         }
-        
+
         const { error } = await supabase
           .from('products')
           .update(payload)
           .eq('id', idFromParams)
+
         if (error) throw error
-        router.push('/admin/products')
       }
+
+      router.push('/admin/products')
       router.refresh()
     } catch (error: any) {
       console.error('Error saving product:', error)
@@ -161,20 +328,6 @@ function EditProductInner() {
     } finally {
       setSaving(false)
     }
-  }
-
-  const addGalleryImage = () => {
-    const url = prompt('Enter image URL:')
-    if (url) {
-      setFormData(prev => ({ ...prev, gallery: [...prev.gallery, url] }))
-    }
-  }
-
-  const removeGalleryImage = (index: number) => {
-    setFormData(prev => ({
-      ...prev,
-      gallery: prev.gallery.filter((_, i) => i !== index)
-    }))
   }
 
   if (loading) {
@@ -189,18 +342,26 @@ function EditProductInner() {
     <form onSubmit={handleSave} className="space-y-6 pb-20">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-center gap-4">
-          <Link href="/admin/products" className="p-2 bg-white border border-gray-200 rounded-md hover:bg-gray-50 transition-colors">
+          <Link
+            href="/admin/products"
+            className="p-2 bg-white border border-gray-200 rounded-md hover:bg-gray-50 transition-colors"
+          >
             <ArrowLeft className="h-4 w-4 text-gray-600" />
           </Link>
           <h1 className="text-2xl font-bold text-gray-900 tracking-tight">
             {isNew ? 'Add Product' : 'Edit Product'}
           </h1>
         </div>
-        
+
         <div className="flex items-center gap-3 w-full sm:w-auto">
           <select
             value={formData.status}
-            onChange={(e) => setFormData(prev => ({ ...prev, status: e.target.value as any }))}
+            onChange={(e) =>
+              setFormData((prev) => ({
+                ...prev,
+                status: e.target.value as 'draft' | 'published'
+              }))
+            }
             className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#EB5324] focus:border-transparent text-sm bg-white"
           >
             <option value="draft">Draft</option>
@@ -211,7 +372,11 @@ function EditProductInner() {
             disabled={saving}
             className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-2 bg-[#EB5324] text-white rounded-md hover:bg-[#d4481f] transition-colors text-sm font-medium disabled:opacity-50"
           >
-            {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
+            {saving ? (
+              <Loader2 className="h-4 w-4 animate-spin" />
+            ) : (
+              <Save className="h-4 w-4" />
+            )}
             {saving ? 'Saving...' : 'Save'}
           </button>
         </div>
@@ -219,26 +384,17 @@ function EditProductInner() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">
-          {/* Basic Info */}
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
             <h2 className="text-lg font-bold text-gray-900 mb-4">Basic Information</h2>
-            
+
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
               <input
                 type="text"
                 value={formData.name}
-                onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#EB5324] focus:border-transparent text-sm"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Title (Legacy)</label>
-              <input
-                type="text"
-                value={formData.title}
-                onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
+                onChange={(e) =>
+                  setFormData((prev) => ({ ...prev, name: e.target.value }))
+                }
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#EB5324] focus:border-transparent text-sm"
               />
             </div>
@@ -246,7 +402,11 @@ function EditProductInner() {
             <div>
               <div className="flex justify-between items-center mb-1">
                 <label className="block text-sm font-medium text-gray-700">Slug</label>
-                <button type="button" onClick={handleSlugGenerate} className="text-xs text-[#EB5324] hover:underline">
+                <button
+                  type="button"
+                  onClick={handleSlugGenerate}
+                  className="text-xs text-[#EB5324] hover:underline"
+                >
                   Generate from name
                 </button>
               </div>
@@ -254,17 +414,9 @@ function EditProductInner() {
                 type="text"
                 required
                 value={formData.slug}
-                onChange={(e) => setFormData(prev => ({ ...prev, slug: e.target.value }))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#EB5324] focus:border-transparent text-sm"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Short Description</label>
-              <textarea
-                rows={2}
-                value={formData.short_description}
-                onChange={(e) => setFormData(prev => ({ ...prev, short_description: e.target.value }))}
+                onChange={(e) =>
+                  setFormData((prev) => ({ ...prev, slug: e.target.value }))
+                }
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#EB5324] focus:border-transparent text-sm"
               />
             </div>
@@ -274,99 +426,208 @@ function EditProductInner() {
               <textarea
                 rows={5}
                 value={formData.description}
-                onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    description: e.target.value
+                  }))
+                }
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#EB5324] focus:border-transparent text-sm"
               />
             </div>
           </div>
 
-          {/* Media */}
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-6">
-            <h2 className="text-lg font-bold text-gray-900 mb-4">Media</h2>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Featured Image URL</label>
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  value={formData.featured_image}
-                  onChange={(e) => setFormData(prev => ({ ...prev, featured_image: e.target.value }))}
-                  placeholder="https://..."
-                  className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#EB5324] focus:border-transparent text-sm"
-                />
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <h2 className="text-lg font-bold text-gray-900">Media</h2>
+                <p className="text-sm text-gray-500 mt-1">
+                  Drag images here or browse to upload them to the Media Library and
+                  attach them to this product automatically.
+                </p>
               </div>
-              {formData.featured_image && (
-                <div className="mt-3 aspect-video max-w-xs relative rounded-lg overflow-hidden border border-gray-200 bg-gray-50">
-                  <img src={formData.featured_image} alt="Preview" className="w-full h-full object-contain" />
-                </div>
-              )}
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Main Image URL (Legacy)</label>
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  value={formData.main_image}
-                  onChange={(e) => setFormData(prev => ({ ...prev, main_image: e.target.value }))}
-                  placeholder="https://..."
-                  className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#EB5324] focus:border-transparent text-sm"
-                />
-              </div>
-              {formData.main_image && (
-                <div className="mt-3 aspect-video max-w-xs relative rounded-lg overflow-hidden border border-gray-200 bg-gray-50">
-                  <img src={formData.main_image} alt="Preview" className="w-full h-full object-contain" />
-                </div>
-              )}
-            </div>
+            <div
+              onDragOver={(e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                setIsDragging(true)
+              }}
+              onDragLeave={(e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                setIsDragging(false)
+              }}
+              onDrop={(e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                setIsDragging(false)
+                if (e.dataTransfer.files?.length) {
+                  void handleFilesUpload(e.dataTransfer.files)
+                }
+              }}
+              className={`rounded-xl border-2 border-dashed p-8 transition-colors ${
+                isDragging
+                  ? 'border-[#EB5324] bg-[#EB5324]/5'
+                  : 'border-gray-300 bg-gray-50/60'
+              }`}
+            >
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                multiple
+                className="hidden"
+                onChange={(e) => {
+                  if (e.target.files?.length) {
+                    void handleFilesUpload(e.target.files)
+                    e.target.value = ''
+                  }
+                }}
+              />
 
-            <div>
-              <div className="flex justify-between items-center mb-2">
-                <label className="block text-sm font-medium text-gray-700">Gallery</label>
-                <button type="button" onClick={addGalleryImage} className="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded hover:bg-gray-200">
-                  Add Image URL
+              <div className="flex flex-col items-center text-center gap-4">
+                <div className="h-14 w-14 rounded-full bg-white border border-gray-200 flex items-center justify-center">
+                  <Upload className="h-6 w-6 text-[#EB5324]" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-gray-900">
+                    Drag & drop images here
+                  </p>
+                  <p className="text-xs text-gray-500 mt-1">
+                    Supports multiple JPG, PNG, WEBP, and SVG files up to 20MB.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => fileInputRef.current?.click()}
+                  className="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-md bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
+                >
+                  <Upload className="h-4 w-4" />
+                  Browse Files
                 </button>
               </div>
-              
-              {formData.gallery.length > 0 ? (
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                  {formData.gallery.map((url, i) => (
-                    <div key={i} className="aspect-square relative rounded-lg overflow-hidden border border-gray-200 bg-gray-50 group">
-                      <img src={url} alt={`Gallery ${i}`} className="w-full h-full object-cover" />
+            </div>
+
+            {uploadError && (
+              <div className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                {uploadError}
+              </div>
+            )}
+
+            {activeUploads.length > 0 && (
+              <div className="space-y-3">
+                {activeUploads.map((upload) => (
+                  <div
+                    key={upload.name}
+                    className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3"
+                  >
+                    <div className="flex items-center justify-between gap-4 text-sm">
+                      <span className="font-medium text-gray-700 truncate">
+                        {upload.name}
+                      </span>
+                      <span className="text-gray-500">
+                        {Math.round(upload.progress)}%
+                      </span>
+                    </div>
+                    <div className="mt-2 h-2 overflow-hidden rounded-full bg-gray-200">
+                      <div
+                        className="h-full bg-[#EB5324] transition-all duration-200"
+                        style={{ width: `${upload.progress}%` }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {attachedImages.length > 0 ? (
+              <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+                {attachedImages.map((imageUrl) => (
+                  <div
+                    key={imageUrl}
+                    className="rounded-xl overflow-hidden border border-gray-200 bg-white"
+                  >
+                    <div className="aspect-square bg-gray-50">
+                      <img
+                        src={imageUrl}
+                        alt="Product media"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                    <div className="p-3 space-y-3">
+                      <div className="flex flex-wrap gap-2">
+                        {formData.featured_image === imageUrl && (
+                          <span className="inline-flex rounded-full bg-[#EB5324]/10 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-[#EB5324]">
+                            Featured
+                          </span>
+                        )}
+                        {formData.main_image === imageUrl && (
+                          <span className="inline-flex rounded-full bg-gray-100 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-gray-700">
+                            Card
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-2">
+                        <button
+                          type="button"
+                          onClick={() => handleSetFeaturedImage(imageUrl)}
+                          className="px-2 py-2 rounded-md border border-gray-300 text-xs font-medium text-gray-700 hover:bg-gray-50"
+                        >
+                          Set Featured
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleSetMainImage(imageUrl)}
+                          className="px-2 py-2 rounded-md border border-gray-300 text-xs font-medium text-gray-700 hover:bg-gray-50"
+                        >
+                          Set Card
+                        </button>
+                      </div>
+
                       <button
                         type="button"
-                        onClick={() => removeGalleryImage(i)}
-                        className="absolute top-1 right-1 p-1 bg-red-600 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                        onClick={() => handleRemoveImage(imageUrl)}
+                        className="w-full inline-flex items-center justify-center gap-2 rounded-md border border-red-200 bg-red-50 px-3 py-2 text-xs font-medium text-red-700 hover:bg-red-100"
                       >
-                        <X className="h-3 w-3" />
+                        <X className="h-3.5 w-3.5" />
+                        Remove
                       </button>
                     </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="text-sm text-gray-500 italic p-4 bg-gray-50 rounded-md text-center border border-dashed border-gray-300">
-                  No gallery images added yet.
-                </div>
-              )}
-            </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="rounded-lg border border-dashed border-gray-300 bg-gray-50 px-6 py-10 text-center">
+                <ImageIcon className="mx-auto h-8 w-8 text-gray-400" />
+                <p className="mt-3 text-sm text-gray-500">
+                  No images attached yet.
+                </p>
+              </div>
+            )}
           </div>
         </div>
 
         <div className="space-y-6">
-          {/* Organization */}
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
             <h2 className="text-lg font-bold text-gray-900 mb-4">Organization</h2>
-            
+
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
               <select
                 value={formData.category_id}
-                onChange={(e) => setFormData(prev => ({ ...prev, category_id: e.target.value }))}
+                onChange={(e) =>
+                  setFormData((prev) => ({ ...prev, category_id: e.target.value }))
+                }
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#EB5324] focus:border-transparent text-sm bg-white"
               >
                 <option value="">Select Category...</option>
-                {categories.map(c => (
-                  <option key={c.id} value={c.id}>{c.name}</option>
+                {categories.map((category) => (
+                  <option key={category.id} value={category.id}>
+                    {category.name}
+                  </option>
                 ))}
               </select>
             </div>
@@ -376,57 +637,18 @@ function EditProductInner() {
                 <input
                   type="checkbox"
                   checked={formData.featured}
-                  onChange={(e) => setFormData(prev => ({ ...prev, featured: e.target.checked }))}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      featured: e.target.checked
+                    }))
+                  }
                   className="rounded border-gray-300 text-[#EB5324] focus:ring-[#EB5324] h-4 w-4"
                 />
-                <span className="text-sm font-medium text-gray-700">Featured Product</span>
+                <span className="text-sm font-medium text-gray-700">
+                  Featured Product
+                </span>
               </label>
-            </div>
-          </div>
-
-          {/* SEO */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
-            <h2 className="text-lg font-bold text-gray-900 mb-4">Search Engine Optimization</h2>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">SEO Title</label>
-              <input
-                type="text"
-                value={formData.seo_title}
-                onChange={(e) => setFormData(prev => ({ ...prev, seo_title: e.target.value }))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#EB5324] focus:border-transparent text-sm"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">SEO Description</label>
-              <textarea
-                rows={3}
-                value={formData.seo_description}
-                onChange={(e) => setFormData(prev => ({ ...prev, seo_description: e.target.value }))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#EB5324] focus:border-transparent text-sm"
-              />
-            </div>
-          </div>
-
-          {/* Specifications */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
-            <h2 className="text-lg font-bold text-gray-900 mb-4">Specifications (JSON)</h2>
-            
-            <div>
-              <textarea
-                rows={6}
-                value={JSON.stringify(formData.specifications, null, 2)}
-                onChange={(e) => {
-                  try {
-                    const parsed = JSON.parse(e.target.value || '{}')
-                    setFormData(prev => ({ ...prev, specifications: parsed }))
-                  } catch {
-                    // Ignore invalid JSON while typing
-                  }
-                }}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#EB5324] focus:border-transparent text-sm font-mono"
-              />
             </div>
           </div>
         </div>
@@ -438,7 +660,6 @@ function EditProductInner() {
 export default function EditProductPage() {
   const params = useParams()
   const idFromParams = params.id as string | undefined
-  
-  // Use the id as a key to force remounting when it changes
+
   return <EditProductInner key={idFromParams || 'new'} />
 }

@@ -110,7 +110,7 @@ export default function ProductsPage() {
   }
 
   const filteredProducts = products.filter(p => {
-    const matchesSearch = (p.title || p.name || '')?.toLowerCase()?.includes(search?.toLowerCase() || '') || 
+    const matchesSearch = (p.name || '')?.toLowerCase()?.includes(search?.toLowerCase() || '') || 
                           p.slug?.toLowerCase().includes(search?.toLowerCase() || '')
     const matchesStatus = statusFilter === 'all' || p.status === statusFilter
     return matchesSearch && matchesStatus
@@ -240,7 +240,7 @@ export default function ProductsPage() {
                           )}
                         </div>
                         <div className="ml-4">
-                          <div className="text-sm font-medium text-gray-900">{product.title || product.name}</div>
+                          <div className="text-sm font-medium text-gray-900">{product.name}</div>
                           <div className="text-sm text-gray-500">/{product.slug}</div>
                         </div>
                       </div>

@@ -1,7 +1,11 @@
+'use client'
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useWebsiteContent } from '@/lib/hooks';
 
 export default function HBClientage() {
+  const { getContent } = useWebsiteContent();
   const clients = [
     { id: 1, name: "Asian Development Bank", industry: "Banking & Finance", logoText: "ADB", logo: "/logos/adb.png" },
     { id: 2, name: "Askari Bank", industry: "Banking & Finance", logoText: "ASKARI" },
@@ -114,19 +118,18 @@ export default function HBClientage() {
       {/* Hero Section */}
       <section className="pt-24 pb-16 max-w-[1200px] mx-auto px-4 sm:px-6 text-center md:text-left border-b border-gray-100">
         <h1 className="text-4xl md:text-5xl font-serif text-[#111111] mb-4 tracking-tight">
-          HB Clientage
+          {getContent('clientage.hero.title', 'HB Clientage')}
         </h1>
         <p className="text-gray-500 text-sm font-medium max-w-2xl">
-          Our valued clients and trusted partnerships built through excellence and commitment.
+          {getContent('clientage.hero.description', 'Our valued clients and trusted partnerships built through excellence and commitment.')}
         </p>
       </section>
 
       {/* Featured Clients Section */}
       <section className="py-20 max-w-[1200px] mx-auto px-4 sm:px-6">
         <div className="mb-12">
-          <h2 className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-3">Featured Partnerships</h2>
-          <h3 className="text-3xl font-serif text-gray-900 mb-2">Defining Corporate Legacy</h3>
-          <div className="w-12 h-0.5 bg-[#EB5324]"></div>
+          <h2 className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-3">{getContent('clientage.featured.subtitle', 'Featured Partnerships')}</h2>
+          <h3 className="text-3xl font-serif text-gray-900 mb-2">{getContent('clientage.featured.title', 'Defining Corporate Legacy')}</h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -151,7 +154,7 @@ export default function HBClientage() {
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
           <div className="mb-12 flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div>
-              <h2 className="text-3xl font-serif text-gray-900 mb-2">Our Esteemed Clients</h2>
+              <h2 className="text-3xl font-serif text-gray-900 mb-2">{getContent('clientage.clients.title', 'Our Esteemed Clients')}</h2>
               <div className="w-12 h-0.5 bg-[#EB5324]"></div>
             </div>
 
@@ -174,9 +177,9 @@ export default function HBClientage() {
 
       {/* CTA Section */}
       <section className="py-24 bg-white text-center">
-        <h2 className="text-2xl md:text-3xl font-serif text-gray-900 mb-6">Join Our Growing List of Partners</h2>
+        <h2 className="text-2xl md:text-3xl font-serif text-gray-900 mb-6">{getContent('clientage.cta.title', 'Join Our Growing List of Partners')}</h2>
         <p className="text-gray-500 text-sm max-w-xl mx-auto mb-10 leading-relaxed">
-          We bring decades of manufacturing expertise and project execution to every space we furnish. Let us build your corporate legacy together.
+          {getContent('clientage.cta.description', 'We bring decades of manufacturing expertise and project execution to every space we furnish. Let us build your corporate legacy together.')}
         </p>
         <Link href="/contact" className="bg-[#EB5324] text-white px-8 py-4 text-[11px] font-bold hover:bg-[#d4481f] transition-colors uppercase tracking-widest inline-flex items-center gap-3">
           Start a Conversation

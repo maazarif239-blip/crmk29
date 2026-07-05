@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { createClient } from '@supabase/supabase-js';
+import { getActivePromotions } from '@/lib/content-server';
+import Promotions from '@/components/Promotions';
 
 // Initialize Supabase client for fetching public settings
 const supabase = createClient(
@@ -67,6 +69,7 @@ export default async function RootLayout({
   let jsonLd: string | null = null;
   let primaryColor = "";
   let secondaryColor = "";
+  const activePromotions = await getActivePromotions();
 
   try {
     if ((process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://dummy.supabase.co') !== 'https://dummy.supabase.co') {
@@ -97,6 +100,7 @@ export default async function RootLayout({
         <Suspense fallback={null}>
           <ProgressBar />
         </Suspense>
+        <Promotions promotions={activePromotions} />
         <Navbar />
         <main className="flex-1 w-full min-w-0 overflow-x-clip">{children}</main>
         <ProductImageLightbox />

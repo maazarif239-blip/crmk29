@@ -1,7 +1,11 @@
+'use client'
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useWebsiteContent } from '@/lib/hooks';
 
 export default function ManagementEmployees() {
+  const { getContent } = useWebsiteContent();
   const allEmployees = [
     {
       id: 1,
@@ -120,14 +124,14 @@ export default function ManagementEmployees() {
         
         <div className="relative z-10 max-w-[800px] mx-auto px-4 flex flex-col items-center">
           <span className="text-[#EB5324] text-[10px] font-bold uppercase tracking-[0.2em] mb-4 block">
-            Our Organization
+            {getContent('management-employees.hero.subtitle', 'Our Organization')}
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6 tracking-tight">
-            Management & Employees
+            {getContent('management-employees.hero.title', 'Management & Employees')}
           </h1>
           <div className="w-16 h-[2px] bg-[#EB5324] mb-6 opacity-80"></div>
           <p className="text-gray-400 text-sm md:text-[15px] font-medium leading-relaxed max-w-2xl">
-            Meet the dedicated leadership team and professionals who drive our organization forward with uncompromising standards in furniture manufacturing and architectural design.
+            {getContent('management-employees.hero.description', 'Meet the dedicated leadership team and professionals who drive our organization forward with uncompromising standards in furniture manufacturing and architectural design.')}
           </p>
         </div>
       </section>

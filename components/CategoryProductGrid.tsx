@@ -2,14 +2,13 @@ import Link from 'next/link';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
 import ProductPageHeader from '@/components/ProductPageHeader';
 import { createClient } from '@/lib/supabase-server';
+import ImageWithFallback from '@/components/ImageWithFallback';
 
 interface CategoryProductGridProps {
   categorySlug: string;
-  pageTitle: string;
-  pageDescription: string;
+  pageTitle?: string;
+  pageDescription?: string;
 }
-
-import ImageWithFallback from '@/components/ImageWithFallback';
 
 export default async function CategoryProductGrid({
   categorySlug,
@@ -17,6 +16,25 @@ export default async function CategoryProductGrid({
   pageDescription,
 }: CategoryProductGridProps) {
   const supabase = await createClient();
+  const pageContentKeys = [
+    `category.${categorySlug}.title`,
+    `category.${categorySlug}.description`,
+  ];
+
+  const { data: headerContent } = await supabase
+    .from('website_content')
+    .select('content_key, content_value')
+    .in('content_key', pageContentKeys);
+
+  const headerMap: Record<string, string> = {};
+  headerContent?.forEach(item => {
+    if (item?.content_key) {
+      headerMap[item.content_key] = item.content_value
+    }
+  });
+
+  const resolvedTitle = headerMap[`category.${categorySlug}.title`] ?? pageTitle ?? categorySlug.replace(/-/g, ' ');
+  const resolvedDescription = headerMap[`category.${categorySlug}.description`] ?? pageDescription ?? '';
 
   let products = [];
   let error = null;
@@ -56,7 +74,7 @@ export default async function CategoryProductGrid({
   if (error) {
     return (
       <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
-        <ProductPageHeader title={pageTitle} description={pageDescription} />
+        <ProductPageHeader title={resolvedTitle} description={resolvedDescription} />
         <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-20 text-center text-gray-500">
           {error}
         </section>
@@ -66,7 +84,7 @@ export default async function CategoryProductGrid({
 
   return (
     <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
-      <ProductPageHeader title={pageTitle} description={pageDescription} />
+      <ProductPageHeader title={resolvedTitle} description={resolvedDescription} />
       {/* Main Content Area */}
       <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-20 flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16">
         

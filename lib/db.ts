@@ -345,28 +345,29 @@ export const websiteContent = {
   getAll: async (): Promise<WebsiteContent[]> => {
     const supabase = createClient()
     const { data, error } = await supabase
-      .from('website_content')
+      .from('site_content')
       .select('*')
 
     if (error) throw error
     return data
   },
 
-  getBySection: async (section: string): Promise<WebsiteContent[]> => {
+  getByKey: async (key: string): Promise<WebsiteContent | null> => {
     const supabase = createClient()
     const { data, error } = await supabase
-      .from('website_content')
+      .from('site_content')
       .select('*')
-      .eq('section', section)
+      .eq('key', key)
+      .single()
 
-    if (error) throw error
+    if (error) return null
     return data
   },
 
   getById: async (id: string): Promise<WebsiteContent | null> => {
     const supabase = createClient()
     const { data, error } = await supabase
-      .from('website_content')
+      .from('site_content')
       .select('*')
       .eq('id', id)
       .single()
@@ -378,7 +379,7 @@ export const websiteContent = {
   create: async (content: Omit<WebsiteContent, 'id' | 'updated_at'>): Promise<WebsiteContent> => {
     const supabase = createClient()
     const { data, error } = await supabase
-      .from('website_content')
+      .from('site_content')
       .insert([content])
       .select()
       .single()
@@ -390,7 +391,7 @@ export const websiteContent = {
   update: async (id: string, updates: Partial<WebsiteContent>): Promise<WebsiteContent> => {
     const supabase = createClient()
     const { data, error } = await supabase
-      .from('website_content')
+      .from('site_content')
       .update(updates)
       .eq('id', id)
       .select()
@@ -403,7 +404,7 @@ export const websiteContent = {
   delete: async (id: string): Promise<void> => {
     const supabase = createClient()
     const { error } = await supabase
-      .from('website_content')
+      .from('site_content')
       .delete()
       .eq('id', id)
 
@@ -430,15 +431,24 @@ export const promotions = {
   getActive: async (): Promise<Promotion[]> => {
     const supabase = createClient()
     const now = new Date().toISOString()
-    const { data, error } = await supabase
+    let query = supabase
       .from('promotions')
       .select('*')
-      .eq('active', true)
-      .or(`start_date.is.null,start_date.lte.${now}`)
-      .or(`end_date.is.null,end_date.gte.${now}`)
+      .or('enabled.eq.true,active.eq.true')
+      .order('created_at', { ascending: false })
 
+    const { data: allData, error } = await query
     if (error) throw error
-    return data
+
+    // Filter scheduled promotions client-side
+    return (allData || []).filter(promo => {
+      if (promo.schedule_enabled) {
+        const startValid = !promo.start_date || new Date(promo.start_date) <= new Date()
+        const endValid = !promo.end_date || new Date(promo.end_date) >= new Date()
+        return startValid && endValid
+      }
+      return true
+    })
   },
 
   getById: async (id: string): Promise<Promotion | null> => {

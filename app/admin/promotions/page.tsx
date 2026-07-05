@@ -19,10 +19,8 @@ export default function PromotionsManagerPage() {
     content: '',
     cta_text: '',
     cta_link: '',
-    image_url: '',
     enabled: false,
     schedule_enabled: false,
-    display_order: 0,
   })
   const supabase = createClient()
 
@@ -32,7 +30,7 @@ export default function PromotionsManagerPage() {
       const { data, error } = await supabase
         .from('promotions')
         .select('*')
-        .order('display_order', { ascending: true })
+        .order('created_at', { ascending: false })
       
       if (error) throw error
       setPromotions(data || [])
@@ -63,10 +61,8 @@ export default function PromotionsManagerPage() {
       content: '',
       cta_text: '',
       cta_link: '',
-      image_url: '',
       enabled: false,
       schedule_enabled: false,
-      display_order: promotions.length,
     })
     setShowModal(true)
   }
@@ -91,20 +87,23 @@ export default function PromotionsManagerPage() {
   const handleSave = async () => {
     setSaving(editingId || 'new')
     try {
+      // Keep active and enabled in sync
+      const dataToSave = { ...formData, active: formData.enabled }
+      
       if (editingId) {
         const { error } = await supabase
           .from('promotions')
-          .update(formData)
+          .update(dataToSave)
           .eq('id', editingId)
         
         if (error) throw error
         setPromotions(promotions.map(p => 
-          p.id === editingId ? { ...p, ...formData } as Promotion : p
+          p.id === editingId ? { ...p, ...dataToSave } as Promotion : p
         ))
       } else {
         const { data, error } = await supabase
           .from('promotions')
-          .insert([formData])
+          .insert([dataToSave])
           .select()
         
         if (error) throw error
@@ -123,12 +122,12 @@ export default function PromotionsManagerPage() {
     try {
       const { error } = await supabase
         .from('promotions')
-        .update({ enabled })
+        .update({ enabled, active: enabled })
         .eq('id', id)
       
       if (error) throw error
       setPromotions(promotions.map(p => 
-        p.id === id ? { ...p, enabled } : p
+        p.id === id ? { ...p, enabled, active: enabled } : p
       ))
     } catch (error) {
       console.error('Error updating promotion:', error)
@@ -282,15 +281,6 @@ export default function PromotionsManagerPage() {
                   />
                 </div>
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Image URL</label>
-                <input
-                  type="text"
-                  value={formData.image_url || ''}
-                  onChange={(e) => setFormData({ ...formData, image_url: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#EB5324] focus:border-transparent text-sm"
-                />
-              </div>
               <div className="flex items-center gap-4">
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input
@@ -333,15 +323,6 @@ export default function PromotionsManagerPage() {
                   </div>
                 </div>
               )}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Display Order</label>
-                <input
-                  type="number"
-                  value={formData.display_order}
-                  onChange={(e) => setFormData({ ...formData, display_order: parseInt(e.target.value) || 0 })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#EB5324] focus:border-transparent text-sm"
-                />
-              </div>
             </div>
             <div className="p-6 border-t border-gray-200 flex justify-end gap-3">
               <button
