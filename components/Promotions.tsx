@@ -66,10 +66,10 @@ export default function Promotions({ promotions }: PromotionsProps) {
               className="relative bg-gray-100"
             >
               <div className="max-w-[1800px] mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
-                {promo.image_url && (
+                {promo.banner_image && (
                   <div className="w-full md:w-1/2">
                     <img
-                      src={promo.image_url}
+                      src={promo.banner_image}
                       alt={promo.title}
                       className="w-full h-auto rounded-xl object-cover"
                     />
@@ -115,10 +115,10 @@ export default function Promotions({ promotions }: PromotionsProps) {
             >
               <X className="w-5 h-5" />
             </button>
-            {popupPromotions[0].image_url && (
+            {popupPromotions[0].banner_image && (
               <div className="mb-4">
                 <img
-                  src={popupPromotions[0].image_url}
+                  src={popupPromotions[0].banner_image}
                   alt={popupPromotions[0].title}
                   className="w-full h-auto rounded-xl object-cover"
                 />
