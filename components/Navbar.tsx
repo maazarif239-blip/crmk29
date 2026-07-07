@@ -30,9 +30,7 @@ const workstationDropdownItems: NavItem[] = [
   { name: "Cross-Leg Walnut Workstation Series", href: "/products/cross-leg-walnut-workstation-series" },
   { name: "Urban Edge Workstation Series", href: "/products/urban-edge-workstation-series" },
   { name: "Loop Frame Workstation Series", href: "/products/loop-frame-workstation-series" },
-  { name: "Heritage Executive Workstation Series", href: "/products/heritage-executive-workstation-series" },
   { name: "Skyline Walnut Workstation Series", href: "/products/skyline-walnut-workstation-series" },
-  { name: "Brickline Industrial Workstation Series", href: "/products/brickline-industrial-workstation-series" },
 ];
 
 const officeTablesDropdownItems: NavItem[] = [

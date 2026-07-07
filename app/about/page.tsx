@@ -6,7 +6,7 @@ export default function AboutUs() {
       
 
       {/* Hero Section */}
-      <section className="relative h-[280px] sm:h-[380px] md:h-[450px] md:h-[550px] flex items-center justify-center text-center bg-[#111111] overflow-hidden">
+      <section className="relative h-[280px] sm:h-[380px] md:h-[450px] lg:h-[550px] flex items-center justify-center text-center bg-[#111111] overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000" 
@@ -33,7 +33,7 @@ export default function AboutUs() {
             <img 
               src="/90.png"
               alt="CEO Portrait"
-              className="w-full h-[500px] object-cover grayscale opacity-90"
+              className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover grayscale opacity-90"
             />
           </div>
           <div className="w-full md:w-1/2">
