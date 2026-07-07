@@ -61,5 +61,3 @@ fix_images.js
 fix_jsx.mjs
 fix_missing_routes.mjs
 fix_ts.mjs
-public/Screenshot*.png
-public/screenshot*.png

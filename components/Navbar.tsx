@@ -15,6 +15,7 @@ type NavItem = {
 const seatingDropdownItems: NavItem[] = [
   { name: "Study Chairs", href: "/study-chairs" },
   { name: "Office Chairs", href: "/office-chairs" },
+  { name: "Visitors Chairs", href: "/visitor-chairs" },
   { name: "Sofas and Lounge Setting", href: "/sofas-lounge-seating" },
   { name: "Manager Chair Collection", href: "/products/manager-chair-collection" },
 ];
