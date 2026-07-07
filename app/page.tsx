@@ -94,7 +94,7 @@ export default function Home() {
             </h2>
 
             <p className="text-gray-500 text-[13px] leading-relaxed mt-8 mb-6">
-              Founded by Mr. Tahir Hassan Qureshi, HB Furniture has stood as a paragon of industrial excellence since 1964. What began as a visionary pursuit of quality has evolved into a comprehensive institution for workspace creation.
+              Founded by Mr. Tahir Hassan Gardezi, HB Furniture has stood as a paragon of industrial excellence since 1964. What began as a visionary pursuit of quality has evolved into a comprehensive institution for workspace creation.
             </p>
             <p className="text-gray-500 text-[13px] leading-relaxed mb-10">
               Our approach blends heritage manufacturing principles with cutting-edge architectural design. We don't just supply furniture; we engineer environments that foster productivity, well-being, and corporate prestige.

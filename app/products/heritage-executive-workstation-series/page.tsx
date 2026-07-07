@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import Link from 'next/link';
+"use client";
+
 import ContactForPricingLink from '@/components/ContactForPricingLink';
 import ProductPageHeader from '@/components/ProductPageHeader';
 
@@ -33,11 +33,16 @@ export default function HeritageExecutiveWorkstationSeries() {
             ].map((product, index) => (
               <div key={index} className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">
                 <div className="aspect-square bg-[#F5F5F5] p-4 sm:p-6 md:p-8 flex items-center justify-center relative overflow-hidden">
-                  <Image 
-                    src={product.src} 
-                    alt={product.name} 
-                    fill
-                    className="object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500 p-8"
+                  <img
+                    src={product.src}
+                    alt={product.name}
+                    className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
+                    onError={(e) => {
+                      const t = e.currentTarget as HTMLImageElement;
+                      t.onerror = null;
+                      t.src = '/hb-logo.png.png';
+                      t.className = 'w-24 h-24 object-contain opacity-20';
+                    }}
                   />
                 </div>
                 <div className="p-6 flex-1 flex flex-col">

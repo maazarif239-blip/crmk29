@@ -19,7 +19,7 @@ export default function ReceptionCounters() {
                 name: 'Walnut L-Shape Reception Counter', 
                 desc: 'Wooden L-shape reception counter with raised top panel, spacious desk area, and modern elegant finish.',
                 badge: null,
-                image: '48c3f57d-f393-48fc-96d1-fbcde25cdb07.jpg',
+                image: '/48c3f57d-f393-48fc-96d1-fbcde25cdb07.jpg',
                 isPlaceholder: false
               },
               { 

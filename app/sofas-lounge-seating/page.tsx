@@ -69,12 +69,6 @@ export default function SofasLoungeSeating() {
                 image: '/270-10-.png',
                 desc: 'Simple wooden rectangular coffee table with tapered legs, sturdy build aur minimal modern design.',
               },
-              {
-                name: 'Sage Green Loveseat Sofa',
-                image: '/270-11-.png',
-                desc: 'Sage green fabric loveseat with curved armrests, wooden legs aur soft cushioned comfortable seating.',
-              },
-
             ].map((product, i) => (
               <div key={i} className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">
                 <div className="aspect-[4/3] bg-[#F5F5F5] relative overflow-hidden flex items-center justify-center text-gray-300">
