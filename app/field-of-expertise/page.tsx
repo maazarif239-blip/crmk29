@@ -200,9 +200,6 @@ export default function FieldOfExpertise() {
           <Link href="/contact" className="bg-[#EB5324] text-white px-8 py-4 text-[11px] font-bold hover:bg-[#d4481f] transition-colors uppercase tracking-widest inline-flex items-center justify-center min-w-[200px]">
             Contact Us
           </Link>
-          <Link href="/projects" className="bg-transparent border border-white/30 text-white px-8 py-4 text-[11px] font-bold hover:bg-white hover:text-gray-900 transition-colors uppercase tracking-widest inline-flex items-center justify-center min-w-[200px]">
-            View Projects
-          </Link>
         </div>
       </section>
     </div>

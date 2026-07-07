@@ -15,15 +15,8 @@ type NavItem = {
 const seatingDropdownItems: NavItem[] = [
   { name: "Study Chairs", href: "/study-chairs" },
   { name: "Office Chairs", href: "/office-chairs" },
-  { name: "Visitors Chairs", href: "/visitor-chairs" },
   { name: "Sofas and Lounge Setting", href: "/sofas-lounge-seating" },
-  { name: "Guest Chairs", href: "/guest-chairs" },
   { name: "Manager Chair Collection", href: "/products/manager-chair-collection" },
-];
-
-const storageDropdownItems: NavItem[] = [
-  { name: "Almirah", href: "/products/almirahs" },
-  { name: "Storage Cabinets", href: "/products/storage-cabinets" },
 ];
 
 
@@ -50,11 +43,10 @@ const officeTablesDropdownItems: NavItem[] = [
 ];
 const navItems: NavItem[] = [
   { name: "Home", href: "/" },
-  { name: "Projects", href: "/projects" },
   { name: "Office Sets", href: "/products/office-sets" },
   { name: "Office Tables", dropdown: officeTablesDropdownItems },
   { name: "Seating", dropdown: seatingDropdownItems },
-  { name: "Storage", dropdown: storageDropdownItems },
+  { name: "Storage", href: "/storage" },
   { name: "Technology", href: "/technology-suite" },
   { name: "Workstation", dropdown: workstationDropdownItems },
   { name: "Breakout & Lounge Pods", href: "/smart-spaces" },

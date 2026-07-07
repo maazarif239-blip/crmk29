@@ -253,12 +253,6 @@ export default function Home() {
                 →
               </span>
             </Link>
-            <Link
-              href="/projects"
-              className="inline-flex items-center justify-center gap-3 border border-white text-white hover:bg-white/10 px-6 sm:px-8 py-3 text-[11px] font-bold uppercase tracking-wider transition-all duration-300 min-h-[44px]"
-            >
-              View Projects
-            </Link>
           </div>
         </div>
       </section>
