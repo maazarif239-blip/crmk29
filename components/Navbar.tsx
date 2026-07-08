@@ -88,16 +88,18 @@ export default function Navbar() {
  };
  }, [isMobileMenuOpen]);
  
- // Close dropdown on click outside
+ // Close desktop dropdown on click outside (desktop only — mobile handles its own close)
  useEffect(() => {
  const handleClickOutside = (event: MouseEvent) => {
+ // Only run on desktop; on mobile the menu manages its own close via the backdrop
+ if (isMobileMenuOpen) return;
  if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
  setActiveDropdown(null);
  }
  };
  document.addEventListener("mousedown", handleClickOutside);
  return () => document.removeEventListener("mousedown", handleClickOutside);
- }, []);
+ }, [isMobileMenuOpen]);
 
  const isActive = useCallback(
  (href: string) => {
@@ -319,7 +321,7 @@ export default function Navbar() {
  onClick={() => setIsMobileMenuOpen(false)}
  aria-hidden="true"
  />
- <div className="absolute inset-x-0 top-0 bottom-0 bg-white pt-[calc(4.5rem+env(safe-area-inset-top))] px-4 sm:px-6 flex flex-col overflow-y-auto overscroll-contain pb-[max(2rem,env(safe-area-inset-bottom))] animate-in slide-in-from-top duration-300">
+ <div className="z-10 absolute inset-x-0 top-0 bottom-0 bg-white pt-[calc(4.5rem+env(safe-area-inset-top))] px-4 sm:px-6 flex flex-col overflow-y-auto overscroll-contain pb-[max(2rem,env(safe-area-inset-bottom))] animate-in slide-in-from-top duration-300">
  <nav className="flex flex-col gap-3 flex-1">
  {navItems.map((item) => {
  if (item.dropdown) {
@@ -373,8 +375,11 @@ export default function Navbar() {
              key={subItem.href!}
              href={subItem.href!}
              onClick={() => {
-             setIsMobileMenuOpen(false);
-             setActiveDropdown(null);
+             // Defer closing so the navigation click registers before the re-render
+             setTimeout(() => {
+               setIsMobileMenuOpen(false);
+               setActiveDropdown(null);
+             }, 0);
              }}
              className={`block px-5 py-4 rounded-lg text-[15px] leading-relaxed transition-colors duration-200 ${
              isActive(subItem.href!)
