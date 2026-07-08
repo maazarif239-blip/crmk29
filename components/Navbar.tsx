@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useCallback, useRef } from "react";
 
@@ -140,19 +139,13 @@ export default function Navbar() {
  {/* Logo - Left */}
  <Link
  href="/"
- className="flex items-center gap-2 transition-opacity hover:opacity-80 shrink-0 min-w-0"
+ className="flex items-center transition-opacity hover:opacity-80 shrink-0 min-w-0"
  >
- <Image
- src="/hb-logo.png.png"
- alt="HB Logo"
- 
- width={isScrolled ? 40 : 52}
- height={isScrolled ? 40 : 52}
- className="object-contain transition-all duration-300 w-9 h-9 sm:w-10 sm:h-10 md:w-auto md:h-auto"
- priority
- />
- <span className="text-lg font-normal tracking-[0.046875em] leading-none whitespace-nowrap text-[#222222]" style={{ fontFamily: 'var(--font-marcellus)', textRendering: 'optimizeLegibility', WebkitFontSmoothing: 'antialiased' }}>
- 
+ <span
+   className="text-[1.1rem] sm:text-[1.2rem] font-bold tracking-[0.046875em] leading-none whitespace-nowrap text-[#222222]"
+   style={{ fontFamily: 'var(--font-marcellus)', textRendering: 'optimizeLegibility', WebkitFontSmoothing: 'antialiased' }}
+ >
+   HB Furniture
  </span>
  </Link>
 

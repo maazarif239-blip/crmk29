@@ -32,10 +32,12 @@ export default function Home() {
       <div className="relative overflow-hidden">
         <section className="relative min-h-[min(600px,85vh)] sm:min-h-[600px] flex items-center justify-center flex-col text-center px-4 sm:px-6 py-16 sm:py-20 md:py-24">
           <img
-            src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2000&q=80"
-            alt="Workspace"
+            src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=2000&q=80"
+            alt="Modern office interior"
             className="absolute inset-0 w-full h-full object-cover"
           />
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-black/55" />
 
           <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center w-full">
           <h1 className="text-[clamp(1.75rem,5vw,3rem)] font-bold text-white mb-2 tracking-tight">
@@ -230,7 +232,7 @@ export default function Home() {
         {/* Background Image with dark overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2000&q=80"
+            src="https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=2000&q=80"
             alt="Office Background"
             className="w-full h-full object-cover"
           />
