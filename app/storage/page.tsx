@@ -1,6 +1,6 @@
 "use client";
 
-import ContactForPricingLink from '@/components/ContactForPricingLink';
+import ProductCard from '@/components/ProductCard';
 import ProductPageHeader from '@/components/ProductPageHeader';
 
 const products = [
@@ -170,32 +170,7 @@ export default function Storage() {
       <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 sm:gap-x-6 lg:gap-x-8 gap-y-8 sm:gap-y-10 lg:gap-y-12">
           {products.map((product, i) => (
-            <div key={i} className="group flex flex-col cursor-pointer h-full">
-              <div className="aspect-square bg-[#F5F5F5] p-4 sm:p-6 md:p-8 flex items-center justify-center relative overflow-hidden transition-colors group-hover:bg-[#f0f0f0]">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
-                  onError={(e) => {
-                    const target = e.currentTarget as HTMLImageElement;
-                    target.onerror = null;
-                    target.src = '/hb-logo.png.png';
-                    target.className = 'w-24 h-24 object-contain opacity-20';
-                  }}
-                />
-              </div>
-              <div className="pt-5 text-left bg-white flex flex-col flex-1 px-2">
-                <h3 className="text-[13px] font-bold text-gray-900 group-hover:text-[#E04E1B] transition-colors">
-                  {product.name}
-                </h3>
-                <p className="mt-3 text-gray-500 text-[11px] leading-relaxed flex-1">
-                  {product.description}
-                </p>
-                <div className="mt-6 mb-2">
-                  <ContactForPricingLink />
-                </div>
-              </div>
-            </div>
+            <ProductCard key={i} name={product.name} image={product.image} description={product.description} />
           ))}
         </div>
       </section>
