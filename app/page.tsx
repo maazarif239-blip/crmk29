@@ -32,7 +32,7 @@ export default function Home() {
       <div className="relative overflow-hidden">
         <section className="relative min-h-[min(600px,85vh)] sm:min-h-[600px] flex items-center justify-center flex-col text-center px-4 sm:px-6 py-16 sm:py-20 md:py-24">
           <img
-            src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=2000&q=80"
+            src="/hero-office-workspace.jpg"
             alt="Modern office interior"
             className="absolute inset-0 w-full h-full object-cover"
           />
@@ -192,15 +192,11 @@ export default function Home() {
             },
             {
               question: "Delivery & Shipping",
-              answer: "We provide delivery across Pakistan with professional handling. Shipping times vary by location, typically within 7-14 business days. Expedited delivery options are available upon request."
+              answer: "We provide delivery across Pakistan with professional handling. Our team ensures your furniture arrives safely and on schedule."
             },
             {
               question: "Order Issues",
               answer: "For any order-related issues, our customer support team is available 24/7. We'll help you track your order, resolve any problems, or make changes to your order as needed."
-            },
-            {
-              question: "Returns, Exchanges & Refunds",
-              answer: "We offer a 7-day return policy for defective products. Exchanges are easy within 14 days. Refunds are processed quickly after inspection and verification."
             },
             {
               question: "Installation & Support",
@@ -232,7 +228,7 @@ export default function Home() {
         {/* Background Image with dark overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=2000&q=80"
+            src="/hero-office-workspace.jpg"
             alt="Office Background"
             className="w-full h-full object-cover"
           />
