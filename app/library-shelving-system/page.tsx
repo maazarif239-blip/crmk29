@@ -23,7 +23,11 @@ export default function LibraryShelvingSystem() {
   const products = [
     {
       title: "Single Face Shelving",
+<<<<<<< HEAD
       image: "/155 (3).png",
+=======
+      image: "/155-3-.png",
+>>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
       description: "Designed for perimeter walls and single-sided library runs. Maximizes vertical wall space while offering direct shelf access.",
       materials: "Cold-rolled structural steel uprights, premium wood veneer side panels",
       sizes: "Height: 1800mm - 2200mm | Width: 900mm | Depth: 300mm",
@@ -31,7 +35,11 @@ export default function LibraryShelvingSystem() {
     },
     {
       title: "Double Face Shelving",
+<<<<<<< HEAD
       image: "/155 (4).png",
+=======
+      image: "/155-4-.png",
+>>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
       description: "Free-standing double-sided shelving units ideal for central library aisles. Provides access from both sides for high-density storage.",
       materials: "Heavy-duty steel composite construction, dual reinforced center brackets",
       sizes: "Height: 1500mm - 2200mm | Width: 900mm | Depth: 600mm",
@@ -47,7 +55,11 @@ export default function LibraryShelvingSystem() {
     },
     {
       title: "Reference Book Shelving",
+<<<<<<< HEAD
       image: "/155 (10).png",
+=======
+      image: "/155-10-.png",
+>>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
       description: "Reinforced deep shelving designed to accommodate heavy, oversized reference volumes, atlases, and dictionary sets.",
       materials: "Double-reinforced steel shelves, impact-resistant laminate edging",
       sizes: "Height: 1200mm - 1800mm | Width: 1000mm | Depth: 450mm",
@@ -63,7 +75,11 @@ export default function LibraryShelvingSystem() {
     },
     {
       title: "Periodical Display Units",
+<<<<<<< HEAD
       image: "/155 (7).png",
+=======
+      image: "/155-7-.png",
+>>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
       description: "Angled display shelves for current journal issues with integrated flip-up storage behind each shelf for back issues.",
       materials: "Powder-coated sheet steel, soft-close high-durability hinges",
       sizes: "Height: 1800mm - 2000mm | Width: 900mm | Depth: 400mm",
@@ -125,8 +141,13 @@ export default function LibraryShelvingSystem() {
     "https://images.unsplash.com/photo-1568667256549-094345857637?auto=format&fit=crop&q=80&w=1200",
     "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80&w=1200",
     "https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&q=80&w=1200",
+<<<<<<< HEAD
     "/155 (4).png",
     "/155 (3).png"
+=======
+    "/155-4-.png",
+    "/155-3-.png"
+>>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
   ];
 
   const openLightbox = (index: number) => {

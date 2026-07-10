@@ -3,7 +3,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+<<<<<<< HEAD
 import { FaFacebook, FaInstagram, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
+=======
+import { FaFacebook, FaInstagram, FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
+>>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
 import { FaArrowRight } from "react-icons/fa6";
 
 export default function GlobalFooter() {
@@ -56,6 +60,7 @@ export default function GlobalFooter() {
                   <FaInstagram className="w-5 h-5" />
                 </a>
                 <a
+<<<<<<< HEAD
                   href="#"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -64,6 +69,8 @@ export default function GlobalFooter() {
                   <FaLinkedin className="w-5 h-5" />
                 </a>
                 <a
+=======
+>>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
                   href="mailto:hbfurniture64@gmail.com"
                   className="w-11 h-11 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-[#EB5324] hover:text-white transition-all duration-300"
                 >
@@ -85,12 +92,15 @@ export default function GlobalFooter() {
                   </Link>
                 </li>
                 <li>
+<<<<<<< HEAD
                   <Link href="/projects" className="flex items-center gap-2 text-gray-400 hover:text-white transition-all duration-200 group">
                     <FaArrowRight className="w-3 h-3 text-[#EB5324] opacity-0 group-hover:opacity-100 transition-opacity" />
                     Projects
                   </Link>
                 </li>
                 <li>
+=======
+>>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
                   <Link href="/clientage" className="flex items-center gap-2 text-gray-400 hover:text-white transition-all duration-200 group">
                     <FaArrowRight className="w-3 h-3 text-[#EB5324] opacity-0 group-hover:opacity-100 transition-opacity" />
                     HB Clientage
@@ -130,7 +140,11 @@ export default function GlobalFooter() {
                   </Link>
                 </li>
                 <li>
+<<<<<<< HEAD
                   <Link href="/products/almirahs" className="flex items-center gap-2 text-gray-400 hover:text-white transition-all duration-200 group">
+=======
+                  <Link href="/storage" className="flex items-center gap-2 text-gray-400 hover:text-white transition-all duration-200 group">
+>>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
                     <FaArrowRight className="w-3 h-3 text-[#EB5324] opacity-0 group-hover:opacity-100 transition-opacity" />
                     Storage
                   </Link>

@@ -61,5 +61,8 @@ fix_images.js
 fix_jsx.mjs
 fix_missing_routes.mjs
 fix_ts.mjs
+<<<<<<< HEAD
 public/Screenshot*.png
 public/screenshot*.png
+=======
+>>>>>>> c04871bbcb01871c46d5abead229019b1605fe18

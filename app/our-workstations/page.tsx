@@ -29,22 +29,37 @@ export default function OurWorkstations() {
     <div className="bg-[#FAF9F7] text-gray-900 font-sans antialiased min-h-screen selection:bg-[#E5E0D8]">
       
       {/* SECTION 1: PREMIUM HERO */}
+<<<<<<< HEAD
       <section className="relative pt-[140px] pb-[80px] px-6 lg:px-12 flex flex-col items-center text-center">
+=======
+      <section className="relative pt-20 sm:pt-28 md:pt-36 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 lg:px-12 flex flex-col items-center text-center">
+>>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
         <div className="max-w-[800px] mx-auto">
           <span className="text-[#EB5324] text-[10px] font-bold uppercase tracking-[0.2em] block mb-6">
             Workspace Collections
           </span>
+<<<<<<< HEAD
           <h1 className="font-serif text-[42px] md:text-[56px] lg:text-[64px] leading-[1.1] text-gray-900 mb-8 tracking-tight">
             Our Workstations
           </h1>
           <p className="font-sans text-[16px] md:text-[18px] leading-[1.7] text-gray-500 max-w-[600px] mx-auto font-medium">
+=======
+          <h1 className="font-serif text-[clamp(2rem,6vw,4rem)] leading-[1.1] text-gray-900 mb-6 sm:mb-8 tracking-tight">
+            Our Workstations
+          </h1>
+          <p className="font-sans text-base md:text-lg leading-[1.7] text-gray-500 max-w-[600px] mx-auto font-medium">
+>>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
             Architectural workstation systems designed for modern offices, collaboration, flexibility, and productivity.
           </p>
         </div>
       </section>
 
       {/* SECTION 2: WORKSTATION GRID */}
+<<<<<<< HEAD
       <section className="max-w-[1400px] mx-auto px-6 lg:px-12 pb-[120px]">
+=======
+      <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 pb-16 sm:pb-20 md:pb-28 lg:pb-32">
+>>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {tabs.map((tab, index) => {
             const isFeatured = tab.featured;
@@ -94,7 +109,11 @@ export default function OurWorkstations() {
       </section>
 
       {/* SECTION 3: DESIGN PHILOSOPHY / VALUE SECTION */}
+<<<<<<< HEAD
       <section className="bg-white border-t border-gray-100 py-[120px] px-6 lg:px-12">
+=======
+      <section className="bg-white border-t border-gray-100 py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-12">
+>>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
         <div className="max-w-[1200px] mx-auto">
           <div className="flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16 md:gap-24 items-start">
             

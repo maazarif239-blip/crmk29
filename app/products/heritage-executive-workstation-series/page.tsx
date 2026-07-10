@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import Image from 'next/image';
 import Link from 'next/link';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
@@ -59,4 +60,10 @@ export default function HeritageExecutiveWorkstationSeries() {
 
     </div>
   );
+=======
+import { redirect } from 'next/navigation';
+
+export default function HeritageExecutiveWorkstationSeries() {
+  redirect('/our-workstations');
+>>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
 }

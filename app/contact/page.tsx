@@ -7,7 +7,11 @@ export default function ContactUs() {
       
 
       {/* Hero Section */}
+<<<<<<< HEAD
       <section className="relative h-[350px] md:h-[280px] sm:h-[380px] md:h-[450px] flex items-center justify-center text-center bg-[#111111] overflow-hidden">
+=======
+      <section className="relative h-[280px] sm:h-[350px] md:h-[420px] flex items-center justify-center text-center bg-[#111111] overflow-hidden">
+>>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000" 
@@ -28,8 +32,13 @@ export default function ContactUs() {
       </section>
 
       {/* Contact Details Section */}
+<<<<<<< HEAD
       <section className="max-w-[1200px] mx-auto px-4 sm:px-6 -mt-24 relative z-20 mb-24">
         <div className="bg-white shadow-2xl rounded-sm overflow-hidden p-10 md:p-16 text-center">
+=======
+      <section className="max-w-[1200px] mx-auto px-4 sm:px-6 -mt-8 sm:-mt-16 md:-mt-24 relative z-20 mb-12 sm:mb-16 md:mb-24">
+        <div className="bg-white shadow-2xl rounded-sm overflow-hidden p-5 sm:p-8 md:p-16 text-center">
+>>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
           <h2 className="text-3xl font-bold text-gray-900 mb-8 font-serif">Reach Out to Us</h2>
           <p className="text-gray-600 mb-12 max-w-lg mx-auto">
             Connect directly with our team for quick support, consultation, or project inquiries.
@@ -112,7 +121,12 @@ export default function ContactUs() {
           <iframe
             src="https://www.google.com/maps?q=HB%20Furniture%20Hassan%20Brother%20(PVT)%20LIMITED&output=embed"
             width="100%"
+<<<<<<< HEAD
             height="500"
+=======
+            height="400"
+            className="w-full h-[280px] sm:h-[380px] md:h-[500px]"
+>>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
             style={{ border: 0 }}
             allowFullScreen
             loading="lazy"

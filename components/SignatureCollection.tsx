@@ -15,10 +15,17 @@ const signatureProducts = [
   { name: 'White Frame Mesh Manager Chair Black & Grey', image: '/245-2-.png', href: '/products/manager-chair-collection' },
   { name: 'Classic Wood Side Table', image: '/Screenshot 2026-06-23 235247.png', href: '/products/center-and-side-tables' },
   { name: 'Carved Console Side Table', image: '/Screenshot 2026-06-23 235252.png', href: '/products/center-and-side-tables' },
+<<<<<<< HEAD
   { name: 'Executive Storage Almirah', image: '/f8f1903f-3a91-4b6f-9db7-6efdb338568b.png', href: '/products/almirahs' },
   { name: 'Premium Steel Almirah', image: '/1f6a1a87-8fc6-434f-bed8-10d6459de6e1.png', href: '/products/almirahs' },
   { name: 'L-Shape Executive Workstation', image: '/Screenshot 2026-06-23 225449.png', href: '/products/heritage-executive-workstation-series' },
   { name: 'Mahogany Display & Storage Hutch', image: '/Screenshot 2026-06-23 233940.png', href: '/products/storage-cabinets' },
+=======
+  { name: 'Executive Storage Almirah', image: '/f8f1903f-3a91-4b6f-9db7-6efdb338568b.png', href: '/storage' },
+  { name: 'Premium Almirah', image: '/1f6a1a87-8fc6-434f-bed8-10d6459de6e1.png', href: '/storage' },
+  { name: 'L-Shape Executive Workstation', image: '/Screenshot 2026-06-23 225622.png', href: '/products/gravity-workstation-series' },
+  { name: 'Mahogany Display & Storage Hutch', image: '/Screenshot 2026-06-23 233703.png', href: '/storage' },
+>>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
   { name: 'Classic Chesterfield Leather Sofa', image: '/270-1-.png', href: '/sofas-lounge-seating' },
 ];
 

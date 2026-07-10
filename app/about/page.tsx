@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import Image from 'next/image';
+=======
+>>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
 import Link from 'next/link';
 
 export default function AboutUs() {
@@ -7,7 +10,11 @@ export default function AboutUs() {
       
 
       {/* Hero Section */}
+<<<<<<< HEAD
       <section className="relative h-[280px] sm:h-[380px] md:h-[450px] md:h-[550px] flex items-center justify-center text-center bg-[#111111] overflow-hidden">
+=======
+      <section className="relative h-[280px] sm:h-[380px] md:h-[450px] lg:h-[550px] flex items-center justify-center text-center bg-[#111111] overflow-hidden">
+>>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000" 
@@ -34,7 +41,11 @@ export default function AboutUs() {
             <img 
               src="/90.png"
               alt="CEO Portrait"
+<<<<<<< HEAD
               className="w-full h-[500px] object-cover grayscale opacity-90"
+=======
+              className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover grayscale opacity-90"
+>>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
             />
           </div>
           <div className="w-full md:w-1/2">
@@ -108,6 +119,7 @@ export default function AboutUs() {
         </div>
       </section>
 
+<<<<<<< HEAD
       {/* Architects of Our Vision */}
       <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24">
         <div className="text-center mb-20">
@@ -149,6 +161,8 @@ export default function AboutUs() {
         </div>
       </section>
 
+=======
+>>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
       {/* Why Choose HB Furniture */}
       <section className="bg-[#FAFAFA] py-16 sm:py-20 md:py-24 border-y border-gray-100">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
