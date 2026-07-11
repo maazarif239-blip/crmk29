@@ -32,19 +32,12 @@ export default function Home() {
       <div className="relative overflow-hidden">
         <section className="relative min-h-[min(600px,85vh)] sm:min-h-[600px] flex items-center justify-center flex-col text-center px-4 sm:px-6 py-16 sm:py-20 md:py-24">
           <img
-<<<<<<< HEAD
-            src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2000&q=80"
-            alt="Workspace"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-=======
             src="/hero-office-workspace.jpg"
             alt="Modern office interior"
             className="absolute inset-0 w-full h-full object-cover"
           />
           {/* Dark overlay for text readability */}
           <div className="absolute inset-0 bg-black/55" />
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
 
           <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center w-full">
           <h1 className="text-[clamp(1.75rem,5vw,3rem)] font-bold text-white mb-2 tracking-tight">
@@ -103,12 +96,7 @@ export default function Home() {
             </h2>
 
             <p className="text-gray-500 text-[13px] leading-relaxed mt-8 mb-6">
-<<<<<<< HEAD
-              Founded by Mr. Tahir Hassan Qureshi, HB Furniture has stood as a paragon of industrial excellence since 1964. What began as a visionary pursuit of quality has evolved into a comprehensive institution for workspace creation.
-=======
-              Founded by Mr. Tahir Hassan Gardezi, HB Furniture has stood as a paragon of industrial excellence since 1964. What began as a visionary pursuit of quality has evolved into a comprehensive institution for workspace creation.
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
-            </p>
+Founded by Mr. Tahir Hassan Gardezi, HB Furniture has stood as a paragon of industrial excellence...            </p>
             <p className="text-gray-500 text-[13px] leading-relaxed mb-10">
               Our approach blends heritage manufacturing principles with cutting-edge architectural design. We don't just supply furniture; we engineer environments that foster productivity, well-being, and corporate prestige.
             </p>
@@ -203,24 +191,13 @@ export default function Home() {
             },
             {
               question: "Delivery & Shipping",
-<<<<<<< HEAD
-              answer: "We provide delivery across Pakistan with professional handling. Shipping times vary by location, typically within 7-14 business days. Expedited delivery options are available upon request."
-=======
               answer: "We provide delivery across Pakistan with professional handling. Our team ensures your furniture arrives safely and on schedule."
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
             },
             {
               question: "Order Issues",
               answer: "For any order-related issues, our customer support team is available 24/7. We'll help you track your order, resolve any problems, or make changes to your order as needed."
             },
             {
-<<<<<<< HEAD
-              question: "Returns, Exchanges & Refunds",
-              answer: "We offer a 7-day return policy for defective products. Exchanges are easy within 14 days. Refunds are processed quickly after inspection and verification."
-            },
-            {
-=======
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
               question: "Installation & Support",
               answer: "Professional installation services are available for all our products. Our team ensures proper assembly and setup. We also provide comprehensive after-sales support."
             }
@@ -250,11 +227,7 @@ export default function Home() {
         {/* Background Image with dark overlay */}
         <div className="absolute inset-0 z-0">
           <img
-<<<<<<< HEAD
-            src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2000&q=80"
-=======
             src="/hero-office-workspace.jpg"
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
             alt="Office Background"
             className="w-full h-full object-cover"
           />
@@ -277,15 +250,12 @@ export default function Home() {
                 →
               </span>
             </Link>
-<<<<<<< HEAD
             <Link
               href="/projects"
               className="inline-flex items-center justify-center gap-3 border border-white text-white hover:bg-white/10 px-6 sm:px-8 py-3 text-[11px] font-bold uppercase tracking-wider transition-all duration-300 min-h-[44px]"
             >
               View Projects
             </Link>
-=======
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
           </div>
         </div>
       </section>

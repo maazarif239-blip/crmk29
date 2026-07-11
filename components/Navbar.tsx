@@ -1,10 +1,7 @@
 "use client";
 
 import Link from "next/link";
-<<<<<<< HEAD
 import Image from "next/image";
-=======
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useCallback, useRef } from "react";
 
@@ -20,7 +17,6 @@ const seatingDropdownItems: NavItem[] = [
   { name: "Office Chairs", href: "/office-chairs" },
   { name: "Visitors Chairs", href: "/visitor-chairs" },
   { name: "Sofas and Lounge Setting", href: "/sofas-lounge-seating" },
-<<<<<<< HEAD
   { name: "Guest Chairs", href: "/guest-chairs" },
   { name: "Manager Chair Collection", href: "/products/manager-chair-collection" },
 ];
@@ -29,12 +25,6 @@ const storageDropdownItems: NavItem[] = [
   { name: "Almirah", href: "/products/almirahs" },
   { name: "Storage Cabinets", href: "/products/storage-cabinets" },
 ];
-
-=======
-  { name: "Manager Chair Collection", href: "/products/manager-chair-collection" },
-];
-
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
 
 const workstationDropdownItems: NavItem[] = [
   { name: "Gravity Workstation Series", href: "/products/gravity-workstation-series" },
@@ -45,13 +35,9 @@ const workstationDropdownItems: NavItem[] = [
   { name: "Cross-Leg Walnut Workstation Series", href: "/products/cross-leg-walnut-workstation-series" },
   { name: "Urban Edge Workstation Series", href: "/products/urban-edge-workstation-series" },
   { name: "Loop Frame Workstation Series", href: "/products/loop-frame-workstation-series" },
-<<<<<<< HEAD
   { name: "Heritage Executive Workstation Series", href: "/products/heritage-executive-workstation-series" },
   { name: "Skyline Walnut Workstation Series", href: "/products/skyline-walnut-workstation-series" },
   { name: "Brickline Industrial Workstation Series", href: "/products/brickline-industrial-workstation-series" },
-=======
-  { name: "Skyline Walnut Workstation Series", href: "/products/skyline-walnut-workstation-series" },
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
 ];
 
 const officeTablesDropdownItems: NavItem[] = [
@@ -63,18 +49,11 @@ const officeTablesDropdownItems: NavItem[] = [
 ];
 const navItems: NavItem[] = [
   { name: "Home", href: "/" },
-<<<<<<< HEAD
   { name: "Projects", href: "/projects" },
   { name: "Office Sets", href: "/products/office-sets" },
   { name: "Office Tables", dropdown: officeTablesDropdownItems },
   { name: "Seating", dropdown: seatingDropdownItems },
   { name: "Storage", dropdown: storageDropdownItems },
-=======
-  { name: "Office Sets", href: "/products/office-sets" },
-  { name: "Office Tables", dropdown: officeTablesDropdownItems },
-  { name: "Seating", dropdown: seatingDropdownItems },
-  { name: "Storage", href: "/storage" },
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
   { name: "Technology", href: "/technology-suite" },
   { name: "Workstation", dropdown: workstationDropdownItems },
   { name: "Breakout & Lounge Pods", href: "/smart-spaces" },
@@ -116,29 +95,18 @@ export default function Navbar() {
  document.body.style.overflow = "";
  };
  }, [isMobileMenuOpen]);
- 
-<<<<<<< HEAD
- // Close dropdown on click outside
- useEffect(() => {
- const handleClickOutside = (event: MouseEvent) => {
-=======
  // Close desktop dropdown on click outside (desktop only — mobile handles its own close)
  useEffect(() => {
  const handleClickOutside = (event: MouseEvent) => {
  // Only run on desktop; on mobile the menu manages its own close via the backdrop
  if (isMobileMenuOpen) return;
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
  if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
  setActiveDropdown(null);
  }
  };
  document.addEventListener("mousedown", handleClickOutside);
  return () => document.removeEventListener("mousedown", handleClickOutside);
-<<<<<<< HEAD
- }, []);
-=======
  }, [isMobileMenuOpen]);
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
 
  const isActive = useCallback(
  (href: string) => {
@@ -179,7 +147,6 @@ export default function Navbar() {
  {/* Logo - Left */}
  <Link
  href="/"
-<<<<<<< HEAD
  className="flex items-center gap-2 transition-opacity hover:opacity-80 shrink-0 min-w-0"
  >
  <Image
@@ -193,15 +160,6 @@ export default function Navbar() {
  />
  <span className="text-lg font-normal tracking-[0.046875em] leading-none whitespace-nowrap text-[#222222]" style={{ fontFamily: 'var(--font-marcellus)', textRendering: 'optimizeLegibility', WebkitFontSmoothing: 'antialiased' }}>
  
-=======
- className="flex items-center transition-opacity hover:opacity-80 shrink-0 min-w-0"
- >
- <span
-   className="text-[1.1rem] sm:text-[1.2rem] font-bold tracking-[0.046875em] leading-none whitespace-nowrap text-[#222222]"
-   style={{ fontFamily: 'var(--font-marcellus)', textRendering: 'optimizeLegibility', WebkitFontSmoothing: 'antialiased' }}
- >
-   HB Furniture
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
  </span>
  </Link>
 
@@ -370,11 +328,7 @@ export default function Navbar() {
  onClick={() => setIsMobileMenuOpen(false)}
  aria-hidden="true"
  />
-<<<<<<< HEAD
- <div className="absolute inset-x-0 top-0 bottom-0 bg-white pt-[calc(4.5rem+env(safe-area-inset-top))] px-4 sm:px-6 flex flex-col overflow-y-auto overscroll-contain pb-[max(2rem,env(safe-area-inset-bottom))] animate-in slide-in-from-top duration-300">
-=======
  <div className="z-10 absolute inset-x-0 top-0 bottom-0 bg-white pt-[calc(4.5rem+env(safe-area-inset-top))] px-4 sm:px-6 flex flex-col overflow-y-auto overscroll-contain pb-[max(2rem,env(safe-area-inset-bottom))] animate-in slide-in-from-top duration-300">
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
  <nav className="flex flex-col gap-3 flex-1">
  {navItems.map((item) => {
  if (item.dropdown) {
@@ -428,16 +382,11 @@ export default function Navbar() {
              key={subItem.href!}
              href={subItem.href!}
              onClick={() => {
-<<<<<<< HEAD
-             setIsMobileMenuOpen(false);
-             setActiveDropdown(null);
-=======
              // Defer closing so the navigation click registers before the re-render
              setTimeout(() => {
                setIsMobileMenuOpen(false);
                setActiveDropdown(null);
              }, 0);
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
              }}
              className={`block px-5 py-4 rounded-lg text-[15px] leading-relaxed transition-colors duration-200 ${
              isActive(subItem.href!)
