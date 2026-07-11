@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import Image from 'next/image';
 import Link from 'next/link';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
@@ -161,10 +160,4 @@ export default function Almirahs() {
 
     </div>
   );
-=======
-import { redirect } from 'next/navigation';
-
-export default function AlmirahsRedirect() {
-  redirect('/storage');
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
 }

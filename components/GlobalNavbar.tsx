@@ -11,19 +11,7 @@ export default function GlobalNavbar() {
 
   const navLinks = [
     { name: 'Home', href: '/' },
-<<<<<<< HEAD
     { name: 'Projects', href: '/projects' },
-=======
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
-    { name: 'About Us', href: '/about' },
-  ];
-
-  const getLinkClasses = (href: string) => {
-<<<<<<< HEAD
-    // Determine if active based on exact match or startsWith for products/projects
-=======
-    // Determine if active based on exact match or startsWith for products
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
     const isActive = href === '/' ? pathname === '/' : pathname.startsWith(href);
     return `h-full flex items-center text-[11px] font-bold uppercase tracking-wider transition-colors ${
       isActive

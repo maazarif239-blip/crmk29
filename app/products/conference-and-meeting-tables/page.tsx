@@ -1,34 +1,12 @@
-<<<<<<< HEAD
 import Image from 'next/image';
 import Link from 'next/link';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
 import ProductPageHeader from '@/components/ProductPageHeader';
 
-=======
-import ProductCard from '@/components/ProductCard';
-import ProductPageHeader from '@/components/ProductPageHeader';
-
-const products = [
-  { name: 'Walnut Executive Conference Table', image: '/175-1-.png', description: 'Spacious walnut boardroom table with built-in cable ports, seats 14. Comes with black mesh executive chairs for daily meetings.' },
-  { name: 'Curved Boardroom Table with Center Display', image: '/175-2-.png', description: 'Boat-shaped oak table with center flower space, seats 12-14. Black leather chairs give it a premium, elegant look.' },
-  { name: 'Extra Long Boardroom Conference Table', image: '/175-3-.png', description: 'Long oak conference table for big teams, seats 20+. Has center cable channel and matching black leather chairs.' },
-  { name: 'Diagonal Inlay Conference Table', image: '/Screenshot 2026-06-24 001228.png', description: 'Rectangular walnut finish table with diagonal black inlay design, slim X-shaped metal legs, modern aesthetic, ideal for boardrooms and meeting spaces.' },
-  { name: 'Geometric Top Meeting Table', image: '/Screenshot 2026-06-24 001231.png', description: 'Long walnut conference table featuring angular black geometric pattern on tabletop, sleek criss-cross metal legs, contemporary look for executive meeting rooms.' },
-  { name: 'Lift-Top Convertible Conference Table', image: '/Screenshot 2026-06-24 001236.png', description: 'Walnut finish table with raised center lift panel, X-frame metal legs, versatile design allowing height adjustment for laptop or presentation use.' },
-  { name: 'Triangle Inlay Meeting Table', image: '/Screenshot 2026-06-24 001244.png', description: 'Compact rectangular table with triangular black inlay accent, crossed metal leg base, walnut wood finish, suited for small meeting or discussion rooms.' },
-  { name: 'White Frame Modular Meeting Table', image: '/25.jpg', description: 'Light wood-top table with white metal legs, seats 10. Simple, modern design with cream leather chairs.' },
-  { name: 'Natural Wood Rectangular Meeting Table', image: '/26.jpg', description: 'Plain rectangular table in natural wood finish, seats 8–10. Mixed black and cream chairs create a clean modern appearance.' },
-  { name: 'Oak Boat-Shape Conference Table', image: '/27.jpg', description: 'Boat-shaped oak conference table with curved wood base, seats 14. Black leather chairs provide a refined professional appearance.' },
-  { name: 'Classic Mahogany Conference Table', image: '/28.jpg', description: 'Traditional mahogany conference table with wood-panel base, seats 8. Includes matching wood-arm leather chairs for a timeless executive look.' },
-  { name: 'Modern Chrome-Leg Meeting Table', image: '/29.jpg', description: 'Compact wood-top meeting table with chrome angular legs, seats 6–8. Black leather chairs complement its sleek contemporary design.' },
-];
-
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
 export default function ConferenceAndMeetingTables() {
   return (
     <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
       <ProductPageHeader title="Conference & Meeting Tables" description="Precision-engineered meeting tables for boardrooms, executive suites, and collaborative workspaces. Built to make every meeting count." />
-<<<<<<< HEAD
 {/* Main Content Area */}
       <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12 flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16">
         
@@ -125,15 +103,6 @@ export default function ConferenceAndMeetingTables() {
 
       </section>
 
-=======
-      <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 sm:gap-x-6 lg:gap-x-8 gap-y-8 sm:gap-y-10 lg:gap-y-12">
-          {products.map((p, i) => (
-            <ProductCard key={i} name={p.name} image={p.image} description={p.description} />
-          ))}
-        </div>
-      </section>
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
     </div>
   );
 }

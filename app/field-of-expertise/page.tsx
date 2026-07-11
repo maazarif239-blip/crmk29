@@ -55,9 +55,9 @@ export default function FieldOfExpertise() {
       {/* Hero Section */}
       <section className="relative h-[280px] sm:h-[380px] md:h-[450px] flex items-center justify-center text-center bg-[#111111] overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000" 
-            alt="Expertise" 
+          <img
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000"
+            alt="Expertise"
             className="w-full h-full object-cover opacity-30 mix-blend-multiply"
           />
         </div>
@@ -73,11 +73,7 @@ export default function FieldOfExpertise() {
       </section>
 
       {/* Introduction Section */}
-<<<<<<< HEAD
       <section className="py-24 max-w-[1000px] mx-auto px-4 text-center">
-=======
-      <section className="py-16 sm:py-20 md:py-24 max-w-[1000px] mx-auto px-4 text-center">
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
         <h2 className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-4">What We Excel At</h2>
         <div className="w-12 h-0.5 bg-[#EB5324] mx-auto mb-8"></div>
         <p className="text-gray-600 text-lg leading-relaxed font-serif max-w-3xl mx-auto">
@@ -86,11 +82,7 @@ export default function FieldOfExpertise() {
       </section>
 
       {/* Expertise Grid Section */}
-<<<<<<< HEAD
       <section className="pb-24 max-w-[1200px] mx-auto px-4 sm:px-6">
-=======
-      <section className="pb-16 sm:pb-20 md:pb-24 max-w-[1200px] mx-auto px-4 sm:px-6">
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {expertise.map((item, i) => (
             <div key={i} className="bg-white border border-gray-100 shadow-[0_4px_15px_rgba(0,0,0,0.03)] p-8 rounded-sm group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
@@ -106,17 +98,13 @@ export default function FieldOfExpertise() {
       </section>
 
       {/* Process Section */}
-<<<<<<< HEAD
       <section className="py-24 bg-[#FAFAFA] border-y border-gray-100">
-=======
-      <section className="py-16 sm:py-20 md:py-24 bg-[#FAFAFA] border-y border-gray-100">
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-serif text-gray-900 mb-4">Our Approach</h2>
             <div className="w-12 h-0.5 bg-[#EB5324] mx-auto"></div>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-8 relative">
             {process.map((step, i) => (
               <div key={i} className="flex gap-6 relative z-10">
@@ -134,16 +122,12 @@ export default function FieldOfExpertise() {
       </section>
 
       {/* Why Choose Us & Project Highlights */}
-<<<<<<< HEAD
       <section className="py-24 max-w-[1200px] mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-=======
-      <section className="py-16 sm:py-20 md:py-24 max-w-[1200px] mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
         <div>
           <h2 className="text-3xl font-serif text-gray-900 mb-8">Why Partner With Us</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {[
-              "Experienced Team", "Proven Track Record", "Modern Technology", 
+              "Experienced Team", "Proven Track Record", "Modern Technology",
               "Customer-Centric Approach", "High Quality Standards", "Reliable Support"
             ].map((feature, idx) => (
               <div key={idx} className="flex items-center gap-4 bg-white border border-gray-100 shadow-sm p-4 rounded-sm">
@@ -155,12 +139,8 @@ export default function FieldOfExpertise() {
             ))}
           </div>
         </div>
-        
-<<<<<<< HEAD
+
         <div className="bg-[#111111] text-white p-12 rounded-sm shadow-xl">
-=======
-        <div className="bg-[#111111] text-white p-8 sm:p-12 rounded-sm shadow-xl">
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
           <h3 className="text-2xl font-serif mb-8 text-[#EB5324]">Project Highlights</h3>
           <div className="space-y-8">
             <div>
@@ -185,11 +165,7 @@ export default function FieldOfExpertise() {
       <TestimonialsSection />
 
       {/* FAQ Section */}
-<<<<<<< HEAD
       <section className="py-24 bg-[#FAFAFA] border-t border-gray-100">
-=======
-      <section className="py-16 sm:py-20 md:py-24 bg-[#FAFAFA] border-t border-gray-100">
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
         <div className="max-w-[800px] mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-serif text-gray-900 mb-4">Frequently Asked Questions</h2>
@@ -224,12 +200,9 @@ export default function FieldOfExpertise() {
           <Link href="/contact" className="bg-[#EB5324] text-white px-8 py-4 text-[11px] font-bold hover:bg-[#d4481f] transition-colors uppercase tracking-widest inline-flex items-center justify-center min-w-[200px]">
             Contact Us
           </Link>
-<<<<<<< HEAD
           <Link href="/projects" className="bg-transparent border border-white/30 text-white px-8 py-4 text-[11px] font-bold hover:bg-white hover:text-gray-900 transition-colors uppercase tracking-widest inline-flex items-center justify-center min-w-[200px]">
             View Projects
           </Link>
-=======
->>>>>>> c04871bbcb01871c46d5abead229019b1605fe18
         </div>
       </section>
     </div>
