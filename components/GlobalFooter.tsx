@@ -85,12 +85,6 @@ export default function GlobalFooter() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/projects" className="flex items-center gap-2 text-gray-400 hover:text-white transition-all duration-200 group">
-                    <FaArrowRight className="w-3 h-3 text-[#EB5324] opacity-0 group-hover:opacity-100 transition-opacity" />
-                    Projects
-                  </Link>
-                </li>
-                <li>
                   <Link href="/clientage" className="flex items-center gap-2 text-gray-400 hover:text-white transition-all duration-200 group">
                     <FaArrowRight className="w-3 h-3 text-[#EB5324] opacity-0 group-hover:opacity-100 transition-opacity" />
                     HB Clientage
@@ -130,7 +124,7 @@ export default function GlobalFooter() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/products/almirahs" className="flex items-center gap-2 text-gray-400 hover:text-white transition-all duration-200 group">
+                  <Link href="/storage" className="flex items-center gap-2 text-gray-400 hover:text-white transition-all duration-200 group">
                     <FaArrowRight className="w-3 h-3 text-[#EB5324] opacity-0 group-hover:opacity-100 transition-opacity" />
                     Storage
                   </Link>

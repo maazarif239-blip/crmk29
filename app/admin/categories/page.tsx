@@ -9,6 +9,7 @@ export default function CategoriesPage() {
   const [name, setName] = useState('');
   const [slug, setSlug] = useState('');
   const [loading, setLoading] = useState(true);
+  const [editingId, setEditingId] = useState<string | null>(null);
   const supabase = createClient();
 
   const fetchCategories = async () => {
@@ -24,13 +25,30 @@ export default function CategoriesPage() {
     setSlug(s);
   };
 
-  const addCategory = async (e: React.FormEvent) => {
+  const startEdit = (category: Category) => {
+    setEditingId(category.id);
+    setName(category.name);
+    setSlug(category.slug);
+  };
+
+  const cancelEdit = () => {
+    setEditingId(null);
+    setName(''); setSlug('');
+  };
+
+  const saveCategory = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !slug) return;
-    const { error } = await supabase.from('categories').insert({ name, slug });
-    if (error) alert(error.message);
-    else {
-      setName(''); setSlug('');
+
+    if (editingId) {
+      const { error } = await supabase.from('categories').update({ name, slug }).eq('id', editingId);
+      if (error) { alert(error.message); return; }
+      cancelEdit();
+      fetchCategories();
+    } else {
+      const { error } = await supabase.from('categories').insert({ name, slug });
+      if (error) { alert(error.message); return; }
+      cancelEdit();
       fetchCategories();
     }
   };
@@ -46,11 +64,16 @@ export default function CategoriesPage() {
   return (
     <div>
       <h1>Categories</h1>
-      <form onSubmit={addCategory} style={{ display: 'flex', gap: 10, margin: '20px 0' }}>
+      <form onSubmit={saveCategory} style={{ display: 'flex', gap: 10, margin: '20px 0' }}>
         <input placeholder="Name (e.g. Office Sets)" value={name} onChange={(e) => setName(e.target.value)} style={{ padding: 8 }} />
         <input placeholder="Slug (e.g. office-sets)" value={slug} onChange={(e) => setSlug(e.target.value)} style={{ padding: 8 }} />
         <button type="button" onClick={generateSlug} style={{ padding: '8px 12px' }}>Slug from Name</button>
-        <button type="submit" style={{ padding: '8px 16px' }}>Add</button>
+        <button type="submit" style={{ padding: '8px 16px' }}>
+          {editingId ? 'Update' : 'Add'}
+        </button>
+        {editingId && (
+          <button type="button" onClick={cancelEdit} style={{ padding: '8px 16px' }}>Cancel</button>
+        )}
       </form>
       <table style={{ width: '100%', borderCollapse: 'collapse' }}>
         <thead>
@@ -63,7 +86,10 @@ export default function CategoriesPage() {
             <tr key={c.id} style={{ borderBottom: '1px solid #eee' }}>
               <td>{c.name}</td>
               <td>{c.slug}</td>
-              <td><button onClick={() => deleteCategory(c.id)} style={{ color: 'red' }}>Delete</button></td>
+              <td>
+                <button onClick={() => startEdit(c)} style={{ marginRight: 8 }}>Edit</button>
+                <button onClick={() => deleteCategory(c.id)} style={{ color: 'red' }}>Delete</button>
+              </td>
             </tr>
           ))}
         </tbody>

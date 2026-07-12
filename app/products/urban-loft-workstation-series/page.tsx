@@ -1,67 +1,62 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import { createClient } from '@/lib/supabase/server';
 import ContactForPricingLink from '@/components/ContactForPricingLink';
 import ProductPageHeader from '@/components/ProductPageHeader';
 
-export default function UrbanLoftWorkstationSeries() {
+export const revalidate = 0;
+
+export default async function UrbanLoftWorkstationSeries() {
+  const supabase = await createClient();
+
+  const { data: category } = await supabase
+    .from('categories')
+    .select('id')
+    .eq('slug', 'urban-loft-workstation-series')
+    .single();
+
+  const { data: products } = category
+    ? await supabase
+        .from('products')
+        .select('*')
+        .eq('category_id', category.id)
+        .order('sort_order')
+    : { data: [] };
+
   return (
     <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-white text-gray-900 font-sans selection:bg-[#E5E0D8]">
       <ProductPageHeader title="Urban Loft Workstation Series" description="Industrial-inspired workstation designs combining walnut finishes, metal frames, and modular layouts for contemporary loft-style offices." />
-{/* Main Content Area */}
-      <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-20">
-        
 
-        {/* Product Grid */}
-        <div className="w-full">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Open Bay Workstation",
-                src: "/Screenshot 2026-06-23 225900.png",
-                desc: "Industrial-style open workstation with walnut storage credenzas, sleek metal-leg desks and ergonomic chairs, featuring a spacious dual-seat layout for modern loft offices."
-              },
-              {
-                name: "Panel System Workstation",
-                src: "/Screenshot 2026-06-23 225905.png",
-                desc: "Cubicle-style panel workstations with overhead bookshelf storage, fabric privacy dividers and mobile pedestals, structured workspace solution for corporate offices."
-              },
-              {
-                name: "Pergola Meeting Pod Workstation",
-                src: "/Screenshot 2026-06-23 225917.png",
-                desc: "Open-plan cubicle workstations surrounding a wooden pergola-style meeting pod, combining collaborative workspaces with private meeting zones."
-              },
-              {
-                name: "Executive Media Workstation",
-                src: "/Screenshot 2026-06-23 225940.png",
-                desc: "Premium walnut executive desk with matching wall-mounted credenza and built-in display unit, sophisticated setup for executive offices and boardrooms."
-              },
-            ].map((product, index) => (
-              <div key={index} className="group border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">
-                <div className="aspect-square bg-[#F5F5F5] p-4 sm:p-6 md:p-8 flex items-center justify-center relative overflow-hidden">
-                  <Image 
-                    src={product.src} 
-                    alt={product.name} 
-                    fill
-                    className="object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500 p-8"
-                  />
-                </div>
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-[15px] font-bold text-gray-900 mb-2">{product.name}</h3>
-                  <p className="text-gray-500 text-[11px] leading-relaxed flex-1">
-                    {product.desc}
-                  </p>
-                  <div className="mt-6">
-                    <ContactForPricingLink />
+      <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12 flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16">
+        <div className="flex-1">
+          {(!products || products.length === 0) ? (
+            <p className="text-gray-500 text-center py-20">Products coming soon.</p>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 sm:gap-x-6 lg:gap-x-8 gap-y-8 sm:gap-y-10 lg:gap-y-12">
+              {products.map((product) => (
+                <div key={product.id} className="group flex flex-col cursor-pointer h-full">
+                  <div className="aspect-square bg-[#F5F5F5] p-4 sm:p-6 md:p-8 flex items-center justify-center relative overflow-hidden transition-colors group-hover:bg-[#f0f0f0]">
+                    <img
+                      src={product.image_url || '/placeholder.png'}
+                      alt={product.name}
+                      className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="pt-5 text-left bg-white flex flex-col flex-1 px-2">
+                    <h3 className="text-[13px] font-bold text-gray-900 group-hover:text-[#E04E1B] transition-colors">
+                      {product.name}
+                    </h3>
+                    <p className="mt-3 text-gray-500 text-[11px] leading-relaxed flex-1">
+                      {product.description}
+                    </p>
+                    <div className="mt-6 mb-2">
+                      <ContactForPricingLink />
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
-
       </section>
-
-
     </div>
   );
 }

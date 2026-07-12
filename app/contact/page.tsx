@@ -1,7 +1,51 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
+import { createClient } from '@/lib/supabase/client';
 
 export default function ContactUs() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const supabase = createClient();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!name || !email || !message) {
+      setStatus('error');
+      setErrorMessage('Please fill in all required fields.');
+      return;
+    }
+
+    setStatus('submitting');
+    setErrorMessage('');
+
+    const { error } = await supabase
+      .from('contact_messages')
+      .insert({ name, email, subject, message });
+
+    if (error) {
+      setStatus('error');
+      setErrorMessage('Failed to send message. Please try again.');
+      console.error('Contact form error:', error);
+    } else {
+      setStatus('success');
+      setName('');
+      setEmail('');
+      setSubject('');
+      setMessage('');
+      // Reset success message after 5 seconds
+      setTimeout(() => setStatus('idle'), 5000);
+    }
+  };
+
   return (
     <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-[#FAFAFA] text-gray-900 font-sans selection:bg-[#E5E0D8]">
       
@@ -99,6 +143,92 @@ export default function ContactUs() {
             </a>
           </div>
         </div>
+      </section>
+
+      {/* Contact Form Section */}
+      <section className="max-w-[800px] mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-3 font-serif">Send Us a Message</h2>
+          <p className="text-gray-600">Have a question or need a quote? Fill out the form below and we'll get back to you soon.</p>
+        </div>
+
+        <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded-lg p-8 md:p-12">
+          {status === 'success' && (
+            <div className="mb-6 p-4 bg-[#EB5324]/10 border border-[#EB5324] rounded text-[#EB5324] text-center font-medium">
+              ✓ Thank you! Your message has been sent successfully. We'll get back to you soon.
+            </div>
+          )}
+          
+          {status === 'error' && (
+            <div className="mb-6 p-4 bg-red-50 border border-red-300 rounded text-red-700 text-center">
+              {errorMessage}
+            </div>
+          )}
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label className="block text-sm font-bold text-gray-700 mb-2">
+                Name <span className="text-[#EB5324]">*</span>
+              </label>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-[#EB5324] transition-colors"
+                placeholder="Your name"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-bold text-gray-700 mb-2">
+                Email <span className="text-[#EB5324]">*</span>
+              </label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-[#EB5324] transition-colors"
+                placeholder="your@email.com"
+                required
+              />
+            </div>
+          </div>
+
+          <div className="mb-6">
+            <label className="block text-sm font-bold text-gray-700 mb-2">
+              Subject
+            </label>
+            <input
+              type="text"
+              value={subject}
+              onChange={(e) => setSubject(e.target.value)}
+              className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-[#EB5324] transition-colors"
+              placeholder="What is this regarding?"
+            />
+          </div>
+
+          <div className="mb-6">
+            <label className="block text-sm font-bold text-gray-700 mb-2">
+              Message <span className="text-[#EB5324]">*</span>
+            </label>
+            <textarea
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-[#EB5324] transition-colors"
+              placeholder="Tell us about your project or inquiry..."
+              rows={6}
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={status === 'submitting'}
+            className="w-full bg-[#EB5324] text-white px-8 py-4 font-bold uppercase tracking-wider hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {status === 'submitting' ? 'Sending...' : 'Send Message'}
+          </button>
+        </form>
       </section>
 
       {/* Map Section */}

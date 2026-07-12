@@ -1,115 +1,25 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { createClient } from '@/lib/supabase/server';
 
-export default function ManagementEmployees() {
-  const allEmployees = [
-    {
-      id: 1,
-      name: "Mr. Hasan Ahmed Gardezi",
-      role: "C.E.O, HB FURNITURE",
-      description: "Bachelor in Business Administration with over fifteen years of experience in Sales & Production Management, Material Procurement & Site Supervision."
-    },
-    {
-      id: 2,
-      name: "Syeda Hoor Hassan Gardezi",
-      role: "ARCHITECT, CAD EXPERT",
-      description: "Syeda Hoor Hassan Gardezi is diploma holder in architectural technology, educated from Humber Institute of Technology in Toronto, Canada, having a three year experience working as an assistant manager at Bell Canada."
-    },
-     {
-      id: 6,
-      name: "Mr. Danyal Hassan Gardezi",
-      role: "DIRECTOR OPERATIONS",
-      description: "Managing daily operations with dedication, he ensures projects are completed smoothly, efficiently, and on time."
-    },
-    {
-      id: 3,
-      name: "Syed Habib Hasan Gardezi",
-      role: "Social Media Manager",
-      description: "Helping strengthen the company's online presence through creative content and meaningful engagement with customers and audiences."
-    },
-    {
-      id: 10,
-      name: "Mr. Syed Ali Naqvi",
-      role: "MANAGER MARKETING",
-      description: "Focused on growing the brand and building strong relationships through effective marketing and customer-focused strategies."
-    },
-    {
-      id: 5,
-      name: "Syed Hasham Hasan Gardezi",
-      role: "Director (Sales & Marketing)",
-      description: "Leading sales and marketing efforts while working to expand the company's reach and maintain strong client partnerships."
-    },
-   
-    {
-      id: 18,
-      name: "Mr. Syed Shabbaz",
-      role: "QUALITY CONTROL MANAGER",
-      description: "Ensuring every product meets high standards by maintaining quality, consistency, and attention to detail."
-    },
-     {
-      id: 14,
-      name: "Mr. Khuram",
-      role: "SITE SUPERVISOR",
-      description: "Overseeing site activities and making sure projects are carried out safely, smoothly, and on schedule."
-    },
-    {
-      id: 7,
-      name: "Mr. Bilal Yasir",
-      role: "MANAGER ADMIN",
-      description: "Managing administrative tasks and supporting smooth coordination across different departments."
-    },
-    {
-      id: 8,
-      name: "Mr. Abdullah Haneef",
-      role: "ACCOUNTS OFFICER",
-      description: "Handling financial records and daily accounts with accuracy and professionalism."
-    },
-    {
-      id: 9,
-      name: "Mr. Zaid Khalid",
-      role: "AUTOCAD OPERATOR / 3D GRAPHICS EXPERT",
-      description: "Creating detailed drawings and realistic 3D designs to turn ideas into practical solutions."
-    },
-    
-    {
-      id: 11,
-      name: "Mr. Usama Akram",
-      role: "MARKETING EXECUTIVE",
-      description: "Supporting business growth by connecting with clients and promoting the company's services."
-    },
-    {
-      id: 12,
-      name: "Mr. Yahya Abbas",
-      role: "MARKETING EXECUTIVE",
-      description: "Building customer relationships and helping expand the company's presence in the market."
-    },
-    {
-      id: 13,
-      name: "Mr. Saad Saleem",
-      role: "MARKETING EXECUTIVE",
-      description: "Contributing to business development through effective communication and customer engagement."
-    },
-   
-    {
-      id: 15,
-      name: "Mr. Usman Akhtar",
-      role: "CNC TECHNOLOGIST",
-      description: "Working with advanced machinery to ensure precision and quality in production."
-    },
-    {
-      id: 16,
-      name: "Mr. Zaman Tariq",
-      role: "FOREMAN",
-      description: "Leading the workforce and ensuring smooth and efficient operations on the production floor."
-    },
-    {
-      id: 17,
-      name: "Mr. Azan Yaseen",
-      role: "SUPERVISOR",
-      description: "Monitoring daily activities and helping maintain quality and efficiency in every task."
-    },
-    
-  ];
+export const revalidate = 0;
+
+export default async function ManagementEmployees() {
+  const supabase = await createClient();
+
+  // Fetch management team from site_content table
+  const { data: contentData } = await supabase
+    .from('site_content')
+    .select('value')
+    .eq('key', 'management_team')
+    .single();
+
+  // Use fetched data or empty array if not yet set in admin
+  const allEmployees = (contentData?.value || []) as Array<{
+    name: string;
+    role: string;
+    description: string;
+  }>;
 
   return (
     <div className="min-h-screen w-full min-w-0 overflow-x-clip bg-[#f8f9fa] text-gray-900 font-sans selection:bg-[#E5E0D8]">
@@ -136,9 +46,9 @@ export default function ManagementEmployees() {
       <section className="py-24">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-            {allEmployees.map((employee) => (
+            {allEmployees.map((employee, index) => (
               <div 
-                key={employee.id} 
+                key={index} 
                 className="group bg-white border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-500 ease-out hover:-translate-y-1.5 flex flex-col overflow-hidden relative"
               >
                 {/* Top Orange Accent Line on Hover */}

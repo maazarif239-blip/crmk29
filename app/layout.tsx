@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 };
 
 import GlobalFooter from "@/components/GlobalFooter";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/GlobalNavbar";
 import ProgressBar from "@/components/ProgressBar";
 import { Suspense } from "react";
 
