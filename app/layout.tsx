@@ -31,6 +31,7 @@ export const metadata: Metadata = {
 
 import GlobalFooter from "@/components/GlobalFooter";
 import Navbar from "@/components/GlobalNavbar";
+import PromoBanner from "@/components/PromoBanner";
 import ProgressBar from "@/components/ProgressBar";
 import { Suspense } from "react";
 
@@ -50,6 +51,7 @@ export default function RootLayout({
           <Suspense fallback={null}>
             <ProgressBar />
           </Suspense>
+          <PromoBanner />
           <Navbar />
           <main className="flex-1 w-full min-w-0 overflow-x-clip">{children}</main>
           <div className="shrink-0 w-full min-w-0">

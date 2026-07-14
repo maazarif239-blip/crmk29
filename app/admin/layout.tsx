@@ -10,6 +10,9 @@ import {
   Star, 
   MessageSquare, 
   FileText, 
+  HelpCircle,
+  Users,
+  Megaphone,
   LogOut 
 } from 'lucide-react';
 
@@ -20,10 +23,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
     { href: '/admin/categories', label: 'Categories', icon: FolderTree },
     { href: '/admin/products', label: 'Products', icon: Package },
-    { href: '/admin/logos', label: 'Client Logos', icon: Images },
+    { href: '/admin/logos', label: 'Clients', icon: Images },
     { href: '/admin/reviews', label: 'Reviews', icon: Star },
     { href: '/admin/messages', label: 'Messages', icon: MessageSquare },
-    { href: '/admin/content', label: 'Content', icon: FileText },
+    { href: '/admin/faqs', label: 'FAQs', icon: HelpCircle },
+    { href: '/admin/team', label: 'Team', icon: Users },
+    { href: '/admin/promotions', label: 'Promotions', icon: Megaphone },
+    { href: '/admin/about', label: 'About', icon: FileText },
   ];
 
   const isActive = (href: string) => {

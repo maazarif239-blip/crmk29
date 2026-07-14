@@ -3,54 +3,66 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { createClient } from '@/lib/supabase/client';
 
-type SubLink = { name: string; href: string };
-type NavLink = { name: string; href?: string; dropdown?: SubLink[] };
+type NavItem = {
+  id?: string;
+  label: string;
+  href: string | null;
+  position?: number;
+  parent_id?: string | null;
+  is_visible?: boolean;
+  children?: NavItem[];
+};
 
-const navLinks: NavLink[] = [
-  { name: 'Home', href: '/' },
-  { name: 'Office Sets', href: '/products/office-sets' },
+// Fallback hardcoded navbar (used if database load fails)
+const FALLBACK_NAV_ITEMS: NavItem[] = [
+  { label: 'Home', href: '/' },
+  { label: 'Office Sets', href: '/products/office-sets' },
   {
-    name: 'Office Tables',
-    dropdown: [
-      { name: 'Executive Office Tables', href: '/products/executive-office-tables' },
-      { name: 'Manager Office Tables', href: '/products/manager-office-tables' },
-      { name: 'Conference & Meeting Tables', href: '/products/conference-and-meeting-tables' },
-      { name: 'Center & Side Tables', href: '/products/center-and-side-tables' },
+    label: 'Office Tables',
+    href: null,
+    children: [
+      { label: 'Executive Office Tables', href: '/products/executive-office-tables' },
+      { label: 'Manager Office Tables', href: '/products/manager-office-tables' },
+      { label: 'Conference & Meeting Tables', href: '/products/conference-and-meeting-tables' },
+      { label: 'Center & Side Tables', href: '/products/center-and-side-tables' },
     ],
   },
   {
-    name: 'Seating',
-    dropdown: [
-      { name: 'Study Chairs', href: '/study-chairs' },
-      { name: 'Office Chairs', href: '/office-chairs' },
-      { name: 'Visitors Chairs', href: '/visitor-chairs' },
-      { name: 'Sofas and Lounge Setting', href: '/sofas-lounge-seating' },
-      { name: 'Manager Chair Collection', href: '/products/manager-chair-collection' },
+    label: 'Seating',
+    href: null,
+    children: [
+      { label: 'Study Chairs', href: '/study-chairs' },
+      { label: 'Office Chairs', href: '/office-chairs' },
+      { label: 'Visitors Chairs', href: '/visitor-chairs' },
+      { label: 'Sofas and Lounge Setting', href: '/sofas-lounge-seating' },
+      { label: 'Manager Chair Collection', href: '/products/manager-chair-collection' },
     ],
   },
-  { name: 'Storage', href: '/storage' },
-  { name: 'Technology', href: '/technology-suite' },
+  { label: 'Storage', href: '/storage' },
+  { label: 'Technology', href: '/technology-suite' },
   {
-    name: 'Workstation',
-    dropdown: [
-      { name: 'Gravity Workstation Series', href: '/products/gravity-workstation-series' },
-      { name: 'Urban Loft Workstation Series', href: '/products/urban-loft-workstation-series' },
-      { name: 'Classic Cubicle Workstation Series', href: '/products/classic-cubicle-workstation-series' },
-      { name: 'Compact Pod Workstation Series', href: '/products/compact-pod-workstation-series' },
-      { name: 'Lotus 30 Office Workstation', href: '/products/lotus-30-office-workstations' },
-      { name: 'Cross-Leg Walnut Workstation Series', href: '/products/cross-leg-walnut-workstation-series' },
-      { name: 'Urban Edge Workstation Series', href: '/products/urban-edge-workstation-series' },
-      { name: 'Loop Frame Workstation Series', href: '/products/loop-frame-workstation-series' },
-      { name: 'Skyline Walnut Workstation Series', href: '/products/skyline-walnut-workstation-series' },
+    label: 'Workstation',
+    href: null,
+    children: [
+      { label: 'Gravity Workstation Series', href: '/products/gravity-workstation-series' },
+      { label: 'Urban Loft Workstation Series', href: '/products/urban-loft-workstation-series' },
+      { label: 'Classic Cubicle Workstation Series', href: '/products/classic-cubicle-workstation-series' },
+      { label: 'Compact Pod Workstation Series', href: '/products/compact-pod-workstation-series' },
+      { label: 'Lotus 30 Office Workstation', href: '/products/lotus-30-office-workstations' },
+      { label: 'Cross-Leg Walnut Workstation Series', href: '/products/cross-leg-walnut-workstation-series' },
+      { label: 'Urban Edge Workstation Series', href: '/products/urban-edge-workstation-series' },
+      { label: 'Loop Frame Workstation Series', href: '/products/loop-frame-workstation-series' },
+      { label: 'Skyline Walnut Workstation Series', href: '/products/skyline-walnut-workstation-series' },
     ],
   },
-  { name: 'Breakout & Lounge Pods', href: '/smart-spaces' },
-  { name: 'Field of Expertise', href: '/field-of-expertise' },
-  { name: 'HB Clientage', href: '/clientage' },
-  { name: 'Management & Employees', href: '/management-employees' },
-  { name: 'About', href: '/about' },
+  { label: 'Breakout & Lounge Pods', href: '/smart-spaces' },
+  { label: 'Field of Expertise', href: '/field-of-expertise' },
+  { label: 'HB Clientage', href: '/clientage' },
+  { label: 'Management & Employees', href: '/management-employees' },
+  { label: 'About', href: '/about' },
 ];
 
 export default function GlobalNavbar() {
@@ -58,6 +70,51 @@ export default function GlobalNavbar() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [openMobileAccordion, setOpenMobileAccordion] = useState<string | null>(null);
+  const [navItems, setNavItems] = useState<NavItem[]>(FALLBACK_NAV_ITEMS);
+
+  useEffect(() => {
+    // Try to load from database, but don't block rendering
+    const loadFromDatabase = async () => {
+      try {
+        const supabase = createClient();
+        const { data, error } = await supabase
+          .from('nav_items')
+          .select('*')
+          .eq('is_visible', true)
+          .order('position');
+        
+        if (error) {
+          console.warn('Failed to load navbar from database:', error.message);
+          return;
+        }
+
+        if (!data || data.length === 0) {
+          console.warn('No nav items found in database, using fallback');
+          return;
+        }
+
+        // Build hierarchy
+        const topLevel = data
+          .filter((item: any) => item.parent_id === null)
+          .map((parent: any) => ({
+            ...parent,
+            children: data
+              .filter((child: any) => child.parent_id === parent.id)
+              .sort((a: any, b: any) => a.position - b.position),
+          }));
+        
+        if (topLevel.length > 0) {
+          console.log('Loaded navbar from database');
+          setNavItems(topLevel);
+        }
+      } catch (err) {
+        console.warn('Error loading navbar from database, using fallback');
+      }
+    };
+    
+    // Call it but don't await - let fallback show immediately
+    loadFromDatabase();
+  }, []);
 
   const isLinkActive = (href: string) =>
     href === '/' ? pathname === '/' : pathname.startsWith(href);
@@ -103,19 +160,21 @@ export default function GlobalNavbar() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-4 h-full flex-1 justify-center">
-            {navLinks.map((link) => {
-              if (link.dropdown) {
+            {navItems.map((item) => {
+              const hasChildren = item.children && item.children.length > 0;
+              
+              if (hasChildren) {
                 return (
                   <div
-                    key={link.name}
+                    key={item.label}
                     className="relative h-full flex items-center"
-                    onMouseEnter={() => setOpenDropdown(link.name)}
+                    onMouseEnter={() => setOpenDropdown(item.label)}
                     onMouseLeave={() => setOpenDropdown(null)}
                   >
-                    <button className={getDropdownButtonClasses(openDropdown === link.name)}>
-                      {link.name}
+                    <button className={getDropdownButtonClasses(openDropdown === item.label)}>
+                      {item.label}
                       <svg
-                        className={`w-4 h-4 text-[#EB5324] transition-transform ${openDropdown === link.name ? 'rotate-180' : ''}`}
+                        className={`w-4 h-4 text-[#EB5324] transition-transform ${openDropdown === item.label ? 'rotate-180' : ''}`}
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -124,16 +183,16 @@ export default function GlobalNavbar() {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                       </svg>
                     </button>
-                    {openDropdown === link.name && (
+                    {openDropdown === item.label && (
                       <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white rounded-xl shadow-2xl border border-gray-100 min-w-[280px] py-3 z-50 overflow-hidden">
-                        {link.dropdown.map((sub) => (
+                        {item.children!.map((child) => (
                           <Link
-                            key={sub.href}
-                            href={sub.href}
+                            key={child.href}
+                            href={child.href!}
                             className="flex items-center gap-3 px-5 py-3 text-sm text-gray-700 hover:bg-[#FDF3EF] hover:text-[#EB5324] hover:pl-6 transition-all duration-200"
                           >
                             <span className="w-1.5 h-1.5 rounded-full bg-[#EB5324] opacity-0 group-hover:opacity-100"></span>
-                            {sub.name}
+                            {child.label}
                           </Link>
                         ))}
                       </div>
@@ -141,9 +200,10 @@ export default function GlobalNavbar() {
                   </div>
                 );
               }
+              
               return (
-                <Link key={link.href} href={link.href!} className={getLinkClasses(link.href!)}>
-                  {link.name}
+                <Link key={item.label} href={item.href!} className={getLinkClasses(item.href!)}>
+                  {item.label}
                 </Link>
               );
             })}
@@ -192,30 +252,32 @@ export default function GlobalNavbar() {
               </button>
             </div>
             <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-1">
-              {navLinks.map((link) => {
-                if (link.dropdown) {
-                  const isOpen = openMobileAccordion === link.name;
+              {navItems.map((item) => {
+                const hasChildren = item.children && item.children.length > 0;
+                
+                if (hasChildren) {
+                  const isOpen = openMobileAccordion === item.label;
                   return (
-                    <div key={link.name} className="border-b border-gray-50">
+                    <div key={item.label} className="border-b border-gray-50">
                       <button
-                        onClick={() => setOpenMobileAccordion(isOpen ? null : link.name)}
+                        onClick={() => setOpenMobileAccordion(isOpen ? null : item.label)}
                         className="w-full flex items-center justify-between py-3 text-base font-medium text-gray-600"
                       >
-                        {link.name}
+                        {item.label}
                         <svg className={`w-4 h-4 text-[#EB5324] transition-transform ${isOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                         </svg>
                       </button>
                       {isOpen && (
                         <div className="pb-2 pl-3 flex flex-col gap-1">
-                          {link.dropdown.map((sub) => (
+                          {item.children!.map((child) => (
                             <Link
-                              key={sub.href}
-                              href={sub.href}
+                              key={child.href}
+                              href={child.href!}
                               onClick={() => setIsDrawerOpen(false)}
                               className="py-2 text-sm text-gray-500 hover:text-[#EB5324]"
                             >
-                              {sub.name}
+                              {child.label}
                             </Link>
                           ))}
                         </div>
@@ -223,14 +285,15 @@ export default function GlobalNavbar() {
                     </div>
                   );
                 }
+                
                 return (
                   <Link
-                    key={link.href}
-                    href={link.href!}
+                    key={item.label}
+                    href={item.href!}
                     onClick={() => setIsDrawerOpen(false)}
-                    className={getMobileLinkClasses(link.href!)}
+                    className={getMobileLinkClasses(item.href!)}
                   >
-                    {link.name}
+                    {item.label}
                   </Link>
                 );
               })}

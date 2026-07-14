@@ -7,15 +7,13 @@ import TestimonialsSection from './TestimonialsSection';
 import SignatureCollection from './SignatureCollection';
 import GlobalFooter from '@/components/GlobalFooter';
 
-// Prestige Client Logos for infinite scroll
-const prestigeClientLogos = [
-  "/96 (2).png", "/96 (3).png", "/96 (4).png", "/96 (5).png", "/96 (7).png",
-  "/96 (8).png", "/96 (9).png", "/96 (10).png", "/96 (13).png", "/96 (15).png",
-  "/96 (18).png", "/96 (19).png", "/96 (21).png", "/96 (24).png", "/96 (26).png",
-  "/96 (27).png", "/96 (32).png", "/96 (34).png", "/96 (35).png", "/96 (42).png"
-];
-
-export default function HomeContent({ testimonials }: { testimonials: Array<{ name: string; label: string; review: string }> }) {
+export default function HomeContent({ 
+  testimonials, 
+  clientLogos 
+}: { 
+  testimonials: Array<{ name: string; label: string; review: string }>;
+  clientLogos: string[];
+}) {
   // FAQ Accordion - needs to be client-side for interactivity
   const [openIndex, setOpenIndex] = React.useState<number | null>(null);
 
@@ -155,7 +153,7 @@ export default function HomeContent({ testimonials }: { testimonials: Array<{ na
           <div className="overflow-hidden">
             <div className="flex gap-8 sm:gap-12 animate-marquee">
               {/* Duplicate logos for seamless loop */}
-              {[...prestigeClientLogos, ...prestigeClientLogos].map((logo, i) => (
+              {[...clientLogos, ...clientLogos].map((logo, i) => (
                 <div key={i} className="flex-shrink-0 flex items-center justify-center w-28 h-14 sm:w-36 sm:h-16 md:w-40 md:h-20 grayscale hover:grayscale-0 transition-all duration-300">
                   <Image
                     src={logo}

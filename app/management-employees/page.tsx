@@ -19,6 +19,7 @@ export default async function ManagementEmployees() {
     name: string;
     role: string;
     description: string;
+    image_url?: string;
   }>;
 
   return (
@@ -56,11 +57,19 @@ export default async function ManagementEmployees() {
 
                 {/* Image Placeholder Area */}
                 <div className="w-full aspect-[4/3] bg-[#F4F4F5] relative overflow-hidden flex items-center justify-center border-b border-gray-100">
-                  <div className="text-gray-300 group-hover:text-[#111111] transition-colors duration-500 transform group-hover:scale-110">
-                    <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                  </div>
+                  {employee.image_url ? (
+                    <img 
+                      src={employee.image_url} 
+                      alt={employee.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="text-gray-300 group-hover:text-[#111111] transition-colors duration-500 transform group-hover:scale-110">
+                      <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    </div>
+                  )}
                   {/* Subtle dark gradient overlay from bottom of image area */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>

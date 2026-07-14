@@ -6,7 +6,6 @@ type Logo = { id: string; name: string | null; image_url: string; sort_order: nu
 
 export default function LogosPage() {
   const [logos, setLogos] = useState<Logo[]>([]);
-  const [name, setName] = useState('');
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -22,7 +21,7 @@ export default function LogosPage() {
 
   const addLogo = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!imageFile) { alert('Logo image zaroori hai'); return; }
+    if (!imageFile) { alert('Logo image required'); return; }
 
     setUploading(true);
     const fileName = `logo-${Date.now()}-${imageFile.name}`;
@@ -31,14 +30,14 @@ export default function LogosPage() {
     const { data: urlData } = supabase.storage.from('product-images').getPublicUrl(fileName);
 
     const { error } = await supabase.from('client_logos').insert({
-      name: name || null,
+      name: null,
       image_url: urlData.publicUrl,
     });
 
     setUploading(false);
     if (error) alert(error.message);
     else {
-      setName(''); setImageFile(null);
+      setImageFile(null);
       fetchLogos();
     }
   };
@@ -56,19 +55,17 @@ export default function LogosPage() {
       <h1>Client Logos</h1>
 
       <form onSubmit={addLogo} style={{ display: 'flex', flexDirection: 'column', gap: 10, maxWidth: 400, margin: '20px 0' }}>
-        <input placeholder="Client Name (optional)" value={name} onChange={(e) => setName(e.target.value)} style={{ padding: 8 }} />
-        <input type="file" accept="image/*" onChange={(e) => setImageFile(e.target.files?.[0] || null)} />
+        <input type="file" accept="image/*" onChange={(e) => setImageFile(e.target.files?.[0] || null)} required />
         <button type="submit" disabled={uploading} style={{ padding: '8px 16px' }}>
-          {uploading ? 'Uploading...' : 'Add Logo'}
+          {uploading ? 'Uploading...' : 'Add Client Logo'}
         </button>
       </form>
 
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16 }}>
         {logos.map((logo) => (
           <div key={logo.id} style={{ border: '1px solid #eee', padding: 12, width: 140, textAlign: 'center' }}>
-            <img src={logo.image_url} alt={logo.name || 'Client logo'} style={{ width: '100%', height: 60, objectFit: 'contain' }} />
-            <p style={{ fontSize: 12, margin: '8px 0' }}>{logo.name || '-'}</p>
-            <button onClick={() => deleteLogo(logo.id)} style={{ color: 'red' }}>Delete</button>
+            <img src={logo.image_url} alt="Client logo" style={{ width: '100%', height: 60, objectFit: 'contain' }} />
+            <button onClick={() => deleteLogo(logo.id)} style={{ color: 'red', marginTop: 8 }}>Delete</button>
           </div>
         ))}
       </div>
