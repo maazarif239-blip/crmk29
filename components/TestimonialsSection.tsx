@@ -23,7 +23,25 @@ function getInitials(name: string) {
     .toUpperCase();
 }
 
-export default function TestimonialsSection({ testimonials }: { testimonials: Testimonial[] }) {
+const FALLBACK_TESTIMONIALS: Testimonial[] = [
+  {
+    name: "Ahmed Raza",
+    label: "CEO, TechCorp Pakistan",
+    review: "HB Furniture transformed our office space completely. The quality and craftsmanship exceeded our expectations.",
+  },
+  {
+    name: "Sara Khan",
+    label: "HR Director, Nexus Group",
+    review: "Outstanding service from design to delivery. Our employees love the ergonomic workstations.",
+  },
+  {
+    name: "Usman Ali",
+    label: "Operations Manager, PackagingPro",
+    review: "Reliable, professional, and the furniture quality is top-notch. Highly recommend HB Furniture.",
+  },
+];
+
+export default function TestimonialsSection({ testimonials = FALLBACK_TESTIMONIALS }: { testimonials?: Testimonial[] }) {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: "start" },
     [Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true })]
