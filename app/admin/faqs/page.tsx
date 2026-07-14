@@ -1,12 +1,12 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { HelpCircle, Trash2, Plus } from 'lucide-react';
 
-type FAQ = { 
-  question: string; 
-  answer: string; 
-  pages: string[] 
+type FAQ = {
+  question: string;
+  answer: string;
+  pages: string[];
 };
 
 export default function FAQsPage() {
@@ -14,40 +14,28 @@ export default function FAQsPage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
-  const supabase = createClient();
 
-  useEffect(() => {
-    fetchFaqs();
-  }, []);
-
-  const fetchFaqs = async () => {
+  const fetchFaqs = useCallback(async () => {
+    const supabase = createClient();
     const { data: faqsData } = await supabase
       .from('site_content')
       .select('value')
       .eq('key', 'faqs')
       .single();
-    
+
     if (faqsData?.value && Array.isArray(faqsData.value)) {
-      // Transform old format to new format if needed
       const transformedFaqs = faqsData.value.map((faq: any) => {
-        if (faq.pages) {
-          return faq; // Already has pages field
-        } else {
-          // Old format - assume it's for field_of_expertise
-          return {
-            question: faq.question,
-            answer: faq.answer,
-            pages: ['field_of_expertise']
-          };
-        }
+        if (faq.pages) return faq;
+        return { question: faq.question, answer: faq.answer, pages: ['field_of_expertise'] };
       });
       setFaqs(transformedFaqs);
     } else {
       setFaqs([]);
     }
-
     setLoading(false);
-  };
+  }, []);
+
+  useEffect(() => { fetchFaqs(); }, [fetchFaqs]);
 
   const addFaq = () => {
     setFaqs([...faqs, { question: '', answer: '', pages: [] }]);
@@ -66,7 +54,7 @@ export default function FAQsPage() {
   const togglePage = (index: number, page: 'home' | 'field_of_expertise') => {
     const updated = [...faqs];
     if (updated[index].pages.includes(page)) {
-      updated[index].pages = updated[index].pages.filter(p => p !== page);
+      updated[index].pages = updated[index].pages.filter((p) => p !== page);
     } else {
       updated[index].pages = [...updated[index].pages, page];
     }
@@ -74,15 +62,12 @@ export default function FAQsPage() {
   };
 
   const saveFaqs = async () => {
-    // Validation: each FAQ must have at least one page selected
-    const invalidFaqs = faqs.filter(faq => faq.pages.length === 0);
+    const invalidFaqs = faqs.filter((faq) => faq.pages.length === 0);
     if (invalidFaqs.length > 0) {
       setError('Each FAQ must be assigned to at least one page (Homepage or Field of Expertise)');
       return;
     }
-
-    // Validation: question and answer required
-    const emptyFaqs = faqs.filter(faq => !faq.question.trim() || !faq.answer.trim());
+    const emptyFaqs = faqs.filter((faq) => !faq.question.trim() || !faq.answer.trim());
     if (emptyFaqs.length > 0) {
       setError('All FAQs must have both question and answer filled in');
       return;
@@ -90,13 +75,11 @@ export default function FAQsPage() {
 
     setError('');
     setSaving(true);
+    const supabase = createClient();
     const { error: saveError } = await supabase
       .from('site_content')
-      .upsert(
-        { key: 'faqs', value: faqs },
-        { onConflict: 'key' }
-      );
-    
+      .upsert({ key: 'faqs', value: faqs }, { onConflict: 'key' });
+
     if (saveError) {
       setError('Error saving: ' + saveError.message);
     } else {
@@ -115,7 +98,6 @@ export default function FAQsPage() {
 
   return (
     <div>
-      {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">FAQs Management</h1>
@@ -130,19 +112,15 @@ export default function FAQsPage() {
         </button>
       </div>
 
-      {/* Error Message */}
       {error && (
-        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
-          {error}
-        </div>
+        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">{error}</div>
       )}
 
-      {/* FAQs List */}
       <div className="space-y-4 mb-6">
         {faqs.length === 0 ? (
           <div className="text-center py-12 bg-white rounded-lg shadow-sm border border-gray-200">
             <HelpCircle className="w-12 h-12 text-gray-300 mx-auto mb-3" />
-            <p className="text-gray-500 mb-4">No FAQs yet. Click "Add FAQ" to create one.</p>
+            <p className="text-gray-500 mb-4">No FAQs yet. Click &quot;Add FAQ&quot; to create one.</p>
           </div>
         ) : (
           faqs.map((faq, index) => (
@@ -157,12 +135,9 @@ export default function FAQsPage() {
                   Delete
                 </button>
               </div>
-
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Question
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Question</label>
                   <input
                     type="text"
                     placeholder="Enter question..."
@@ -171,11 +146,8 @@ export default function FAQsPage() {
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#EB5324] focus:border-transparent"
                   />
                 </div>
-
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Answer
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Answer</label>
                   <textarea
                     placeholder="Enter answer..."
                     value={faq.answer}
@@ -184,7 +156,6 @@ export default function FAQsPage() {
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#EB5324] focus:border-transparent"
                   />
                 </div>
-
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Show on Pages (select at least one)
@@ -216,7 +187,6 @@ export default function FAQsPage() {
         )}
       </div>
 
-      {/* Save Button */}
       {faqs.length > 0 && (
         <div className="flex justify-end">
           <button

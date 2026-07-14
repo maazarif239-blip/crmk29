@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { FileText } from 'lucide-react';
 
@@ -8,48 +8,47 @@ export default function AboutPage() {
   const [saving, setSaving] = useState(false);
   const [aboutPara1, setAboutPara1] = useState('');
   const [aboutPara2, setAboutPara2] = useState('');
-  const supabase = createClient();
 
-  useEffect(() => {
-    fetchAbout();
-  }, []);
-
-  const fetchAbout = async () => {
+  const fetchAbout = useCallback(async () => {
+    const supabase = createClient();
     const { data: aboutData } = await supabase
       .from('site_content')
       .select('value')
       .eq('key', 'about_page')
       .single();
-    
+
     if (aboutData?.value) {
       setAboutPara1(aboutData.value.paragraph1 || '');
       setAboutPara2(aboutData.value.paragraph2 || '');
     }
-
     setLoading(false);
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchAbout();
+  }, [fetchAbout]);
 
   const saveAbout = async () => {
-    // Validation
     if (!aboutPara1.trim() || !aboutPara2.trim()) {
       alert('Both paragraphs are required');
       return;
     }
 
     setSaving(true);
+    const supabase = createClient();
     const { error } = await supabase
       .from('site_content')
       .upsert(
-        { 
-          key: 'about_page', 
-          value: { 
-            paragraph1: aboutPara1, 
-            paragraph2: aboutPara2 
-          } 
+        {
+          key: 'about_page',
+          value: {
+            paragraph1: aboutPara1,
+            paragraph2: aboutPara2,
+          },
         },
         { onConflict: 'key' }
       );
-    
+
     if (error) {
       alert('Error saving: ' + error.message);
     } else {
@@ -68,13 +67,11 @@ export default function AboutPage() {
 
   return (
     <div>
-      {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">About Page Content</h1>
         <p className="text-gray-600">Edit the founder story paragraphs displayed on the About page</p>
       </div>
 
-      {/* Form */}
       <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 max-w-4xl">
         <div className="space-y-6">
           <div>
@@ -88,9 +85,7 @@ export default function AboutPage() {
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#EB5324] focus:border-transparent"
               placeholder="First paragraph about the company's founding..."
             />
-            <p className="text-xs text-gray-500 mt-1">
-              Main founder story paragraph
-            </p>
+            <p className="text-xs text-gray-500 mt-1">Main founder story paragraph</p>
           </div>
 
           <div>
@@ -104,13 +99,10 @@ export default function AboutPage() {
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#EB5324] focus:border-transparent"
               placeholder="Second paragraph about the company's approach..."
             />
-            <p className="text-xs text-gray-500 mt-1">
-              Company approach and philosophy
-            </p>
+            <p className="text-xs text-gray-500 mt-1">Company approach and philosophy</p>
           </div>
         </div>
 
-        {/* Save Button */}
         <div className="mt-8 flex justify-end">
           <button
             onClick={saveAbout}
@@ -123,7 +115,6 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Info Card */}
       <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4 max-w-4xl">
         <div className="flex gap-3">
           <div className="text-blue-600 mt-0.5">
@@ -134,8 +125,8 @@ export default function AboutPage() {
           <div className="flex-1">
             <p className="text-sm text-blue-900 font-medium mb-1">About This Page</p>
             <p className="text-xs text-blue-800 leading-relaxed">
-              These paragraphs appear in the "A Legacy of Craftsmanship" section on the About page. 
-              They tell the story of HB Furniture's founding and approach to business.
+              These paragraphs appear in the &quot;A Legacy of Craftsmanship&quot; section on the About page.
+              They tell the story of HB Furniture&apos;s founding and approach to business.
             </p>
           </div>
         </div>

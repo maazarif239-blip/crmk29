@@ -13,8 +13,6 @@ export default function ContactUs() {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const supabase = createClient();
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -27,6 +25,7 @@ export default function ContactUs() {
     setStatus('submitting');
     setErrorMessage('');
 
+    const supabase = createClient();
     const { error } = await supabase
       .from('contact_messages')
       .insert({ name, email, subject, message });

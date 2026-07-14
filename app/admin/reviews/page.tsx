@@ -1,15 +1,15 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { createClient } from '@/lib/supabase/client';
 
-type Review = { 
-  id: string; 
-  name: string; 
-  label: string; 
-  review_text: string; 
-  rating: number; 
-  published: boolean; 
-  sort_order: number 
+type Review = {
+  id: string;
+  name: string;
+  label: string;
+  review_text: string;
+  rating: number;
+  published: boolean;
+  sort_order: number;
 };
 
 export default function ReviewsPage() {
@@ -21,15 +21,15 @@ export default function ReviewsPage() {
   const [published, setPublished] = useState(true);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<string | null>(null);
-  const supabase = createClient();
 
-  const fetchReviews = async () => {
+  const fetchReviews = useCallback(async () => {
+    const supabase = createClient();
     const { data } = await supabase.from('reviews').select('*').order('sort_order');
     setReviews(data || []);
     setLoading(false);
-  };
+  }, []);
 
-  useEffect(() => { fetchReviews(); }, []);
+  useEffect(() => { fetchReviews(); }, [fetchReviews]);
 
   const startEdit = (review: Review) => {
     setEditingId(review.id);
@@ -42,47 +42,28 @@ export default function ReviewsPage() {
 
   const cancelEdit = () => {
     setEditingId(null);
-    setName(''); 
-    setLabel(''); 
-    setReviewText(''); 
-    setRating(5); 
-    setPublished(true);
+    setName(''); setLabel(''); setReviewText(''); setRating(5); setPublished(true);
   };
 
   const saveReview = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !label || !reviewText) { 
-      alert('Name, label, and review text are required'); 
-      return; 
-    }
+    if (!name || !label || !reviewText) { alert('Name, label, and review text are required'); return; }
+    const supabase = createClient();
 
     if (editingId) {
-      const { error } = await supabase.from('reviews').update({ 
-        name, 
-        label, 
-        review_text: reviewText, 
-        rating, 
-        published 
-      }).eq('id', editingId);
+      const { error } = await supabase.from('reviews').update({ name, label, review_text: reviewText, rating, published }).eq('id', editingId);
       if (error) { alert(error.message); return; }
-      cancelEdit();
-      fetchReviews();
+      cancelEdit(); fetchReviews();
     } else {
-      const { error } = await supabase.from('reviews').insert({ 
-        name, 
-        label, 
-        review_text: reviewText, 
-        rating, 
-        published 
-      });
+      const { error } = await supabase.from('reviews').insert({ name, label, review_text: reviewText, rating, published });
       if (error) { alert(error.message); return; }
-      cancelEdit();
-      fetchReviews();
+      cancelEdit(); fetchReviews();
     }
   };
 
   const deleteReview = async (id: string) => {
     if (!confirm('Delete this review?')) return;
+    const supabase = createClient();
     await supabase.from('reviews').delete().eq('id', id);
     fetchReviews();
   };
@@ -92,26 +73,10 @@ export default function ReviewsPage() {
   return (
     <div>
       <h1>Reviews / Testimonials</h1>
-      
       <form onSubmit={saveReview} style={{ display: 'flex', flexDirection: 'column', gap: 10, maxWidth: 600, margin: '20px 0' }}>
-        <input 
-          placeholder="Name (e.g. Anees Khan)" 
-          value={name} 
-          onChange={(e) => setName(e.target.value)} 
-          style={{ padding: 8 }} 
-        />
-        <input 
-          placeholder="Label (e.g. Google Review · 4 months ago)" 
-          value={label} 
-          onChange={(e) => setLabel(e.target.value)} 
-          style={{ padding: 8 }} 
-        />
-        <textarea 
-          placeholder="Review text..." 
-          value={reviewText} 
-          onChange={(e) => setReviewText(e.target.value)} 
-          style={{ padding: 8, minHeight: 100 }} 
-        />
+        <input placeholder="Name (e.g. Anees Khan)" value={name} onChange={(e) => setName(e.target.value)} style={{ padding: 8 }} />
+        <input placeholder="Label (e.g. Google Review · 4 months ago)" value={label} onChange={(e) => setLabel(e.target.value)} style={{ padding: 8 }} />
+        <textarea placeholder="Review text..." value={reviewText} onChange={(e) => setReviewText(e.target.value)} style={{ padding: 8, minHeight: 100 }} />
         <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
           <label>Rating:</label>
           <select value={rating} onChange={(e) => setRating(Number(e.target.value))} style={{ padding: 8 }}>
@@ -122,33 +87,20 @@ export default function ReviewsPage() {
             <option value={5}>5 Stars</option>
           </select>
           <label style={{ marginLeft: 20 }}>
-            <input 
-              type="checkbox" 
-              checked={published} 
-              onChange={(e) => setPublished(e.target.checked)} 
-              style={{ marginRight: 5 }}
-            />
+            <input type="checkbox" checked={published} onChange={(e) => setPublished(e.target.checked)} style={{ marginRight: 5 }} />
             Published
           </label>
         </div>
         <div style={{ display: 'flex', gap: 10 }}>
-          <button type="submit" style={{ padding: '8px 16px' }}>
-            {editingId ? 'Update' : 'Add Review'}
-          </button>
-          {editingId && (
-            <button type="button" onClick={cancelEdit} style={{ padding: '8px 16px' }}>Cancel</button>
-          )}
+          <button type="submit" style={{ padding: '8px 16px' }}>{editingId ? 'Update' : 'Add Review'}</button>
+          {editingId && <button type="button" onClick={cancelEdit} style={{ padding: '8px 16px' }}>Cancel</button>}
         </div>
       </form>
 
       <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 30 }}>
         <thead>
           <tr style={{ textAlign: 'left', borderBottom: '1px solid #ccc' }}>
-            <th>Name</th>
-            <th>Label</th>
-            <th>Rating</th>
-            <th>Published</th>
-            <th></th>
+            <th>Name</th><th>Label</th><th>Rating</th><th>Published</th><th></th>
           </tr>
         </thead>
         <tbody>

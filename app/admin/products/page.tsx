@@ -1,17 +1,17 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { createClient } from '@/lib/supabase/client';
 
 type Category = { id: string; name: string };
-type Product = { 
-  id: string; 
-  name: string; 
-  description: string | null; 
-  image_url: string | null; 
-  category_id: string | null; 
-  featured: boolean; 
+type Product = {
+  id: string;
+  name: string;
+  description: string | null;
+  image_url: string | null;
+  category_id: string | null;
+  featured: boolean;
   sort_order: number;
-  categories?: { name: string } 
+  categories?: { name: string };
 };
 
 export default function ProductsPage() {
@@ -26,17 +26,17 @@ export default function ProductsPage() {
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<string | null>(null);
-  const supabase = createClient();
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
+    const supabase = createClient();
     const { data: prods } = await supabase.from('products').select('*, categories(name)').order('sort_order', { ascending: true });
     const { data: cats } = await supabase.from('categories').select('id, name').order('sort_order');
     setProducts(prods || []);
     setCategories(cats || []);
     setLoading(false);
-  };
+  }, []);
 
-  useEffect(() => { fetchData(); }, []);
+  useEffect(() => { fetchData(); }, [fetchData]);
 
   const startEdit = (product: Product) => {
     setEditingId(product.id);
@@ -49,12 +49,8 @@ export default function ProductsPage() {
 
   const cancelEdit = () => {
     setEditingId(null);
-    setName(''); 
-    setDescription(''); 
-    setCategoryId(''); 
-    setFeatured(false);
-    setSortOrder(0);
-    setImageFile(null);
+    setName(''); setDescription(''); setCategoryId(''); setFeatured(false);
+    setSortOrder(0); setImageFile(null);
   };
 
   const saveProduct = async (e: React.FormEvent) => {
@@ -62,6 +58,7 @@ export default function ProductsPage() {
     if (!name || !categoryId) { alert('Name aur category zaroori hai'); return; }
 
     setUploading(true);
+    const supabase = createClient();
     let imageUrl = '';
 
     if (imageFile) {
@@ -73,31 +70,26 @@ export default function ProductsPage() {
     }
 
     if (editingId) {
-      const updateData: any = { name, description, category_id: categoryId, featured, sort_order: sortOrder };
+      const updateData: Record<string, unknown> = { name, description, category_id: categoryId, featured, sort_order: sortOrder };
       if (imageUrl) updateData.image_url = imageUrl;
       const { error } = await supabase.from('products').update(updateData).eq('id', editingId);
       setUploading(false);
       if (error) { alert(error.message); return; }
-      cancelEdit();
-      fetchData();
+      cancelEdit(); fetchData();
     } else {
       const { error } = await supabase.from('products').insert({
-        name, 
-        description, 
-        category_id: categoryId, 
-        image_url: imageUrl || null,
-        featured,
-        sort_order: sortOrder
+        name, description, category_id: categoryId,
+        image_url: imageUrl || null, featured, sort_order: sortOrder,
       });
       setUploading(false);
       if (error) { alert(error.message); return; }
-      cancelEdit();
-      fetchData();
+      cancelEdit(); fetchData();
     }
   };
 
   const deleteProduct = async (id: string) => {
     if (!confirm('Delete this product?')) return;
+    const supabase = createClient();
     await supabase.from('products').delete().eq('id', id);
     fetchData();
   };
@@ -107,7 +99,6 @@ export default function ProductsPage() {
   return (
     <div>
       <h1>Products</h1>
-
       <form onSubmit={saveProduct} style={{ display: 'flex', flexDirection: 'column', gap: 10, maxWidth: 400, margin: '20px 0' }}>
         <input placeholder="Product Name" value={name} onChange={(e) => setName(e.target.value)} style={{ padding: 8 }} />
         <textarea placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} style={{ padding: 8, minHeight: 80 }} />
@@ -116,32 +107,18 @@ export default function ProductsPage() {
           {categories.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
         </select>
         <input type="file" accept="image/*" onChange={(e) => setImageFile(e.target.files?.[0] || null)} />
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <label style={{ display: 'flex', alignItems: 'center', gap: 5, cursor: 'pointer' }}>
-            <input 
-              type="checkbox" 
-              checked={featured} 
-              onChange={(e) => setFeatured(e.target.checked)}
-            />
-            <span style={{ fontSize: 14 }}>Featured Product</span>
-          </label>
-        </div>
+        <label style={{ display: 'flex', alignItems: 'center', gap: 5, cursor: 'pointer' }}>
+          <input type="checkbox" checked={featured} onChange={(e) => setFeatured(e.target.checked)} />
+          <span style={{ fontSize: 14 }}>Featured Product</span>
+        </label>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
           <label style={{ fontSize: 14, fontWeight: 'bold' }}>Display Order (lower shows first)</label>
-          <input 
-            type="number" 
-            value={sortOrder} 
-            onChange={(e) => setSortOrder(Number(e.target.value))} 
-            style={{ padding: 8 }}
-            placeholder="0"
-          />
+          <input type="number" value={sortOrder} onChange={(e) => setSortOrder(Number(e.target.value))} style={{ padding: 8 }} placeholder="0" />
         </div>
         <button type="submit" disabled={uploading} style={{ padding: '8px 16px' }}>
           {uploading ? 'Saving...' : editingId ? 'Update Product' : 'Add Product'}
         </button>
-        {editingId && (
-          <button type="button" onClick={cancelEdit} style={{ padding: '8px 16px' }}>Cancel</button>
-        )}
+        {editingId && <button type="button" onClick={cancelEdit} style={{ padding: '8px 16px' }}>Cancel</button>}
       </form>
 
       <table style={{ width: '100%', borderCollapse: 'collapse' }}>
@@ -159,14 +136,7 @@ export default function ProductsPage() {
               <td>{p.sort_order}</td>
               <td>
                 {p.featured && (
-                  <span style={{ 
-                    backgroundColor: '#EB5324', 
-                    color: 'white', 
-                    padding: '2px 8px', 
-                    borderRadius: 4, 
-                    fontSize: 11, 
-                    fontWeight: 'bold' 
-                  }}>
+                  <span style={{ backgroundColor: '#EB5324', color: 'white', padding: '2px 8px', borderRadius: 4, fontSize: 11, fontWeight: 'bold' }}>
                     FEATURED
                   </span>
                 )}

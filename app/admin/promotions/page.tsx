@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { Megaphone, Trash2, Plus, Eye, EyeOff } from 'lucide-react';
 
@@ -15,57 +15,36 @@ export default function PromotionsPage() {
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editMessage, setEditMessage] = useState('');
-  const supabase = createClient();
 
-  useEffect(() => {
-    fetchPromotions();
-  }, []);
-
-  const fetchPromotions = async () => {
+  const fetchPromotions = useCallback(async () => {
+    const supabase = createClient();
     const { data } = await supabase
       .from('promotions')
       .select('*')
       .order('created_at', { ascending: false });
-    
     setPromotions(data || []);
     setLoading(false);
-  };
+  }, []);
+
+  useEffect(() => { fetchPromotions(); }, [fetchPromotions]);
 
   const addPromotion = async () => {
     const message = prompt('Enter promotion message:');
     if (!message?.trim()) return;
-
-    const { error } = await supabase
-      .from('promotions')
-      .insert({ message: message.trim(), is_active: false });
-    
-    if (error) {
-      alert('Error adding promotion: ' + error.message);
-    } else {
-      fetchPromotions();
-    }
+    const supabase = createClient();
+    const { error } = await supabase.from('promotions').insert({ message: message.trim(), is_active: false });
+    if (error) alert('Error adding promotion: ' + error.message);
+    else fetchPromotions();
   };
 
   const toggleActive = async (id: string, currentStatus: boolean) => {
-    // If activating this promotion, deactivate all others first
+    const supabase = createClient();
     if (!currentStatus) {
-      await supabase
-        .from('promotions')
-        .update({ is_active: false })
-        .neq('id', id);
+      await supabase.from('promotions').update({ is_active: false }).neq('id', id);
     }
-
-    // Toggle the selected promotion
-    const { error } = await supabase
-      .from('promotions')
-      .update({ is_active: !currentStatus })
-      .eq('id', id);
-    
-    if (error) {
-      alert('Error updating promotion: ' + error.message);
-    } else {
-      fetchPromotions();
-    }
+    const { error } = await supabase.from('promotions').update({ is_active: !currentStatus }).eq('id', id);
+    if (error) alert('Error updating promotion: ' + error.message);
+    else fetchPromotions();
   };
 
   const startEdit = (promo: Promotion) => {
@@ -74,134 +53,80 @@ export default function PromotionsPage() {
   };
 
   const saveEdit = async (id: string) => {
-    if (!editMessage.trim()) {
-      alert('Message cannot be empty');
-      return;
-    }
-
-    const { error } = await supabase
-      .from('promotions')
-      .update({ message: editMessage.trim() })
-      .eq('id', id);
-    
-    if (error) {
-      alert('Error updating: ' + error.message);
-    } else {
-      setEditingId(null);
-      setEditMessage('');
-      fetchPromotions();
-    }
+    if (!editMessage.trim()) { alert('Message cannot be empty'); return; }
+    const supabase = createClient();
+    const { error } = await supabase.from('promotions').update({ message: editMessage.trim() }).eq('id', id);
+    if (error) alert('Error updating: ' + error.message);
+    else { setEditingId(null); setEditMessage(''); fetchPromotions(); }
   };
 
-  const cancelEdit = () => {
-    setEditingId(null);
-    setEditMessage('');
-  };
+  const cancelEdit = () => { setEditingId(null); setEditMessage(''); };
 
   const deletePromotion = async (id: string) => {
     if (!confirm('Delete this promotion?')) return;
-
-    const { error } = await supabase
-      .from('promotions')
-      .delete()
-      .eq('id', id);
-    
-    if (error) {
-      alert('Error deleting: ' + error.message);
-    } else {
-      fetchPromotions();
-    }
+    const supabase = createClient();
+    const { error } = await supabase.from('promotions').delete().eq('id', id);
+    if (error) alert('Error deleting: ' + error.message);
+    else fetchPromotions();
   };
 
   const formatDate = (dateStr: string) => {
     return new Date(dateStr).toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
+      month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit',
     });
   };
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <p className="text-gray-500">Loading promotions...</p>
-      </div>
-    );
+    return <div className="flex items-center justify-center h-64"><p className="text-gray-500">Loading promotions...</p></div>;
   }
 
-  const activePromo = promotions.find(p => p.is_active);
+  const activePromo = promotions.find((p) => p.is_active);
 
   return (
     <div>
-      {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Promotion Banners</h1>
           <p className="text-gray-600">Manage sitewide promotion messages (only one can be active at a time)</p>
         </div>
-        <button
-          onClick={addPromotion}
-          className="flex items-center gap-2 bg-[#EB5324] text-white px-4 py-2 rounded-lg hover:bg-[#d4481f] transition-colors"
-        >
+        <button onClick={addPromotion} className="flex items-center gap-2 bg-[#EB5324] text-white px-4 py-2 rounded-lg hover:bg-[#d4481f] transition-colors">
           <Plus className="w-4 h-4" />
           Add Promotion
         </button>
       </div>
 
-      {/* Active Banner Preview */}
       {activePromo && (
         <div className="mb-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
           <div className="flex items-start gap-3">
             <Megaphone className="w-5 h-5 text-blue-600 mt-0.5" />
             <div className="flex-1">
               <p className="text-sm font-medium text-blue-900 mb-1">Currently Active Banner</p>
-              <div className="bg-[#EB5324] text-white text-center py-2 px-4 rounded font-bold text-sm">
-                {activePromo.message}
-              </div>
+              <div className="bg-[#EB5324] text-white text-center py-2 px-4 rounded font-bold text-sm">{activePromo.message}</div>
               <p className="text-xs text-blue-700 mt-2">This banner is visible on all pages across the website.</p>
             </div>
           </div>
         </div>
       )}
 
-      {/* Promotions List */}
       <div className="space-y-3">
         {promotions.length === 0 ? (
           <div className="text-center py-12 bg-white rounded-lg shadow-sm border border-gray-200">
             <Megaphone className="w-12 h-12 text-gray-300 mx-auto mb-3" />
-            <p className="text-gray-500 mb-4">No promotions yet. Click "Add Promotion" to create one.</p>
+            <p className="text-gray-500 mb-4">No promotions yet. Click &quot;Add Promotion&quot; to create one.</p>
           </div>
         ) : (
           promotions.map((promo) => (
-            <div
-              key={promo.id}
-              className={`bg-white rounded-lg shadow-sm border p-4 ${
-                promo.is_active ? 'border-[#EB5324] ring-2 ring-[#EB5324] ring-opacity-20' : 'border-gray-200'
-              }`}
-            >
+            <div key={promo.id} className={`bg-white rounded-lg shadow-sm border p-4 ${promo.is_active ? 'border-[#EB5324] ring-2 ring-[#EB5324] ring-opacity-20' : 'border-gray-200'}`}>
               <div className="flex items-start gap-4">
-                {/* Active Status */}
                 <div className="pt-1">
                   <button
                     onClick={() => toggleActive(promo.id, promo.is_active)}
-                    className={`p-2 rounded-lg transition-colors ${
-                      promo.is_active
-                        ? 'bg-green-100 text-green-700 hover:bg-green-200'
-                        : 'bg-gray-100 text-gray-400 hover:bg-gray-200'
-                    }`}
+                    className={`p-2 rounded-lg transition-colors ${promo.is_active ? 'bg-green-100 text-green-700 hover:bg-green-200' : 'bg-gray-100 text-gray-400 hover:bg-gray-200'}`}
                     title={promo.is_active ? 'Active (click to deactivate)' : 'Inactive (click to activate)'}
                   >
-                    {promo.is_active ? (
-                      <Eye className="w-5 h-5" />
-                    ) : (
-                      <EyeOff className="w-5 h-5" />
-                    )}
+                    {promo.is_active ? <Eye className="w-5 h-5" /> : <EyeOff className="w-5 h-5" />}
                   </button>
                 </div>
-
-                {/* Message Content */}
                 <div className="flex-1">
                   {editingId === promo.id ? (
                     <div className="space-y-3">
@@ -214,18 +139,8 @@ export default function PromotionsPage() {
                         autoFocus
                       />
                       <div className="flex gap-2">
-                        <button
-                          onClick={() => saveEdit(promo.id)}
-                          className="bg-green-600 text-white px-4 py-1.5 rounded text-sm hover:bg-green-700"
-                        >
-                          Save
-                        </button>
-                        <button
-                          onClick={cancelEdit}
-                          className="bg-gray-200 text-gray-700 px-4 py-1.5 rounded text-sm hover:bg-gray-300"
-                        >
-                          Cancel
-                        </button>
+                        <button onClick={() => saveEdit(promo.id)} className="bg-green-600 text-white px-4 py-1.5 rounded text-sm hover:bg-green-700">Save</button>
+                        <button onClick={cancelEdit} className="bg-gray-200 text-gray-700 px-4 py-1.5 rounded text-sm hover:bg-gray-300">Cancel</button>
                       </div>
                     </div>
                   ) : (
@@ -235,22 +150,10 @@ export default function PromotionsPage() {
                     </>
                   )}
                 </div>
-
-                {/* Actions */}
                 {editingId !== promo.id && (
                   <div className="flex gap-2">
-                    <button
-                      onClick={() => startEdit(promo)}
-                      className="text-blue-600 hover:text-blue-700 text-sm font-medium"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      onClick={() => deletePromotion(promo.id)}
-                      className="text-red-600 hover:text-red-700"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
+                    <button onClick={() => startEdit(promo)} className="text-blue-600 hover:text-blue-700 text-sm font-medium">Edit</button>
+                    <button onClick={() => deletePromotion(promo.id)} className="text-red-600 hover:text-red-700"><Trash2 className="w-4 h-4" /></button>
                   </div>
                 )}
               </div>
@@ -259,7 +162,6 @@ export default function PromotionsPage() {
         )}
       </div>
 
-      {/* Info Box */}
       <div className="mt-6 bg-amber-50 border border-amber-200 rounded-lg p-4">
         <div className="flex gap-3">
           <div className="text-amber-600 mt-0.5">
