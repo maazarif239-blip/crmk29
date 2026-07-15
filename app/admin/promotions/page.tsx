@@ -8,6 +8,7 @@ type Promotion = {
   message: string;
   cta_text: string | null;
   cta_link: string | null;
+  font_style: string;
   is_active: boolean;
   created_at: string;
 };
@@ -23,12 +24,14 @@ export default function PromotionsPage() {
   const [addHasCTA, setAddHasCTA] = useState(false);
   const [addCtaText, setAddCtaText] = useState('');
   const [addCtaLink, setAddCtaLink] = useState('');
+  const [addFontStyle, setAddFontStyle] = useState('default');
 
   // Edit form state
   const [editMessage, setEditMessage] = useState('');
   const [editHasCTA, setEditHasCTA] = useState(false);
   const [editCtaText, setEditCtaText] = useState('');
   const [editCtaLink, setEditCtaLink] = useState('');
+  const [editFontStyle, setEditFontStyle] = useState('default');
 
   const fetchPromotions = useCallback(async () => {
     const supabase = createClient();
@@ -49,6 +52,7 @@ export default function PromotionsPage() {
     setAddHasCTA(false);
     setAddCtaText('');
     setAddCtaLink('');
+    setAddFontStyle('default');
     setShowAddForm(false);
   };
 
@@ -62,6 +66,7 @@ export default function PromotionsPage() {
       message: addMessage.trim(),
       cta_text: addHasCTA ? addCtaText.trim() || null : null,
       cta_link: addHasCTA ? addCtaLink.trim() || null : null,
+      font_style: addFontStyle,
       is_active: false,
     });
     if (error) alert('Error adding promotion: ' + error.message);
@@ -90,6 +95,7 @@ export default function PromotionsPage() {
     setEditHasCTA(!!(promo.cta_text && promo.cta_link));
     setEditCtaText(promo.cta_text || '');
     setEditCtaLink(promo.cta_link || '');
+    setEditFontStyle(promo.font_style || 'default');
   };
 
   const saveEdit = async (id: string) => {
@@ -102,6 +108,7 @@ export default function PromotionsPage() {
       message: editMessage.trim(),
       cta_text: editHasCTA ? editCtaText.trim() || null : null,
       cta_link: editHasCTA ? editCtaLink.trim() || null : null,
+      font_style: editFontStyle,
     }).eq('id', id);
     if (error) alert('Error updating: ' + error.message);
     else {
@@ -215,6 +222,23 @@ export default function PromotionsPage() {
               </div>
             )}
 
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Font Style
+              </label>
+              <select
+                value={addFontStyle}
+                onChange={(e) => setAddFontStyle(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#EB5324] focus:border-transparent"
+              >
+                <option value="default">Default (Inter/System)</option>
+                <option value="serif">Serif (Georgia)</option>
+                <option value="bold">Bold Sans (Poppins)</option>
+                <option value="elegant">Elegant (Playfair Display)</option>
+                <option value="mono">Mono (Courier New)</option>
+              </select>
+            </div>
+
             <div className="flex gap-2 pt-4">
               <button
                 onClick={addPromotion}
@@ -250,15 +274,27 @@ export default function PromotionsPage() {
               <div className="relative">
                 {activePromo.cta_text && activePromo.cta_link ? (
                   <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                    <div className="px-5 py-2 border-2 border-white text-white rounded-full font-semibold text-sm whitespace-nowrap">
+                    <div className="px-5 py-2 border-2 border-white text-white rounded-full font-semibold text-sm whitespace-nowrap order-1 md:order-none">
                       {activePromo.cta_text}
                     </div>
-                    <p className="font-bold text-sm md:text-base tracking-wide text-center md:text-right">
+                    <p className={`font-bold text-sm md:text-base tracking-wide text-center md:text-right ${
+                      activePromo.font_style === 'serif' ? 'font-serif' :
+                      activePromo.font_style === 'bold' ? 'font-bold' :
+                      activePromo.font_style === 'elegant' ? 'font-serif italic' :
+                      activePromo.font_style === 'mono' ? 'font-mono' :
+                      'font-sans'
+                    }`}>
                       {activePromo.message}
                     </p>
                   </div>
                 ) : (
-                  <p className="font-bold text-sm md:text-base tracking-wide text-center">{activePromo.message}</p>
+                  <p className={`font-bold text-sm md:text-base tracking-wide text-center ${
+                    activePromo.font_style === 'serif' ? 'font-serif' :
+                    activePromo.font_style === 'bold' ? 'font-bold' :
+                    activePromo.font_style === 'elegant' ? 'font-serif italic' :
+                    activePromo.font_style === 'mono' ? 'font-mono' :
+                    'font-sans'
+                  }`}>{activePromo.message}</p>
                 )}
               </div>
             </div>
@@ -352,6 +388,23 @@ export default function PromotionsPage() {
                           </div>
                         </div>
                       )}
+
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                          Font Style
+                        </label>
+                        <select
+                          value={editFontStyle}
+                          onChange={(e) => setEditFontStyle(e.target.value)}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#EB5324] focus:border-transparent"
+                        >
+                          <option value="default">Default (Inter/System)</option>
+                          <option value="serif">Serif (Georgia)</option>
+                          <option value="bold">Bold Sans (Poppins)</option>
+                          <option value="elegant">Elegant (Playfair Display)</option>
+                          <option value="mono">Mono (Courier New)</option>
+                        </select>
+                      </div>
 
                       <div className="flex gap-2 pt-2">
                         <button
