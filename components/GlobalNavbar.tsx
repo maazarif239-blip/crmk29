@@ -124,7 +124,7 @@ export default function GlobalNavbar() {
     return `h-full flex items-center whitespace-nowrap text-sm font-medium transition-colors border-b-2 ${
       isActive
         ? 'text-[#EB5324] border-[#EB5324]'
-        : 'text-gray-600 hover:text-gray-900 border-transparent'
+        : 'text-gray-600 hover:text-black border-transparent'
     }`;
   };
 
@@ -132,14 +132,14 @@ export default function GlobalNavbar() {
     return `h-full flex items-center gap-1.5 whitespace-nowrap text-sm font-medium transition-colors border-b-2 ${
       isOpen
         ? 'text-[#EB5324] border-[#EB5324]'
-        : 'text-gray-600 hover:text-gray-900 border-transparent'
+        : 'text-gray-600 hover:text-black border-transparent'
     }`;
   };
 
   const getMobileLinkClasses = (href: string) => {
     const isActive = isLinkActive(href);
     return `block py-3 text-base font-medium ${
-      isActive ? 'text-[#EB5324]' : 'text-gray-600 hover:text-gray-900'
+      isActive ? 'text-[#EB5324]' : 'text-gray-600 hover:text-black'
     }`;
   };
 
@@ -189,7 +189,7 @@ export default function GlobalNavbar() {
                           <Link
                             key={child.href}
                             href={child.href!}
-                            className="flex items-center gap-3 px-5 py-3 text-sm text-gray-700 hover:bg-[#FDF3EF] hover:text-[#EB5324] hover:pl-6 transition-all duration-200"
+                            className="flex items-center gap-3 px-5 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-black hover:pl-6 transition-all duration-200"
                           >
                             <span className="w-1.5 h-1.5 rounded-full bg-[#EB5324] opacity-0 group-hover:opacity-100"></span>
                             {child.label}
@@ -275,7 +275,7 @@ export default function GlobalNavbar() {
                               key={child.href}
                               href={child.href!}
                               onClick={() => setIsDrawerOpen(false)}
-                              className="py-2 text-sm text-gray-500 hover:text-[#EB5324]"
+                              className="py-2 text-sm text-gray-500 hover:text-black"
                             >
                               {child.label}
                             </Link>
