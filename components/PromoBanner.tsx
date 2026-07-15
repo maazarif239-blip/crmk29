@@ -5,25 +5,65 @@ export const revalidate = 0;
 export default async function PromoBanner() {
   const supabase = await createClient();
 
-  // Fetch the currently active promotion
   const { data: activePromo } = await supabase
     .from('promotions')
-    .select('message')
+    .select('message, cta_text, cta_link')
     .eq('is_active', true)
     .single();
 
-  // If no active promotion, render nothing
-  if (!activePromo) {
-    return null;
-  }
+  if (!activePromo) return null;
+
+  const hasCTA = activePromo.cta_text && activePromo.cta_link;
 
   return (
-    <div className="bg-[#EB5324] text-white py-2.5 px-4">
-      <div className="max-w-7xl mx-auto text-center">
-        <p className="font-bold text-sm md:text-base tracking-wide">
-          {activePromo.message}
-        </p>
+    <>
+      <style>{`
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            transform: translateY(-100%);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .promo-banner {
+          animation: slideDown 0.6s ease-out;
+        }
+        .promo-banner::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        }
+      `}</style>
+
+      <div className="promo-banner relative bg-[#EB5324] text-white py-3 px-4 overflow-hidden">
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#EB5324] via-[#FF6B3D] to-[#EB5324] opacity-40"></div>
+
+        <div className="relative max-w-7xl mx-auto">
+          {hasCTA ? (
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+              <a
+                href={activePromo.cta_link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-shrink-0 px-5 py-2 border-2 border-white text-white rounded-full font-semibold text-sm hover:bg-white hover:text-[#EB5324] transition-all duration-300 whitespace-nowrap"
+              >
+                {activePromo.cta_text}
+              </a>
+              <p className="font-bold text-sm md:text-base tracking-wide text-center md:text-right">{activePromo.message}</p>
+            </div>
+          ) : (
+            <p className="font-bold text-sm md:text-base tracking-wide text-center">{activePromo.message}</p>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

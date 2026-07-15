@@ -148,13 +148,13 @@ export default function GlobalNavbar() {
       <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
         <div className="w-full mx-auto pl-6 pr-4 h-24 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center shrink-0">
+          <Link href="/" className="flex items-center shrink-0 h-16">
             <Image
-              src="/hb-logo.png.png"
+              src="/hb-logo.png"
               alt="HB Furniture Logo"
-              width={100}
-              height={100}
-              className="object-contain"
+              width={80}
+              height={80}
+              className="object-contain h-auto w-auto"
             />
           </Link>
 
