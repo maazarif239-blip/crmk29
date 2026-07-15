@@ -9,10 +9,12 @@ import GlobalFooter from '@/components/GlobalFooter';
 
 export default function HomeContent({ 
   testimonials, 
-  clientLogos 
+  clientLogos,
+  featuredProducts
 }: { 
   testimonials: Array<{ name: string; label: string; review: string }>;
   clientLogos: string[];
+  featuredProducts?: Array<{ name: string; image: string; href: string }>;
 }) {
   // FAQ Accordion - needs to be client-side for interactivity
   const [openIndex, setOpenIndex] = React.useState<number | null>(null);
