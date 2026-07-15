@@ -6,6 +6,10 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
+// Force dynamic rendering to avoid build-time issues
+export const dynamic = 'force-dynamic';
+export const revalidate = 60; // Revalidate every 60 seconds
+
 export default async function CategoryPage({ params }: Props) {
   const resolvedParams = await params;
   const { slug } = resolvedParams;
@@ -108,18 +112,32 @@ export async function generateStaticParams() {
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
     
-    if (!supabaseUrl || !supabaseAnonKey) return [];
+    if (!supabaseUrl || !supabaseAnonKey) {
+      console.warn('Missing Supabase env vars, skipping static generation');
+      return [];
+    }
     
     const response = await fetch(`${supabaseUrl}/rest/v1/categories?select=slug`, {
       headers: {
         'apikey': supabaseAnonKey,
         'Authorization': `Bearer ${supabaseAnonKey}`,
       },
+      next: { revalidate: 60 }, // Cache for 60 seconds
     });
     
-    if (!response.ok) return [];
+    if (!response.ok) {
+      console.warn('Failed to fetch categories for static generation');
+      return [];
+    }
     
     const categories = await response.json();
+    
+    if (!Array.isArray(categories)) {
+      console.warn('Invalid categories response');
+      return [];
+    }
+    
+    console.log(`Generating ${categories.length} category pages`);
     return categories.map((category: { slug: string }) => ({
       slug: category.slug,
     }));
