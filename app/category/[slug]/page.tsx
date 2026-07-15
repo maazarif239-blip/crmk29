@@ -8,32 +8,32 @@ type Props = {
 
 // Force dynamic rendering to avoid build-time issues
 export const dynamic = 'force-dynamic';
-export const revalidate = 60; // Revalidate every 60 seconds
 
 export default async function CategoryPage({ params }: Props) {
-  const resolvedParams = await params;
-  const { slug } = resolvedParams;
-  const supabase = await createClient();
+  try {
+    const resolvedParams = await params;
+    const { slug } = resolvedParams;
+    const supabase = await createClient();
 
-  // Fetch category by slug
-  const { data: category, error: categoryError } = await supabase
-    .from('categories')
-    .select('id, name, slug, description')
-    .eq('slug', slug)
-    .single();
+    // Fetch category by slug
+    const { data: category, error: categoryError } = await supabase
+      .from('categories')
+      .select('id, name, slug, description')
+      .eq('slug', slug)
+      .maybeSingle();
 
-  if (categoryError || !category) {
-    notFound();
-  }
+    if (categoryError || !category) {
+      notFound();
+    }
 
-  // Fetch products for this category, ordered by sort_order
-  const { data: products } = await supabase
-    .from('products')
-    .select('id, name, description, image_url, featured, sort_order')
-    .eq('category_id', category.id)
-    .order('sort_order', { ascending: true });
+    // Fetch products for this category, ordered by sort_order
+    const { data: products } = await supabase
+      .from('products')
+      .select('id, name, description, image_url, featured, sort_order')
+      .eq('category_id', category.id)
+      .order('sort_order', { ascending: true });
 
-  return (
+    return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section - Matching other pages style */}
       <div className="bg-white py-16">
@@ -105,89 +105,21 @@ export default async function CategoryPage({ params }: Props) {
   );
 }
 
-// Generate static params for all categories
+// Generate static params for all categories  
 export async function generateStaticParams() {
-  // Use direct fetch instead of createClient for build-time static generation
-  try {
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-    
-    if (!supabaseUrl || !supabaseAnonKey) {
-      console.warn('Missing Supabase env vars, skipping static generation');
-      return [];
-    }
-    
-    const response = await fetch(`${supabaseUrl}/rest/v1/categories?select=slug`, {
-      headers: {
-        'apikey': supabaseAnonKey,
-        'Authorization': `Bearer ${supabaseAnonKey}`,
-      },
-      next: { revalidate: 60 }, // Cache for 60 seconds
-    });
-    
-    if (!response.ok) {
-      console.warn('Failed to fetch categories for static generation');
-      return [];
-    }
-    
-    const categories = await response.json();
-    
-    if (!Array.isArray(categories)) {
-      console.warn('Invalid categories response');
-      return [];
-    }
-    
-    console.log(`Generating ${categories.length} category pages`);
-    return categories.map((category: { slug: string }) => ({
-      slug: category.slug,
-    }));
-  } catch (error) {
-    console.error('Error generating static params:', error);
-    return [];
-  }
+  return []; // Disable static generation - fully dynamic
 }
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: Props) {
-  const resolvedParams = await params;
-  const { slug } = resolvedParams;
-  
-  // Use direct fetch instead of createClient for build-time metadata generation
   try {
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-    
-    if (!supabaseUrl || !supabaseAnonKey) {
-      return { title: 'Category Not Found' };
-    }
-    
-    const response = await fetch(
-      `${supabaseUrl}/rest/v1/categories?slug=eq.${slug}&select=name,description`,
-      {
-        headers: {
-          'apikey': supabaseAnonKey,
-          'Authorization': `Bearer ${supabaseAnonKey}`,
-        },
-      }
-    );
-    
-    if (!response.ok) {
-      return { title: 'Category Not Found' };
-    }
-    
-    const categories = await response.json();
-    const category = categories[0];
-
-    if (!category) {
-      return { title: 'Category Not Found' };
-    }
-
+    const resolvedParams = await params;
+    const { slug } = resolvedParams;
     return {
-      title: `${category.name} | HB Furniture`,
-      description: category.description || `Browse our ${category.name} collection at HB Furniture`,
+      title: `${slug} | HB Furniture`,
+      description: `Browse our ${slug} collection at HB Furniture`,
     };
   } catch (error) {
-    console.error('Error generating metadata:', error);
     return { title: 'Category | HB Furniture' };
   }
 }

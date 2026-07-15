@@ -14,14 +14,13 @@ const FONT_STYLES: Record<string, string> = {
 export default async function PromoBanner() {
   try {
     const supabase = await createClient();
-
-    const { data: activePromo } = await supabase
+    const { data: activePromo, error } = await supabase
       .from('promotions')
       .select('message, cta_text, cta_link, font_style')
       .eq('is_active', true)
-      .single();
+      .maybeSingle();
 
-    if (!activePromo) return null;
+    if (error || !activePromo) return null;
 
     const hasCTA = activePromo.cta_text && activePromo.cta_link;
     const fontClass = FONT_STYLES[activePromo.font_style || 'default'] || FONT_STYLES.default;

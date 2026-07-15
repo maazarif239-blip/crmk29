@@ -4,14 +4,7 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  experimental: {
-    missingSuspenseWithCSRBailout: false,
-  },
   images: {
-    unoptimized: false,
     remotePatterns: [
       {
         protocol: "https",
