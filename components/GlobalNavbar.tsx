@@ -71,21 +71,11 @@ export default function GlobalNavbar() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [openMobileAccordion, setOpenMobileAccordion] = useState<string | null>(null);
   const [navItems, setNavItems] = useState<NavItem[]>(FALLBACK_NAV_ITEMS);
-  const [hasPromo, setHasPromo] = useState(false);
 
   useEffect(() => {
     const loadFromDatabase = async () => {
       try {
         const supabase = createClient();
-        
-        // Check if promo banner is active
-        const { data: promoData } = await supabase
-          .from('promotions')
-          .select('id')
-          .eq('is_active', true)
-          .single();
-        
-        setHasPromo(!!promoData);
         
         // Load from nav_items table (now hierarchical with parent_id)
         const { data: navData, error: navError } = await supabase
@@ -108,11 +98,8 @@ export default function GlobalNavbar() {
           if (topLevel.length > 0) {
             console.log('Loaded navbar from nav_items database (hierarchical)');
             setNavItems(topLevel);
-            return;
           }
         }
-        
-        console.warn('No nav items found in database, using fallback');
       } catch (err) {
         console.warn('Error loading navbar from database, using fallback');
       }
@@ -150,7 +137,7 @@ export default function GlobalNavbar() {
 
   return (
     <>
-      <header className={`bg-white border-b border-gray-100 sticky z-40 ${hasPromo ? 'top-[52px]' : 'top-0'}`}>
+      <header className="bg-white border-b border-gray-100 sticky top-0 z-40">
         <div className="w-full mx-auto pl-6 pr-4 h-20 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center shrink-0 h-14">

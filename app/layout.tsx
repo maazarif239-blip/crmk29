@@ -53,7 +53,7 @@ export default function RootLayout({
           </Suspense>
           <PromoBanner />
           <Navbar />
-          <main className="flex-1 w-full min-w-0 overflow-x-clip">{children}</main>
+          <main className="flex-1 w-full min-w-0 overflow-x-clip" style={{ marginTop: '0px' }}>{children}</main>
           <div className="shrink-0 w-full min-w-0">
             <GlobalFooter />
           </div>

@@ -12,18 +12,19 @@ const FONT_STYLES: Record<string, string> = {
 };
 
 export default async function PromoBanner() {
-  const supabase = await createClient();
+  try {
+    const supabase = await createClient();
 
-  const { data: activePromo } = await supabase
-    .from('promotions')
-    .select('message, cta_text, cta_link, font_style')
-    .eq('is_active', true)
-    .single();
+    const { data: activePromo } = await supabase
+      .from('promotions')
+      .select('message, cta_text, cta_link, font_style')
+      .eq('is_active', true)
+      .single();
 
-  if (!activePromo) return null;
+    if (!activePromo) return null;
 
-  const hasCTA = activePromo.cta_text && activePromo.cta_link;
-  const fontClass = FONT_STYLES[activePromo.font_style || 'default'] || FONT_STYLES.default;
+    const hasCTA = activePromo.cta_text && activePromo.cta_link;
+    const fontClass = FONT_STYLES[activePromo.font_style || 'default'] || FONT_STYLES.default;
 
   return (
     <>
@@ -76,4 +77,8 @@ export default async function PromoBanner() {
       </div>
     </>
   );
+  } catch (error) {
+    console.error('Error loading promo banner:', error);
+    return null;
+  }
 }
