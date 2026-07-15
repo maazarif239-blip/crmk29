@@ -26,6 +26,7 @@ export default function ProductsPage() {
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [filterCategoryId, setFilterCategoryId] = useState<string>('');
 
   const fetchData = useCallback(async () => {
     const supabase = createClient();
@@ -96,9 +97,41 @@ export default function ProductsPage() {
 
   if (loading) return <p>Loading...</p>;
 
+  const filteredProducts = filterCategoryId
+    ? products.filter((p) => p.category_id === filterCategoryId)
+    : products;
+
   return (
     <div>
       <h1>Products</h1>
+      
+      {/* Filter by Category */}
+      <div style={{ marginBottom: '20px', padding: '12px', backgroundColor: '#f5f5f5', borderRadius: '6px' }}>
+        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>
+          Filter by Category:
+        </label>
+        <select
+          value={filterCategoryId}
+          onChange={(e) => setFilterCategoryId(e.target.value)}
+          style={{ padding: '8px', minWidth: '250px' }}
+        >
+          <option value="">All Categories ({products.length} products)</option>
+          {categories.map((c) => {
+            const count = products.filter((p) => p.category_id === c.id).length;
+            return (
+              <option key={c.id} value={c.id}>
+                {c.name} ({count} products)
+              </option>
+            );
+          })}
+        </select>
+        {filterCategoryId && (
+          <span style={{ marginLeft: '10px', fontSize: '14px', color: '#666' }}>
+            Showing {filteredProducts.length} of {products.length} products
+          </span>
+        )}
+      </div>
+
       <form onSubmit={saveProduct} style={{ display: 'flex', flexDirection: 'column', gap: 10, maxWidth: 400, margin: '20px 0' }}>
         <input placeholder="Product Name" value={name} onChange={(e) => setName(e.target.value)} style={{ padding: 8 }} />
         <textarea placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} style={{ padding: 8, minHeight: 80 }} />
@@ -128,7 +161,7 @@ export default function ProductsPage() {
           </tr>
         </thead>
         <tbody>
-          {products.map((p) => (
+          {filteredProducts.map((p) => (
             <tr key={p.id} style={{ borderBottom: '1px solid #eee' }}>
               <td>{p.image_url && <img src={p.image_url} alt={p.name} style={{ width: 50, height: 50, objectFit: 'cover' }} />}</td>
               <td>{p.name}</td>

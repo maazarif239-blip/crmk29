@@ -29,7 +29,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { href: '/admin/faqs', label: 'FAQs', icon: HelpCircle },
     { href: '/admin/team', label: 'Team', icon: Users },
     { href: '/admin/promotions', label: 'Promotions', icon: Megaphone },
-    { href: '/admin/about', label: 'About', icon: FileText },
+    { href: '/admin/signature', label: 'Signature Collection', icon: FileText },
   ];
 
   const isActive = (href: string) => {

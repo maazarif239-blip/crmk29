@@ -47,7 +47,7 @@ export default function RootLayout({
     >
       <head>
       </head>
-      <body className="min-h-full flex flex-col overflow-x-clip pt-[52px]">
+      <body className="min-h-full flex flex-col overflow-x-clip">
           <Suspense fallback={null}>
             <ProgressBar />
           </Suspense>

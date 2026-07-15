@@ -71,48 +71,53 @@ export default function GlobalNavbar() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [openMobileAccordion, setOpenMobileAccordion] = useState<string | null>(null);
   const [navItems, setNavItems] = useState<NavItem[]>(FALLBACK_NAV_ITEMS);
+  const [hasPromo, setHasPromo] = useState(false);
 
   useEffect(() => {
-    // Try to load from database, but don't block rendering
     const loadFromDatabase = async () => {
       try {
         const supabase = createClient();
-        const { data, error } = await supabase
+        
+        // Check if promo banner is active
+        const { data: promoData } = await supabase
+          .from('promotions')
+          .select('id')
+          .eq('is_active', true)
+          .single();
+        
+        setHasPromo(!!promoData);
+        
+        // Load from nav_items table (now hierarchical with parent_id)
+        const { data: navData, error: navError } = await supabase
           .from('nav_items')
           .select('*')
           .eq('is_visible', true)
           .order('position');
         
-        if (error) {
-          console.warn('Failed to load navbar from database:', error.message);
-          return;
+        if (!navError && navData && navData.length > 0) {
+          // Build hierarchical structure
+          const topLevel = navData
+            .filter((item: any) => item.parent_id === null)
+            .map((parent: any) => ({
+              ...parent,
+              children: navData
+                .filter((child: any) => child.parent_id === parent.id)
+                .sort((a: any, b: any) => a.position - b.position),
+            }));
+          
+          if (topLevel.length > 0) {
+            console.log('Loaded navbar from nav_items database (hierarchical)');
+            setNavItems(topLevel);
+            return;
+          }
         }
-
-        if (!data || data.length === 0) {
-          console.warn('No nav items found in database, using fallback');
-          return;
-        }
-
-        // Build hierarchy
-        const topLevel = data
-          .filter((item: any) => item.parent_id === null)
-          .map((parent: any) => ({
-            ...parent,
-            children: data
-              .filter((child: any) => child.parent_id === parent.id)
-              .sort((a: any, b: any) => a.position - b.position),
-          }));
         
-        if (topLevel.length > 0) {
-          console.log('Loaded navbar from database');
-          setNavItems(topLevel);
-        }
+        console.warn('No nav items found in database, using fallback');
       } catch (err) {
         console.warn('Error loading navbar from database, using fallback');
       }
     };
     
-    // Call it but don't await - let fallback show immediately
     loadFromDatabase();
   }, []);
 
@@ -145,36 +150,37 @@ export default function GlobalNavbar() {
 
   return (
     <>
-      <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
-        <div className="w-full mx-auto pl-6 pr-4 h-24 flex items-center justify-between">
+      <header className={`bg-white border-b border-gray-100 sticky z-40 ${hasPromo ? 'top-[52px]' : 'top-0'}`}>
+        <div className="w-full mx-auto pl-6 pr-4 h-20 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center shrink-0 h-16">
+          <Link href="/" className="flex items-center shrink-0 h-14">
             <Image
-              src="/hb-logo.png"
+              src="/hb-logo.png.png"
               alt="HB Furniture Logo"
               width={80}
               height={80}
-              className="object-contain h-auto w-auto"
+              className="object-contain h-full w-auto"
             />
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-4 h-full flex-1 justify-center">
-            {navItems.map((item) => {
+            {navItems.map((item, index) => {
               const hasChildren = item.children && item.children.length > 0;
+              const uniqueKey = item.id || `${item.label}-${index}`;
               
               if (hasChildren) {
                 return (
                   <div
-                    key={item.label}
+                    key={uniqueKey}
                     className="relative h-full flex items-center"
-                    onMouseEnter={() => setOpenDropdown(item.label)}
+                    onMouseEnter={() => setOpenDropdown(uniqueKey)}
                     onMouseLeave={() => setOpenDropdown(null)}
                   >
-                    <button className={getDropdownButtonClasses(openDropdown === item.label)}>
+                    <button className={getDropdownButtonClasses(openDropdown === uniqueKey)}>
                       {item.label}
                       <svg
-                        className={`w-4 h-4 text-[#EB5324] transition-transform ${openDropdown === item.label ? 'rotate-180' : ''}`}
+                        className={`w-4 h-4 text-[#EB5324] transition-transform ${openDropdown === uniqueKey ? 'rotate-180' : ''}`}
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -183,11 +189,11 @@ export default function GlobalNavbar() {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                       </svg>
                     </button>
-                    {openDropdown === item.label && (
+                    {openDropdown === uniqueKey && (
                       <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white rounded-xl shadow-2xl border border-gray-100 min-w-[280px] py-3 z-50 overflow-hidden">
-                        {item.children!.map((child) => (
+                        {item.children!.map((child, childIndex) => (
                           <Link
-                            key={child.href}
+                            key={child.id || `${child.label}-${childIndex}`}
                             href={child.href!}
                             className="flex items-center gap-3 px-5 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-black hover:pl-6 transition-all duration-200"
                           >
@@ -202,7 +208,7 @@ export default function GlobalNavbar() {
               }
               
               return (
-                <Link key={item.label} href={item.href!} className={getLinkClasses(item.href!)}>
+                <Link key={uniqueKey} href={item.href!} className={getLinkClasses(item.href!)}>
                   {item.label}
                 </Link>
               );
@@ -252,15 +258,16 @@ export default function GlobalNavbar() {
               </button>
             </div>
             <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-1">
-              {navItems.map((item) => {
+              {navItems.map((item, index) => {
                 const hasChildren = item.children && item.children.length > 0;
+                const uniqueKey = item.id || `${item.label}-${index}`;
                 
                 if (hasChildren) {
-                  const isOpen = openMobileAccordion === item.label;
+                  const isOpen = openMobileAccordion === uniqueKey;
                   return (
-                    <div key={item.label} className="border-b border-gray-50">
+                    <div key={uniqueKey} className="border-b border-gray-50">
                       <button
-                        onClick={() => setOpenMobileAccordion(isOpen ? null : item.label)}
+                        onClick={() => setOpenMobileAccordion(isOpen ? null : uniqueKey)}
                         className="w-full flex items-center justify-between py-3 text-base font-medium text-gray-600"
                       >
                         {item.label}
@@ -270,9 +277,9 @@ export default function GlobalNavbar() {
                       </button>
                       {isOpen && (
                         <div className="pb-2 pl-3 flex flex-col gap-1">
-                          {item.children!.map((child) => (
+                          {item.children!.map((child, childIndex) => (
                             <Link
-                              key={child.href}
+                              key={child.id || `${child.label}-${childIndex}`}
                               href={child.href!}
                               onClick={() => setIsDrawerOpen(false)}
                               className="py-2 text-sm text-gray-500 hover:text-black"
@@ -288,7 +295,7 @@ export default function GlobalNavbar() {
                 
                 return (
                   <Link
-                    key={item.label}
+                    key={uniqueKey}
                     href={item.href!}
                     onClick={() => setIsDrawerOpen(false)}
                     className={getMobileLinkClasses(item.href!)}

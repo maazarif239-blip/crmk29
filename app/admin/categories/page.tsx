@@ -10,6 +10,7 @@ export default function CategoriesPage() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [name, setName] = useState('');
   const [slug, setSlug] = useState('');
+  const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<string | null>(null);
 
@@ -70,12 +71,14 @@ export default function CategoriesPage() {
     setEditingId(category.id);
     setName(category.name);
     setSlug(category.slug);
+    setDescription(category.description || '');
   };
 
   const cancelEdit = () => {
     setEditingId(null);
     setName('');
     setSlug('');
+    setDescription('');
   };
 
   const resetNavbarState = () => {
@@ -93,18 +96,19 @@ export default function CategoriesPage() {
     const supabase = createClient();
 
     if (editingId) {
-      const { error } = await supabase.from('categories').update({ name, slug }).eq('id', editingId);
+      const { error } = await supabase.from('categories').update({ name, slug, description }).eq('id', editingId);
       if (error) { alert(error.message); return; }
       cancelEdit();
       fetchCategories();
     } else {
-      const { error } = await supabase.from('categories').insert({ name, slug });
+      const { error } = await supabase.from('categories').insert({ name, slug, description });
       if (error) { alert(error.message); return; }
       setNewCategoryName(name);
       setNewCategorySlug(slug);
       setShowNavbarPrompt(true);
       setName('');
       setSlug('');
+      setDescription('');
       fetchCategories();
       fetchAvailableDropdowns();
     }
@@ -131,14 +135,25 @@ export default function CategoriesPage() {
           }
         }
 
-        await supabase.from('nav_items').insert({
+        const { error } = await supabase.from('nav_items').insert({
           label: newCategoryName,
           href: categoryHref,
           position,
           parent_id: null,
           is_visible: true,
         });
+        
+        if (error) {
+          alert('Error adding to navbar: ' + error.message);
+          console.error(error);
+          return;
+        }
       } else {
+        if (!parentDropdownId) {
+          alert('Please select a dropdown');
+          return;
+        }
+
         const { data: childrenToShift } = await supabase
           .from('nav_items')
           .select('id, position')
@@ -154,18 +169,28 @@ export default function CategoriesPage() {
           }
         }
 
-        await supabase.from('nav_items').insert({
+        const { error } = await supabase.from('nav_items').insert({
           label: newCategoryName,
           href: categoryHref,
           position,
           parent_id: parentDropdownId,
           is_visible: true,
         });
+        
+        if (error) {
+          alert('Error adding to navbar: ' + error.message);
+          console.error(error);
+          return;
+        }
       }
 
+      alert('Category added to navbar successfully!');
       resetNavbarState();
+      
+      // Refresh the page to reload navbar
+      window.location.reload();
     } catch (err) {
-      alert('Error adding to navbar');
+      alert('Error adding to navbar: ' + (err as Error).message);
       console.error(err);
     }
   };
@@ -301,6 +326,12 @@ export default function CategoriesPage() {
           onChange={(e) => setSlug(e.target.value)}
           style={{ padding: 8, flex: 1, minWidth: '150px' }}
         />
+        <textarea
+          placeholder="Description (optional)"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          style={{ padding: 8, flex: '1 1 100%', minHeight: '60px' }}
+        />
         <button type="button" onClick={generateSlug} style={{ padding: '8px 12px' }}>
           Slug from Name
         </button>
@@ -319,6 +350,7 @@ export default function CategoriesPage() {
           <tr style={{ textAlign: 'left', borderBottom: '1px solid #ccc' }}>
             <th style={{ padding: '8px' }}>Name</th>
             <th style={{ padding: '8px' }}>Slug</th>
+            <th style={{ padding: '8px' }}>Description</th>
             <th style={{ padding: '8px' }}>Actions</th>
           </tr>
         </thead>
@@ -327,6 +359,15 @@ export default function CategoriesPage() {
             <tr key={c.id} style={{ borderBottom: '1px solid #eee' }}>
               <td style={{ padding: '8px' }}>{c.name}</td>
               <td style={{ padding: '8px' }}>{c.slug}</td>
+              <td style={{ padding: '8px', maxWidth: '400px' }}>
+                {c.description ? (
+                  <span style={{ fontSize: '14px', color: '#555' }}>{c.description}</span>
+                ) : (
+                  <span style={{ fontSize: '14px', color: '#999', fontStyle: 'italic' }}>
+                    No description
+                  </span>
+                )}
+              </td>
               <td style={{ padding: '8px' }}>
                 <button onClick={() => startEdit(c)} style={{ marginRight: 8, padding: '4px 8px' }}>
                   Edit
